@@ -8,13 +8,18 @@
 import UIKit
 
 class StartViewController: UIViewController {
-
+    
+    lazy var textView: UITextView = {
+        textView = UITextView(frame: .zero)
+        
+        return textView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
-        title = "Home"
+        view.backgroundColor = .systemRed
     }
-
-
+    
+    
 }
 
