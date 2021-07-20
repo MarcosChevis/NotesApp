@@ -9,6 +9,8 @@ import UIKit
 
 class StartViewController: UIViewController {
     
+    var singleton: Singleton = Singleton.shared
+    
     lazy var textView: UITextView = {
         textView = UITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +19,7 @@ class StartViewController: UIViewController {
         return textView
     }()
     
-    init(initialText: String) {
+    init(initialText: String) {  //id, if nil: is new note
         super.init(nibName: nil, bundle: nil)
         textView.text = initialText
     }
@@ -31,13 +33,28 @@ class StartViewController: UIViewController {
         
         title = "Idea"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Notes", style: .plain, target: self, action: #selector(notesTapped))
+        
         view.addSubview(textView)
+        textView.becomeFirstResponder()
         
         setConstraints()
     }
     
+    func saveNote() {
+        if textView.text != "" {
+            singleton.data.append(NoteData(content: textView.text, tags: [], creationDate: Date(), modificationDate: Date()))
+        }
+        textView.text = ""
+    }
+
+    @objc func notesTapped() {
+        saveNote()
+        let vc = NotesListTableViewController()
+        vc.delegate = self
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     func setConstraints() {
-        
         let textViewConstraints: [NSLayoutConstraint] = [
             textView.topAnchor.constraint(equalTo: view.topAnchor),
             textView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -45,13 +62,15 @@ class StartViewController: UIViewController {
             textView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         NSLayoutConstraint.activate(textViewConstraints)
-        
     }
-    
-    @objc func notesTapped() {
-        
-        navigationController?.pushViewController(NotesListTableViewController(), animated: true)
-    }
-    
+
 }
 
+// MARK: NoteListViewControllerDelegate
+extension StartViewController: NoteListViewControllerDelegate {
+    func updateText(text: String) {
+        textView.text = text
+    }
+    
+    
+}

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 struct NoteData {
     var content: String
