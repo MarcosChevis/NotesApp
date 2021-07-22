@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NoteListViewControllerDelegate: AnyObject {
-    func updateText(text: String) //will pass core data object
+    func updateText(coreDataObject: Note)
 }

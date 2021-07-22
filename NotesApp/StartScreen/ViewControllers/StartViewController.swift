@@ -9,7 +9,9 @@ import UIKit
 
 class StartViewController: UIViewController {
     
-    var singleton: Singleton = Singleton.shared
+    private let coreData = CoreDataStack.shared
+    var editingNote: Note?
+    
     
     lazy var textView: UITextView = {
         textView = UITextView(frame: .zero)
@@ -18,15 +20,6 @@ class StartViewController: UIViewController {
         
         return textView
     }()
-    
-    init(initialText: String) {  //id, if nil: is new note
-        super.init(nibName: nil, bundle: nil)
-        textView.text = initialText
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +33,30 @@ class StartViewController: UIViewController {
         setConstraints()
     }
     
+    //MARK: CoreData
     func saveNote() {
-        if textView.text != "" {
-            singleton.data.append(NoteData(content: textView.text, tags: [], creationDate: Date(), modificationDate: Date()))
+        if let editingNote = self.editingNote {
+            if textView.text != "" {
+                editingNote.content = textView.text
+                editingNote.modificationDate = Date()
+            } else {
+                coreData.delete(note: editingNote)
+            }
+        } else if textView.text != "" {
+            _ = coreData.createNote(content: textView.text)
         }
+        
+        do {
+            try coreData.save()
+        } catch {
+            coreData.mainContext.rollback()
+        }
+        
         textView.text = ""
+        self.editingNote = nil
     }
-
+    
+    //MARK: Navigation
     @objc func notesTapped() {
         saveNote()
         let vc = NotesListTableViewController()
@@ -54,6 +64,7 @@ class StartViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    //MARK: Constraints
     func setConstraints() {
         let textViewConstraints: [NSLayoutConstraint] = [
             textView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -63,14 +74,14 @@ class StartViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(textViewConstraints)
     }
-
+    
 }
 
 // MARK: NoteListViewControllerDelegate
 extension StartViewController: NoteListViewControllerDelegate {
-    func updateText(text: String) {
-        textView.text = text
+    func updateText(coreDataObject: Note) {
+        editingNote = coreDataObject
+        textView.text = coreDataObject.content
     }
-    
     
 }

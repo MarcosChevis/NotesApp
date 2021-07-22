@@ -7,20 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA55D8A926A6039C003740B1 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55D8A826A6039C003740B1 /* MockData.swift */; };
 		BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */; };
 		BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */; };
 		BAB1E025269DBBF8001FC3CC /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E024269DBBF8001FC3CC /* StartViewController.swift */; };
-		BAB1E02B269DBBF8001FC3CC /* NotesApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E029269DBBF8001FC3CC /* NotesApp.xcdatamodeld */; };
+		BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E029269DBBF8001FC3CC /* NotesModel.xcdatamodeld */; };
 		BAB1E02D269DBBFA001FC3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAB1E02C269DBBFA001FC3CC /* Assets.xcassets */; };
 		BAB1E030269DBBFA001FC3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAB1E02E269DBBFA001FC3CC /* LaunchScreen.storyboard */; };
 		BAB1E03E269DC4B2001FC3CC /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E03D269DC4B2001FC3CC /* NotesListViewController.swift */; };
-		BAB1E047269E0771001FC3CC /* NoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E046269E0771001FC3CC /* NoteData.swift */; };
 		BAC82D4C26A747A300E52701 /* NoteListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC82D4B26A747A300E52701 /* NoteListViewControllerDelegate.swift */; };
+		BAC82D5626A9DA5B00E52701 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC82D5526A9DA5B00E52701 /* CoreDataStack.swift */; };
+		BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC82D5826A9DD2300E52701 /* NoteExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA55D8A826A6039C003740B1 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		BAB1E01D269DBBF8001FC3CC /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -30,8 +29,9 @@
 		BAB1E02F269DBBFA001FC3CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAB1E031269DBBFA001FC3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAB1E03D269DC4B2001FC3CC /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
-		BAB1E046269E0771001FC3CC /* NoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteData.swift; sourceTree = "<group>"; };
 		BAC82D4B26A747A300E52701 /* NoteListViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListViewControllerDelegate.swift; sourceTree = "<group>"; };
+		BAC82D5526A9DA5B00E52701 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		BAC82D5826A9DD2300E52701 /* NoteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +72,7 @@
 				BAB1E02C269DBBFA001FC3CC /* Assets.xcassets */,
 				BAB1E02E269DBBFA001FC3CC /* LaunchScreen.storyboard */,
 				BAB1E031269DBBFA001FC3CC /* Info.plist */,
-				BAB1E029269DBBF8001FC3CC /* NotesApp.xcdatamodeld */,
+				BAB1E029269DBBF8001FC3CC /* NotesModel.xcdatamodeld */,
 			);
 			path = NotesApp;
 			sourceTree = "<group>";
@@ -129,8 +129,8 @@
 		BAB1E045269E074E001FC3CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BAB1E046269E0771001FC3CC /* NoteData.swift */,
-				BA55D8A826A6039C003740B1 /* MockData.swift */,
+				BAC82D5726A9DD1100E52701 /* Extensions */,
+				BAC82D5526A9DA5B00E52701 /* CoreDataStack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -141,6 +141,14 @@
 				BAC82D4B26A747A300E52701 /* NoteListViewControllerDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BAC82D5726A9DD1100E52701 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BAC82D5826A9DD2300E52701 /* NoteExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,11 +222,11 @@
 			files = (
 				BAB1E025269DBBF8001FC3CC /* StartViewController.swift in Sources */,
 				BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */,
-				BAB1E047269E0771001FC3CC /* NoteData.swift in Sources */,
-				BA55D8A926A6039C003740B1 /* MockData.swift in Sources */,
 				BAB1E03E269DC4B2001FC3CC /* NotesListViewController.swift in Sources */,
+				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
+				BAC82D5626A9DA5B00E52701 /* CoreDataStack.swift in Sources */,
 				BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */,
-				BAB1E02B269DBBF8001FC3CC /* NotesApp.xcdatamodeld in Sources */,
+				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
 				BAC82D4C26A747A300E52701 /* NoteListViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,13 +423,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BAB1E029269DBBF8001FC3CC /* NotesApp.xcdatamodeld */ = {
+		BAB1E029269DBBF8001FC3CC /* NotesModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				BAB1E02A269DBBF8001FC3CC /* NotesApp.xcdatamodel */,
 			);
 			currentVersion = BAB1E02A269DBBF8001FC3CC /* NotesApp.xcdatamodel */;
-			path = NotesApp.xcdatamodeld;
+			path = NotesModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
