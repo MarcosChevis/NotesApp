@@ -55,10 +55,6 @@ class CoreDataStack {
         return note
     }
     
-    func edit(note: Note) {
-        
-    }
-    
     func delete(note: Note) {
         mainContext.delete(note)
     }

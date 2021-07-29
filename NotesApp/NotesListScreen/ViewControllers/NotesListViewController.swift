@@ -11,12 +11,12 @@ import CoreData
 
 class NotesListTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    //var mockData: [NoteData] = Singleton.shared.data
     private let coreData = CoreDataStack.shared
     
     private lazy var frcNote: NSFetchedResultsController<Note> = {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: false)]
+        
         
         let frc = NSFetchedResultsController<Note>(fetchRequest: fetchRequest,
                                                    managedObjectContext: coreData.mainContext,
@@ -25,25 +25,25 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
         return frc
     }()
     
-//    private lazy var frcTag: NSFetchedResultsController<Tag> = {
-//
-//    }()
+    //    private lazy var frcTag: NSFetchedResultsController<Tag> = {
+    //
+    //    }()
     
     var identifier: String = "identifier"
     
-    lazy var searchController: UISearchController = {
-        let s = UISearchController(searchResultsController: nil)
-        s.searchResultsUpdater = self
-        s.obscuresBackgroundDuringPresentation = false
-        s.searchBar.placeholder = "Search in Notes"
-        s.searchBar.sizeToFit()
-        s.searchBar.searchBarStyle = .prominent
-        
-        s.searchBar.scopeButtonTitles = []
-        s.searchBar.delegate = self
-        
-        return s
-    }()
+//    lazy var searchController: UISearchController = {
+//        let s = UISearchController(searchResultsController: nil)
+//        s.searchResultsUpdater = self
+//        s.obscuresBackgroundDuringPresentation = false
+//        s.searchBar.placeholder = "Search in Notes"
+//        s.searchBar.sizeToFit()
+//        s.searchBar.searchBarStyle = .prominent
+//
+//        s.searchBar.scopeButtonTitles = []
+//        s.searchBar.delegate = self
+//
+//        return s
+//    }()
     
     weak var delegate: NoteListViewControllerDelegate?
     
@@ -59,11 +59,11 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
     }
     
-//    func filteredForSearchBar(searchText: String, scope: String = "All") {
-//        filteredNotes = mockData.filter({ (note: NoteData) -> Bool in
-//            return true
-//        })
-//    }
+    //    func filteredForSearchBar(searchText: String, scope: String = "All") {
+    //        filteredNotes = mockData.filter({ (note: NoteData) -> Bool in
+    //            return true
+    //        })
+    //    }
     
     
     // MARK: DataSource
@@ -78,11 +78,24 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
         cell.textLabel?.text = object.content
         return cell
     }
-
+    
     // MARK: TableViewDelegate
     
     func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            guard let item = frcNote.fetchedObjects?[indexPath.row] else { return }
+            coreData.delete(note: item)
+            do {
+                try coreData.save()
+            } catch {
+                print("nao foi")
+            }
+            tableView.reloadRows(at: [indexPath], with: .fade)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -96,7 +109,7 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type {
         case .insert:
@@ -111,7 +124,7 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
             break
         }
     }
-
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
@@ -119,17 +132,16 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
 }
 
 //MARK: SearchBarDelegate
-extension NotesListTableViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-        
-    }
-}
-
+//extension NotesListTableViewController: UISearchBarDelegate {
+//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+//
+//    }
+//}
+//
 //MARK: SearchResultUpdating
-extension NotesListTableViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        
-    }
-    
-    
-}
+//extension NotesListTableViewController: UISearchResultsUpdating {
+//    func updateSearchResults(for searchController: UISearchController) {
+//
+//    }
+//
+//}
