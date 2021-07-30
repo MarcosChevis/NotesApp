@@ -4,8 +4,6 @@
 //
 //  Created by Marcos Chevis on 13/07/21.
 //
-
-import Foundation
 import UIKit
 import CoreData
 
@@ -15,7 +13,7 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
     
     private lazy var frcNote: NSFetchedResultsController<Note> = {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: false)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.modificationDate, ascending: false)]
         
         
         let frc = NSFetchedResultsController<Note>(fetchRequest: fetchRequest,
@@ -57,8 +55,7 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
     }
     
-    // MARK: DataSource
-    
+    // MARK: TableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return frcNote.fetchedObjects?.count ?? 0
     }
@@ -71,7 +68,6 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     // MARK: TableViewDelegate
-    
     func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
         return true
     }
@@ -86,8 +82,6 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
             } catch {
                 print("nao foi")
             }
-            
-            
             tableView.reloadData()
         }
     }
