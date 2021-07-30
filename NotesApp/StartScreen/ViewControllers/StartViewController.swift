@@ -4,33 +4,47 @@
 //
 //  Created by Marcos Chevis on 13/07/21.
 //
-
 import UIKit
 
 class StartViewController: UIViewController {
     
     private let coreData = CoreDataStack.shared
     var editingNote: Note?
-    
+    var discardChange: Bool = false
+    var initialText: String = ""
     
     lazy var textView: UITextView = {
         textView = UITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .systemBackground
+        textView.delegate = self
+        textView.font = UIFont.systemFont(ofSize: 18)
         
         return textView
     }()
     
+    lazy var discardChangeButtom: UIBarButtonItem = {
+        let but = UIBarButtonItem(title: "Discard", style: .plain, target: self, action: #selector(discardChanges))
+        but.tintColor = .systemGray
+        return but
+    }()
+    
+    // MARK: UIKitLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "Idea"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Notes", style: .plain, target: self, action: #selector(notesTapped))
-        
+        navigationItem.leftBarButtonItem = discardChangeButtom
         view.addSubview(textView)
         textView.becomeFirstResponder()
         
         setConstraints()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        if !discardChange {
+            saveNote()
+        }
     }
     
     //MARK: CoreData
@@ -53,15 +67,21 @@ class StartViewController: UIViewController {
         }
         
         textView.text = ""
+        initialText = ""
         self.editingNote = nil
+        self.discardChange = false
     }
     
-    //MARK: Navigation
+    //MARK: ButtonsFuncions
     @objc func notesTapped() {
         saveNote()
         let vc = NotesListTableViewController()
         vc.delegate = self
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func discardChanges() {
+        textView.text = initialText
     }
     
     //MARK: Constraints
@@ -82,6 +102,22 @@ extension StartViewController: NoteListViewControllerDelegate {
     func updateText(coreDataObject: Note) {
         editingNote = coreDataObject
         textView.text = coreDataObject.content
+        initialText = textView.text
+        self.discardChange = true
+        discardChangeButtom.tintColor = .systemGray
+    }
+    
+}
+
+// MARK: UITextViewDelegate
+extension StartViewController: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text == initialText {
+            discardChangeButtom.tintColor = .systemGray
+        } else {
+            discardChangeButtom.tintColor = .systemRed
+        }
     }
     
 }

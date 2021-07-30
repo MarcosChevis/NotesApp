@@ -25,31 +25,29 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
         return frc
     }()
     
-    //    private lazy var frcTag: NSFetchedResultsController<Tag> = {
-    //
-    //    }()
-    
+    var beganUpdates = false
     var identifier: String = "identifier"
     
-//    lazy var searchController: UISearchController = {
-//        let s = UISearchController(searchResultsController: nil)
-//        s.searchResultsUpdater = self
-//        s.obscuresBackgroundDuringPresentation = false
-//        s.searchBar.placeholder = "Search in Notes"
-//        s.searchBar.sizeToFit()
-//        s.searchBar.searchBarStyle = .prominent
-//
-//        s.searchBar.scopeButtonTitles = []
-//        s.searchBar.delegate = self
-//
-//        return s
-//    }()
+    lazy var searchController: UISearchController = {
+        let s = UISearchController(searchResultsController: nil)
+        s.searchResultsUpdater = self
+        s.obscuresBackgroundDuringPresentation = false
+        s.searchBar.placeholder = "Search in Notes"
+        s.searchBar.sizeToFit()
+        s.searchBar.searchBarStyle = .prominent
+        
+        s.searchBar.scopeButtonTitles = []
+        s.searchBar.delegate = self
+        
+        return s
+    }()
     
     weak var delegate: NoteListViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.tableHeaderView = searchController.searchBar
         do {
             try frcNote.performFetch()
         } catch {
@@ -58,13 +56,6 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
     }
-    
-    //    func filteredForSearchBar(searchText: String, scope: String = "All") {
-    //        filteredNotes = mockData.filter({ (note: NoteData) -> Bool in
-    //            return true
-    //        })
-    //    }
-    
     
     // MARK: DataSource
     
@@ -86,62 +77,97 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete{
+        if editingStyle == .delete {
             guard let item = frcNote.fetchedObjects?[indexPath.row] else { return }
             coreData.delete(note: item)
             do {
                 try coreData.save()
+                try frcNote.performFetch()
             } catch {
                 print("nao foi")
             }
-            tableView.reloadRows(at: [indexPath], with: .fade)
+            
+            
+            tableView.reloadData()
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let content = frcNote.object(at: indexPath)
         delegate?.updateText(coreDataObject: content)
+        searchController.isActive = false
         navigationController?.popViewController(animated: true)
     }
     
     //MARK: NSFetchedResultsControllerDelegate
-    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
+        self.tableView.beginUpdates()
+        beganUpdates = true
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+        switch type {
+        case .insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
+        case .delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
+        default:
+            break
+        }
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
         switch type {
+        
         case .insert:
-            if let newIndexPath = newIndexPath {
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
-            }
+            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
         case .delete:
-            if let indexPath = indexPath {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
+            self.tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+            self.tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+            self.tableView.deleteRows(at: [indexPath!], with: .fade)
+            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
         default:
             break
         }
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()
-    }
-    
+        if beganUpdates {
+            self.tableView.endUpdates()
+        }
+    }    
 }
 
 //MARK: SearchBarDelegate
-//extension NotesListTableViewController: UISearchBarDelegate {
-//    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-//
-//    }
-//}
-//
+extension NotesListTableViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        
+    }
+}
+
 //MARK: SearchResultUpdating
-//extension NotesListTableViewController: UISearchResultsUpdating {
-//    func updateSearchResults(for searchController: UISearchController) {
-//
-//    }
-//
-//}
+extension NotesListTableViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchText = searchController.searchBar.text ?? ""
+        var predicate: NSPredicate?
+        if searchText.count > 0 {
+            predicate = NSPredicate(format: "(content contains[cd] %@)", searchText)
+        } else {
+            predicate = nil
+        }
+        
+        frcNote.fetchRequest.predicate = predicate
+        
+        do {
+            try frcNote.performFetch()
+            tableView.reloadData()
+        } catch let err {
+            print(err)
+        }
+        
+    }
+}
