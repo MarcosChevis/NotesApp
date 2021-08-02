@@ -30,7 +30,7 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
         let s = UISearchController(searchResultsController: nil)
         s.searchResultsUpdater = self
         s.obscuresBackgroundDuringPresentation = false
-        s.searchBar.placeholder = "Search in Notes"
+        s.searchBar.placeholder = "Procure em Notas"
         s.searchBar.sizeToFit()
         s.searchBar.searchBarStyle = .prominent
         
@@ -45,6 +45,7 @@ class NotesListTableViewController: UITableViewController, NSFetchedResultsContr
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Todas"
         tableView.tableHeaderView = searchController.searchBar
         do {
             try frcNote.performFetch()

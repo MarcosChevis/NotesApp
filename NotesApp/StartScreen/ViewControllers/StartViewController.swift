@@ -12,6 +12,8 @@ class StartViewController: UIViewController {
     var editingNote: Note?
     var initialText: String = ""
     
+    var defaults = UserDefaults.standard
+    
     lazy var textView: UITextView = {
         textView = UITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +31,7 @@ class StartViewController: UIViewController {
     }()
     
     lazy var allButtom: UIBarButtonItem = {
-        let but = UIBarButtonItem(title: "All", style: .plain, target: self, action: #selector(notesTapped))
+        let but = UIBarButtonItem(title: "Todas", style: .plain, target: self, action: #selector(notesTapped))
         
         return but
     }()
@@ -39,12 +41,32 @@ class StartViewController: UIViewController {
         
         return but
     }()
-    
+        
     // MARK: UIKitLifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Note"
+        if defaults.bool(forKey: "First Launch") != true {
+            initialText = """
+                            Escreva o que está pensando,
+                            E salve sua nota apenas fechando o app!
+                            
+                            É possível salvar e abrir uma nova nota no ícone à direita.
+                            Para vizualizar todas suas notas vá em "Todas".
+                            
+                            Para deletar é só deixar a Nota vazia,
+                            Ou pode deletar uma arrastando para a esquerda em "Todas".
+                            
+                            Nunca mais se esqueça de algo antes de anotar!
+                            """
+            textView.text = initialText
+            
+            defaults.setValue(true, forKey: "First Launch")
+        } else {
+            defaults.setValue(true, forKey: "First Launch")
+        }
+        
+        title = "Nota"
         navigationItem.setRightBarButtonItems([allButtom, newNote], animated: true)
         navigationItem.leftBarButtonItem = discardChangeButtom
         view.addSubview(textView)
