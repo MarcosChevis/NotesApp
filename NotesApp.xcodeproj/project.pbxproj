@@ -73,6 +73,14 @@
 			path = NotesAppTests;
 			sourceTree = "<group>";
 		};
+		9D40CF39278DBE5000818D9B /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				BAC82D5526A9DA5B00E52701 /* CoreDataStack.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		BAB1E014269DBBF8001FC3CC = {
 			isa = PBXGroup;
 			children = (
@@ -159,8 +167,8 @@
 		BAB1E045269E074E001FC3CC /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9D40CF39278DBE5000818D9B /* Storage */,
 				BAC82D5726A9DD1100E52701 /* Extensions */,
-				BAC82D5526A9DA5B00E52701 /* CoreDataStack.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

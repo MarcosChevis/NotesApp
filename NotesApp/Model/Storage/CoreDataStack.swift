@@ -30,8 +30,8 @@ class CoreDataStack {
         return container.viewContext
     }
 
-    private init(model: String = "NotesModel") {
-        self.model = model
+    init(_ storeType: StoreType = .persistent) {
+        self.model = "NotesModel"
     }
 
     func save() throws {
@@ -63,4 +63,9 @@ class CoreDataStack {
 enum CoreDataStackError: Error {
     case failedToSave
     case contextHasNoChanges
+}
+
+enum StoreType {
+    case persistent
+    case inMemory
 }
