@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */; };
+		9DCBA4C3278F00F100CEF733 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBA4C2278F00F100CEF733 /* NotesRepository.swift */; };
+		9DCBA4C5278F01F600CEF733 /* NotesRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBA4C4278F01F600CEF733 /* NotesRepositoryTest.swift */; };
+		9DCBA4C7278F058A00CEF733 /* NotesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBA4C6278F058A00CEF733 /* NotesRepositoryProtocol.swift */; };
 		BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */; };
 		BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */; };
 		BAB1E025269DBBF8001FC3CC /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E024269DBBF8001FC3CC /* StartViewController.swift */; };
@@ -33,6 +36,9 @@
 /* Begin PBXFileReference section */
 		5BFD81DC278DB2FA004833F5 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppTests.swift; sourceTree = "<group>"; };
+		9DCBA4C2278F00F100CEF733 /* NotesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
+		9DCBA4C4278F01F600CEF733 /* NotesRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepositoryTest.swift; sourceTree = "<group>"; };
+		9DCBA4C6278F058A00CEF733 /* NotesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		BAB1E01D269DBBF8001FC3CC /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */,
+				9DCBA4C4278F01F600CEF733 /* NotesRepositoryTest.swift */,
 			);
 			path = NotesAppTests;
 			sourceTree = "<group>";
@@ -77,6 +84,8 @@
 			isa = PBXGroup;
 			children = (
 				BAC82D5526A9DA5B00E52701 /* CoreDataStack.swift */,
+				9DCBA4C2278F00F100CEF733 /* NotesRepository.swift */,
+				9DCBA4C6278F058A00CEF733 /* NotesRepositoryProtocol.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -289,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */,
+				9DCBA4C5278F01F600CEF733 /* NotesRepositoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAB1E025269DBBF8001FC3CC /* StartViewController.swift in Sources */,
+				9DCBA4C7278F058A00CEF733 /* NotesRepositoryProtocol.swift in Sources */,
 				BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */,
+				9DCBA4C3278F00F100CEF733 /* NotesRepository.swift in Sources */,
 				BAB1E03E269DC4B2001FC3CC /* NotesListViewController.swift in Sources */,
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
 				BAC82D5626A9DA5B00E52701 /* CoreDataStack.swift in Sources */,
@@ -336,9 +348,9 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WK7599VNDW;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gbrlcm.NotesAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -356,9 +368,9 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WK7599VNDW;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gbrlcm.NotesAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
