@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class ThemesCollectionViewCell: UICollectionViewCell {
+class NoteCollectionViewCell: UICollectionViewCell {
     var title: UILabel = {
         var title = UILabel()
         title.textColor = .black
