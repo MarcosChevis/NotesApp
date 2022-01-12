@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */; };
+		9DAC68F6278F2B81005554B6 /* ThemesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC68F5278F2B81005554B6 /* ThemesCollectionViewCell.swift */; };
 		9DCBA4C3278F00F100CEF733 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBA4C2278F00F100CEF733 /* NotesRepository.swift */; };
 		9DCBA4C5278F01F600CEF733 /* NotesRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBA4C4278F01F600CEF733 /* NotesRepositoryTest.swift */; };
 		9DCBA4C7278F058A00CEF733 /* NotesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DCBA4C6278F058A00CEF733 /* NotesRepositoryProtocol.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		5BFD81DC278DB2FA004833F5 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppTests.swift; sourceTree = "<group>"; };
+		9DAC68F5278F2B81005554B6 /* ThemesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DCBA4C2278F00F100CEF733 /* NotesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
 		9DCBA4C4278F01F600CEF733 /* NotesRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepositoryTest.swift; sourceTree = "<group>"; };
 		9DCBA4C6278F058A00CEF733 /* NotesRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepositoryProtocol.swift; sourceTree = "<group>"; };
@@ -90,6 +92,14 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		9DAC68F4278F2B61005554B6 /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				9DAC68F5278F2B81005554B6 /* ThemesCollectionViewCell.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		BAB1E014269DBBF8001FC3CC = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		BAB1E01F269DBBF8001FC3CC /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				9DAC68F4278F2B61005554B6 /* Themes */,
 				BAB1E045269E074E001FC3CC /* Model */,
 				BAB1E037269DC3C6001FC3CC /* StartScreen */,
 				BAB1E03A269DC417001FC3CC /* NotesListScreen */,
@@ -310,6 +321,7 @@
 				9DCBA4C7278F058A00CEF733 /* NotesRepositoryProtocol.swift in Sources */,
 				BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */,
 				9DCBA4C3278F00F100CEF733 /* NotesRepository.swift in Sources */,
+				9DAC68F6278F2B81005554B6 /* ThemesCollectionViewCell.swift in Sources */,
 				BAB1E03E269DC4B2001FC3CC /* NotesListViewController.swift in Sources */,
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
 				BAC82D5626A9DA5B00E52701 /* CoreDataStack.swift in Sources */,
