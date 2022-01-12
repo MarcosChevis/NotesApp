@@ -30,22 +30,6 @@ enum ColorSets: String {
     }
 }
 
-//class NeonColorSet: CustomColorSet {
-//    var actionColor: UIColor = UIColor(named: "NeonAction")!
-//
-//    var background: UIColor = UIColor(named: "NeonBackground")!
-//
-//    var buttonBackground: UIColor = UIColor(named: "NeonButtonBackground")!
-//
-//    var noteBackground: UIColor = UIColor(named: "NeonBackground")!
-//
-//    var textColor: UIColor = UIColor(named: "NeonText")!
-//
-//}
-//
-//
-//}
-
 struct CustomColorSet {
     var actionColor: UIColor
     

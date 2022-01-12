@@ -11,6 +11,7 @@
 		BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D56278EFC6A000617F6 /* NoteViewController.swift */; };
 		BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D58278EFCEB000617F6 /* NoteView.swift */; };
 		BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D5A278F025F000617F6 /* ColorSet.swift */; };
+		BA578D60278F1A2D000617F6 /* NotesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D5F278F1A2D000617F6 /* NotesViewDelegate.swift */; };
 		BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */; };
 		BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */; };
 		BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E029269DBBF8001FC3CC /* NotesModel.xcdatamodeld */; };
@@ -36,6 +37,7 @@
 		BA578D56278EFC6A000617F6 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		BA578D58278EFCEB000617F6 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BA578D5A278F025F000617F6 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
+		BA578D5F278F1A2D000617F6 /* NotesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewDelegate.swift; sourceTree = "<group>"; };
 		BAB1E01D269DBBF8001FC3CC /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		BA578D52278EFBEB000617F6 /* NoteScreen */ = {
 			isa = PBXGroup;
 			children = (
+				BA578D5E278F1A07000617F6 /* Delegates */,
 				BA578D55278EFC36000617F6 /* Views */,
 				BA578D54278EFC22000617F6 /* Controllers */,
 			);
@@ -96,6 +99,14 @@
 				BA578D58278EFCEB000617F6 /* NoteView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BA578D5E278F1A07000617F6 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				BA578D5F278F1A2D000617F6 /* NotesViewDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		BAB1E014269DBBF8001FC3CC = {
@@ -259,6 +270,7 @@
 				BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */,
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
 				BAC82D5626A9DA5B00E52701 /* CoreDataStack.swift in Sources */,
+				BA578D60278F1A2D000617F6 /* NotesViewDelegate.swift in Sources */,
 				BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */,
 				BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */,
 				BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */,
