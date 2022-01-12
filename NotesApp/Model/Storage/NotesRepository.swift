@@ -23,19 +23,13 @@ class NotesRepository: NotesRepositoryProtocol {
         try coreDataStack.save()
     }
     
-    func getNotes() -> [Note] {
-        []
-    }
-    
-    func getAllTags() -> [Tag] {
-        []
-    }
-    
     func deleteNote(_ note: Note) throws {
-        
+        coreDataStack.mainContext.delete(note)
+        try coreDataStack.save()
     }
     
     func editNote(_ note: Note) throws {
-        
+        note.modificationDate = Date()
+        try coreDataStack.save()
     }
 }
