@@ -46,7 +46,6 @@ class NoteView: UIView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        //        var layout = UICollectionViewLayout()
         var layout = collectionViewLayout
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
