@@ -33,7 +33,20 @@ class NoteViewController: UIViewController {
     
     override func viewDidLoad() {
         setupNavigationBar()
+        setupToolbar()
+        
     }
+    
+    @objc func didTapToolbar() {
+        print("oii")
+    }
+    
+    func setupToolbar() {
+        self.navigationController?.isToolbarHidden = false
+        self.toolbarItems = contentView.toolbarItems
+    }
+    
+    
     
     override func loadView() {
         super.loadView()
@@ -49,6 +62,21 @@ class NoteViewController: UIViewController {
 }
 
 extension NoteViewController: NoteViewDelegate {
+    func didDelete() {
+        print("coisas de delete")
+        
+    }
+    
+    func didAllNotes() {
+        print("coisas de all notes")
+        
+    }
+    
+    func didAdd() {
+        print("coisas de add")
+        
+    }
+    
     func didShare() {
         print("coisas de share")
     }
