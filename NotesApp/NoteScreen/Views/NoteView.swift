@@ -36,8 +36,10 @@ class NoteView: UIView {
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collection)
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collection.backgroundColor = .red
+        collection.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.backgroundColor = .secondarySystemBackground
+        collection.isScrollEnabled = false
+        backgroundColor = .secondarySystemBackground
         
         return collection
     }()

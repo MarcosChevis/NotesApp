@@ -9,40 +9,56 @@ import Foundation
 import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
-    var title: UILabel = {
-        var title = UILabel()
-        title.textColor = .black
+    var title: UITextField = {
+        var title = UITextField()
         title.translatesAutoresizingMaskIntoConstraints = false
-        title.font = .preferredFont(forTextStyle: .title2)
+        if let descriptor = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle: .title2)
+            .withSymbolicTraits(.traitBold) {
+            title.font = UIFont(descriptor: descriptor, size: 0)
+        } else {
+            title.font = .preferredFont(forTextStyle: .title2)
+        }
+        
+        title.textAlignment = .left
         return title
     }()
     
     var textView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.font = .preferredFont(forTextStyle: .body)
         return textView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.addSubview(title)
-        self.addSubview(textView)
+        contentView.addSubview(title)
+        contentView.addSubview(textView)
         
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = 8
+        contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = 16
         
-        title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        title.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
-        title.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
-        title.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
+        title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
         
-        textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 10).isActive = true
-        textView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        textView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
-        textView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10).isActive = true
+        textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4).isActive = true
+        textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+        textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setup(colorPalette: CustomColorSet, title: String, content: String) {
+        self.title.textColor = .black
+        self.textView.textColor = .black
+        contentView.backgroundColor = .white
+        
+        self.title.text = title
+        self.textView.text = content
     }
 }
