@@ -19,6 +19,10 @@ class NoteView: UIView {
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
         
+        // funcao pra dar dismiss no teclado quando scrolla pro lado na collection
+        section.visibleItemsInvalidationHandler = ({ [weak self] (visibleItems, point, env) in
+            self?.endEditing(false)
+        })
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
