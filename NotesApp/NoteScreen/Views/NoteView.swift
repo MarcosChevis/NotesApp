@@ -36,8 +36,10 @@ class NoteView: UIView {
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collection)
-        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collection.backgroundColor = .red
+        collection.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.backgroundColor = .secondarySystemBackground
+        collection.isScrollEnabled = false
+        backgroundColor = .secondarySystemBackground
         
         return collection
     }()
@@ -45,9 +47,9 @@ class NoteView: UIView {
     weak var delegate: NoteViewDelegate?
     
     
-    var pallete: ColorSets
+    var pallete: ColorSet
     
-    init(palette: ColorSets) {
+    init(palette: ColorSet) {
         self.pallete = palette
         
         super.init(frame: .zero)
