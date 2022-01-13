@@ -8,32 +8,41 @@
 import UIKit
 
 class AllNotesViewController: UIViewController {
-
+    
+    var palette: ColorSet
+    var contentView: AllNotesView
+    
+    init(palette: ColorSet) {
+        self.contentView = AllNotesView(palette: palette)
+        self.palette = palette
+//        self.collectionViewDataSource = self
+        
+        super.init(nibName: nil, bundle: nil)
+        
+//        self.contentView.collectionView.dataSource = collectionViewDataSource
+        self.contentView.delegate = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300.0))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300.0))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [ item ])
-                group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(8))
-                group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18)
-                let section = NSCollectionLayoutSection(group: group)
-                //section.contentInsets = NSDirectionalEdgeInsets(top: 0.0, leading: 18.0, bottom: 0.0, trailing: 18.0)
-                let layout = UICollectionViewCompositionalLayout(section: section)
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        view.backgroundColor = .red
-        collectionView.backgroundColor = .secondarySystemBackground
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(collectionView)
-        collectionView.strechToBounds(of: view)
-        collectionView.dataSource = self
-        collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        setupNavigationBar()
     }
-
+    
+    override func loadView() {
+        super.loadView()
+        view = contentView
+    }
+    
+    func setupNavigationBar() {
+        title = "All Notes"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
+        navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
+    }
 }
 
 extension AllNotesViewController: UICollectionViewDataSource {
@@ -49,35 +58,36 @@ extension AllNotesViewController: UICollectionViewDataSource {
         cell.setup(with: .init(colorSet: .classic, title: "Um Grande titulo", content: "I have a dream that one day every valley shall be engulfed, every hill shall be exalted and every mountain shall…"))
         return cell
     }
-    
-    
 }
 
-protocol Stretchable {
-    var topAnchor: NSLayoutYAxisAnchor { get }
-    var bottomAnchor: NSLayoutYAxisAnchor { get }
-    var leadingAnchor: NSLayoutXAxisAnchor { get }
-    var trailingAnchor: NSLayoutXAxisAnchor { get }
-    var leftAnchor: NSLayoutXAxisAnchor { get }
-    var rightAnchor: NSLayoutXAxisAnchor { get }
+extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
+    func didTapDelete(for noteViewModel: SmallNoteCellViewModel) {
+        print("delete")
+    }
+    
+    func didTapShare(for noteViewModel: SmallNoteCellViewModel) {
+        print("share")
+    }
+    
+    func didTapEdit(for noteViewModel: SmallNoteCellViewModel) {
+        print("edit")
+    }
 }
 
-extension UIView: Stretchable {}
-extension UILayoutGuide: Stretchable {}
-
-extension UIView {
+extension AllNotesViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("Search bar editing did begin..")
+    }
     
-    @discardableResult
-    func strechToBounds(of view: Stretchable) -> [NSLayoutConstraint] {
-        let constraints = [
-            topAnchor.constraint(equalTo: view.topAnchor),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-        
-        return constraints
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("Search bar editing did end..")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+//        search(shouldShow: false)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Search text is \(searchText)")
     }
 }
