@@ -9,6 +9,7 @@ import UIKit
 
 class SettingTableDataSource: NSObject, UITableViewDataSource {
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -17,7 +18,10 @@ class SettingTableDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = "Themes"
-        cell.textLabel?.textColor = 
+        cell.textLabel?.textColor = .red
+        cell.backgroundColor = .blue
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        return cell
     }
 
 }
