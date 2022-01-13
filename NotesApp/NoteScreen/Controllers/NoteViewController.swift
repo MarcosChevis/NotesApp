@@ -56,6 +56,7 @@ class NoteViewController: UIViewController {
     func setupNavigationBar() {
         title = "abrobinha"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
         navigationItem.rightBarButtonItem = contentView.shareButton
 
     }
