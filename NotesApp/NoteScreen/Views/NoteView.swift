@@ -34,6 +34,17 @@ class NoteView: UIView {
         return but
     }()
     
+    lazy var toolbarItems: [UIBarButtonItem] = {
+        var items = [UIBarButtonItem]()
+        
+        items.append( UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapDelete)))
+        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
+        items.append( UIBarButtonItem(image: UIImage(systemName: "note.text"), style: .plain , target: self, action: #selector(didTapAllNotes)))
+        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
+        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddNote)))
+        return items
+    }()
+    
     lazy var collectionView: UICollectionView = {
         //        var layout = UICollectionViewLayout()
         var layout = collectionViewLayout
@@ -81,6 +92,18 @@ class NoteView: UIView {
         delegate?.didShare()
     }
     
+    @objc func didTapDelete() {
+        delegate?.didDelete()
+    }
+    
+    @objc func didTapAllNotes() {
+        delegate?.didAllNotes()
+        
+    }
+    
+    @objc func didTapAddNote() {
+        delegate?.didAdd()
+    }
     
 }
 
