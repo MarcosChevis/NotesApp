@@ -11,6 +11,8 @@
 		5B45761D2790593100EF1036 /* NotesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761A2790593100EF1036 /* NotesRepositoryProtocol.swift */; };
 		5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761B2790593100EF1036 /* NotesRepository.swift */; };
 		5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */; };
+		5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576212790651B00EF1036 /* TagCollectionViewCell.swift */; };
+		5B4576242790671600EF1036 /* TagCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576232790671600EF1036 /* TagCollectionCellViewModel.swift */; };
 		5B73C9F3278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F2278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift */; };
 		5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F6278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift */; };
 		5B73C9F9278F758D005F2D89 /* SmallNoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */; };
@@ -46,6 +48,8 @@
 		5B45761A2790593100EF1036 /* NotesRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		5B45761B2790593100EF1036 /* NotesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
 		5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepositoryTest.swift; sourceTree = "<group>"; };
+		5B4576212790651B00EF1036 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
+		5B4576232790671600EF1036 /* TagCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		5B73C9F2278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSmallCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B73C9F6278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSmallCellCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallNoteCellViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				5B73C9F2278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift */,
+				5B4576212790651B00EF1036 /* TagCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -138,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */,
+				5B4576232790671600EF1036 /* TagCollectionCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -366,6 +372,7 @@
 				5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */,
 				BAB1E021269DBBF8001FC3CC /* AppDelegate.swift in Sources */,
+				5B4576242790671600EF1036 /* TagCollectionCellViewModel.swift in Sources */,
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
 				5B73C9F3278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift in Sources */,
 				BA578D60278F1A2D000617F6 /* NotesViewDelegate.swift in Sources */,
@@ -380,6 +387,7 @@
 				BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */,
 				9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
+				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 			);
