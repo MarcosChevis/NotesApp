@@ -151,9 +151,6 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//    }
     
     func setup(with viewModel: SmallNoteCellViewModel) {
         setupColorSet(viewModel.colorSet.palette())

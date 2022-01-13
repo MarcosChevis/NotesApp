@@ -18,13 +18,13 @@ enum ColorSet: String {
             return CustomColorSet(actionColor: UIColor(Color("NeonAction")),
                                   background: UIColor(Color("NeonBackground")),
                                   buttonBackground: UIColor(Color("NeonButtonBackground")),
-                                  noteBackground: UIColor(Color("NeonNoteBakground")),
+                                  noteBackground: UIColor(Color("NeonNoteBackground")),
                                   text: UIColor(Color("NeonText")))
         case .classic:
             return CustomColorSet(actionColor: UIColor(Color("ClassicAction")),
                                   background: UIColor(Color("ClassicBackground")),
                                   buttonBackground: UIColor(Color("ClassicButtonBackground")),
-                                  noteBackground: UIColor(Color("ClassicNoteBakground")),
+                                  noteBackground: UIColor(Color("ClassicNoteBackground")),
                                   text: UIColor(Color("ClassicText")))
         }
     }
