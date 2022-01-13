@@ -9,4 +9,7 @@ import Foundation
 
 protocol NoteViewDelegate: AnyObject {
     func didShare()
+    func didDelete()
+    func didAllNotes()
+    func didAdd()
 }
