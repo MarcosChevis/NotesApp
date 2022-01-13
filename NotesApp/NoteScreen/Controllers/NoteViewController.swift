@@ -24,7 +24,6 @@ class NoteViewController: UIViewController {
         
         self.contentView.collectionView.dataSource = collectionDataSource
         self.contentView.delegate = self
-       
     }
     
     required init?(coder: NSCoder) {
@@ -33,6 +32,11 @@ class NoteViewController: UIViewController {
     
     override func viewDidLoad() {
         setupNavigationBar()
+        
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
     }
     
     override func loadView() {
