@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-enum ColorSets: String {
+enum ColorSet: String {
     case neon
     case classic
     
@@ -30,7 +30,7 @@ enum ColorSets: String {
     }
 }
 
-struct CustomColorSet {
+struct CustomColorSet: Equatable {
     var actionColor: UIColor
     
     var background: UIColor

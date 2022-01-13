@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: NoteViewController(palette: .classic))
+        window.rootViewController = UINavigationController(rootViewController: AllNotesViewController())
         window.makeKeyAndVisible()
         self.window = window
 
@@ -58,4 +58,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 }
-

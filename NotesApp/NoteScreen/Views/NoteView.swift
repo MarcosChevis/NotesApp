@@ -29,9 +29,9 @@ class NoteView: UIView {
     weak var delegate: NoteViewDelegate?
     
     
-    var pallete: ColorSets
+    var pallete: ColorSet
     
-    init(palette: ColorSets) {
+    init(palette: ColorSet) {
         self.pallete = palette
         
         super.init(frame: .zero)

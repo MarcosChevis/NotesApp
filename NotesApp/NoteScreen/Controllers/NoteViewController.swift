@@ -10,12 +10,12 @@ import UIKit
 
 class NoteViewController: UIViewController {
     
-    var palette: ColorSets
+    var palette: ColorSet
     var contentView: NoteView
     var collectionDataSource: UICollectionViewDataSource
     
     
-    init(palette: ColorSets, collectionDataSource: UICollectionViewDataSource) {
+    init(palette: ColorSet, collectionDataSource: UICollectionViewDataSource) {
         self.contentView = NoteView(palette: palette)
         self.palette = palette
         self.collectionDataSource = collectionDataSource
