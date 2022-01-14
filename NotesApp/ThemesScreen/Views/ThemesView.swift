@@ -8,13 +8,44 @@
 import UIKit
 
 class ThemesView: UIView {
+    var palette: ColorSet
+    
+    lazy var exampleImage: UIImageView = {
+        var img = UIImageView()
+        img.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(img)
+        
+        return img
+    }()
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    init(palette: ColorSet) {
+        self.palette = palette
+        
+        super.init(frame: .zero)
+        
+        backgroundColor = palette.palette().background
+        setupConstraints()
+        setExampleImage(color: .neon)
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            exampleImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            exampleImage.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -200),
+            exampleImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 100),
+            exampleImage.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -100)])
+    }
+    
+    func setExampleImage(color: ColorSet) {
+        switch color {
+        case .neon:
+            exampleImage.image = UIImage(named: "totiNeon")
+        case .classic:
+            exampleImage.image = UIImage(named: "toti")
+        }
+    }
 }
