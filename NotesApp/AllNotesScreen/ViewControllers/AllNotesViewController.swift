@@ -82,6 +82,22 @@ extension AllNotesViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if indexPath.section == 0 {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier, for: indexPath) as? TagHeader else {
+                fatalError()
+            }
+            header.setup(with: "Tags")
+            return header
+        } else {
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier, for: indexPath) as? NoteHeader else {
+                fatalError()
+            }
+            header.setup(with: "All Notes")
+            return header
+        }
+    }
 }
 
 extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
