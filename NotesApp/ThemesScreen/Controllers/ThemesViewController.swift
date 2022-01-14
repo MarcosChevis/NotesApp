@@ -10,12 +10,16 @@ import UIKit
 class ThemesViewController: UIViewController {
     var palette: ColorSet
     var contentView: ThemesView
+    var collectionDataSource: UICollectionViewDataSource
     
-    init(palette: ColorSet) {
+    init(palette: ColorSet, collectionDataSource: UICollectionViewDataSource) {
         self.palette = palette
         self.contentView = ThemesView(palette: palette)
+        self.collectionDataSource = collectionDataSource
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.contentView.collectionView.dataSource = collectionDataSource
     }
     
     required init?(coder: NSCoder) {
