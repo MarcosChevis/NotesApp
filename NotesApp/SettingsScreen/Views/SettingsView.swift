@@ -13,14 +13,14 @@ class SettingsView: UIView {
     lazy var tableView: UITableView = {
         var table = UITableView()
         table.backgroundColor = .clear
-    
+        
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.translatesAutoresizingMaskIntoConstraints = false
         addSubview(table)
         
         return table
     }()
-
+    
     init(palette: ColorSet) {
         self.palette = palette
         super.init(frame: .zero)
@@ -34,10 +34,10 @@ class SettingsView: UIView {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-        tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-        tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 }
