@@ -37,17 +37,64 @@ class AllNotesView: UIView {
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    
     lazy var collectionView: UICollectionView = {
-        var layout = collectionViewLayout
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         addSubview(collectionView)
-        collectionView.backgroundColor = .secondarySystemBackground
+        collectionView.backgroundColor = palette.palette().background
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: NoteSmallCellCollectionViewCell.identifier)
+        collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         
         return collectionView
+    }()
+    
+    private lazy var layout: UICollectionViewLayout = {
+        let layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+            switch sectionNumber {
+            case 0:
+                return Self.tagSection
+            case 1:
+                return Self.notesSection
+            default:
+                return Self.notesSection
+            }
+        }
+        
+        return layout
+    }()
+    
+    static var notesSection: NSCollectionLayoutSection = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(300))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(8))
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18)
+//        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        
+        let section = NSCollectionLayoutSection(group: group)
+//        section.interGroupSpacing = 32
+//        section.boundarySupplementaryItems = [header]
+        return section
+    }()
+    
+    static var tagSection: NSCollectionLayoutSection = {
+        //1
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0)
+        //2
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.45), heightDimension: .estimated(120))
+        //3
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 2)
+        group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(8))
+        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.orthogonalScrollingBehavior = .paging
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 20, trailing: 0)
+        return section
     }()
     
     weak var delegate: NoteSmallCellCollectionViewCellDelegate?
@@ -66,12 +113,12 @@ class AllNotesView: UIView {
     }
     
     func setupConstraints() {
-//        NSLayoutConstraint.activate([
-//            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
-//            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
-//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-//        ])
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -16),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+        ])
     }
     
     @objc func didTapSettings() {

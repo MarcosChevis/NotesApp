@@ -15,11 +15,10 @@ class AllNotesViewController: UIViewController {
     init(palette: ColorSet) {
         self.contentView = AllNotesView(palette: palette)
         self.palette = palette
-//        self.collectionViewDataSource = self
         
         super.init(nibName: nil, bundle: nil)
         
-//        self.contentView.collectionView.dataSource = collectionViewDataSource
+        self.contentView.collectionView.dataSource = self
         self.contentView.delegate = self
     }
     
@@ -30,11 +29,6 @@ class AllNotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-    }
-    
-    override func loadView() {
-        super.loadView()
-        view = contentView
         
         // informa qualquer mudança de texto na search
         contentView.searchController.searchResultsUpdater = self
@@ -42,8 +36,13 @@ class AllNotesViewController: UIViewController {
         contentView.searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = contentView.searchController
         
-        // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada 
+        // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada
         definesPresentationContext = true
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view = contentView
 
     }
     
@@ -57,16 +56,31 @@ class AllNotesViewController: UIViewController {
 
 extension AllNotesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        if section == 0 {
+            return 6
+        } else {
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? NoteSmallCellCollectionViewCell else {
-            fatalError()
+        if indexPath.section == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell else {
+                fatalError()
+            }
+            cell.setup(with: .init(colorSet: .classic, tag: "#teste"))
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteSmallCellCollectionViewCell.identifier, for: indexPath) as? NoteSmallCellCollectionViewCell else {
+                fatalError()
+            }
+            cell.setup(with: .init(colorSet: .classic, title: "Oi", content: "ashcasodha"))
+            return cell
         }
-        
-        cell.setup(with: .init(colorSet: .classic, title: "Um Grande titulo", content: "I have a dream that one day every valley shall be engulfed, every hill shall be exalted and every mountain shall…"))
-        return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
     }
 }
 
