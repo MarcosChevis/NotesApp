@@ -35,6 +35,16 @@ class AllNotesViewController: UIViewController {
     override func loadView() {
         super.loadView()
         view = contentView
+        
+        // informa qualquer mudança de texto na search
+        contentView.searchController.searchResultsUpdater = self
+        contentView.searchController.obscuresBackgroundDuringPresentation = false
+        contentView.searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = contentView.searchController
+        
+        // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada 
+        definesPresentationContext = true
+
     }
     
     func setupNavigationBar() {
@@ -74,20 +84,8 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
     }
 }
 
-extension AllNotesViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("Search bar editing did begin..")
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("Search bar editing did end..")
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-//        search(shouldShow: false)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        print("Search text is \(searchText)")
-    }
+extension AllNotesViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    // TODO
+  }
 }

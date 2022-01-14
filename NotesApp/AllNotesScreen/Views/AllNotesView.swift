@@ -32,6 +32,12 @@ class AllNotesView: UIView {
         return but
     }()
     
+    let searchController = UISearchController(searchResultsController: nil)
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    
     lazy var collectionView: UICollectionView = {
         var layout = collectionViewLayout
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -42,12 +48,6 @@ class AllNotesView: UIView {
         collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         
         return collectionView
-    }()
-    
-    lazy var searchBar: UISearchBar = {
-        let search = UISearchBar()
-        search.translatesAutoresizingMaskIntoConstraints = false
-        return search
     }()
     
     weak var delegate: NoteSmallCellCollectionViewCellDelegate?
@@ -66,24 +66,19 @@ class AllNotesView: UIView {
     }
     
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            
-            searchBar.topAnchor.constraint(equalTo: topAnchor),
-            searchBar.heightAnchor.constraint(equalToConstant: 100),
-            searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
-        ])
+//        NSLayoutConstraint.activate([
+//            collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 16),
+//            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -16),
+//            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+//            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+//        ])
     }
     
     @objc func didTapSettings() {
-        
+        print("settings")
     }
     
     @objc func didTapAddNote() {
-        
+        print("mais")
     }
 }
