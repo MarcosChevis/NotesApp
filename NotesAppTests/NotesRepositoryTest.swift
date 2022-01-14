@@ -29,41 +29,38 @@ class NotesRepositoryTest: XCTestCase {
     }
     
     func testNoteAdition() throws {
-        try sut.addNote(content: "oooi")
+        try creatNote(withMessage: "oooi")
         
         XCTAssertEqual(1, sut.numberOfElements)
         XCTAssertEqual("oooi", frcDelegateDummy.data.first!.content)
     }
     
     func testNoteEdit() throws {
-        try sut.addNote(content: "antes de editar")
-        
+        try creatNote(withMessage: "antes de editar")
+
         let note = frcDelegateDummy.data.first!
         XCTAssertEqual("antes de editar", note.content)
-        
-        try sut.editNote(with: NoteCellViewModel(id: note.objectID.uriRepresentation(), title: "", content: "depois de editar"))
-        
+        note.content = "depois de editar"
+        try sut.saveChanges()
         coreDataStack.mainContext.rollback()
         let editedNote = frcDelegateDummy.data.first!
         XCTAssertEqual("depois de editar", editedNote.content)
     }
     
     func testDeleteNote() throws {
-        try sut.addNote(content: "vou deletar")
-        
+        try creatNote(withMessage: "vou deletar")
+
         let note = frcDelegateDummy.data.first!
         XCTAssertEqual("vou deletar", note.content)
-        
-        try sut.deleteNote(note.objectID.uriRepresentation())
+
+        try sut.deleteNote(note)
         let count = sut.numberOfElements
         XCTAssertEqual(0, count)
     }
     
-    func testElementCount() throws {
-        XCTAssertEqual(0, sut.numberOfElements)
-        
-        try sut.addNote(content: "Teste contagem")
-        
-        XCTAssertEqual(1, sut.numberOfElements)
+    func creatNote(withMessage message: String) throws {
+        var note = try sut.createEmptyNote()
+        note.content = message
     }
+    
 }

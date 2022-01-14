@@ -7,10 +7,13 @@
 
 import Foundation
 import CoreData
+import UIKit
 
-class NotesRepository {
+class NotesRepository: NSObject, NotesRepositoryProtocol {
     private let coreDataStack: CoreDataStack
     let fetchResultsController: NSFetchedResultsController<Note>
+    
+    weak var delegate: NoteRepositoryProtocolDelegate?
     
     var numberOfElements: Int {
         guard let elements = fetchResultsController.fetchedObjects else {
@@ -28,63 +31,83 @@ class NotesRepository {
         
         let fetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchResultsController = fetchResultsController
+        super.init()
+        fetchResultsController.delegate = self
     }
     
-    func addNote(content: String) throws {
-        let note: Note = Note(context: coreDataStack.mainContext)
-        
-        note.content = content
-        note.modificationDate = Date()
-        
+    func saveChanges() throws {
         try coreDataStack.save()
     }
     
-    func deleteNote(_ id: URL) throws {
-        let note = try getNoteFromURL(id)
-        
-        coreDataStack.mainContext.delete(note)
-        try coreDataStack.save()
-    }
-    
-    func editNote(with viewModel: NoteCellViewModel) throws {
-        guard let id = viewModel.id else {
-            throw NoteRepositoryError.noObjectForID
-        }
-        
-        let note = try getNoteFromURL(id)
-        note.content = viewModel.content
-        
-        note.modificationDate = Date()
-        try coreDataStack.save()
-    }
-    
-    private func getNoteFromURL(_ url: URL) throws -> Note {
-        guard let id = coreDataStack.convertURLToObjectID(url) else {
-            throw NoteRepositoryError.noObjectForID
-        }
-        
-        guard let note = coreDataStack.mainContext.object(with: id) as? Note else {
+    func deleteNote(_ note: NoteProtocol) throws {
+        guard let note = note as? Note else {
             throw NoteRepositoryError.incorrectObjectType
         }
         
+        coreDataStack.mainContext.delete(note)
+        try saveChanges()
+    }
+    
+    func createEmptyNote() throws -> NoteProtocol {
+        let note = Note(context: coreDataStack.mainContext)
+        try saveChanges()
         return note
     }
     
-    @discardableResult
-    func generatePermanentsIds() -> Bool {
+    func getInitialData() throws -> [NoteCellViewModel] {
+        try fetchResultsController.performFetch()
+        
         guard let notes = fetchResultsController.fetchedObjects else {
-            return false
+            throw NoteRepositoryError.errorFetchingObjects
         }
         
-        do {
-            try coreDataStack.mainContext.obtainPermanentIDs(for: notes)
-            return true
-        } catch  {
-            return false
-        }
+        let viewModels = notes.map(NoteCellViewModel.init)
+        return viewModels
     }
+
 }
 
 enum NoteRepositoryError: Error {
-    case noObjectForID, incorrectObjectType
+    case noObjectForID, incorrectObjectType, errorFetchingObjects
+}
+
+extension NotesRepository: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            updateUIWithInsertNote(anObject as? Note, at: newIndexPath)
+        case .delete:
+            updateUIWithDeleteNote(anObject as? Note)
+        case .move:
+            break
+        case .update:
+            updateUIWithUpdateNote(anObject as? Note, at: indexPath)
+        @unknown default:
+            break
+        }
+    }
+    
+    private func updateUIWithInsertNote(_ note: Note?, at indexPath: IndexPath?) {
+        guard let note = note, let indexPath = indexPath else {
+            return
+        }
+        
+        let viewModel = NoteCellViewModel(note: note)
+        delegate?.insertNote(viewModel, at: indexPath)
+    }
+    
+    private func updateUIWithDeleteNote(_ note: Note?) {
+        guard let note = note else {
+            return
+        }
+        
+        delegate?.deleteNote(NoteCellViewModel(note: note))
+    }
+    
+    private func updateUIWithUpdateNote(_ note: Note?, at indexPath: IndexPath?) {
+        guard let note = note, let indexPath = indexPath else {
+            return
+        }
+        
+    }
 }

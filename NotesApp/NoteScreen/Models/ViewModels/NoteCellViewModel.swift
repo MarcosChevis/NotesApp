@@ -8,7 +8,16 @@
 import Foundation
 
 struct NoteCellViewModel {
-    let id: URL?
-    let title: String
-    let content: String
+    var note: NoteProtocol
+}
+
+extension NoteCellViewModel: Hashable {
+    static func == (lhs: NoteCellViewModel, rhs: NoteCellViewModel) -> Bool {
+        lhs.note.noteID == rhs.note.noteID
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(note.noteID)
+        hasher.combine(note.content)
+    }
 }

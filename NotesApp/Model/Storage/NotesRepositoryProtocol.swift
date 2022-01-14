@@ -7,8 +7,16 @@
 
 import Foundation
 
-protocol NotesRepositoryProtocol {
-    func addNote(content: String) throws
-    func deleteNote(_ note: Note) throws
-    func editNote(_ note: Note) throws
+protocol NotesRepositoryProtocol: AnyObject {
+    var delegate: NoteRepositoryProtocolDelegate? { get set }
+    func saveChanges() throws
+    func deleteNote(_ note: NoteProtocol) throws
+    func createEmptyNote() throws -> NoteProtocol
+    func getInitialData() throws -> [NoteCellViewModel]
+}
+
+protocol NoteRepositoryProtocolDelegate: AnyObject {
+    func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath)
+    func deleteNote(_ note: NoteCellViewModel)
+    
 }

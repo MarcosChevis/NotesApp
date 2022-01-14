@@ -9,22 +9,34 @@ import Foundation
 import UIKit
 
 class NoteViewController: UIViewController {
-    
     var palette: ColorSet
     var contentView: NoteView
-    var dataSource: NoteCollectionDataSource
+    
+    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, NoteCellViewModel> = {
+        let cellRegistration: UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> = UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> { cell, indexPath, note in
+            cell.setup(colorPalette: ColorSet.classic.palette(), title: "Página \(indexPath.row)", content: note.note.content ?? "" )
+        }
+        
+        let dataSource = UICollectionViewDiffableDataSource<Section, NoteCellViewModel>(collectionView: contentView.collectionView)
+        { collectionView, indexPath, viewModel in
+            collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: viewModel)
+        }
+        
+        return dataSource
+    }()
+    
+    private let repository: NotesRepositoryProtocol
     
     
-    init(palette: ColorSet, collectionDataSource: NoteCollectionDataSource) {
+    init(palette: ColorSet, repository: NotesRepositoryProtocol) {
         self.contentView = NoteView(palette: palette)
         self.palette = palette
-        self.dataSource = collectionDataSource
+        self.repository = repository
         
         super.init(nibName: nil, bundle: nil)
-        
-        self.contentView.collectionView.dataSource = collectionDataSource
-        self.dataSource.delegate = self
+        repository.delegate = self
         self.contentView.delegate = self
+        contentView.collectionView.dataSource = dataSource
     }
     
     required init?(coder: NSCoder) {
@@ -41,8 +53,13 @@ class NoteViewController: UIViewController {
         setupToolbar()
         
         do {
-            try dataSource.setupFetching()
+            let data = try repository.getInitialData()
+            var snapshot = dataSource.snapshot()
+            snapshot.appendSections([.main])
+            snapshot.appendItems(data, toSection: .main)
+            dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
         } catch {
+            
         }
     }
     
@@ -77,11 +94,10 @@ extension NoteViewController: NoteViewDelegate {
     
     func didAdd() {
         do {
-            try dataSource.addItem(.init(id: nil, title: "Titulo", content: "Counteudo com coisas"))
+            try repository.createEmptyNote()
         } catch {
             
         }
-        
     }
     
     func didShare() {
@@ -89,33 +105,32 @@ extension NoteViewController: NoteViewDelegate {
     }
 }
 
-extension NoteViewController: NoteCollectionDataSourceDelegate {
-    func updateItem(_ viewModel: NoteCellViewModel, at indexPath: IndexPath) {
-        guard let cell = contentView.collectionView.cellForItem(at: indexPath) as? NoteCollectionViewCell else {
-            return
-        }
-        
-        cell.setup(colorPalette: ColorSet.classic.palette(), title: viewModel.title, content: viewModel.content)
-    }
-    
-    func insertItem(_ viewModel: NoteCellViewModel, at indexPath: IndexPath) {
-        print(indexPath)
-        contentView.collectionView.insertItems(at: [indexPath])
-        contentView.collectionView.reloadData()
-        contentView.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
-    }
-    
-    func deleteItem(at indexPath: IndexPath) {
-        contentView.collectionView.deleteItems(at: [indexPath])
-    }
-    
-    func moveItem(to indexPath: IndexPath) {
-        
-    }
-}
-
 extension NoteViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         print("\(indexPath)")
+    }
+}
+
+extension NoteViewController {
+    private enum Section {
+        case main
+    }
+}
+
+extension NoteViewController: NoteRepositoryProtocolDelegate {
+    func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendItems([note], toSection: .main)
+        dataSource.apply(snapshot)
+        contentView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    func deleteNote(_ note: NoteCellViewModel) {
+        var snapshot = dataSource.snapshot()
+        snapshot.deleteItems([note])
+        dataSource.apply(snapshot)
+    }
+    
+    func updateNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
     }
 }
