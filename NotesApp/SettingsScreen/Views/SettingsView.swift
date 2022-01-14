@@ -33,9 +33,11 @@ class SettingsView: UIView {
     }
     
     func setupConstraints() {
-        tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+        tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+        tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+        tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+        tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
