@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
+    
+    static var identifier: String = "Notes.NoteCollectionViewCell"
+    
     var title: UITextField = {
         var title = UITextField()
         title.translatesAutoresizingMaskIntoConstraints = false

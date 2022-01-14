@@ -12,51 +12,58 @@ class NotesRepositoryTest: XCTestCase {
     
     var sut: NotesRepository!
     var coreDataStack: CoreDataStack!
+    var frcDelegateDummy: FetchResultsControllerDelegateDummy<Note>!
     
-    override func setUp() {
+    override func setUpWithError() throws {
         coreDataStack = CoreDataStack(.inMemory)
         sut = NotesRepository(coreDataStack: coreDataStack)
+        frcDelegateDummy = .init()
+        sut.fetchResultsController.delegate = frcDelegateDummy
+        try sut.fetchResultsController.performFetch()
     }
     
     override func tearDown() {
         sut = nil
+        coreDataStack = nil
+        frcDelegateDummy = nil
     }
     
     func testNoteAdition() throws {
         try sut.addNote(content: "oooi")
         
-        let request = Note.fetchRequest()
-        let count = try coreDataStack.mainContext.count(for: request)
-        
-        XCTAssertEqual(1, count)
+        XCTAssertEqual(1, sut.numberOfElements)
+        XCTAssertEqual("oooi", frcDelegateDummy.data.first!.content)
     }
     
     func testNoteEdit() throws {
         try sut.addNote(content: "antes de editar")
         
-        let request = Note.fetchRequest()
-        let note = try coreDataStack.mainContext.fetch(request).first!
+        let note = frcDelegateDummy.data.first!
         XCTAssertEqual("antes de editar", note.content)
         
-        note.content = "depois de editar"
-        try sut.editNote(note)
+        try sut.editNote(with: NoteCellViewModel(id: note.objectID.uriRepresentation(), title: "", content: "depois de editar"))
+        
         coreDataStack.mainContext.rollback()
-        let editedNote = try coreDataStack.mainContext.fetch(request).first!
+        let editedNote = frcDelegateDummy.data.first!
         XCTAssertEqual("depois de editar", editedNote.content)
     }
     
     func testDeleteNote() throws {
         try sut.addNote(content: "vou deletar")
         
-        let request = Note.fetchRequest()
-        
-        let note = try coreDataStack.mainContext.fetch(request).first!
+        let note = frcDelegateDummy.data.first!
         XCTAssertEqual("vou deletar", note.content)
         
-        try sut.deleteNote(note)
-        let count = try coreDataStack.mainContext.count(for: request)
+        try sut.deleteNote(note.objectID.uriRepresentation())
+        let count = sut.numberOfElements
         XCTAssertEqual(0, count)
     }
     
-    
+    func testElementCount() throws {
+        XCTAssertEqual(0, sut.numberOfElements)
+        
+        try sut.addNote(content: "Teste contagem")
+        
+        XCTAssertEqual(1, sut.numberOfElements)
+    }
 }

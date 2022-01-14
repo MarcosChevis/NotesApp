@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576192790593100EF1036 /* CoreDataStack.swift */; };
-		5B45761D2790593100EF1036 /* NotesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761A2790593100EF1036 /* NotesRepositoryProtocol.swift */; };
 		5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761B2790593100EF1036 /* NotesRepository.swift */; };
 		5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */; };
 		5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576212790651B00EF1036 /* TagCollectionViewCell.swift */; };
 		5B4576242790671600EF1036 /* TagCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576232790671600EF1036 /* TagCollectionCellViewModel.swift */; };
+		5B45762827906FA900EF1036 /* NoteCollectionDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45762727906FA900EF1036 /* NoteCollectionDataSourceDelegate.swift */; };
+		5B45762B279073EE00EF1036 /* NoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45762A279073EE00EF1036 /* NoteCellViewModel.swift */; };
+		5B45762D2790764900EF1036 /* NoteCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45762C2790764900EF1036 /* NoteCollectionDataSource.swift */; };
+		5B4576302790791400EF1036 /* FetchResultsControllerDelegateDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45762F2790791400EF1036 /* FetchResultsControllerDelegateDummy.swift */; };
+		5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45763127919FCF00EF1036 /* NotesRepositoryProtocol.swift */; };
 		5B73C9F3278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F2278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift */; };
 		5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F6278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift */; };
 		5B73C9F9278F758D005F2D89 /* SmallNoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */; };
@@ -45,11 +49,15 @@
 
 /* Begin PBXFileReference section */
 		5B4576192790593100EF1036 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		5B45761A2790593100EF1036 /* NotesRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		5B45761B2790593100EF1036 /* NotesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
 		5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepositoryTest.swift; sourceTree = "<group>"; };
 		5B4576212790651B00EF1036 /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B4576232790671600EF1036 /* TagCollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		5B45762727906FA900EF1036 /* NoteCollectionDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionDataSourceDelegate.swift; sourceTree = "<group>"; };
+		5B45762A279073EE00EF1036 /* NoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellViewModel.swift; sourceTree = "<group>"; };
+		5B45762C2790764900EF1036 /* NoteCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionDataSource.swift; sourceTree = "<group>"; };
+		5B45762F2790791400EF1036 /* FetchResultsControllerDelegateDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchResultsControllerDelegateDummy.swift; sourceTree = "<group>"; };
+		5B45763127919FCF00EF1036 /* NotesRepositoryProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepositoryProtocol.swift; sourceTree = "<group>"; };
 		5B73C9F2278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSmallCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		5B73C9F6278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSmallCellCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallNoteCellViewModel.swift; sourceTree = "<group>"; };
@@ -94,13 +102,47 @@
 		5B4576182790593100EF1036 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				5B45763127919FCF00EF1036 /* NotesRepositoryProtocol.swift */,
 				5B4576192790593100EF1036 /* CoreDataStack.swift */,
-				5B45761A2790593100EF1036 /* NotesRepositoryProtocol.swift */,
 				5B45761B2790593100EF1036 /* NotesRepository.swift */,
 			);
 			name = Storage;
 			path = NotesApp/Model/Storage;
 			sourceTree = SOURCE_ROOT;
+		};
+		5B45762527906F7B00EF1036 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5B457629279073D800EF1036 /* ViewModels */,
+				5B45762627906F8500EF1036 /* DataSources */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5B45762627906F8500EF1036 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				C87AA532278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift */,
+				5B45762727906FA900EF1036 /* NoteCollectionDataSourceDelegate.swift */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		5B457629279073D800EF1036 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5B45762A279073EE00EF1036 /* NoteCellViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5B45762E279078FB00EF1036 /* Dummies */ = {
+			isa = PBXGroup;
+			children = (
+				5B45762F2790791400EF1036 /* FetchResultsControllerDelegateDummy.swift */,
+			);
+			path = Dummies;
+			sourceTree = "<group>";
 		};
 		5B73C9EF278F2AAC005F2D89 /* AllNotesScreen */ = {
 			isa = PBXGroup;
@@ -159,8 +201,10 @@
 		5BFD81DD278DB2FA004833F5 /* NotesAppTests */ = {
 			isa = PBXGroup;
 			children = (
+				5B45762E279078FB00EF1036 /* Dummies */,
 				5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */,
 				5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */,
+				5B45762C2790764900EF1036 /* NoteCollectionDataSource.swift */,
 			);
 			path = NotesAppTests;
 			sourceTree = "<group>";
@@ -176,6 +220,7 @@
 		BA578D52278EFBEB000617F6 /* NoteScreen */ = {
 			isa = PBXGroup;
 			children = (
+				5B45762527906F7B00EF1036 /* Models */,
 				BA578D5E278F1A07000617F6 /* Delegates */,
 				BA578D55278EFC36000617F6 /* Views */,
 				BA578D54278EFC22000617F6 /* Controllers */,
@@ -187,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				BA578D56278EFC6A000617F6 /* NoteViewController.swift */,
-				C87AA532278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -360,8 +404,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B45762D2790764900EF1036 /* NoteCollectionDataSource.swift in Sources */,
 				5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
+				5B4576302790791400EF1036 /* FetchResultsControllerDelegateDummy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,11 +422,12 @@
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
 				5B73C9F3278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift in Sources */,
 				BA578D60278F1A2D000617F6 /* NotesViewDelegate.swift in Sources */,
+				5B45762827906FA900EF1036 /* NoteCollectionDataSourceDelegate.swift in Sources */,
 				C87AA533278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift in Sources */,
 				BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */,
 				BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */,
-				5B45761D2790593100EF1036 /* NotesRepositoryProtocol.swift in Sources */,
 				5B73C9FE278F8114005F2D89 /* AllNotesViewController.swift in Sources */,
+				5B45762B279073EE00EF1036 /* NoteCellViewModel.swift in Sources */,
 				5B73C9F9278F758D005F2D89 /* SmallNoteCellViewModel.swift in Sources */,
 				5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */,
 				5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */,
@@ -390,6 +437,7 @@
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
+				5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
