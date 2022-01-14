@@ -121,7 +121,7 @@ extension NoteViewController: NoteRepositoryProtocolDelegate {
     func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
         var snapshot = dataSource.snapshot()
         snapshot.appendItems([note], toSection: .main)
-        dataSource.apply(snapshot)
+        dataSource.apply(snapshot, animatingDifferences: true)
         contentView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
