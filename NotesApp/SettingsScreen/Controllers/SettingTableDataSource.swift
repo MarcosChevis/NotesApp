@@ -8,7 +8,7 @@
 import UIKit
 
 class SettingTableDataSource: NSObject, UITableViewDataSource {
-    
+    var palette: ColorSet = ColorSet.neon
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -18,9 +18,12 @@ class SettingTableDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel?.text = "Themes"
-        cell.textLabel?.textColor = .red
-        cell.backgroundColor = .blue
+        cell.textLabel?.textColor = palette.palette().text
+        cell.backgroundColor = palette.palette().noteBackground
+        cell.selectionStyle = .none
+        
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        
         return cell
     }
 

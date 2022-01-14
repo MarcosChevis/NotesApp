@@ -47,5 +47,6 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(ThemesViewController(), animated: true)
+        
     }
 }

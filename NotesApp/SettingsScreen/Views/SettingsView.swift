@@ -13,6 +13,7 @@ class SettingsView: UIView {
     lazy var tableView: UITableView = {
         var table = UITableView()
         table.backgroundColor = .clear
+    
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table.translatesAutoresizingMaskIntoConstraints = false
         addSubview(table)
