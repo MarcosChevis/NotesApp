@@ -58,7 +58,7 @@ class NoteViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
         navigationItem.rightBarButtonItem = contentView.shareButton
-
+        
     }
 }
 
@@ -80,5 +80,12 @@ extension NoteViewController: NoteViewDelegate {
     
     func didShare() {
         print("coisas de share")
+        
+        let note = "ooooi"
+        
+        // set up activity view controller
+        let noteToShare = note
+        let activityViewController = UIActivityViewController(activityItems: [noteToShare], applicationActivities: nil)
+        present(activityViewController, animated: true)
     }
 }
