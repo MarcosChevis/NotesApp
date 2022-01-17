@@ -42,8 +42,8 @@ class TagCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(with viewModel: TagCollectionCellViewModel, palette: ColorSet) {
-        self.palette = palette
+    func setup(with viewModel: TagCollectionCellViewModel) {
+        self.palette = viewModel.palette
         setColors(palette: palette)
         
         tagLabel.text = viewModel.tag

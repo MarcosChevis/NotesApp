@@ -66,7 +66,7 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
             fatalError()
         }
         
-        cell.setup(with: .init(colorSet: .classic, title: "Um Grande titulo", content: "I have a dream that one day every valley shall be engulfed, every hill shall be exalted and every mountain shall…"), palette: palette)
+        cell.setup(with: .init(palette: .classic, title: "Um Grande titulo", content: "I have a dream that one day every valley shall be engulfed, every hill shall be exalted and every mountain shall…"))
         return cell
     }
     

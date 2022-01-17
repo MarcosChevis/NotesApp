@@ -160,8 +160,8 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func setup(with viewModel: SmallNoteCellViewModel, palette: ColorSet) {
-        setColors(palette)
+    func setup(with viewModel: SmallNoteCellViewModel) {
+        setColors(viewModel.palette)
         titleView.text = viewModel.title
         contentTextView.text = viewModel.content
         buttonsStackView.axis = .horizontal

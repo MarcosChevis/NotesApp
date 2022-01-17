@@ -8,6 +8,6 @@
 import Foundation
 
 struct TagCollectionCellViewModel {
-    let colorSet: ColorSet
+    let palette: ColorSet
     let tag: String
 }
