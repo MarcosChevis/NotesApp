@@ -65,7 +65,21 @@ class NoteViewController: UIViewController {
 extension NoteViewController: NoteViewDelegate {
     func didDelete() {
         print("coisas de delete")
-        
+        alert()
+    }
+    
+    func alert() {
+        let alert = UIAlertController(title: "Tem certeza que deseja deletar a nota?", message: "", preferredStyle: .alert)
+
+        let deleteAction = UIAlertAction(title: "Deletar", style: .default) { (action) in
+            self.dismiss(animated: true, completion: nil)
+            //FIXME: colocar a nota certa que deve ser deletada
+            CoreDataStack.shared.delete(note: Note())
+            self.navigationController?.popViewController(animated: true)
+        }
+        alert.addAction(deleteAction)
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
     func didAllNotes() {
