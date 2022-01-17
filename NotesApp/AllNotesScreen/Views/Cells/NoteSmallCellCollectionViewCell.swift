@@ -9,6 +9,8 @@ import UIKit
 
 class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     
+    static var identifier: String = "AllNotes.NoteSmallCellCollectionViewCell"
+    
     private lazy var titleView: UILabel = {
         let label = UILabel()
         

@@ -9,6 +9,8 @@ import UIKit
 
 class TagCollectionViewCell: UICollectionViewCell {
     
+    static var identifier: String = "AllNotes.TagCollectionViewCell"
+    
     private lazy var tagLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .headline)
@@ -17,11 +19,11 @@ class TagCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(label)
         
         let constraints: [NSLayoutConstraint] = [
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            label.bottomAnchor.constraint(equalTo: contentView.topAnchor, constant: -8)
         ]
+        NSLayoutConstraint.activate(constraints)
         return label
     }()
     
@@ -33,6 +35,7 @@ class TagCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.layer.cornerRadius = 8
     }
     
     required init?(coder: NSCoder) {

@@ -19,10 +19,14 @@
 		5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */; };
 		5B73C9FE278F8114005F2D89 /* AllNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */; };
 		5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */; };
+		9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* NoteHeader.swift */; };
+		9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35F2791C13A000F6B4A /* TagHeader.swift */; };
+		9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */; };
 		9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */; };
 		BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */; };
 		BA2D1BED2795AEA100849955 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */; };
 		BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */; };
+		9DBE158C2791C5680025A7EE /* AllNotesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBE158B2791C5680025A7EE /* AllNotesDataSource.swift */; };
 		BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D56278EFC6A000617F6 /* NoteViewController.swift */; };
 		BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D58278EFCEB000617F6 /* NoteView.swift */; };
 		BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D5A278F025F000617F6 /* ColorSet.swift */; };
@@ -67,10 +71,14 @@
 		5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewController.swift; sourceTree = "<group>"; };
 		5BFD81DC278DB2FA004833F5 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppTests.swift; sourceTree = "<group>"; };
+		9D31F35D2791C02D000F6B4A /* NoteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHeader.swift; sourceTree = "<group>"; };
+		9D31F35F2791C13A000F6B4A /* TagHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeader.swift; sourceTree = "<group>"; };
+		9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerUtilities.swift; sourceTree = "<group>"; };
 		9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionData.swift; sourceTree = "<group>"; };
 		BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
+		9DBE158B2791C5680025A7EE /* AllNotesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesDataSource.swift; sourceTree = "<group>"; };
 		BA578D56278EFC6A000617F6 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		BA578D58278EFCEB000617F6 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BA578D5A278F025F000617F6 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
@@ -147,6 +155,8 @@
 			children = (
 				5B73C9F0278F2AB5005F2D89 /* Cells */,
 				5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */,
+				9D31F35D2791C02D000F6B4A /* NoteHeader.swift */,
+				9D31F35F2791C13A000F6B4A /* TagHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */,
+				9DBE158B2791C5680025A7EE /* AllNotesDataSource.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -263,6 +274,7 @@
 				9DAC68FA278F3244005554B6 /* Components */,
 				BA578D5A278F025F000617F6 /* ColorSet.swift */,
 				BA578D52278EFBEB000617F6 /* NoteScreen */,
+				BAC82D5726A9DD1100E52701 /* Extensions */,
 				BAB1E045269E074E001FC3CC /* Model */,
 				BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */,
 				BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */,
@@ -288,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				BAC82D5826A9DD2300E52701 /* NoteExtension.swift */,
+				9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -470,20 +483,24 @@
 				C87AA53A2791A57D00E2AEF1 /* ThemesView.swift in Sources */,
 				BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */,
 				E9E5DE692791C1A30047C805 /* ThemesCollectionDataSouce.swift in Sources */,
+				9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */,
 				BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */,
 				5B45761D2790593100EF1036 /* NotesRepositoryProtocol.swift in Sources */,
 				5B73C9FE278F8114005F2D89 /* AllNotesViewController.swift in Sources */,
 				5B73C9F9278F758D005F2D89 /* SmallNoteCellViewModel.swift in Sources */,
 				5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */,
 				5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */,
+				9DBE158C2791C5680025A7EE /* AllNotesDataSource.swift in Sources */,
 				E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */,
 				BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */,
+				9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */,
 				9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */,
 				BA2D1BED2795AEA100849955 /* UserDefaultManager.swift in Sources */,
 				BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
+				9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 				E935C95727906F9100835897 /* SettingsView.swift in Sources */,
 			);
@@ -674,7 +691,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 87UTUM347S;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -695,7 +712,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 87UTUM347S;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

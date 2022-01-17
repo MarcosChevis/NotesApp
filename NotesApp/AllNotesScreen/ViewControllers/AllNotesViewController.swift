@@ -8,11 +8,20 @@
 import UIKit
 
 class AllNotesViewController: UIViewController {
+    
     var palette: ColorSet
-
-    init(palette: ColorSet) {
+    var contentView: AllNotesView
+    var collectionDataSource: AllNotesDataSource
+    
+    init(palette: ColorSet, collectionDataSource: AllNotesDataSource) {
+        self.contentView = AllNotesView(palette: palette)
         self.palette = palette
+        self.collectionDataSource = collectionDataSource
+        
         super.init(nibName: nil, bundle: nil)
+        
+        self.contentView.collectionView.dataSource = collectionDataSource
+        self.contentView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -21,34 +30,35 @@ class AllNotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigationBar()
         
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300.0))
-                let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300.0))
-                let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [ item ])
-                group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(8))
-                group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18)
-                let section = NSCollectionLayoutSection(group: group)
-                //section.contentInsets = NSDirectionalEdgeInsets(top: 0.0, leading: 18.0, bottom: 0.0, trailing: 18.0)
-                let layout = UICollectionViewCompositionalLayout(section: section)
+        // informa qualquer mudança de texto na search
+        contentView.searchController.searchResultsUpdater = self
+        contentView.searchController.obscuresBackgroundDuringPresentation = false
+        contentView.searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = contentView.searchController
         
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        view.backgroundColor = .red
-        collectionView.backgroundColor = .secondarySystemBackground
-        
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(collectionView)
-        collectionView.strechToBounds(of: view)
-        collectionView.dataSource = self
-        collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada
+        definesPresentationContext = true
     }
+    
+    override func loadView() {
+        super.loadView()
+        view = contentView
 
+    }
+    
+    func setupNavigationBar() {
+        title = "All Notes"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
+        navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
+    }
 }
 
-extension AllNotesViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
+    func didTapDelete(for noteViewModel: SmallNoteCellViewModel) {
+        print("delete")
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -60,34 +70,17 @@ extension AllNotesViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
-}
-
-protocol Stretchable {
-    var topAnchor: NSLayoutYAxisAnchor { get }
-    var bottomAnchor: NSLayoutYAxisAnchor { get }
-    var leadingAnchor: NSLayoutXAxisAnchor { get }
-    var trailingAnchor: NSLayoutXAxisAnchor { get }
-    var leftAnchor: NSLayoutXAxisAnchor { get }
-    var rightAnchor: NSLayoutXAxisAnchor { get }
-}
-
-extension UIView: Stretchable {}
-extension UILayoutGuide: Stretchable {}
-
-extension UIView {
-    
-    @discardableResult
-    func strechToBounds(of view: Stretchable) -> [NSLayoutConstraint] {
-        let constraints = [
-            topAnchor.constraint(equalTo: view.topAnchor),
-            leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-        
-        return constraints
+    func didTapShare(for noteViewModel: SmallNoteCellViewModel) {
+        print("share")
     }
+    
+    func didTapEdit(for noteViewModel: SmallNoteCellViewModel) {
+        print("edit")
+    }
+}
+
+extension AllNotesViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    // TODO
+  }
 }
