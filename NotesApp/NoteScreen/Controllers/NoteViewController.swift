@@ -115,7 +115,10 @@ extension NoteViewController: NoteViewDelegate {
     }
     
     func didDelete() {
-        let content: UIAlertController.AlertContent = .init(title: "Tem certeza que deseja deletar?", message: "Essa ação não é reversível", actionTitle: "Deletar", actionStyle: .destructive)
+        let content: UIAlertController.AlertContent = .init(title: "Tem certeza que deseja deletar?",
+                                                            message: "Essa ação não é reversível",
+                                                            actionTitle: "Deletar",
+                                                            actionStyle: .destructive)
         presentAlert(with: content) { [weak self] in
             guard let self = self else { return }
 
@@ -124,18 +127,25 @@ extension NoteViewController: NoteViewDelegate {
             }
         
             do {
-                try repository.deleteNote(currentHighlightedNote)
+                try self.repository.deleteNote(currentHighlightedNote)
             } catch {
-                
+                self.presentErrorAlert(with: "Não foi possivel deletar esse item")
             }
         }
     }
     
-    func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
+    private func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
         let alert = UIAlertController.singleActionAlert(with: content) { [weak self] in
             self?.dismiss(animated: true, completion: nil)
             action()
         }
+        self.present(alert, animated: true)
+    }
+    
+    private func presentErrorAlert(with errorMessage: String) {
+        let content = UIAlertController.AlertContent(title: "Um erro aconteceu!", message: errorMessage, actionTitle: "", actionStyle: .default)
+        
+        let alert = UIAlertController.errorAlert(with: content)
         self.present(alert, animated: true)
     }
     

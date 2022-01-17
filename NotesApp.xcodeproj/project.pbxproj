@@ -39,7 +39,6 @@
 		BAB1E02D269DBBFA001FC3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAB1E02C269DBBFA001FC3CC /* Assets.xcassets */; };
 		BAB1E030269DBBFA001FC3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAB1E02E269DBBFA001FC3CC /* LaunchScreen.storyboard */; };
 		BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC82D5826A9DD2300E52701 /* NoteExtension.swift */; };
-		C87AA533278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA532278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift */; };
 		C87AA536279082FA00E2AEF1 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA535279082FA00E2AEF1 /* ThemesViewController.swift */; };
 		C87AA53A2791A57D00E2AEF1 /* ThemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA5392791A57D00E2AEF1 /* ThemesView.swift */; };
 		E935C95727906F9100835897 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95627906F9100835897 /* SettingsView.swift */; };
@@ -220,6 +219,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		5BB7FDFA2795C15900A6F335 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				C87AA532278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		5BFD81DD278DB2FA004833F5 /* NotesAppTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +287,7 @@
 				BAB1E01F269DBBF8001FC3CC /* NotesApp */,
 				5BFD81DD278DB2FA004833F5 /* NotesAppTests */,
 				BAB1E01E269DBBF8001FC3CC /* Products */,
+				5BB7FDFA2795C15900A6F335 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -501,7 +509,6 @@
 				5B4576342791A0B000EF1036 /* NoteProtocol.swift in Sources */,
 				5B73C9F3278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift in Sources */,
 				BA578D60278F1A2D000617F6 /* NotesViewDelegate.swift in Sources */,
-				C87AA533278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift in Sources */,
 				E935C95E2790787D00835897 /* SettingTableDataSource.swift in Sources */,
 				C87AA53A2791A57D00E2AEF1 /* ThemesView.swift in Sources */,
 				BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */,
