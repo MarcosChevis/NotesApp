@@ -27,12 +27,14 @@ class NoteViewController: UIViewController {
     }()
     
     private let repository: NotesRepositoryProtocol
+    private let notificationService: NotificationService
     
     
-    init(palette: ColorSet, repository: NotesRepositoryProtocol) {
+    init(palette: ColorSet, repository: NotesRepositoryProtocol, notificationService: NotificationService = NotificationCenter.default) {
         self.contentView = NoteView(palette: palette)
         self.palette = palette
         self.repository = repository
+        self.notificationService = notificationService
         self.currentHighlightedNote = nil
         super.init(nibName: nil, bundle: nil)
         setupBindings()
@@ -47,6 +49,11 @@ class NoteViewController: UIViewController {
         self.contentView.delegate = self
         contentView.collectionView.dataSource = dataSource
         contentView.collectionView.delegate = self
+        notificationService.addObserver(self, selector: #selector(createNewNoteOnAppear), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    @objc private func createNewNoteOnAppear() {
+        scrollToEmptyNote(true)
     }
     
     override func loadView() {
@@ -73,8 +80,8 @@ class NoteViewController: UIViewController {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewDidAppear(_ animated: Bool) {
+        scrollToEmptyNote()
     }
     
     private func setupToolbar() {
@@ -89,8 +96,14 @@ class NoteViewController: UIViewController {
         
     }
     
-    private func scrollToEmptyNote() {
-        
+    private func scrollToEmptyNote(_ animated: Bool = false) {
+        do {
+            _ = try repository.createEmptyNote()
+            let count = dataSource.snapshot().numberOfItems
+            contentView.collectionView.scrollToItem(at: IndexPath(row: count-1, section: 0), at: .centeredHorizontally, animated: animated)
+        } catch {
+            
+        }
     }
     
     private func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
