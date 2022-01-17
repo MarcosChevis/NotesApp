@@ -58,14 +58,23 @@ class NoteViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
         navigationItem.rightBarButtonItem = contentView.shareButton
-
+        
     }
 }
 
 extension NoteViewController: NoteViewDelegate {
     func didDelete() {
         print("coisas de delete")
-        
+        let content: UIAlertController.AlertContent = .init(title: "Tem certeza que deseja deletar?", message: "Essa ação não é reversível", actionTitle: "Deletar", actionStyle: .destructive)
+        presentAlert(with: content, {})
+    }
+    
+    func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
+        let alert = UIAlertController.singleActionAlert(with: content) { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+            action()
+        }
+        self.present(alert, animated: true)
     }
     
     func didAllNotes() {
@@ -80,5 +89,14 @@ extension NoteViewController: NoteViewDelegate {
     
     func didShare() {
         print("coisas de share")
+        
+        let note = "ooooi"
+        
+        // set up activity view controller
+        let noteToShare = note
+        let activityViewController = UIActivityViewController(activityItems: [noteToShare], applicationActivities: nil)
+        present(activityViewController, animated: true)
     }
 }
+
+
