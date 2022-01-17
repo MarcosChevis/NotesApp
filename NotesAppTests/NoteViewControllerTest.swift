@@ -11,20 +11,17 @@ import XCTest
 class NoteViewControllerTest: XCTestCase {
     
     var repositoryDummy: NoteRepositoryDummy!
-    var notificationServiceDummy: NotificationServiceDummy!
     var sut: NoteViewController!
 
     override func setUp() {
         repositoryDummy = .init()
-        notificationServiceDummy = .init()
-        sut = .init(palette: .classic, repository: repositoryDummy, notificationService: notificationServiceDummy)
+        sut = .init(palette: .classic, repository: repositoryDummy)
         _ = sut.view
     }
     
     override func tearDown() {
         sut = nil
         repositoryDummy = nil
-        notificationServiceDummy = nil
     }
     
     func testDidAddNote() {
@@ -39,14 +36,5 @@ class NoteViewControllerTest: XCTestCase {
         XCTAssertEqual(0, repositoryDummy.mock.count)
     }
     
-    func testDidSaveOnUIExit() {
-        XCTAssertEqual(notificationServiceDummy.observers, ["appIsEnteringInBackground"])
-    }
     
-    func testSavingMethodCall() {
-        sut = .init(palette: .classic, repository: repositoryDummy, notificationService: NotificationCenter.default)
-        NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
-        
-        XCTAssertEqual(repositoryDummy.didCallSaveChanges, true)
-    }
 }

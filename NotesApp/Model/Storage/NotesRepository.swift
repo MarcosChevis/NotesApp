@@ -7,10 +7,13 @@
 
 import Foundation
 import CoreData
+import Combine
 import UIKit
 
 class NotesRepository: NSObject, NotesRepositoryProtocol {
     private let coreDataStack: CoreDataStack
+    private var cancelables: Set<AnyCancellable>
+    private let notificationService: NotificationService
     let fetchResultsController: NSFetchedResultsController<Note>
     
     weak var delegate: NoteRepositoryProtocolDelegate?
@@ -23,7 +26,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         return elements.count
     }
     
-    init(coreDataStack: CoreDataStack = .shared) {
+    init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default) {
         self.coreDataStack = coreDataStack
         
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
@@ -31,8 +34,11 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         
         let fetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchResultsController = fetchResultsController
+        self.cancelables = .init()
+        self.notificationService = notificationService
         super.init()
         fetchResultsController.delegate = self
+        setupBindings()
     }
     
     func saveChanges() throws {
@@ -50,6 +56,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     
     func createEmptyNote() throws -> NoteProtocol {
         let note = Note(context: coreDataStack.mainContext)
+        note.content = ""
         try saveChanges()
         return note
     }
@@ -63,6 +70,46 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         
         let viewModels = notes.map(NoteCellViewModel.init)
         return viewModels
+    }
+    
+    private func setupBindings() {
+        notificationService.publisher(for: .saveChanges, with: nil)
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.current, options: .none)
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: triggerSave)
+            .store(in: &cancelables)
+        
+        notificationService.publisher(for: UIApplication.willResignActiveNotification, with: nil)
+            .sink(receiveValue: removeEmptyAndSave)
+            .store(in: &cancelables)
+    }
+    
+    private func triggerSave(_ notification: Notification) {
+        do {
+            try saveChanges()
+        } catch {
+            coreDataStack.mainContext.rollback()
+        }
+    }
+    
+    func removeEmptyAndSave(_ notification: Notification) {
+        do {
+            removeEmptyObjects()
+            try saveChanges()
+        } catch {
+            coreDataStack.mainContext.rollback()
+        }
+    }
+    
+    private func removeEmptyObjects() {
+        guard let notes = fetchResultsController.fetchedObjects else { return }
+        let emptyNotes = notes.filter {
+            guard let content = $0.content else {
+                return true
+            }
+            return content.isEmpty
+        }
+        emptyNotes.forEach { coreDataStack.mainContext.delete($0) }
     }
 
 }

@@ -6,12 +6,16 @@
 //
 
 import Foundation
+import Combine
 @testable import NotesApp
+import XCTest
 
 class NotificationServiceDummy: NotificationService {
     var postedNotification: [NSNotification.Name] = []
     var observers: [String] = []
     var removeObservers: [String] = []
+    var expectations: [XCTestExpectation] = []
+    var notificationSubject: PassthroughSubject<Notification, Never> = .init()
     
     func post(name: NSNotification.Name, object: Any?) {
         postedNotification.append(name)
@@ -23,5 +27,11 @@ class NotificationServiceDummy: NotificationService {
     
     func removeObserver(_ observer: Any) {
         removeObservers.append("Removido")
+    }
+    
+    func publisher(for name: Notification.Name, with object: AnyObject?) -> AnyPublisher<Notification, Never> {
+        notificationSubject
+            .handleEvents(receiveOutput: {[weak self] _ in self?.expectations.forEach {$0.fulfill()}})
+            .eraseToAnyPublisher()
     }
 }

@@ -115,7 +115,8 @@ class NoteView: UIView {
         if let layout = collectionView.layoutAttributesForItem(at: IndexPath(item: 0, section: 0)) {
             let cellWidth = layout.bounds.width
             let cellCenter = cellWidth/2
-            let result = Int((point.x + cellCenter) / (cellWidth - 24))
+            let doubleResult = (point.x + cellCenter) / (cellWidth)
+            let result = Int(doubleResult)
             let indexPath = IndexPath(item: result, section: 0)
             return indexPath
         } else {

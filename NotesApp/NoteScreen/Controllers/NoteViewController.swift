@@ -11,7 +11,6 @@ import UIKit
 class NoteViewController: UIViewController {
     private var palette: ColorSet
     private var contentView: NoteView
-    private var notificationService: NotificationService
     private var currentHighlightedNote: NoteProtocol?
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, NoteCellViewModel> = {
@@ -30,11 +29,10 @@ class NoteViewController: UIViewController {
     private let repository: NotesRepositoryProtocol
     
     
-    init(palette: ColorSet, repository: NotesRepositoryProtocol, notificationService: NotificationService = NotificationCenter.default) {
+    init(palette: ColorSet, repository: NotesRepositoryProtocol) {
         self.contentView = NoteView(palette: palette)
         self.palette = palette
         self.repository = repository
-        self.notificationService = notificationService
         self.currentHighlightedNote = nil
         super.init(nibName: nil, bundle: nil)
         setupBindings()
@@ -49,13 +47,7 @@ class NoteViewController: UIViewController {
         self.contentView.delegate = self
         contentView.collectionView.dataSource = dataSource
         contentView.collectionView.delegate = self
-        notificationService.addObserver(self, selector: #selector(appIsEnteringInBackground), name: UIApplication.willResignActiveNotification, object: nil)
     }
-    
-    deinit {
-        notificationService.removeObserver(self)
-    }
-    
     
     override func loadView() {
         view = contentView
@@ -118,13 +110,6 @@ class NoteViewController: UIViewController {
             try self.repository.deleteNote(currentHighlightedNote)
         } catch {
             self.presentErrorAlert(with: "Não foi possivel deletar esse item")
-        }
-    }
-    
-    @objc func appIsEnteringInBackground() {
-        do {
-            try repository.saveChanges()
-        } catch {
         }
     }
 }

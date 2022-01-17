@@ -5,7 +5,6 @@
 //  Created by Rebecca Mello on 12/01/22.
 //
 
-import Foundation
 import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
@@ -27,10 +26,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
         return title
     }()
     
-    var textView: UITextView = {
+    lazy var textView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = .preferredFont(forTextStyle: .body)
+        textView.delegate = self
         return textView
     }()
     
@@ -95,5 +95,6 @@ extension NoteCollectionViewCell: UITextViewDelegate {
         }
         
         viewModel.note.content = textView.text
+        NotificationCenter.default.post(name: .saveChanges, object: nil)
     }
 }
