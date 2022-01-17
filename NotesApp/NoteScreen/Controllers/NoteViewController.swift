@@ -73,16 +73,23 @@ class NoteViewController: UIViewController {
         }
     }
     
-    func setupToolbar() {
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    private func setupToolbar() {
         self.navigationController?.isToolbarHidden = false
         self.toolbarItems = contentView.toolbarItems
     }
     
-    func setupNavigationBar() {
-        title = "abrobinha"
+    private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
         navigationItem.rightBarButtonItem = contentView.shareButton
+        
+    }
+    
+    private func scrollToEmptyNote() {
         
     }
     
@@ -124,6 +131,8 @@ extension NoteViewController: NoteViewDelegate {
         
         currentHighlightedNote = note
         print(note.noteID)
+        
+        title = "Page \(indexPath.row)"
     }
     
     func didDelete() {
