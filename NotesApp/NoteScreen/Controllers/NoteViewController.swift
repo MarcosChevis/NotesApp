@@ -94,6 +94,33 @@ class NoteViewController: UIViewController {
         
     }
     
+    private func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
+        let alert = UIAlertController.singleActionAlert(with: content) { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+            action()
+        }
+        self.present(alert, animated: true)
+    }
+    
+    private func presentErrorAlert(with errorMessage: String) {
+        let content = UIAlertController.AlertContent(title: "Um erro aconteceu!", message: errorMessage, actionTitle: "", actionStyle: .default)
+        
+        let alert = UIAlertController.errorAlert(with: content)
+        self.present(alert, animated: true)
+    }
+    
+    func deleteNote() {
+        guard let currentHighlightedNote = self.currentHighlightedNote else {
+            return
+        }
+    
+        do {
+            try self.repository.deleteNote(currentHighlightedNote)
+        } catch {
+            self.presentErrorAlert(with: "Não foi possivel deletar esse item")
+        }
+    }
+    
     @objc func appIsEnteringInBackground() {
         do {
             try repository.saveChanges()
@@ -121,32 +148,8 @@ extension NoteViewController: NoteViewDelegate {
                                                             actionStyle: .destructive)
         presentAlert(with: content) { [weak self] in
             guard let self = self else { return }
-
-            guard let currentHighlightedNote = self.currentHighlightedNote else {
-                return
-            }
-        
-            do {
-                try self.repository.deleteNote(currentHighlightedNote)
-            } catch {
-                self.presentErrorAlert(with: "Não foi possivel deletar esse item")
-            }
+            self.deleteNote()
         }
-    }
-    
-    private func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
-        let alert = UIAlertController.singleActionAlert(with: content) { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
-            action()
-        }
-        self.present(alert, animated: true)
-    }
-    
-    private func presentErrorAlert(with errorMessage: String) {
-        let content = UIAlertController.AlertContent(title: "Um erro aconteceu!", message: errorMessage, actionTitle: "", actionStyle: .default)
-        
-        let alert = UIAlertController.errorAlert(with: content)
-        self.present(alert, animated: true)
     }
     
     func didAllNotes() {
@@ -163,8 +166,6 @@ extension NoteViewController: NoteViewDelegate {
     }
     
     func didShare() {
-        print("coisas de share")
-        
         let note = "ooooi"
         
         // set up activity view controller

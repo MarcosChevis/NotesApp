@@ -23,6 +23,9 @@
 		5B73C9F9278F758D005F2D89 /* SmallNoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */; };
 		5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */; };
 		5B73C9FE278F8114005F2D89 /* AllNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */; };
+		5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */; };
+		5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */; };
+		5BB7FE002795C61B00A6F335 /* NoteRepositoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */; };
 		5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */; };
 		9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* NoteHeader.swift */; };
 		9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35F2791C13A000F6B4A /* TagHeader.swift */; };
@@ -73,6 +76,9 @@
 		5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallNoteCellViewModel.swift; sourceTree = "<group>"; };
 		5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesView.swift; sourceTree = "<group>"; };
 		5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewController.swift; sourceTree = "<group>"; };
+		5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDummy.swift; sourceTree = "<group>"; };
+		5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceDummy.swift; sourceTree = "<group>"; };
+		5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryDummy.swift; sourceTree = "<group>"; };
 		5BFD81DC278DB2FA004833F5 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesAppTests.swift; sourceTree = "<group>"; };
 		9D31F35D2791C02D000F6B4A /* NoteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHeader.swift; sourceTree = "<group>"; };
@@ -158,6 +164,9 @@
 			isa = PBXGroup;
 			children = (
 				5B45762F2790791400EF1036 /* FetchResultsControllerDelegateDummy.swift */,
+				5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */,
+				5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */,
+				5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */,
 			);
 			path = Dummies;
 			sourceTree = "<group>";
@@ -489,9 +498,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BB7FE002795C61B00A6F335 /* NoteRepositoryDummy.swift in Sources */,
 				5B00566127959741002BBFD0 /* NoteViewControllerTest.swift in Sources */,
 				5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
+				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
+				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,
 				5B4576302790791400EF1036 /* FetchResultsControllerDelegateDummy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,59 +31,22 @@ class NoteViewControllerTest: XCTestCase {
         sut.didAdd()
         XCTAssertEqual(1, repositoryDummy.mock.count)
     }
-}
-
-class NoteRepositoryDummy: NotesRepositoryProtocol {
-    var mock: [NoteCellViewModel] = []
-    weak var delegate: NoteRepositoryProtocolDelegate?
-    var didCallSaveChanges: Bool = false
     
-    func saveChanges() throws {
-        didCallSaveChanges = true
+    func testDidDeleteNote() {
+        sut.didAdd()
+        sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
+        sut.deleteNote()
+        XCTAssertEqual(0, repositoryDummy.mock.count)
     }
     
-    func deleteNote(_ note: NoteProtocol) throws {
-        mock.removeAll(where: { $0.note.noteID == note.noteID })
+    func testDidSaveOnUIExit() {
+        XCTAssertEqual(notificationServiceDummy.observers, ["appIsEnteringInBackground"])
     }
     
-    func createEmptyNote() throws -> NoteProtocol {
-        let vm = NoteCellViewModel.init(note: NoteDummy(noteID: UUID().uuidString, content: "Nota criada"))
-        delegate?.insertNote(vm, at: IndexPath(row: mock.count, section: 0))
-        mock.append(vm)
-        return vm.note
+    func testSavingMethodCall() {
+        sut = .init(palette: .classic, repository: repositoryDummy, notificationService: NotificationCenter.default)
+        NotificationCenter.default.post(name: UIApplication.willResignActiveNotification, object: nil)
         
-    }
-    
-    func getInitialData() throws -> [NoteCellViewModel] {
-        mock
-    }
-    
-}
-
-class NoteDummy: NoteProtocol {
-    var noteID: String
-    var content: String?
-    
-    init(noteID: String, content: String? = nil) {
-        self.noteID = noteID
-        self.content = content
-    }
-}
-
-class NotificationServiceDummy: NotificationService {
-    var postedNotification: [NSNotification.Name] = []
-    var observers: [String] = []
-    var removeObservers: [String] = []
-    
-    func post(name: NSNotification.Name, object: Any?) {
-        postedNotification.append(name)
-    }
-    
-    func addObserver(_ observer: Any, selector: Selector, name: NSNotification.Name?, object: Any?) {
-        observers.append(selector.description)
-    }
-    
-    func removeObserver(_ observer: Any) {
-        removeObservers.append("Removido")
+        XCTAssertEqual(repositoryDummy.didCallSaveChanges, true)
     }
 }
