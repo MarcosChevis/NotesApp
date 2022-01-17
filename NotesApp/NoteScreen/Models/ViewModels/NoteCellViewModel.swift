@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct NoteCellViewModel {
+class NoteCellViewModel {
     var note: NoteProtocol
+    
+    init(note: NoteProtocol) {
+        self.note = note
+    }
 }
 
 extension NoteCellViewModel: Hashable {

@@ -23,7 +23,12 @@ class NoteView: UIView {
         
         // funcao pra dar dismiss no teclado quando scrolla pro lado na collection
         section.visibleItemsInvalidationHandler = ({ [weak self] (visibleItems, point, env) in
-            self?.endEditing(false)
+            guard let self = self else { return }
+            
+            self.endEditing(false)
+            if let indexPath = self.findCurrentCellIndexPath(for: point) {
+                self.delegate?.collectionViewDidMove(to: indexPath)
+            }
         })
         
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -104,6 +109,18 @@ class NoteView: UIView {
     
     @objc func didTapAddNote() {
         delegate?.didAdd()
+    }
+    
+    private func findCurrentCellIndexPath(for point: CGPoint) -> IndexPath? {
+        if let layout = collectionView.layoutAttributesForItem(at: IndexPath(item: 0, section: 0)) {
+            let cellWidth = layout.bounds.width
+            let cellCenter = cellWidth/2
+            let result = Int((point.x + cellCenter) / (cellWidth - 24))
+            let indexPath = IndexPath(item: result, section: 0)
+            return indexPath
+        } else {
+            return nil
+        }
     }
     
 }

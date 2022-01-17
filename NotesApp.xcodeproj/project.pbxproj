@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B00565E27959427002BBFD0 /* NotificationService.swift */; };
+		5B00566127959741002BBFD0 /* NoteViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B00566027959741002BBFD0 /* NoteViewControllerTest.swift */; };
 		5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576192790593100EF1036 /* CoreDataStack.swift */; };
 		5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761B2790593100EF1036 /* NotesRepository.swift */; };
 		5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5B00565E27959427002BBFD0 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		5B00566027959741002BBFD0 /* NoteViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewControllerTest.swift; sourceTree = "<group>"; };
 		5B4576192790593100EF1036 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5B45761B2790593100EF1036 /* NotesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
 		5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepositoryTest.swift; sourceTree = "<group>"; };
@@ -95,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B00565D27959414002BBFD0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5B00565E27959427002BBFD0 /* NotificationService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5B4576182790593100EF1036 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +203,7 @@
 				5B45762E279078FB00EF1036 /* Dummies */,
 				5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */,
 				5BFD81DE278DB2FA004833F5 /* NotesAppTests.swift */,
+				5B00566027959741002BBFD0 /* NoteViewControllerTest.swift */,
 			);
 			path = NotesAppTests;
 			sourceTree = "<group>";
@@ -259,6 +272,7 @@
 		BAB1E01F269DBBF8001FC3CC /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				5B00565D27959414002BBFD0 /* Services */,
 				5B73C9EF278F2AAC005F2D89 /* AllNotesScreen */,
 				9DAC68FA278F3244005554B6 /* Components */,
 				BA578D5A278F025F000617F6 /* ColorSet.swift */,
@@ -390,6 +404,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B00566127959741002BBFD0 /* NoteViewControllerTest.swift in Sources */,
 				5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
 				5B4576302790791400EF1036 /* FetchResultsControllerDelegateDummy.swift in Sources */,
@@ -419,6 +434,7 @@
 				9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
+				5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 				5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */,

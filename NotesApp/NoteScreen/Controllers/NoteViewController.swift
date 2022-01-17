@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 class NoteViewController: UIViewController {
-    var palette: ColorSet
-    var contentView: NoteView
+    private var palette: ColorSet
+    private var contentView: NoteView
+    private var notificationService: NotificationService
+    private var currentHighlightedNote: NoteProtocol?
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, NoteCellViewModel> = {
         let cellRegistration: UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> = UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> { cell, indexPath, note in
-            cell.setup(colorPalette: ColorSet.classic.palette(), title: "Página \(indexPath.row)", content: note.note.content ?? "" )
+            cell.setup(colorPalette: ColorSet.classic.palette(), viewModel: note)
         }
         
         let dataSource = UICollectionViewDiffableDataSource<Section, NoteCellViewModel>(collectionView: contentView.collectionView)
@@ -28,19 +30,35 @@ class NoteViewController: UIViewController {
     private let repository: NotesRepositoryProtocol
     
     
-    init(palette: ColorSet, repository: NotesRepositoryProtocol) {
+    init(palette: ColorSet, repository: NotesRepositoryProtocol, notificationService: NotificationService = NotificationCenter.default) {
         self.contentView = NoteView(palette: palette)
         self.palette = palette
         self.repository = repository
-        
+        self.notificationService = notificationService
+        self.currentHighlightedNote = nil
         super.init(nibName: nil, bundle: nil)
-        repository.delegate = self
-        self.contentView.delegate = self
-        contentView.collectionView.dataSource = dataSource
+        setupBindings()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupBindings() {
+        self.repository.delegate = self
+        self.contentView.delegate = self
+        contentView.collectionView.dataSource = dataSource
+        contentView.collectionView.delegate = self
+        notificationService.addObserver(self, selector: #selector(appIsEnteringInBackground), name: UIApplication.willResignActiveNotification, object: nil)
+    }
+    
+    deinit {
+        notificationService.removeObserver(self)
+    }
+    
+    
+    override func loadView() {
+        view = contentView
     }
     
     override func viewDidLoad() {
@@ -57,7 +75,7 @@ class NoteViewController: UIViewController {
             var snapshot = dataSource.snapshot()
             snapshot.appendSections([.main])
             snapshot.appendItems(data, toSection: .main)
-            dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
+            dataSource.apply(snapshot, animatingDifferences: false)
         } catch {
             
         }
@@ -68,23 +86,43 @@ class NoteViewController: UIViewController {
         self.toolbarItems = contentView.toolbarItems
     }
     
-    override func loadView() {
-        super.loadView()
-        view = contentView
-    }
-    
     func setupNavigationBar() {
         title = "abrobinha"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = contentView.shareButton
 
     }
+    
+    @objc func appIsEnteringInBackground() {
+        do {
+            try repository.saveChanges()
+        } catch {
+        }
+    }
 }
 
 extension NoteViewController: NoteViewDelegate {
-    func didDelete() {
-        print("coisas de delete")
+    
+    func collectionViewDidMove(to indexPath: IndexPath) {
+        guard let note = dataSource.itemIdentifier(for: indexPath)?.note,
+              currentHighlightedNote?.noteID != note.noteID || currentHighlightedNote == nil else {
+                  return
+              }
         
+        currentHighlightedNote = note
+        print(note.noteID)
+    }
+    
+    func didDelete() {
+        guard let currentHighlightedNote = currentHighlightedNote else {
+            return
+        }
+        
+        do {
+            try repository.deleteNote(currentHighlightedNote)
+        } catch {
+            print("fudeu")
+        }
     }
     
     func didAllNotes() {
@@ -94,7 +132,7 @@ extension NoteViewController: NoteViewDelegate {
     
     func didAdd() {
         do {
-            try repository.createEmptyNote()
+            _ = try repository.createEmptyNote()
         } catch {
             
         }
@@ -106,9 +144,7 @@ extension NoteViewController: NoteViewDelegate {
 }
 
 extension NoteViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        print("\(indexPath)")
-    }
+    
 }
 
 extension NoteViewController {
@@ -127,10 +163,16 @@ extension NoteViewController: NoteRepositoryProtocolDelegate {
     
     func deleteNote(_ note: NoteCellViewModel) {
         var snapshot = dataSource.snapshot()
-        snapshot.deleteItems([note])
-        dataSource.apply(snapshot)
+        
+        guard let viewModel = snapshot.itemIdentifiers.filter({ note.note.noteID == $0.note.noteID }).first else {
+            return
+            }
+        
+        snapshot.deleteItems([viewModel])
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
     
     func updateNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
+        
     }
 }
