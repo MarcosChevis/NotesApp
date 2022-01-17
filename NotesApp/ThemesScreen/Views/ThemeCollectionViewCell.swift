@@ -14,6 +14,13 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         var title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .center
+        if let descriptor = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle: .title2)
+            .withSymbolicTraits(.traitBold) {
+            title.font = UIFont(descriptor: descriptor, size: 0)
+        } else {
+            title.font = .preferredFont(forTextStyle: .title2)
+        }
         contentView.addSubview(title)
         
         return title
@@ -24,6 +31,13 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         theme.translatesAutoresizingMaskIntoConstraints = false
         theme.textAlignment = .center
         theme.text = "Theme"
+        if let descriptor = UIFontDescriptor
+            .preferredFontDescriptor(withTextStyle: .title3)
+            .withSymbolicTraits(.traitBold) {
+            theme.font = UIFont(descriptor: descriptor, size: 0)
+        } else {
+            theme.font = .preferredFont(forTextStyle: .title3)
+        }
         contentView.addSubview(theme)
         
         return theme
@@ -31,7 +45,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+                
         setupConstraints()
     }
     
@@ -39,13 +53,37 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupThemesViewCell(palette: ColorSet) {
-        title.text = palette.rawValue
+    func setupThemesViewCell(palette: ColorSet, isSelected: Bool) {
+        
+        setupLayers(palette: palette)
+             
+        if isSelected {
+            didSelect()
+        } else {
+            didUnselect()
+        }
+        
+        var titleText = palette.rawValue
+        titleText = titleText.capitalized
+        
+        title.text = titleText
         title.textColor = palette.palette().actionColor
         
         themeLabel.textColor = palette.palette().text
         
         contentView.backgroundColor = palette.palette().background
+    }
+    
+    func setupLayers(palette: ColorSet) {
+        contentView.layer.cornerRadius = 20
+        contentView.layer.masksToBounds = true
+        
+        layer.shadowRadius = 4
+        layer.shadowOffset = CGSize(width: 4, height: 4)
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.33
+        
+        contentView.layer.borderColor = palette.palette().actionColor.cgColor
     }
     
     func setupConstraints() {
@@ -58,5 +96,15 @@ class ThemeCollectionViewCell: UICollectionViewCell {
             themeLabel.topAnchor.constraint(equalTo: contentView.centerYAnchor),
             themeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
+    }
+    
+    
+    //TODO: COLOCAR user DEJFRT aqui
+    func didSelect() {
+        contentView.layer.borderWidth = 4
+    }
+    
+    func didUnselect() {
+        contentView.layer.borderWidth = 0
     }
 }

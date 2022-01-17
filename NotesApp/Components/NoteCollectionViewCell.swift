@@ -31,6 +31,12 @@ class NoteCollectionViewCell: UICollectionViewCell {
         return textView
     }()
     
+    var palette: ColorSet? {
+        didSet {
+            setColors(palette: palette)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(title)
@@ -53,12 +59,18 @@ class NoteCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(colorPalette: CustomColorSet, title: String, content: String) {
-        self.title.textColor = .black
-        self.textView.textColor = .black
-        contentView.backgroundColor = .white
+    func setup(palette: ColorSet, title: String, content: String) {
         
+        setColors(palette: palette)
         self.title.text = title
         self.textView.text = content
+    }
+    
+    func setColors(palette: ColorSet?) {
+        guard let palette = palette else { return }
+
+        self.title.textColor = palette.palette().text
+        self.textView.textColor = palette.palette().text
+        contentView.backgroundColor = palette.palette().noteBackground
     }
 }

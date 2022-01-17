@@ -8,18 +8,24 @@
 import UIKit
 
 class SettingTableDataSource: NSObject, UITableViewDataSource {
-    var palette: ColorSet = ColorSet.neon
+    var palette: ColorSet
+    
+    init(palette: ColorSet) {
+        self.palette = palette
+        super.init()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableCell.identifier, for: indexPath) as? SettingsTableCell else {
+            preconditionFailure("cell configurated improperly")
+        }
         
         cell.textLabel?.text = "Themes"
-        cell.textLabel?.textColor = palette.palette().text
-        cell.backgroundColor = palette.palette().noteBackground
+        cell.setupSettingsViewCell(palette: palette)
         cell.selectionStyle = .none
         
         cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator

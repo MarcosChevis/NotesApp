@@ -61,19 +61,26 @@ class NoteView: UIView {
     weak var delegate: NoteViewDelegate?
     
     
-    var pallete: ColorSet
+    var palette: ColorSet {
+        didSet {
+            setColors(palette: palette)
+        }
+    }
     
     init(palette: ColorSet) {
-        self.pallete = palette
+        self.palette = palette
         
         super.init(frame: .zero)
         
-        self.backgroundColor = palette.palette().background
         setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setColors(palette: ColorSet) {
+        self.backgroundColor = palette.palette().background
     }
     
     func setupConstraints() {

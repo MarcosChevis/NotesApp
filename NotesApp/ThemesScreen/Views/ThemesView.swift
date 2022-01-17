@@ -8,7 +8,12 @@
 import UIKit
 
 class ThemesView: UIView {
-    var palette: ColorSet
+    var palette: ColorSet {
+        didSet {
+            setExampleImage(palette: palette)
+            setColors(palette: palette)
+        }
+    }
     
     lazy var exampleImage: UIImageView = {
         var img = UIImageView()
@@ -55,15 +60,19 @@ class ThemesView: UIView {
     init(palette: ColorSet) {
         self.palette = palette
         
-        super.init(frame: .zero)
         
-        backgroundColor = palette.palette().background
+        super.init(frame: .zero)
+        setColors(palette: palette)
+        setExampleImage(palette: palette)
         setupConstraints()
-        setExampleImage(color: palette)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setColors(palette: ColorSet) {
+        backgroundColor = palette.palette().background
     }
     
     func setupConstraints() {
@@ -80,8 +89,8 @@ class ThemesView: UIView {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)])
     }
     
-    func setExampleImage(color: ColorSet) {
-        switch color {
+    func setExampleImage(palette: ColorSet) {
+        switch palette {
         case .neon:
             exampleImage.image = UIImage(named: "totiNeon")
         case .classic:

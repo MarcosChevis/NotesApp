@@ -8,13 +8,17 @@
 import UIKit
 
 class SettingsView: UIView {
-    var palette: ColorSet
+    var palette: ColorSet {
+        didSet {
+            setColors(palette: palette)
+        }
+    }
     
     lazy var tableView: UITableView = {
         var table = UITableView()
         table.backgroundColor = .clear
         
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(SettingsTableCell.self, forCellReuseIdentifier: SettingsTableCell.identifier)
         table.translatesAutoresizingMaskIntoConstraints = false
         addSubview(table)
         
@@ -24,12 +28,16 @@ class SettingsView: UIView {
     init(palette: ColorSet) {
         self.palette = palette
         super.init(frame: .zero)
-        self.backgroundColor = palette.palette().background
+        setColors(palette: palette)
         setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setColors(palette: ColorSet) {
+        self.backgroundColor = palette.palette().background
     }
     
     func setupConstraints() {

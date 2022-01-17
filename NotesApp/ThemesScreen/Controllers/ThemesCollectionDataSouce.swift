@@ -8,7 +8,20 @@
 import UIKit
 
 class ThemesCollectionDataSouce: NSObject, UICollectionViewDataSource {
-    private var data: [ColorSet] = ColorSet.allCases
+    var data: [ThemeCollectionData] = []
+    let settings: Settings = Settings()
+
+    override init() {
+        super.init()
+        
+        createData()
+    }
+    
+    func createData() {
+        for cases in ColorSet.allCases {
+            data.append(ThemeCollectionData(colorSet: cases, isSelected: settings.theme == cases.rawValue))
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
@@ -20,10 +33,13 @@ class ThemesCollectionDataSouce: NSObject, UICollectionViewDataSource {
             preconditionFailure("Cell configured improperly")
         }
         
-        cell.setupThemesViewCell(palette: data[indexPath.row])
+        cell.setupThemesViewCell(palette: data[indexPath.row].colorSet, isSelected: data[indexPath.row].isSelected)
         
         return cell
     }
     
 
 }
+
+
+

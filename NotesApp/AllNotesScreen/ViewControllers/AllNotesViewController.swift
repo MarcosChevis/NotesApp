@@ -8,7 +8,17 @@
 import UIKit
 
 class AllNotesViewController: UIViewController {
+    var palette: ColorSet
 
+    init(palette: ColorSet) {
+        self.palette = palette
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +56,7 @@ extension AllNotesViewController: UICollectionViewDataSource {
             fatalError()
         }
         
-        cell.setup(with: .init(colorSet: .classic, title: "Um Grande titulo", content: "I have a dream that one day every valley shall be engulfed, every hill shall be exalted and every mountain shall…"))
+        cell.setup(with: .init(colorSet: .classic, title: "Um Grande titulo", content: "I have a dream that one day every valley shall be engulfed, every hill shall be exalted and every mountain shall…"), palette: palette)
         return cell
     }
     
