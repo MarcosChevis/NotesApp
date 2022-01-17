@@ -65,20 +65,15 @@ class NoteViewController: UIViewController {
 extension NoteViewController: NoteViewDelegate {
     func didDelete() {
         print("coisas de delete")
-        alert()
+        let content: UIAlertController.AlertContent = .init(title: "Tem certeza que deseja deletar?", message: "Essa ação não é reversível", actionTitle: "Deletar", actionStyle: .destructive)
+        presentAlert(with: content, {})
     }
     
-    func alert() {
-        let alert = UIAlertController(title: "Tem certeza que deseja deletar a nota?", message: "", preferredStyle: .alert)
-
-        let deleteAction = UIAlertAction(title: "Deletar", style: .default) { (action) in
-            self.dismiss(animated: true, completion: nil)
-            //FIXME: colocar a nota certa que deve ser deletada
-            CoreDataStack.shared.delete(note: Note())
-            self.navigationController?.popViewController(animated: true)
+    func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
+        let alert = UIAlertController.singleActionAlert(with: content) { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+            action()
         }
-        alert.addAction(deleteAction)
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         self.present(alert, animated: true)
     }
     
@@ -103,3 +98,5 @@ extension NoteViewController: NoteViewDelegate {
         present(activityViewController, animated: true)
     }
 }
+
+
