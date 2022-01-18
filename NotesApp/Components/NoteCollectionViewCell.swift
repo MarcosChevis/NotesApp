@@ -54,14 +54,21 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupConstraints() {
-        title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
-        title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+        let titleConstraints: [NSLayoutConstraint] = [
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        ]
         
-        textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4).isActive = true
-        textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
+        let textViewConstraints: [NSLayoutConstraint] = [
+            textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
+            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        ]
+        
+        NSLayoutConstraint.activate(titleConstraints)
+        NSLayoutConstraint.activate(textViewConstraints)
     }
     
     private func setupStyle() {
@@ -69,12 +76,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 16
     }
     
-    func setup(colorPalette: CustomColorSet, viewModel: NoteCellViewModel) {
+    func setup(colorPalette: ColorSet, viewModel: NoteCellViewModel) {
         self.viewModel = viewModel
         
-        self.title.textColor = .black
-        self.textView.textColor = .black
-        contentView.backgroundColor = .white
+        let palette = colorPalette.palette()
+        
+        self.title.textColor = palette.text
+        self.textView.textColor = palette.text
+        contentView.backgroundColor = palette.noteBackground
         
         let provisoryTitle = viewModel.note.noteID.suffix(5)
         
