@@ -6,30 +6,155 @@
 //
 
 import Foundation
+import CoreData
+import Combine
+import UIKit
 
-class NotesRepository: NotesRepositoryProtocol {
+class NotesRepository: NSObject, NotesRepositoryProtocol {
     private let coreDataStack: CoreDataStack
+    private var cancelables: Set<AnyCancellable>
+    private let notificationService: NotificationService
+    let fetchResultsController: NSFetchedResultsController<Note>
     
-    init(coreDataStack: CoreDataStack = .shared) {
+    weak var delegate: NoteRepositoryProtocolDelegate?
+    
+    var numberOfElements: Int {
+        guard let elements = fetchResultsController.fetchedObjects else {
+            return 0
+        }
+        
+        return elements.count
+    }
+    
+    init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default) {
         self.coreDataStack = coreDataStack
+        
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: true)]
+        
+        let fetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchResultsController = fetchResultsController
+        self.cancelables = .init()
+        self.notificationService = notificationService
+        super.init()
+        fetchResultsController.delegate = self
+        setupBindings()
     }
     
-    func addNote(content: String) throws {
-        let note: Note = Note(context: coreDataStack.mainContext)
-        
-        note.content = content
-        note.modificationDate = Date()
-        
+    func saveChanges() throws {
         try coreDataStack.save()
     }
     
-    func deleteNote(_ note: Note) throws {
+    func deleteNote(_ note: NoteProtocol) throws {
+        guard let note = note as? Note else {
+            throw NoteRepositoryError.incorrectObjectType
+        }
+        
         coreDataStack.mainContext.delete(note)
-        try coreDataStack.save()
+        try saveChanges()
     }
     
-    func editNote(_ note: Note) throws {
-        note.modificationDate = Date()
-        try coreDataStack.save()
+    func createEmptyNote() throws -> NoteProtocol {
+        let note = Note(context: coreDataStack.mainContext)
+        note.content = ""
+        try saveChanges()
+        return note
+    }
+    
+    func getInitialData() throws -> [NoteCellViewModel] {
+        try fetchResultsController.performFetch()
+        
+        guard let notes = fetchResultsController.fetchedObjects else {
+            throw NoteRepositoryError.errorFetchingObjects
+        }
+        
+        let viewModels = notes.map(NoteCellViewModel.init)
+        return viewModels
+    }
+    
+    private func setupBindings() {
+        notificationService.publisher(for: .saveChanges, with: nil)
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.current, options: .none)
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: triggerSave)
+            .store(in: &cancelables)
+        
+        notificationService.publisher(for: UIApplication.willResignActiveNotification, with: nil)
+            .sink(receiveValue: removeEmptyAndSave)
+            .store(in: &cancelables)
+    }
+    
+    private func triggerSave(_ notification: Notification) {
+        do {
+            try saveChanges()
+        } catch {
+            coreDataStack.mainContext.rollback()
+        }
+    }
+    
+    func removeEmptyAndSave(_ notification: Notification) {
+        do {
+            removeEmptyObjects()
+            try saveChanges()
+        } catch {
+            coreDataStack.mainContext.rollback()
+        }
+    }
+    
+    private func removeEmptyObjects() {
+        guard let notes = fetchResultsController.fetchedObjects else { return }
+        let emptyNotes = notes.filter {
+            guard let content = $0.content else {
+                return true
+            }
+            return content.isEmpty
+        }
+        emptyNotes.forEach { coreDataStack.mainContext.delete($0) }
+    }
+
+}
+
+enum NoteRepositoryError: Error {
+    case noObjectForID, incorrectObjectType, errorFetchingObjects
+}
+
+extension NotesRepository: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            updateUIWithInsertNote(anObject as? Note, at: newIndexPath)
+        case .delete:
+            updateUIWithDeleteNote(anObject as? Note)
+        case .move:
+            break
+        case .update:
+            updateUIWithUpdateNote(anObject as? Note, at: indexPath)
+        @unknown default:
+            break
+        }
+    }
+    
+    private func updateUIWithInsertNote(_ note: Note?, at indexPath: IndexPath?) {
+        guard let note = note, let indexPath = indexPath else {
+            return
+        }
+        
+        let viewModel = NoteCellViewModel(note: note)
+        delegate?.insertNote(viewModel, at: indexPath)
+    }
+    
+    private func updateUIWithDeleteNote(_ note: Note?) {
+        guard let note = note else {
+            return
+        }
+        
+        delegate?.deleteNote(NoteCellViewModel(note: note))
+    }
+    
+    private func updateUIWithUpdateNote(_ note: Note?, at indexPath: IndexPath?) {
+        guard let note = note, let indexPath = indexPath else {
+            return
+        }
+        
     }
 }

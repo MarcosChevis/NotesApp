@@ -57,17 +57,8 @@ class CoreDataStack {
         }
     }
     
-    func createNote(content: String) -> Note {
-        let note: Note = Note(context: mainContext)
-        
-        note.content = content
-        note.modificationDate = Date()
-        
-        return note
-    }
-    
-    func delete(note: Note) {
-        mainContext.delete(note)
+    func convertURLToObjectID(_ url: URL) -> NSManagedObjectID? {
+        container.persistentStoreCoordinator.managedObjectID(forURIRepresentation: url)
     }
 }
 

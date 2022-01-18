@@ -12,4 +12,5 @@ protocol NoteViewDelegate: AnyObject {
     func didDelete()
     func didAllNotes()
     func didAdd()
+    func collectionViewDidMove(to indexPath: IndexPath)
 }
