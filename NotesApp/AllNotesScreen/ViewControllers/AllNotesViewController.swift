@@ -7,22 +7,19 @@
 
 import UIKit
 
-class AllNotesViewController: UIViewController {
+class AllNotesViewController: ThemableViewController {
     
-    var palette: ColorSet {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
+   
     var contentView: AllNotesView
     var collectionDataSource: AllNotesDataSource
     
-    init(palette: ColorSet, collectionDataSource: AllNotesDataSource) {
+    init(palette: ColorSet, collectionDataSource: AllNotesDataSource, notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
         self.contentView = AllNotesView(palette: palette)
-        self.palette = palette
+        
         self.collectionDataSource = collectionDataSource
         
-        super.init(nibName: nil, bundle: nil)
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         
         self.contentView.collectionView.dataSource = collectionDataSource
         self.contentView.delegate = self
@@ -58,9 +55,6 @@ class AllNotesViewController: UIViewController {
         navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
     }
     
-    func setColors(palette: ColorSet) {
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
-    }
 }
 
 extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {

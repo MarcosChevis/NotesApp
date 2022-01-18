@@ -8,13 +8,12 @@
 import UIKit
 import CoreData
 
-class NoteView: UIView {
+class NoteView: ThemableView {
     private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85), heightDimension: .fractionalHeight(1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-//        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 5, trailing: 12)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
@@ -49,6 +48,7 @@ class NoteView: UIView {
         items.append( UIBarButtonItem(image: UIImage(systemName: "note.text"), style: .plain , target: self, action: #selector(didTapAllNotes)))
         items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
         items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddNote)))
+        
         return items
     }()
     
@@ -58,9 +58,8 @@ class NoteView: UIView {
         collection.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collection)
         collection.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: NoteCollectionViewCell.identifier)
-        collection.backgroundColor = .secondarySystemBackground
+        collection.backgroundColor = .clear
         collection.isScrollEnabled = false
-        backgroundColor = .secondarySystemBackground
         
         return collection
     }()
@@ -68,17 +67,10 @@ class NoteView: UIView {
     weak var delegate: NoteViewDelegate?
     
     
-    var palette: ColorSet {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
     
-    init(palette: ColorSet) {
-        self.palette = palette
-        
-        super.init(frame: .zero)
-        
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupConstraints()
     }
     
@@ -86,8 +78,13 @@ class NoteView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setColors(palette: ColorSet) {
-        self.backgroundColor = palette.palette().background
+    override func setColors(palette: ColorSet) {
+        let colorSet = palette.palette()
+        backgroundColor = colorSet.background
+        
+        for item in toolbarItems {
+            item.tintColor = colorSet.actionColor
+        }
     }
     
     func setupConstraints() {

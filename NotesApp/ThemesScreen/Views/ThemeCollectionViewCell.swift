@@ -104,6 +104,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     //TODO: COLOCAR user DEJFRT aqui
     func didSelect() {
         contentView.layer.borderWidth = 4
+        
     }
     
     func didUnselect() {

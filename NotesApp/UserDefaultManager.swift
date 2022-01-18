@@ -7,38 +7,36 @@
 
 import Foundation
 
-struct Settings {
+class Settings {
+    private let localStorageService: LocalStorageService
+    private let notificationService: NotificationService
     
-    @LocalStorage(key: "chavoso", defaultValue: ColorSet.classic.rawValue)
-    var theme: String
+    init(localStorageService: LocalStorageService = UserDefaults.standard, notificationService: NotificationService = NotificationCenter.default) {
+        self.localStorageService = localStorageService
+        self.notificationService = notificationService
+    }
     
-}
-
-@propertyWrapper
-struct LocalStorage<T> {
-    private let key: String
-    private let userDefault: LocalStorageService
-    private let defaultValue: T
-    
-    init(key: String, userDefault: LocalStorageService = UserDefaults.standard, defaultValue: T) {
-        self.key = key
-        self.userDefault = userDefault
-        self.defaultValue = defaultValue
+    func changeTheme(palette: ColorSet) {
+        theme = palette
+        notificationService.post(name: .didChangeTheme, object: palette)
         
     }
     
-    var wrappedValue: T {
+    var theme: ColorSet {
         get {
-            return userDefault.object(forKey: key) as? T ?? defaultValue
+            ColorSet(rawValue: localStorageService.string(forKey: "theme") ?? ColorSet.classic.rawValue) ?? .classic
         }
         set {
-            userDefault.set(newValue, forKey: key)
+            localStorageService.set(newValue.rawValue, forKey: "theme")
         }
     }
+    
 }
+
 
 protocol LocalStorageService {
     func object(forKey: String) -> Any?
+    func string(forKey: String) -> String?
     
     func set(_ value: Any?, forKey: String)
 }

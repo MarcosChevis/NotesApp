@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AllNotesView: UIView {
+class AllNotesView: ThemableView {
     private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -103,15 +103,11 @@ class AllNotesView: UIView {
     
     weak var delegate: NoteSmallCellCollectionViewCellDelegate?
     
-    var palette: ColorSet {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
     
-    init(palette: ColorSet) {
-        self.palette = palette
-        super.init(frame: .zero)
+    
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         
         setupConstraints()
     }
@@ -120,7 +116,7 @@ class AllNotesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setColors(palette: ColorSet) {
+    override func setColors(palette: ColorSet) {
         let colorSet = palette.palette()
         self.backgroundColor = colorSet.background
         collectionView.backgroundColor = colorSet.background

@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ThemesView: UIView {
-    var palette: ColorSet {
+class ThemesView: ThemableView {
+    override var palette: ColorSet {
         didSet {
             setExampleImage(palette: palette)
             setColors(palette: palette)
@@ -57,12 +57,9 @@ class ThemesView: UIView {
         return collection
     }()
 
-    init(palette: ColorSet) {
-        self.palette = palette
-        
-        
-        super.init(frame: .zero)
-        setColors(palette: palette)
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         setExampleImage(palette: palette)
         setupConstraints()
     }
@@ -71,7 +68,7 @@ class ThemesView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setColors(palette: ColorSet) {
+    override func setColors(palette: ColorSet) {
         let colorSet = palette.palette()
         backgroundColor = colorSet.background
     }

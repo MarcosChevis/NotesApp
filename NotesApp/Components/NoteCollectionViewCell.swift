@@ -8,46 +8,27 @@
 import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
-    
+    var noteContentView: NoteCellContentView
     static var identifier: String = "Notes.NoteCollectionViewCell"
     
-    var title: UITextField = {
-        var title = UITextField()
-        title.translatesAutoresizingMaskIntoConstraints = false
-        if let descriptor = UIFontDescriptor
-            .preferredFontDescriptor(withTextStyle: .title2)
-            .withSymbolicTraits(.traitBold) {
-            title.font = UIFont(descriptor: descriptor, size: 0)
-        } else {
-            title.font = .preferredFont(forTextStyle: .title2)
-        }
-        
-        title.textAlignment = .left
-        return title
-    }()
     
-    lazy var textView: UITextView = {
-        let textView = UITextView()
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = .preferredFont(forTextStyle: .body)
-        textView.delegate = self
-        return textView
-    }()
     
 
     private var viewModel: NoteCellViewModel?
     
-    var palette: ColorSet? {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
+    var palette: ColorSet?
     
     override init(frame: CGRect) {
+        noteContentView = NoteCellContentView(palette: .classic)
+        noteContentView.translatesAutoresizingMaskIntoConstraints = false
+
         super.init(frame: frame)
         setupHierarchy()
         setupConstraints()
         setupStyle()
+        noteContentView.textView.delegate = self
+        contentView.backgroundColor = .clear
+        backgroundColor = .clear
     }
     
     required init?(coder: NSCoder) {
@@ -55,27 +36,18 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupHierarchy() {
+        contentView.addSubview(noteContentView)
         
-        contentView.addSubview(title)
-        contentView.addSubview(textView)
     }
     
     private func setupConstraints() {
-        let titleConstraints: [NSLayoutConstraint] = [
-            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        let noteContentViewConstraints: [NSLayoutConstraint] = [
+            noteContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            noteContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            noteContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            noteContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ]
-        
-        let textViewConstraints: [NSLayoutConstraint] = [
-            textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
-            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
-        ]
-        
-        NSLayoutConstraint.activate(titleConstraints)
-        NSLayoutConstraint.activate(textViewConstraints)
+        NSLayoutConstraint.activate(noteContentViewConstraints)
     }
     
     private func setupStyle() {
@@ -85,26 +57,15 @@ class NoteCollectionViewCell: UICollectionViewCell {
     
     func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
         self.viewModel = viewModel
-        
         self.palette = palette
-        
-        let provisoryTitle = viewModel.note.noteID.suffix(5)
-        
-        self.title.text = String(provisoryTitle)
-        self.textView.text = viewModel.note.content
+        noteContentView.setup(palette: palette, viewModel: viewModel)
     }
     
     override func prepareForReuse() {
         viewModel = nil
     }
     
-    func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
-
-        self.title.textColor = colorSet.text
-        self.textView.textColor = colorSet.text
-        contentView.backgroundColor = colorSet.noteBackground
-    }
+    
     
 }
 

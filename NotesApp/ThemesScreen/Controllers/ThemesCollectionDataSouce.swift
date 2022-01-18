@@ -19,7 +19,7 @@ class ThemesCollectionDataSouce: NSObject, UICollectionViewDataSource {
     
     func createData() {
         for cases in ColorSet.allCases {
-            data.append(ThemeCollectionData(colorSet: cases, isSelected: settings.theme == cases.rawValue))
+            data.append(ThemeCollectionData(colorSet: cases, isSelected: settings.theme == cases))
         }
     }
     

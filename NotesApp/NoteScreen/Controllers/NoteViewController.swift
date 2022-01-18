@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class NoteViewController: UIViewController {
-    private var palette: ColorSet
+class NoteViewController: ThemableViewController {
     private var contentView: NoteView
     private var currentHighlightedNote: NoteProtocol?
     
@@ -27,16 +26,18 @@ class NoteViewController: UIViewController {
     }()
     
     private let repository: NotesRepositoryProtocol
-    private let notificationService: NotificationService
     
     
-    init(palette: ColorSet, repository: NotesRepositoryProtocol, notificationService: NotificationService = NotificationCenter.default) {
+    init(palette: ColorSet,
+         repository: NotesRepositoryProtocol,
+         notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
         self.contentView = NoteView(palette: palette)
-        self.palette = palette
+
         self.repository = repository
-        self.notificationService = notificationService
         self.currentHighlightedNote = nil
-        super.init(nibName: nil, bundle: nil)
+
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupBindings()
     }
     
@@ -44,23 +45,27 @@ class NoteViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupBindings() {
+    override func setupBindings() {
+        super.setupBindings()
         self.repository.delegate = self
         self.contentView.delegate = self
         contentView.collectionView.dataSource = dataSource
         contentView.collectionView.delegate = self
-        notificationService.addObserver(self, selector: #selector(createNewNoteOnAppear), name: UIApplication.didBecomeActiveNotification, object: nil)
+        super.notificationService.addObserver(self, selector: #selector(createNewNoteOnAppear), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
+    
     
     @objc private func createNewNoteOnAppear() {
         scrollToEmptyNote(true)
     }
     
     override func loadView() {
+        super.loadView()
         view = contentView
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupNavigationBar()
         
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
@@ -91,10 +96,9 @@ class NoteViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
-        navigationItem.rightBarButtonItem = contentView.shareButton
-        
+        navigationItem.rightBarButtonItem = contentView.shareButton   
     }
+    
     
     private func scrollToEmptyNote(_ animated: Bool = false) {
         do {
