@@ -9,7 +9,11 @@ import UIKit
 
 class AllNotesViewController: UIViewController {
     
-    var palette: ColorSet
+    var palette: ColorSet {
+        didSet {
+            setColors(palette: palette)
+        }
+    }
     var contentView: AllNotesView
     var collectionDataSource: AllNotesDataSource
     
@@ -51,8 +55,11 @@ class AllNotesViewController: UIViewController {
     func setupNavigationBar() {
         title = "All Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
         navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
+    }
+    
+    func setColors(palette: ColorSet) {
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
     }
 }
 

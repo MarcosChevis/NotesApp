@@ -39,7 +39,7 @@ class AllNotesView: UIView {
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         addSubview(collectionView)
-        collectionView.backgroundColor = palette.palette().background
+        
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: NoteSmallCellCollectionViewCell.identifier)
@@ -103,17 +103,28 @@ class AllNotesView: UIView {
     
     weak var delegate: NoteSmallCellCollectionViewCellDelegate?
     
-    var palette: ColorSet
+    var palette: ColorSet {
+        didSet {
+            setColors(palette: palette)
+        }
+    }
     
     init(palette: ColorSet) {
         self.palette = palette
         super.init(frame: .zero)
-        self.backgroundColor = palette.palette().background
+        
         setupConstraints()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setColors(palette: ColorSet) {
+        let colorSet = palette.palette()
+        self.backgroundColor = colorSet.background
+        collectionView.backgroundColor = colorSet.background
+        
     }
     
     func setupConstraints() {

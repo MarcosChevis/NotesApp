@@ -143,7 +143,6 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     private var palette: ColorSet? {
         didSet {
                 setColors(palette)
-            
         }
     }
     private var viewModel: SmallNoteCellViewModel?
@@ -170,22 +169,22 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     
     private func setColors(_ palette: ColorSet?) {
         
-        guard let palette = palette else { return }
+        guard let colorSet = palette?.palette() else { return }
 
-        titleView.textColor = palette.palette().text
+        titleView.textColor = colorSet.text
         
-        contentTextView.textColor = palette.palette().text
+        contentTextView.textColor = colorSet.text
         
-        editButton.tintColor = palette.palette().actionColor
-        editButton.backgroundColor = palette.palette().buttonBackground
+        editButton.tintColor = colorSet.actionColor
+        editButton.backgroundColor = colorSet.buttonBackground
         
-        deleteButton.tintColor = palette.palette().actionColor
-        deleteButton.backgroundColor = palette.palette().buttonBackground
+        deleteButton.tintColor = colorSet.actionColor
+        deleteButton.backgroundColor = colorSet.buttonBackground
         
-        shareButton.tintColor = palette.palette().actionColor
-        shareButton.backgroundColor = palette.palette().buttonBackground
+        shareButton.tintColor = colorSet.actionColor
+        shareButton.backgroundColor = colorSet.buttonBackground
         
-        contentView.backgroundColor = palette.palette().noteBackground
+        contentView.backgroundColor = colorSet.noteBackground
     }
     
 }

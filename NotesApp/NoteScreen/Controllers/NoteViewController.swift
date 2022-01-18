@@ -15,7 +15,7 @@ class NoteViewController: UIViewController {
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, NoteCellViewModel> = {
         let cellRegistration: UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> = UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> { cell, indexPath, note in
-            cell.setup(colorPalette: ColorSet.classic, viewModel: note)
+            cell.setup(palette: self.palette, viewModel: note)
         }
         
         let dataSource = UICollectionViewDiffableDataSource<Section, NoteCellViewModel>(collectionView: contentView.collectionView)

@@ -72,7 +72,8 @@ class ThemesView: UIView {
     }
     
     func setColors(palette: ColorSet) {
-        backgroundColor = palette.palette().background
+        let colorSet = palette.palette()
+        backgroundColor = colorSet.background
     }
     
     func setupConstraints() {
