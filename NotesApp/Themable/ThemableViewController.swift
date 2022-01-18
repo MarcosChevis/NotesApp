@@ -52,8 +52,8 @@ class ThemableViewController: UIViewController {
     
     func setColors(palette: ColorSet) {
         let colorSet = palette.palette()
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.text]
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.text]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.largeTitle]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.largeTitle]
         navigationController?.navigationBar.tintColor = colorSet.actionColor
     }
     
