@@ -111,7 +111,6 @@
 		BAB1E02F269DBBFA001FC3CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAB1E031269DBBFA001FC3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAC82D5826A9DD2300E52701 /* NoteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtension.swift; sourceTree = "<group>"; };
-		C87AA532278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionDataSource.swift; sourceTree = "<group>"; };
 		C87AA535279082FA00E2AEF1 /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
 		C87AA5392791A57D00E2AEF1 /* ThemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesView.swift; sourceTree = "<group>"; };
 		E935C95627906F9100835897 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -248,7 +247,6 @@
 		5BB7FDFA2795C15900A6F335 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				C87AA532278F2A8D00E2AEF1 /* NoteCollectionDataSource.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
