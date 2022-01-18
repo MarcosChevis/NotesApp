@@ -11,6 +11,8 @@ class AllNotesViewController: UIViewController {
     
     var palette: ColorSet
     var contentView: AllNotesView
+    private let tagsRepository: TagRepositoryProtocol
+    private let noteRepository: NotesRepositoryProtocol
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
         let noteCellRegistration:
@@ -64,11 +66,12 @@ class AllNotesViewController: UIViewController {
         return dataSource
     }()
     
-//    private let repository: AllNotesRepositoryProtocol
-    
     init(palette: ColorSet) {
         self.contentView = AllNotesView(palette: palette)
         self.palette = palette
+        
+        self.noteRepository = NotesRepository()
+        self.tagsRepository = TagRepository()
         
         super.init(nibName: nil, bundle: nil)
         setupBindings()
@@ -82,6 +85,7 @@ class AllNotesViewController: UIViewController {
 //        self.repository.delegate = self
         self.contentView.delegate = self
         self.contentView.collectionView.dataSource = dataSource
+        self.tagsRepository.delegate = self
     }
     
     override func viewDidLoad() {
@@ -99,11 +103,16 @@ class AllNotesViewController: UIViewController {
         
         var snapshot = dataSource.snapshot()
         snapshot.appendSections(Section.allCases)
-        let tags: [TagCellViewModel] = [.init(tag: TagDummy(name: "#tottinene", tagID: UUID().uuidString)), .init(tag: TagDummy(name: "#joshnene", tagID: UUID().uuidString)), .init(tag: TagDummy(name: "#jessienene", tagID: UUID().uuidString))]
-        let tagItem = tags.map {
-            Item.tag(tagViewModel: $0)
+        do {
+            let viewModels = try tagsRepository.getAllTags()
+            let tagItems = viewModels.map({
+                Item.tag(tagViewModel: $0)
+            })
+            snapshot.appendItems(tagItems, toSection: .tags)
+            
+        } catch  {
+            
         }
-        snapshot.appendItems(tagItem, toSection: .tags)
         
         let notes: [NoteCellViewModel] = [.init(note: NoteDummy(noteID: UUID().uuidString, content: "nota1")), .init(note: NoteDummy(noteID: UUID().uuidString, content: "nota2")), .init(note: NoteDummy(noteID: UUID().uuidString, content: "nota3"))]
         let noteItems = notes.map {
@@ -168,26 +177,6 @@ private extension AllNotesViewController {
     }
 }
 
-class TagDummy: TagProtocol {
-    var name: String?
-    var tagID: String
-    
-    init(name: String? = nil, tagID: String) {
-        self.name = name
-        self.tagID = tagID
-    }
-}
-
-class NoteDummy: NoteProtocol {
-    var noteID: String
-    var content: String?
-    
-    init(noteID: String, content: String? = nil) {
-        self.noteID = noteID
-        self.content = content
-    }
-}
-
 extension AllNotesViewController: AllNotesViewDelegate {
     func didTapSettings() {
         
@@ -200,6 +189,30 @@ extension AllNotesViewController: AllNotesViewDelegate {
             Item.note(noteViewModel: $0)
         }
         snapshot.appendItems(noteItems, toSection: .text)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+extension AllNotesViewController: TagRepositoryDelegate {
+    func insertTag(_ tag: TagCellViewModel) {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendItems([.tag(tagViewModel: tag)], toSection: .tags)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    func deleteTag(_ tag: TagCellViewModel) {
+        var snapshot = dataSource.snapshot()
+        guard let item = snapshot.itemIdentifiers(inSection: .tags).filter({
+            switch $0 {
+            case .tag(tagViewModel: let viewModel):
+                return viewModel.tag.tagID == tag.tag.tagID
+                
+            case .note(noteViewModel: _):
+                return false
+            }
+        }).first else { return }
+        
+        snapshot.deleteItems([item])
         dataSource.apply(snapshot, animatingDifferences: true)
     }
 }

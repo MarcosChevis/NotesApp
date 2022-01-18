@@ -11,6 +11,11 @@ import Combine
 import UIKit
 
 class NotesRepository: NSObject, NotesRepositoryProtocol {
+    func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
+        []
+    }
+    
+    
     private let coreDataStack: CoreDataStack
     private var cancelables: Set<AnyCancellable>
     private let notificationService: NotificationService
@@ -47,7 +52,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     
     func deleteNote(_ note: NoteProtocol) throws {
         guard let note = note as? Note else {
-            throw NoteRepositoryError.incorrectObjectType
+            throw RepositoryError.incorrectObjectType
         }
         
         coreDataStack.mainContext.delete(note)
@@ -65,7 +70,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         try fetchResultsController.performFetch()
         
         guard let notes = fetchResultsController.fetchedObjects else {
-            throw NoteRepositoryError.errorFetchingObjects
+            throw RepositoryError.errorFetchingObjects
         }
         
         let viewModels = notes.map(NoteCellViewModel.init)
@@ -114,7 +119,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
 
 }
 
-enum NoteRepositoryError: Error {
+enum RepositoryError: Error {
     case noObjectForID, incorrectObjectType, errorFetchingObjects
 }
 

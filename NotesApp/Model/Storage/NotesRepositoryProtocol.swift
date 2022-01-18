@@ -13,6 +13,7 @@ protocol NotesRepositoryProtocol: AnyObject {
     func deleteNote(_ note: NoteProtocol) throws
     func createEmptyNote() throws -> NoteProtocol
     func getInitialData() throws -> [NoteCellViewModel]
+    func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel]
 }
 
 protocol NoteRepositoryProtocolDelegate: AnyObject {
@@ -20,3 +21,4 @@ protocol NoteRepositoryProtocolDelegate: AnyObject {
     func deleteNote(_ note: NoteCellViewModel)
     
 }
+
