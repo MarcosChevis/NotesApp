@@ -101,7 +101,7 @@ class AllNotesView: UIView {
         return section
     }()
     
-    weak var delegate: NoteSmallCellCollectionViewCellDelegate?
+    weak var delegate: AllNotesViewDelegate?
     
     var palette: ColorSet
     
@@ -130,6 +130,6 @@ class AllNotesView: UIView {
     }
     
     @objc func didTapAddNote() {
-        print("mais")
+        delegate?.didTapAddNote()
     }
 }
