@@ -23,13 +23,13 @@ class AllNotesDataSource: NSObject, UICollectionViewDataSource, NSFetchedResults
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TagCollectionViewCell.identifier, for: indexPath) as? TagCollectionViewCell else {
                 fatalError()
             }
-            cell.setup(with: .init(colorSet: .classic, tag: "#teste"))
+            cell.setup(with: .init(palette: .classic, tag: "#teste"))
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NoteSmallCellCollectionViewCell.identifier, for: indexPath) as? NoteSmallCellCollectionViewCell else {
                 fatalError()
             }
-            cell.setup(with: .init(colorSet: .classic, title: "Oi", content: "ashcasodha"))
+            cell.setup(with: .init(palette: .classic, title: "Oi", content: "ashcasodha"))
             return cell
         }
     }

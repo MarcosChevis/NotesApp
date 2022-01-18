@@ -8,7 +8,7 @@
 import Foundation
 
 struct SmallNoteCellViewModel {
-    var colorSet: ColorSet
+    var palette: ColorSet
     var title: String
     var content: String
 }

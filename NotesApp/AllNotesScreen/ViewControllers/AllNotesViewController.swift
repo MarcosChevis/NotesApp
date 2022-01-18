@@ -61,6 +61,15 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
         print("delete")
     }
     
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? NoteSmallCellCollectionViewCell else {
+            fatalError()
+        }
+        
+        cell.setup(with: .init(palette: .classic, title: "Um Grande titulo", content: "I have a dream that one day every valley shall be engulfed, every hill shall be exalted and every mountain shall…"))
+        return cell
+    }
+    
     func didTapShare(for noteViewModel: SmallNoteCellViewModel) {
         print("share")
     }

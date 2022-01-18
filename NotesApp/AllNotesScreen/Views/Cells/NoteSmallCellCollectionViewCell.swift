@@ -140,12 +140,18 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     weak var delegate: NoteSmallCellCollectionViewCellDelegate?
     
     private var shouldHidContent: Bool
-    private var palette: CustomColorSet?
+    private var palette: ColorSet? {
+        didSet {
+                setColors(palette)
+            
+        }
+    }
     private var viewModel: SmallNoteCellViewModel?
     
     override init(frame: CGRect) {
         self.shouldHidContent = true
         super.init(frame: frame)
+        setColors(palette)
         contentView.layer.cornerRadius = 16
     }
     
@@ -155,40 +161,31 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     
     
     func setup(with viewModel: SmallNoteCellViewModel) {
-        setupColorSet(viewModel.colorSet.palette())
+        setColors(viewModel.palette)
         titleView.text = viewModel.title
         contentTextView.text = viewModel.content
         buttonsStackView.axis = .horizontal
     }
     
-    private func setupColorSet(_ palette: CustomColorSet) {
-        if self.palette == nil {
-            self.palette = palette
-            setupColors(palette)
-            return
-        }
-        
-        guard let actualPalette = self.palette, actualPalette != palette else {
-            return
-        }
-        
-        self.palette = palette
-        setupColors(palette)
-    }
     
-    private func setupColors(_ palette: CustomColorSet) {
-        titleView.textColor = palette.text
+    private func setColors(_ palette: ColorSet?) {
         
-        editButton.tintColor = palette.actionColor
-        editButton.backgroundColor = palette.buttonBackground
+        guard let palette = palette else { return }
+
+        titleView.textColor = palette.palette().text
         
-        deleteButton.tintColor = palette.actionColor
-        deleteButton.backgroundColor = palette.buttonBackground
+        contentTextView.textColor = palette.palette().text
         
-        shareButton.tintColor = palette.actionColor
-        shareButton.backgroundColor = palette.buttonBackground
+        editButton.tintColor = palette.palette().actionColor
+        editButton.backgroundColor = palette.palette().buttonBackground
         
-        contentView.backgroundColor = .white
+        deleteButton.tintColor = palette.palette().actionColor
+        deleteButton.backgroundColor = palette.palette().buttonBackground
+        
+        shareButton.tintColor = palette.palette().actionColor
+        shareButton.backgroundColor = palette.palette().buttonBackground
+        
+        contentView.backgroundColor = palette.palette().noteBackground
     }
     
 }

@@ -152,9 +152,9 @@ extension NotesRepository: NSFetchedResultsControllerDelegate {
     }
     
     private func updateUIWithUpdateNote(_ note: Note?, at indexPath: IndexPath?) {
-        guard let note = note, let indexPath = indexPath else {
-            return
-        }
+//        guard let note = note, let indexPath = indexPath else {
+//            return
+//        }
         
     }
 }

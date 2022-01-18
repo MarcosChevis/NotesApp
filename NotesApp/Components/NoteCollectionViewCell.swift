@@ -34,6 +34,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
         return textView
     }()
     
+    var palette: ColorSet? {
+        didSet {
+            setColors(palette: palette)
+        }
+    }
     private var viewModel: NoteCellViewModel?
     
     override init(frame: CGRect) {
@@ -105,5 +110,13 @@ extension NoteCollectionViewCell: UITextViewDelegate {
         
         viewModel.note.content = textView.text
         NotificationCenter.default.post(name: .saveChanges, object: nil)
+    }
+    
+    func setColors(palette: ColorSet?) {
+        guard let palette = palette else { return }
+
+        self.title.textColor = palette.palette().text
+        self.textView.textColor = palette.palette().text
+        contentView.backgroundColor = palette.palette().noteBackground
     }
 }

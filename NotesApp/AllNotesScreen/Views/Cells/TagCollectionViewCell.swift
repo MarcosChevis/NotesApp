@@ -27,10 +27,13 @@ class TagCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private let palette: CustomColorSet?
+    private var palette: ColorSet? {
+        didSet {
+            setColors(palette: palette)
+        }
+    }
     
     override init(frame: CGRect) {
-        palette = nil
         super.init(frame: frame)
         contentView.layer.cornerRadius = 8
     }
@@ -40,25 +43,16 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     
     func setup(with viewModel: TagCollectionCellViewModel) {
-        let newPalette = viewModel.colorSet.palette()
-        if shouldUpdateColors(newPalette) {
-            updateColors(with: newPalette)
-        }
+        self.palette = viewModel.palette
+        setColors(palette: palette)
+        
         tagLabel.text = viewModel.tag
     }
     
-    func shouldUpdateColors(_ palette: CustomColorSet) -> Bool {
-        guard
-            let currentPalette = self.palette,
-            currentPalette == palette
-        else {
-            return true
-        }
-        return false
-    }
-    
-    func updateColors(with palette: CustomColorSet) {
-        contentView.backgroundColor = palette.noteBackground
-        tagLabel.textColor = palette.actionColor
+    func setColors(palette: ColorSet?) {
+        guard let palette = palette else { return }
+
+        contentView.backgroundColor = palette.palette().noteBackground
+        tagLabel.textColor = palette.palette().actionColor
     }
 }
