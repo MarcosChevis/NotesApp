@@ -25,4 +25,10 @@ extension UIAlertController {
         alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         return alert
     }
+    
+    static func errorAlert(with content: AlertContent) -> UIAlertController {
+        let alert = UIAlertController(title: content.title, message: content.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay!", style: .cancel, handler: nil))
+        return alert
+    }
 }

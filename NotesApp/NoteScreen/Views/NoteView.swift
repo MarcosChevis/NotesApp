@@ -12,16 +12,23 @@ class NoteView: UIView {
     private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85), heightDimension: .fractionalHeight(0.90))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85), heightDimension: .fractionalHeight(1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 5, trailing: 12)
+//        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 5, trailing: 12)
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
+        section.interGroupSpacing = 12
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 0)
         
         // funcao pra dar dismiss no teclado quando scrolla pro lado na collection
         section.visibleItemsInvalidationHandler = ({ [weak self] (visibleItems, point, env) in
-            self?.endEditing(false)
+            guard let self = self else { return }
+            
+            self.endEditing(false)
+            if let indexPath = self.findCurrentCellIndexPath(for: point) {
+                self.delegate?.collectionViewDidMove(to: indexPath)
+            }
         })
         
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -50,7 +57,7 @@ class NoteView: UIView {
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collection)
-        collection.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collection.register(NoteCollectionViewCell.self, forCellWithReuseIdentifier: NoteCollectionViewCell.identifier)
         collection.backgroundColor = .secondarySystemBackground
         collection.isScrollEnabled = false
         backgroundColor = .secondarySystemBackground
@@ -102,6 +109,19 @@ class NoteView: UIView {
     
     @objc func didTapAddNote() {
         delegate?.didAdd()
+    }
+    
+    private func findCurrentCellIndexPath(for point: CGPoint) -> IndexPath? {
+        if let layout = collectionView.layoutAttributesForItem(at: IndexPath(item: 0, section: 0)) {
+            let cellWidth = layout.bounds.width
+            let cellCenter = cellWidth/2
+            let doubleResult = (point.x + cellCenter) / (cellWidth)
+            let result = Int(doubleResult)
+            let indexPath = IndexPath(item: result, section: 0)
+            return indexPath
+        } else {
+            return nil
+        }
     }
     
 }

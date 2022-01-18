@@ -5,10 +5,12 @@
 //  Created by Rebecca Mello on 12/01/22.
 //
 
-import Foundation
 import UIKit
 
 class NoteCollectionViewCell: UICollectionViewCell {
+    
+    static var identifier: String = "Notes.NoteCollectionViewCell"
+    
     var title: UITextField = {
         var title = UITextField()
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -24,41 +26,84 @@ class NoteCollectionViewCell: UICollectionViewCell {
         return title
     }()
     
-    var textView: UITextView = {
+    lazy var textView: UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = .preferredFont(forTextStyle: .body)
+        textView.delegate = self
         return textView
     }()
     
+    private var viewModel: NoteCellViewModel?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(title)
-        contentView.addSubview(textView)
-        
-        contentView.layer.masksToBounds = true
-        contentView.layer.cornerRadius = 16
-        
-        title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16).isActive = true
-        title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        
-        textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4).isActive = true
-        textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-        textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
+        setupHierarchy()
+        setupConstraints()
+        setupStyle()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(colorPalette: CustomColorSet, title: String, content: String) {
-        self.title.textColor = .black
-        self.textView.textColor = .black
-        contentView.backgroundColor = .white
+    private func setupHierarchy() {
         
-        self.title.text = title
-        self.textView.text = content
+        contentView.addSubview(title)
+        contentView.addSubview(textView)
+    }
+    
+    private func setupConstraints() {
+        let titleConstraints: [NSLayoutConstraint] = [
+            title.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            title.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            title.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        ]
+        
+        let textViewConstraints: [NSLayoutConstraint] = [
+            textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
+            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        ]
+        
+        NSLayoutConstraint.activate(titleConstraints)
+        NSLayoutConstraint.activate(textViewConstraints)
+    }
+    
+    private func setupStyle() {
+        contentView.layer.masksToBounds = true
+        contentView.layer.cornerRadius = 16
+    }
+    
+    func setup(colorPalette: ColorSet, viewModel: NoteCellViewModel) {
+        self.viewModel = viewModel
+        
+        let palette = colorPalette.palette()
+        
+        self.title.textColor = palette.text
+        self.textView.textColor = palette.text
+        contentView.backgroundColor = palette.noteBackground
+        
+        let provisoryTitle = viewModel.note.noteID.suffix(5)
+        
+        self.title.text = String(provisoryTitle)
+        self.textView.text = viewModel.note.content
+    }
+    
+    override func prepareForReuse() {
+        viewModel = nil
+    }
+}
+
+extension NoteCollectionViewCell: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        guard let viewModel = viewModel else {
+            return
+        }
+        
+        viewModel.note.content = textView.text
+        NotificationCenter.default.post(name: .saveChanges, object: nil)
     }
 }
