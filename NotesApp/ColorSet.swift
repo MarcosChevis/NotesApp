@@ -21,13 +21,13 @@ enum ColorSet: String, CaseIterable {
                                   background: UIColor(Color("NeonBackground")),
                                   buttonBackground: UIColor(Color("NeonButtonBackground")),
                                   noteBackground: UIColor(Color("NeonNoteBackground")),
-                                  text: UIColor(Color("NeonText")), largeTitle: UIColor(Color("BiLargeTitle")))
+                                  text: UIColor(Color("NeonText")), largeTitle: UIColor(Color("NeonText")))
         case .classic:
             return CustomColorSet(actionColor: UIColor(Color("ClassicAction")),
                                   background: UIColor(Color("ClassicBackground")),
                                   buttonBackground: UIColor(Color("ClassicButtonBackground")),
                                   noteBackground: UIColor(Color("ClassicNoteBackground")),
-                                  text: UIColor(Color("ClassicText")), largeTitle: UIColor(Color("BiLargeTitle")))
+                                  text: UIColor(Color("ClassicText")), largeTitle: UIColor(Color("ClassicText")))
             
         case .christmas:
             return CustomColorSet(actionColor: UIColor(Color("ChristmasAction")),
