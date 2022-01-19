@@ -23,14 +23,6 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     
     weak var delegate: NoteRepositoryProtocolDelegate?
     
-    var numberOfElements: Int {
-        guard let elements = fetchResultsController.fetchedObjects else {
-            return 0
-        }
-        
-        return elements.count
-    }
-    
     init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default) {
         self.coreDataStack = coreDataStack
         

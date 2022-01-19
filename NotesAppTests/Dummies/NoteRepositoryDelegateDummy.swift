@@ -16,6 +16,6 @@ class NoteRepositoryDelegateDummy: NoteRepositoryProtocolDelegate {
     }
     
     func deleteNote(_ note: NoteCellViewModel) {
-        data = data.filter { $0.note.noteID == note.note.noteID }
+        data = data.filter { $0.note.noteID != note.note.noteID }
     }
 }

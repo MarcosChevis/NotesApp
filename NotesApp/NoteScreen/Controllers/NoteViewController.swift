@@ -27,14 +27,12 @@ class NoteViewController: UIViewController {
     }()
     
     private let repository: NotesRepositoryProtocol
-    private let notificationService: NotificationService
     
     
-    init(palette: ColorSet, repository: NotesRepositoryProtocol, notificationService: NotificationService = NotificationCenter.default) {
+    init(palette: ColorSet, repository: NotesRepositoryProtocol) {
         self.contentView = NoteView(palette: palette)
         self.palette = palette
         self.repository = repository
-        self.notificationService = notificationService
         self.currentHighlightedNote = nil
         super.init(nibName: nil, bundle: nil)
         setupBindings()
@@ -49,11 +47,6 @@ class NoteViewController: UIViewController {
         self.contentView.delegate = self
         contentView.collectionView.dataSource = dataSource
         contentView.collectionView.delegate = self
-        notificationService.addObserver(self, selector: #selector(createNewNoteOnAppear), name: UIApplication.didBecomeActiveNotification, object: nil)
-    }
-    
-    @objc private func createNewNoteOnAppear() {
-        scrollToEmptyNote(true)
     }
     
     override func loadView() {
@@ -81,7 +74,7 @@ class NoteViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        scrollToEmptyNote()
+        scrollToEmptyNote(animated)
     }
     
     private func setupToolbar() {
