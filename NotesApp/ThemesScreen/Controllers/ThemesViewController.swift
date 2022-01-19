@@ -11,7 +11,6 @@ class ThemesViewController: ThemableViewController {
     
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSouce
-    //var settings: Settings = Settings()
     
     
     init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSouce, notificationService: NotificationService = NotificationCenter.default,
