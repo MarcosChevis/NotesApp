@@ -9,8 +9,8 @@ import UIKit
 import SwiftUI
 
 enum ColorSet: String, CaseIterable {
-    case neon
     case classic
+    case neon
     case christmas
     case bi
     case paulinha
