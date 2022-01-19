@@ -36,6 +36,14 @@ class NotesRepositoryTest: XCTestCase {
         cancelables = nil
     }
     
+    func testNoteCreation() throws {
+        try creatNote(withMessage: "Uma nova nota")
+        try sut.saveChanges()
+
+        XCTAssertEqual(repositoryDelegate.data.count, 1)
+        XCTAssertEqual(repositoryDelegate.data.first!.note.content, "Uma nova nota")
+    }
+    
     func testNoteEdit() throws {
         try creatNote(withMessage: "antes de editar")
 
