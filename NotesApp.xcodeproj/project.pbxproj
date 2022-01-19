@@ -41,8 +41,8 @@
 		9DE31E75279714DE005B21BC /* AllNotesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E74279714DE005B21BC /* AllNotesViewDelegate.swift */; };
 		9DE31E7927972F6F005B21BC /* TagRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7827972F6F005B21BC /* TagRepositoryProtocol.swift */; };
 		9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7A27972FA6005B21BC /* TagRepository.swift */; };
-		9DE31E7E279736B6005B21BC /* TagDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7D279736B6005B21BC /* TagDummy.swift */; };
-		9DE31E80279736C9005B21BC /* NoteDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7F279736C9005B21BC /* NoteDummy.swift */; };
+		9DE31E81279849BF005B21BC /* TagDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7D279736B6005B21BC /* TagDummy.swift */; };
+		9DE31E83279849F0005B21BC /* TagRepositoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */; };
 		BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */; };
 		BA2D1BED2795AEA100849955 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */; };
 		BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */; };
@@ -107,7 +107,7 @@
 		9DE31E7827972F6F005B21BC /* TagRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepositoryProtocol.swift; sourceTree = "<group>"; };
 		9DE31E7A27972FA6005B21BC /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
 		9DE31E7D279736B6005B21BC /* TagDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDummy.swift; sourceTree = "<group>"; };
-		9DE31E7F279736C9005B21BC /* NoteDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDummy.swift; sourceTree = "<group>"; };
+		9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepositoryDummy.swift; sourceTree = "<group>"; };
 		BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionData.swift; sourceTree = "<group>"; };
 		BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
@@ -193,6 +193,8 @@
 		5B45762E279078FB00EF1036 /* Dummies */ = {
 			isa = PBXGroup;
 			children = (
+				9DE31E7D279736B6005B21BC /* TagDummy.swift */,
+				9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */,
 				5B45762F2790791400EF1036 /* FetchResultsControllerDelegateDummy.swift */,
 				5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */,
 				5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */,
@@ -205,7 +207,6 @@
 		5B73C9EF278F2AAC005F2D89 /* AllNotesScreen */ = {
 			isa = PBXGroup;
 			children = (
-				9DE31E7C279736A6005B21BC /* Dummies */,
 				5B73C9FC278F8100005F2D89 /* ViewControllers */,
 				5B73C9F5278F753F005F2D89 /* Models */,
 				5B73C9F4278F7538005F2D89 /* Delegates */,
@@ -285,15 +286,6 @@
 				9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		9DE31E7C279736A6005B21BC /* Dummies */ = {
-			isa = PBXGroup;
-			children = (
-				9DE31E7D279736B6005B21BC /* TagDummy.swift */,
-				9DE31E7F279736C9005B21BC /* NoteDummy.swift */,
-			);
-			path = Dummies;
 			sourceTree = "<group>";
 		};
 		BA2D1BE92795A58A00849955 /* Model */ = {
@@ -560,7 +552,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB7FE002795C61B00A6F335 /* NoteRepositoryDummy.swift in Sources */,
+				9DE31E83279849F0005B21BC /* TagRepositoryDummy.swift in Sources */,
 				5B00566127959741002BBFD0 /* NoteViewControllerTest.swift in Sources */,
+				9DE31E81279849BF005B21BC /* TagDummy.swift in Sources */,
 				5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */,
 				5BB7FE042795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
@@ -585,7 +579,6 @@
 				C87AA536279082FA00E2AEF1 /* ThemesViewController.swift in Sources */,
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
 				BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */,
-				9DE31E7E279736B6005B21BC /* TagDummy.swift in Sources */,
 				E9E5DE672791BFF80047C805 /* ThemeCollectionViewCell.swift in Sources */,
 				5B4576342791A0B000EF1036 /* NoteProtocol.swift in Sources */,
 				5B73C9F3278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift in Sources */,
@@ -606,7 +599,6 @@
 				9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */,
 				9DE31E7927972F6F005B21BC /* TagRepositoryProtocol.swift in Sources */,
 				BA2D1BED2795AEA100849955 /* UserDefaultManager.swift in Sources */,
-				9DE31E80279736C9005B21BC /* NoteDummy.swift in Sources */,
 				BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,

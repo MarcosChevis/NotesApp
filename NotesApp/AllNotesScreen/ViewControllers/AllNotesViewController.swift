@@ -15,63 +15,25 @@ class AllNotesViewController: UIViewController {
     private let noteRepository: NotesRepositoryProtocol
     
     private lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
-        let noteCellRegistration:
-        UICollectionView.CellRegistration<NoteSmallCellCollectionViewCell, NoteCellViewModel> =
-        UICollectionView.CellRegistration<NoteSmallCellCollectionViewCell, NoteCellViewModel> { cell, indexPath, note in
-            cell.setup(with: note, colorSet: .classic)
-        }
+        let noteCellRegistration: NoteCellRegistration = makeNoteCellRegistration()
+        let tagCellRegistration: TagCellRegistration = makeTagCellRegistration()
         
-        let tagCellRegistration:
-        UICollectionView.CellRegistration<TagCollectionViewCell, TagCellViewModel> =
-        UICollectionView.CellRegistration<TagCollectionViewCell, TagCellViewModel> { cell, indexPath, tag in
-            cell.setup(with: tag, colorSet: .classic)
-        }
+        let dataSource = makeDataSource(tagCellRegistration: tagCellRegistration, noteCellRegistration: noteCellRegistration)
         
-        let dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: contentView.collectionView)
-        { collectionView, indexPath, item in
-            switch item {
-            case .tag(let tagViewModel):
-                return collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tagViewModel)
-            
-            case .note(let noteViewModel):
-                return collectionView.dequeueConfiguredReusableCell(using: noteCellRegistration, for: indexPath, item: noteViewModel)
-            }
-        }
-        
-        dataSource.supplementaryViewProvider = { (collectionView: UICollectionView,
-                                                  kind: String,
-                                                  indexPath: IndexPath) -> UICollectionReusableView? in
-            switch kind {
-            case UICollectionView.elementKindSectionHeader:
-                if indexPath.section == 0 {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier, for: indexPath) as? TagHeader else {
-                        fatalError()
-                    }
-                    header.setup(with: "Tags")
-                    return header
-                } else {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier, for: indexPath) as? NoteHeader else {
-                        fatalError()
-                    }
-                    header.setup(with: "All Notes")
-                    return header
-                }
-            default:
-                return nil
-            }
-            
-            
-        }
+        dataSource.supplementaryViewProvider = makeSupplementaryViewProvider()
         
         return dataSource
     }()
     
-    init(palette: ColorSet) {
+    init(palette: ColorSet,
+         noteRepository: NotesRepositoryProtocol = NotesRepository(),
+         tagRepository: TagRepositoryProtocol = TagRepository()) {
+        
         self.contentView = AllNotesView(palette: palette)
         self.palette = palette
         
-        self.noteRepository = NotesRepository()
-        self.tagsRepository = TagRepository()
+        self.noteRepository = noteRepository
+        self.tagsRepository = tagRepository
         
         super.init(nibName: nil, bundle: nil)
         setupBindings()
@@ -82,16 +44,67 @@ class AllNotesViewController: UIViewController {
     }
     
     private func setupBindings() {
-//        self.repository.delegate = self
         self.contentView.delegate = self
         self.contentView.collectionView.dataSource = dataSource
         self.tagsRepository.delegate = self
+        self.noteRepository.delegate = self
+    }
+    
+    override func loadView() {
+        super.loadView()
+        view = contentView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
+        setupSearchController()
+        setupInitialData()
+    }
+    
+    private func setupInitialData() {
+        do {
+            var snapshot = dataSource.snapshot()
+            snapshot.appendSections(Section.allCases)
+            
+            let tagItems = try fetchTagData()
+            snapshot.appendItems(tagItems, toSection: .tags)
+            
+            let noteItems = try fetchNoteData()
+            snapshot.appendItems(noteItems, toSection: .text)
+            
+            dataSource.apply(snapshot, animatingDifferences: false)
+        } catch {
+            #warning("Implementar mensagem de erro")
+        }
+    }
+    
+    private func fetchTagData() throws -> [Item] {
+        let viewModels = try tagsRepository.getAllTags()
+        let tagItems = viewModels.map({
+            Item.tag(tagViewModel: $0)
+        })
         
+        return tagItems
+    }
+    
+    private func fetchNoteData() throws -> [Item] {
+        let notes: [NoteCellViewModel] = try noteRepository.getInitialData()
+        let noteItems = notes.map {
+            Item.note(noteViewModel: $0)
+        }
+        
+        return noteItems
+    }
+    
+    private func setupNavigationBar() {
+        title = "All Notes"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
+        navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
+    }
+    
+    private func setupSearchController() {
         // informa qualquer mudança de texto na search
         contentView.searchController.searchResultsUpdater = self
         contentView.searchController.obscuresBackgroundDuringPresentation = false
@@ -100,69 +113,27 @@ class AllNotesViewController: UIViewController {
         
         // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada
         definesPresentationContext = true
-        
-        var snapshot = dataSource.snapshot()
-        snapshot.appendSections(Section.allCases)
-        do {
-            let viewModels = try tagsRepository.getAllTags()
-            let tagItems = viewModels.map({
-                Item.tag(tagViewModel: $0)
-            })
-            snapshot.appendItems(tagItems, toSection: .tags)
-            
-        } catch  {
-            
-        }
-        
-        let notes: [NoteCellViewModel] = [.init(note: NoteDummy(noteID: UUID().uuidString, content: "nota1")), .init(note: NoteDummy(noteID: UUID().uuidString, content: "nota2")), .init(note: NoteDummy(noteID: UUID().uuidString, content: "nota3"))]
-        let noteItems = notes.map {
-            Item.note(noteViewModel: $0)
-        }
-        snapshot.appendItems(noteItems, toSection: .text)
-        dataSource.apply(snapshot, animatingDifferences: false)
-    }
-    
-    override func loadView() {
-        super.loadView()
-        view = contentView
-    }
-    
-    func setupNavigationBar() {
-        title = "All Notes"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
-        navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
     }
 }
 
 extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
-    func didTapDelete(for noteViewModel: SmallNoteCellViewModel) {
-        print("delete")
+    func didTapDelete(for noteViewModel: NoteCellViewModel) {
+        deleteNote(noteViewModel)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? NoteSmallCellCollectionViewCell else {
-            fatalError()
-        }
-        
-//        cell.setup(with: .init(note: <#T##NoteProtocol#>), colorSet: .classic)
-        
-        return cell
-    }
-    
-    func didTapShare(for noteViewModel: SmallNoteCellViewModel) {
+    func didTapShare(for noteViewModel: NoteCellViewModel) {
         print("share")
     }
     
-    func didTapEdit(for noteViewModel: SmallNoteCellViewModel) {
+    func didTapEdit(for noteViewModel: NoteCellViewModel) {
         print("edit")
     }
 }
 
 extension AllNotesViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-    // TODO
-  }
+    func updateSearchResults(for searchController: UISearchController) {
+        #warning("Fazer a acao do update")
+    }
 }
 
 private extension AllNotesViewController {
@@ -183,36 +154,129 @@ extension AllNotesViewController: AllNotesViewDelegate {
     }
     
     func didTapAddNote() {
-        var snapshot = dataSource.snapshot()
-        let notes: [NoteCellViewModel] = [.init(note: NoteDummy(noteID: UUID().uuidString, content: "nota1"))]
-        let noteItems = notes.map {
-            Item.note(noteViewModel: $0)
+        do {
+            _ = try noteRepository.createEmptyNote()
+            
+        } catch {
+            print("erro")
+            #warning("fazer o erro")
         }
-        snapshot.appendItems(noteItems, toSection: .text)
-        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }
 
 extension AllNotesViewController: TagRepositoryDelegate {
     func insertTag(_ tag: TagCellViewModel) {
-        var snapshot = dataSource.snapshot()
-        snapshot.appendItems([.tag(tagViewModel: tag)], toSection: .tags)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        insertItem(.tag(tagViewModel: tag), at: .tags)
     }
     
     func deleteTag(_ tag: TagCellViewModel) {
-        var snapshot = dataSource.snapshot()
-        guard let item = snapshot.itemIdentifiers(inSection: .tags).filter({
-            switch $0 {
-            case .tag(tagViewModel: let viewModel):
-                return viewModel.tag.tagID == tag.tag.tagID
-                
-            case .note(noteViewModel: _):
-                return false
+        deleteItem(.tag(tagViewModel: tag), at: .tags)
+    }
+}
+
+private extension AllNotesViewController {
+    private typealias TagCellRegistration = UICollectionView.CellRegistration<TagCollectionViewCell, TagCellViewModel>
+    private typealias NoteCellRegistration = UICollectionView.CellRegistration<NoteSmallCellCollectionViewCell, NoteCellViewModel>
+    private typealias AllNotesDataSource = UICollectionViewDiffableDataSource<Section, Item>
+    
+    private func makeSupplementaryViewProvider() -> UICollectionViewDiffableDataSource<Section, Item>.SupplementaryViewProvider? {
+        
+        return { (collectionView: UICollectionView,
+                  kind: String,
+                  indexPath: IndexPath) -> UICollectionReusableView? in
+            switch kind {
+            case UICollectionView.elementKindSectionHeader:
+                if indexPath.section == 0 {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier, for: indexPath) as? TagHeader else {
+                        fatalError()
+                    }
+                    header.setup(with: "Tags")
+                    return header
+                } else {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier, for: indexPath) as? NoteHeader else {
+                        fatalError()
+                    }
+                    header.setup(with: "All Notes")
+                    return header
+                }
+            default:
+                return nil
             }
-        }).first else { return }
+        }
+    }
+    
+    private func makeTagCellRegistration() -> TagCellRegistration {
+        return TagCellRegistration { cell, indexPath, tag in
+            cell.setup(with: tag, colorSet: .classic)
+        }
+    }
+    
+    private func makeNoteCellRegistration() -> NoteCellRegistration {
+        return NoteCellRegistration { [weak self] cell, indexPath, note in
+            cell.delegate = self
+            cell.setup(with: note, colorSet: .classic)
+        }
+    }
+    
+    private func makeDataSource(tagCellRegistration: TagCellRegistration, noteCellRegistration: NoteCellRegistration) -> AllNotesDataSource {
+        
+        return AllNotesDataSource(collectionView: contentView.collectionView)
+        { collectionView, indexPath, item in
+            switch item {
+            case .tag(let tagViewModel):
+                return collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tagViewModel)
+                
+            case .note(let noteViewModel):
+                return collectionView.dequeueConfiguredReusableCell(using: noteCellRegistration, for: indexPath, item: noteViewModel)
+            }
+        }
+    }
+}
+
+extension AllNotesViewController: NoteRepositoryProtocolDelegate {
+    func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
+        insertItem(.note(noteViewModel: note), at: .text)
+    }
+    
+    func deleteNote(_ note: NoteCellViewModel) {
+        deleteItem(.note(noteViewModel: note), at: .text)
+    }
+}
+
+private extension AllNotesViewController {
+    private func insertItem(_ item: Item, at section: Section) {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendItems([item], toSection: section)
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func deleteItem(_ item: Item, at section: Section) {
+        var snapshot = dataSource.snapshot()
+        let id = getItemID(item)
+        guard let item = findUniqueItemByID(snapshot.itemIdentifiers(inSection: section), id: id) else { return }
         
         snapshot.deleteItems([item])
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+    
+    private func findUniqueItemByID(_ items: [Item], id: String) -> Item? {
+        items.filter({
+            switch $0 {
+            case .tag(tagViewModel: let viewModel):
+                return viewModel.tag.tagID == id
+                
+            case .note(noteViewModel: let viewModel):
+                return viewModel.note.noteID == id
+            }
+        }).first
+    }
+    
+    private func getItemID(_ item: Item) -> String {
+        switch item {
+        case .tag(let tagViewModel):
+            return tagViewModel.tag.tagID
+        case .note(let noteViewModel):
+            return noteViewModel.note.noteID
+        }
     }
 }

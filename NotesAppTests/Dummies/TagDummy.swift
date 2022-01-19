@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import NotesApp
 
 class TagDummy: TagProtocol {
     var name: String?
