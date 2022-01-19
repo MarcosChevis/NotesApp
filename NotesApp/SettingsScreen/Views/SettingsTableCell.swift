@@ -13,7 +13,6 @@ class SettingsTableCell: UITableViewCell {
     var palette: ColorSet? {
         didSet {
             setColors(palette: palette)
-
         }
     }
     

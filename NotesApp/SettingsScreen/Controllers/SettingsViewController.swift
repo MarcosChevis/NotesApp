@@ -10,12 +10,12 @@ import UIKit
 class SettingsViewController: ThemableViewController {
     var contentView: SettingsView
     
-    var tableDateSource: SettingTableDataSource
+    var tableDataSource: SettingTableDataSource
     
     init(palette: ColorSet, tableDataSource: SettingTableDataSource, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         self.contentView = SettingsView(palette: palette)
-        self.tableDateSource = tableDataSource
+        self.tableDataSource = tableDataSource
         
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         
@@ -41,6 +41,13 @@ class SettingsViewController: ThemableViewController {
     func setupNavigationBar() {
         title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func setColors(palette: ColorSet) {
+        super.setColors(palette: palette)
+        
+        tableDataSource.palette = palette
+        contentView.tableView.reloadData()
     }
     
 }
