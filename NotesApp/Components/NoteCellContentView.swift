@@ -10,9 +10,6 @@ import UIKit
 
 class NoteCellContentView: ThemableView {
     private var viewModel: NoteCellViewModel?
-    
-    
-    
         
     var title: UITextField = {
         var title = UITextField()

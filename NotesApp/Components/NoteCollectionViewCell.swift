@@ -10,10 +10,6 @@ import UIKit
 class NoteCollectionViewCell: UICollectionViewCell {
     var noteContentView: NoteCellContentView
     static var identifier: String = "Notes.NoteCollectionViewCell"
-    
-    
-    
-
     private var viewModel: NoteCellViewModel?
     
     var palette: ColorSet?
@@ -53,6 +49,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
     private func setupStyle() {
         contentView.layer.masksToBounds = true
         contentView.layer.cornerRadius = 16
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 4
+        layer.shadowOffset = CGSize(width: 2, height: 2)
     }
     
     func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
@@ -64,9 +65,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         viewModel = nil
     }
-    
-    
-    
 }
 
 extension NoteCollectionViewCell: UITextViewDelegate {
