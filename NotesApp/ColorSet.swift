@@ -13,6 +13,7 @@ enum ColorSet: String, CaseIterable {
     case classic
     case christmas
     case bi
+    case paulinha
     
     func palette() -> CustomColorSet {
         switch self {
@@ -42,6 +43,13 @@ enum ColorSet: String, CaseIterable {
                                   buttonBackground: UIColor(Color("BiButtonBackground")),
                                   noteBackground: UIColor(Color("BiNoteBackground")),
                                   text: UIColor(Color("BiText")), largeTitle: UIColor(Color("BiLargeTitle")))
+            
+        case .paulinha:
+            return CustomColorSet(actionColor: UIColor(Color("PaulinhaAction")),
+                                  background: UIColor(Color("PaulinhaBackground")),
+                                  buttonBackground: UIColor(Color("PaulinhaButtonBackground")),
+                                  noteBackground: UIColor(Color("PaulinhaNoteBackground")),
+                                  text: UIColor(Color("PaulinhaText")), largeTitle: UIColor(Color("PaulinhaText")))
         }
     }
 }

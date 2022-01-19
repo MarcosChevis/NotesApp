@@ -97,6 +97,8 @@ class ThemesView: ThemableView {
             exampleImage.image = UIImage(named: "toti")
         case .bi:
             exampleImage.image = UIImage(named: "toti")
+        case .paulinha:
+            exampleImage.image = UIImage(named: "toti")
         }
         
     }
