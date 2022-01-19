@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = UINavigationController(rootViewController: NoteViewController(palette: ColorSet.christmas, repository: NotesRepository()))
+        window.rootViewController = UINavigationController(rootViewController: SettingsViewController(palette: .neon, tableDataSource: SettingTableDataSource(palette: .neon)))
         window.makeKeyAndVisible()
         self.window = window
 
