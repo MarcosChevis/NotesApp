@@ -60,6 +60,7 @@ class AllNotesViewController: UIViewController {
         setupNavigationBar()
         setupSearchController()
         setupInitialData()
+        dataSource.sectionSnapshotHandlers.shouldCollapseItem = { item in return true }
     }
     
     private func setupInitialData() {

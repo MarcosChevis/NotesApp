@@ -44,6 +44,7 @@
 		9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7A27972FA6005B21BC /* TagRepository.swift */; };
 		9DE31E81279849BF005B21BC /* TagDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7D279736B6005B21BC /* TagDummy.swift */; };
 		9DE31E83279849F0005B21BC /* TagRepositoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */; };
+		9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */; };
 		BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */; };
 		BA2D1BED2795AEA100849955 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */; };
 		BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */; };
@@ -110,6 +111,7 @@
 		9DE31E7A27972FA6005B21BC /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
 		9DE31E7D279736B6005B21BC /* TagDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDummy.swift; sourceTree = "<group>"; };
 		9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepositoryDummy.swift; sourceTree = "<group>"; };
+		9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNoteViewTest.swift; sourceTree = "<group>"; };
 		BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionData.swift; sourceTree = "<group>"; };
 		BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				5B35900F2796F5FA00ECF0C1 /* NoteViewTest.swift */,
+				9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				9DE31E81279849BF005B21BC /* TagDummy.swift in Sources */,
 				5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */,
 				5BB7FE042795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift in Sources */,
+				9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
 				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
 				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,

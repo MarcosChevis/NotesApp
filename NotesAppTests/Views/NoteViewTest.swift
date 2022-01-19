@@ -58,7 +58,6 @@ class NoteViewTest: XCTestCase {
         assertSnapshot(matching: navigation, as: .image(on: .iPhone12ProMax))
     }
     
-    
     func setupLayoutTestWithMoreThanItem() -> UIViewController {
         repositoryDummy.mock = [NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 01", content: "Essa é uma nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 02", content: "Essa é uma outra nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 03", content: "Essa é uma outra outra nota de teste, oi tudo bem com você?"))]
         
