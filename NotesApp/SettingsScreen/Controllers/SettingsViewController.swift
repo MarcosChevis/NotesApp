@@ -51,10 +51,3 @@ class SettingsViewController: ThemableViewController {
     }
     
 }
-
-extension SettingsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigationController?.pushViewController(ThemesViewController(palette: palette, collectionDataSource: ThemesCollectionDataSouce()), animated: true)
-        
-    }
-}

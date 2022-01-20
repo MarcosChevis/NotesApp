@@ -32,17 +32,3 @@ class Settings {
     }
     
 }
-
-
-protocol LocalStorageService {
-    func object(forKey: String) -> Any?
-    func string(forKey: String) -> String?
-    
-    func set(_ value: Any?, forKey: String)
-}
-
-extension UserDefaults: LocalStorageService {
-
-    
-    
-}
