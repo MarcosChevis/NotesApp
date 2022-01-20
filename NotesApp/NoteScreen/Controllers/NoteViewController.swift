@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class NoteViewController: UIViewController {
-    private var palette: ColorSet
+class NoteViewController: ThemableViewController {
     private var contentView: NoteView
     private var currentHighlightedNote: NoteProtocol?
     
@@ -22,12 +21,16 @@ class NoteViewController: UIViewController {
     private let repository: NotesRepositoryProtocol
     
     
-    init(palette: ColorSet, repository: NotesRepositoryProtocol) {
+    init(palette: ColorSet,
+         repository: NotesRepositoryProtocol,
+         notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
         self.contentView = NoteView(palette: palette)
-        self.palette = palette
+
         self.repository = repository
         self.currentHighlightedNote = nil
-        super.init(nibName: nil, bundle: nil)
+
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupBindings()
     }
     
@@ -35,17 +38,20 @@ class NoteViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupBindings() {
+    override func setupBindings() {
+        super.setupBindings()
         self.repository.delegate = self
         self.contentView.delegate = self
         contentView.collectionView.dataSource = dataSource
     }
     
     override func loadView() {
+        super.loadView()
         view = contentView
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupNavigationBar()
         setupKeyboardDismissGesture()
         setupToolbar()
@@ -81,10 +87,9 @@ class NoteViewController: UIViewController {
     
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
-        navigationItem.rightBarButtonItem = contentView.shareButton
-        
+        navigationItem.rightBarButtonItem = contentView.shareButton   
     }
+    
     
     private func scrollToEmptyNote(_ animated: Bool = false) {
         do {
@@ -181,8 +186,9 @@ private extension NoteViewController {
     private typealias NoteCellRegistration = UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel>
     
     private func makeNoteCellRegistration() -> NoteCellRegistration {
-        NoteCellRegistration { cell, indexPath, note in
-            cell.setup(colorPalette: ColorSet.classic, viewModel: note)
+        NoteCellRegistration { [weak self] cell, indexPath, note in
+            guard let self = self else { return }
+            cell.setup(palette: self.palette, viewModel: note)
         }
     }
     

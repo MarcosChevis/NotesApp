@@ -12,14 +12,19 @@ class SettingsTableCell: UITableViewCell {
     static var identifier: String = "SettingsTableCell"
     var palette: ColorSet? {
         didSet {
-            backgroundColor = palette?.palette().noteBackground
-            textLabel?.textColor = palette?.palette().text
-
+            setColors(palette: palette)
         }
     }
     
     func setupSettingsViewCell(palette: ColorSet) {
         self.palette = palette
+    }
+    
+    func setColors(palette: ColorSet?) {
+        guard let colorSet = palette?.palette() else { return }
+        
+        backgroundColor = colorSet.noteBackground
+        textLabel?.textColor = colorSet.text
     }
     
     

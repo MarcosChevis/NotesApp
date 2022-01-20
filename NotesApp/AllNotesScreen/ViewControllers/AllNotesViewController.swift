@@ -7,9 +7,9 @@
 
 import UIKit
 
-class AllNotesViewController: UIViewController {
+class AllNotesViewController: ThemableViewController {
     
-    var palette: ColorSet
+   
     var contentView: AllNotesView
     private let tagsRepository: TagRepositoryProtocol
     private let noteRepository: NotesRepositoryProtocol
@@ -27,15 +27,16 @@ class AllNotesViewController: UIViewController {
     
     init(palette: ColorSet,
          noteRepository: NotesRepositoryProtocol = NotesRepository(),
-         tagRepository: TagRepositoryProtocol = TagRepository()) {
+         tagRepository: TagRepositoryProtocol = TagRepository(),
+         notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
         
         self.contentView = AllNotesView(palette: palette)
-        self.palette = palette
         
         self.noteRepository = noteRepository
         self.tagsRepository = tagRepository
         
-        super.init(nibName: nil, bundle: nil)
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupBindings()
     }
     
@@ -43,7 +44,8 @@ class AllNotesViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupBindings() {
+    override func setupBindings() {
+        super.setupBindings()
         self.contentView.delegate = self
         self.contentView.collectionView.dataSource = dataSource
         self.tagsRepository.delegate = self
@@ -101,7 +103,6 @@ class AllNotesViewController: UIViewController {
     private func setupNavigationBar() {
         title = "All Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
         navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
     }
     
@@ -147,6 +148,7 @@ private extension AllNotesViewController {
         case tag (tagViewModel: TagCellViewModel)
         case note (noteViewModel: NoteCellViewModel)
     }
+    
 }
 
 extension AllNotesViewController: AllNotesViewDelegate {

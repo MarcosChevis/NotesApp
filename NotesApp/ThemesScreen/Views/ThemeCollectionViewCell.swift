@@ -66,12 +66,14 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         var titleText = palette.rawValue
         titleText = titleText.capitalized
         
+        let colorSet = palette.palette()
+        
         title.text = titleText
-        title.textColor = palette.palette().actionColor
+        title.textColor = colorSet.actionColor
         
-        themeLabel.textColor = palette.palette().text
+        themeLabel.textColor = colorSet.text
         
-        contentView.backgroundColor = palette.palette().background
+        contentView.backgroundColor = colorSet.background
     }
     
     func setupLayers(palette: ColorSet) {
@@ -102,6 +104,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     //TODO: COLOCAR user DEJFRT aqui
     func didSelect() {
         contentView.layer.borderWidth = 4
+        
     }
     
     func didUnselect() {

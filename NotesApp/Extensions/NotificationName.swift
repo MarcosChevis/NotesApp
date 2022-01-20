@@ -11,4 +11,7 @@ extension Notification.Name {
     static var saveChanges: Self {
         .init(rawValue: "NoteCell_DidFinishSaving")
     }
+    static var didChangeTheme: Self {
+        .init(rawValue: "ThemeManager_DidChangeTheme")
+    }
 }

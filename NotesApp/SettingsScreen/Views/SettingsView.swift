@@ -7,12 +7,8 @@
 
 import UIKit
 
-class SettingsView: UIView {
-    var palette: ColorSet {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
+class SettingsView: ThemableView {
+    
     
     lazy var tableView: UITableView = {
         var table = UITableView()
@@ -25,9 +21,9 @@ class SettingsView: UIView {
         return table
     }()
     
-    init(palette: ColorSet) {
-        self.palette = palette
-        super.init(frame: .zero)
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         setColors(palette: palette)
         setupConstraints()
     }
@@ -36,7 +32,7 @@ class SettingsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setColors(palette: ColorSet) {
+    override func setColors(palette: ColorSet) {
         self.backgroundColor = palette.palette().background
     }
     

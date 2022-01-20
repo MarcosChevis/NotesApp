@@ -7,23 +7,19 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: ThemableViewController {
     var contentView: SettingsView
-    var palette: ColorSet {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
-    var tableDateSource: SettingTableDataSource
     
-    init(palette: ColorSet, tableDataSource: SettingTableDataSource) {
+    var tableDataSource: SettingTableDataSource
+    
+    init(palette: ColorSet, tableDataSource: SettingTableDataSource, notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
         self.contentView = SettingsView(palette: palette)
-        self.palette = palette
-        self.tableDateSource = tableDataSource
+        self.tableDataSource = tableDataSource
         
-        super.init(nibName: nil, bundle: nil)
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         
-        setColors(palette: palette)
+        
         self.contentView.tableView.dataSource = tableDataSource
         self.contentView.tableView.delegate = self
         
@@ -47,9 +43,13 @@ class SettingsViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func setColors(palette: ColorSet) {
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
+    override func setColors(palette: ColorSet) {
+        super.setColors(palette: palette)
+        
+        tableDataSource.palette = palette
+        contentView.tableView.reloadData()
     }
+    
 }
 
 extension SettingsViewController: UITableViewDelegate {

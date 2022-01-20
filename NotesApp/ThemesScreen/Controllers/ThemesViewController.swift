@@ -7,24 +7,20 @@
 
 import UIKit
 
-class ThemesViewController: UIViewController {
-    var palette: ColorSet {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
+class ThemesViewController: ThemableViewController {
+    
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSouce
-    var settings: Settings = Settings()
     
-    init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSouce) {
-        self.palette = palette
+    
+    init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSouce, notificationService: NotificationService = NotificationCenter.default,
+         settings: Settings = Settings()) {
+        
         self.contentView = ThemesView(palette: palette)
         self.collectionDataSource = collectionDataSource
+     
         
-        super.init(nibName: nil, bundle: nil)
-        
-        setColors(palette: palette)
+        super.init(palette: palette, notificationService: notificationService, settings: settings)
         self.contentView.collectionView.delegate = self
         self.contentView.collectionView.dataSource = collectionDataSource
     }
@@ -50,9 +46,6 @@ class ThemesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func setColors(palette: ColorSet) {
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: palette.palette().text]
-    }
 }
 
 extension ThemesViewController: UICollectionViewDelegate {
@@ -60,7 +53,9 @@ extension ThemesViewController: UICollectionViewDelegate {
         for index in 0..<collectionDataSource.data.count {
             collectionDataSource.data[index].isSelected = index == indexPath.row
             if collectionDataSource.data[index].isSelected {
-                settings.theme = collectionDataSource.data[index].colorSet.rawValue
+                settings.theme = collectionDataSource.data[index].colorSet
+                
+                settings.changeTheme(palette: collectionDataSource.data[index].colorSet)
             }
         }
         collectionView.reloadData()
@@ -68,3 +63,4 @@ extension ThemesViewController: UICollectionViewDelegate {
     }
     
 }
+

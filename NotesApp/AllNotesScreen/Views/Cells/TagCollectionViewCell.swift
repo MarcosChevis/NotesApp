@@ -50,9 +50,9 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     
     func setColors(palette: ColorSet?) {
-        guard let palette = palette else { return }
+        guard let colorSet = palette?.palette() else { return }
 
-        contentView.backgroundColor = palette.palette().noteBackground
-        tagLabel.textColor = palette.palette().actionColor
+        contentView.backgroundColor = colorSet.noteBackground
+        tagLabel.textColor = colorSet.actionColor
     }
 }
