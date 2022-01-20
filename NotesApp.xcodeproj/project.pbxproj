@@ -22,7 +22,7 @@
 		5B3FF1A12799980800828097 /* NoteViewController+NoteViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1A02799980800828097 /* NoteViewController+NoteViewDelegate.swift */; };
 		5B3FF1A32799982F00828097 /* NoteViewController+NoteRepositoryProtocolDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1A22799982F00828097 /* NoteViewController+NoteRepositoryProtocolDelegate.swift */; };
 		5B3FF1A52799985A00828097 /* NoteViewController+DataSourceHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1A42799985A00828097 /* NoteViewController+DataSourceHelpers.swift */; };
-		5B3FF1A7279998C700828097 /* NoteViewController+UIAlertHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1A6279998C700828097 /* NoteViewController+UIAlertHelpers.swift */; };
+		5B3FF1A7279998C700828097 /* UIViewController+UIAlertHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1A6279998C700828097 /* UIViewController+UIAlertHelpers.swift */; };
 		5B3FF1AA2799992900828097 /* SettingsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1A92799992900828097 /* SettingsViewController+UITableViewDelegate.swift */; };
 		5B3FF1AD2799996F00828097 /* ThemesViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1AC2799996F00828097 /* ThemesViewController+UICollectionViewDelegate.swift */; };
 		5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576192790593100EF1036 /* CoreDataStack.swift */; };
@@ -103,7 +103,7 @@
 		5B3FF1A02799980800828097 /* NoteViewController+NoteViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteViewController+NoteViewDelegate.swift"; sourceTree = "<group>"; };
 		5B3FF1A22799982F00828097 /* NoteViewController+NoteRepositoryProtocolDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteViewController+NoteRepositoryProtocolDelegate.swift"; sourceTree = "<group>"; };
 		5B3FF1A42799985A00828097 /* NoteViewController+DataSourceHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteViewController+DataSourceHelpers.swift"; sourceTree = "<group>"; };
-		5B3FF1A6279998C700828097 /* NoteViewController+UIAlertHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NoteViewController+UIAlertHelpers.swift"; sourceTree = "<group>"; };
+		5B3FF1A6279998C700828097 /* UIViewController+UIAlertHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+UIAlertHelpers.swift"; sourceTree = "<group>"; };
 		5B3FF1A92799992900828097 /* SettingsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		5B3FF1AC2799996F00828097 /* ThemesViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ThemesViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		5B4576192790593100EF1036 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -275,7 +275,6 @@
 				5B3FF1A02799980800828097 /* NoteViewController+NoteViewDelegate.swift */,
 				5B3FF1A22799982F00828097 /* NoteViewController+NoteRepositoryProtocolDelegate.swift */,
 				5B3FF1A42799985A00828097 /* NoteViewController+DataSourceHelpers.swift */,
-				5B3FF1A6279998C700828097 /* NoteViewController+UIAlertHelpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -478,6 +477,7 @@
 				BAC82D5826A9DD2300E52701 /* NoteExtension.swift */,
 				9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */,
 				5BB7FE012795EDB800A6F335 /* NotificationName.swift */,
+				5B3FF1A6279998C700828097 /* UIViewController+UIAlertHelpers.swift */,
 				5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */,
 			);
 			path = Extensions;
@@ -676,7 +676,7 @@
 				5B35900A2796EC1600ECF0C1 /* NotesViewDelegate.swift in Sources */,
 				5B3FF18E2799940A00828097 /* LocalStorageService.swift in Sources */,
 				5BB7FE052796EB8600A6F335 /* AppDelegate.swift in Sources */,
-				5B3FF1A7279998C700828097 /* NoteViewController+UIAlertHelpers.swift in Sources */,
+				5B3FF1A7279998C700828097 /* UIViewController+UIAlertHelpers.swift in Sources */,
 				9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */,
 				5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */,
