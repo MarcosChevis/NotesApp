@@ -12,6 +12,7 @@ class AllNotesViewController: ThemableViewController {
     var contentView: AllNotesView
     let tagsRepository: TagRepositoryProtocol
     let noteRepository: NotesRepositoryProtocol
+    weak var coordinator: AllNotesCoordinatorProtocol?
     
     lazy var dataSource: UICollectionViewDiffableDataSource<Section, Item> = {
         let noteCellRegistration: NoteCellRegistration = makeNoteCellRegistration()

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol NotificationService {
+protocol NotificationService: AnyObject {
     func post(name: NSNotification.Name, object: Any?)
     func addObserver(_ observer: Any, selector: Selector, name: NSNotification.Name?, object: Any?)
     func removeObserver(_ observer: Any)

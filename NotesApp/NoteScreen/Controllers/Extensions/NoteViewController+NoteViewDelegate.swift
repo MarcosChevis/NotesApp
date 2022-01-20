@@ -29,7 +29,7 @@ extension NoteViewController: NoteViewDelegate {
     }
     
     func didAllNotes() {
-        print("coisas de all notes")
+        coordinator?.navigateToAllNotes()
         
     }
     

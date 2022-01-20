@@ -10,6 +10,7 @@ import UIKit
 class NoteViewController: ThemableViewController {
     var contentView: NoteView
     var currentHighlightedNote: NoteProtocol?
+    weak var coordinator: MainCoordinatorProtocol?
     
     lazy var dataSource: NoteDataSource = {
         let cellRegistration: NoteCellRegistration = makeNoteCellRegistration()

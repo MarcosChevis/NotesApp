@@ -9,7 +9,7 @@ import UIKit
 
 extension AllNotesViewController: AllNotesViewDelegate {
     func didTapSettings() {
-        
+        coordinator?.navigateToSettings()
     }
     
     func didTapAddNote() {
