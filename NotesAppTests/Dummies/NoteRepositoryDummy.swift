@@ -9,6 +9,7 @@ import Foundation
 @testable import NotesApp
 
 class NoteRepositoryDummy: NotesRepositoryProtocol {
+    
     var mock: [NoteCellViewModel] = []
     weak var delegate: NoteRepositoryProtocolDelegate?
     var didCallSaveChanges: Bool = false
@@ -19,6 +20,7 @@ class NoteRepositoryDummy: NotesRepositoryProtocol {
     
     func deleteNote(_ note: NoteProtocol) throws {
         mock.removeAll(where: { $0.note.noteID == note.noteID })
+        delegate?.deleteNote(.init(note: note))
     }
     
     func createEmptyNote() throws -> NoteProtocol {
@@ -31,6 +33,10 @@ class NoteRepositoryDummy: NotesRepositoryProtocol {
     
     func getInitialData() throws -> [NoteCellViewModel] {
         mock
+    }
+    
+    func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
+        []
     }
     
 }

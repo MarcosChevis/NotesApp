@@ -146,7 +146,8 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
             
         }
     }
-    private var viewModel: SmallNoteCellViewModel?
+    
+    private var viewModel: NoteCellViewModel?
     
     override init(frame: CGRect) {
         self.shouldHidContent = true
@@ -160,10 +161,12 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func setup(with viewModel: SmallNoteCellViewModel) {
-        setColors(viewModel.palette)
-        titleView.text = viewModel.title
-        contentTextView.text = viewModel.content
+    func setup(with viewModel: NoteCellViewModel, colorSet: ColorSet) {
+        self.viewModel = viewModel
+        setColors(colorSet)
+        let provisoryTitle = viewModel.note.noteID.suffix(5)
+        titleView.text = String(provisoryTitle)
+        contentTextView.text = viewModel.note.content
         buttonsStackView.axis = .horizontal
     }
     
@@ -186,6 +189,12 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
         shareButton.backgroundColor = palette.palette().buttonBackground
         
         contentView.backgroundColor = palette.palette().noteBackground
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        viewModel = nil
+        delegate = nil
     }
     
 }

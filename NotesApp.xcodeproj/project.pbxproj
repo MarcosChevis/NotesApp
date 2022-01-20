@@ -38,7 +38,14 @@
 		9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35F2791C13A000F6B4A /* TagHeader.swift */; };
 		9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */; };
 		9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */; };
-		9DBE158C2791C5680025A7EE /* AllNotesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DBE158B2791C5680025A7EE /* AllNotesDataSource.swift */; };
+		9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7027970A3F005B21BC /* TagProtocol.swift */; };
+		9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */; };
+		9DE31E75279714DE005B21BC /* AllNotesViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E74279714DE005B21BC /* AllNotesViewDelegate.swift */; };
+		9DE31E7927972F6F005B21BC /* TagRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7827972F6F005B21BC /* TagRepositoryProtocol.swift */; };
+		9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7A27972FA6005B21BC /* TagRepository.swift */; };
+		9DE31E81279849BF005B21BC /* TagDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7D279736B6005B21BC /* TagDummy.swift */; };
+		9DE31E83279849F0005B21BC /* TagRepositoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */; };
+		9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */; };
 		BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */; };
 		BA2D1BED2795AEA100849955 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */; };
 		BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */; };
@@ -99,7 +106,14 @@
 		9D31F35F2791C13A000F6B4A /* TagHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeader.swift; sourceTree = "<group>"; };
 		9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerUtilities.swift; sourceTree = "<group>"; };
 		9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
-		9DBE158B2791C5680025A7EE /* AllNotesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesDataSource.swift; sourceTree = "<group>"; };
+		9DE31E7027970A3F005B21BC /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
+		9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellViewModel.swift; sourceTree = "<group>"; };
+		9DE31E74279714DE005B21BC /* AllNotesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewDelegate.swift; sourceTree = "<group>"; };
+		9DE31E7827972F6F005B21BC /* TagRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepositoryProtocol.swift; sourceTree = "<group>"; };
+		9DE31E7A27972FA6005B21BC /* TagRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepository.swift; sourceTree = "<group>"; };
+		9DE31E7D279736B6005B21BC /* TagDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDummy.swift; sourceTree = "<group>"; };
+		9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepositoryDummy.swift; sourceTree = "<group>"; };
+		9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNoteViewTest.swift; sourceTree = "<group>"; };
 		BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionData.swift; sourceTree = "<group>"; };
 		BA2D1BEC2795AEA100849955 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
@@ -155,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				5B35900F2796F5FA00ECF0C1 /* NoteViewTest.swift */,
+				9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,9 +178,12 @@
 			isa = PBXGroup;
 			children = (
 				5B45763127919FCF00EF1036 /* NotesRepositoryProtocol.swift */,
+				9DE31E7827972F6F005B21BC /* TagRepositoryProtocol.swift */,
 				5B4576192790593100EF1036 /* CoreDataStack.swift */,
 				5B45761B2790593100EF1036 /* NotesRepository.swift */,
 				5B4576332791A0B000EF1036 /* NoteProtocol.swift */,
+				9DE31E7027970A3F005B21BC /* TagProtocol.swift */,
+				9DE31E7A27972FA6005B21BC /* TagRepository.swift */,
 			);
 			name = Storage;
 			path = NotesApp/Model/Storage;
@@ -190,6 +208,8 @@
 		5B45762E279078FB00EF1036 /* Dummies */ = {
 			isa = PBXGroup;
 			children = (
+				9DE31E7D279736B6005B21BC /* TagDummy.swift */,
+				9DE31E82279849F0005B21BC /* TagRepositoryDummy.swift */,
 				5B45762F2790791400EF1036 /* FetchResultsControllerDelegateDummy.swift */,
 				5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */,
 				5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */,
@@ -234,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				5B73C9F6278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift */,
+				9DE31E74279714DE005B21BC /* AllNotesViewDelegate.swift */,
 			);
 			path = Delegates;
 			sourceTree = "<group>";
@@ -243,6 +264,7 @@
 			children = (
 				5B73C9F8278F758D005F2D89 /* SmallNoteCellViewModel.swift */,
 				5B4576232790671600EF1036 /* TagCollectionCellViewModel.swift */,
+				9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */,
-				9DBE158B2791C5680025A7EE /* AllNotesDataSource.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -548,9 +569,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5BB7FE002795C61B00A6F335 /* NoteRepositoryDummy.swift in Sources */,
+				9DE31E83279849F0005B21BC /* TagRepositoryDummy.swift in Sources */,
 				5B00566127959741002BBFD0 /* NoteViewControllerTest.swift in Sources */,
+				9DE31E81279849BF005B21BC /* TagDummy.swift in Sources */,
 				5BFD81DF278DB2FA004833F5 /* NotesAppTests.swift in Sources */,
 				5BB7FE042795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift in Sources */,
+				9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
 				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
 				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,
@@ -565,8 +589,11 @@
 			files = (
 				5B35900A2796EC1600ECF0C1 /* NotesViewDelegate.swift in Sources */,
 				5BB7FE052796EB8600A6F335 /* AppDelegate.swift in Sources */,
+				9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */,
 				5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
+				9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */,
 				5BB7FE022795EDB800A6F335 /* NotificationName.swift in Sources */,
+				9DE31E75279714DE005B21BC /* AllNotesViewDelegate.swift in Sources */,
 				5B4576242790671600EF1036 /* TagCollectionCellViewModel.swift in Sources */,
 				C87AA536279082FA00E2AEF1 /* ThemesViewController.swift in Sources */,
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
@@ -585,11 +612,11 @@
 				5B73C9F9278F758D005F2D89 /* SmallNoteCellViewModel.swift in Sources */,
 				5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */,
 				5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */,
-				9DBE158C2791C5680025A7EE /* AllNotesDataSource.swift in Sources */,
 				E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */,
 				BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */,
 				9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */,
 				9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */,
+				9DE31E7927972F6F005B21BC /* TagRepositoryProtocol.swift in Sources */,
 				BA2D1BED2795AEA100849955 /* UserDefaultManager.swift in Sources */,
 				BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
@@ -598,6 +625,7 @@
 				5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
 				9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */,
+				9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 				5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */,
 				E935C95727906F9100835897 /* SettingsView.swift in Sources */,
@@ -789,7 +817,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = QRB568C47A;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -810,7 +838,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = QRB568C47A;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
