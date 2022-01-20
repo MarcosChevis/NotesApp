@@ -32,7 +32,6 @@ class AllNotesViewController: ThemableViewController {
          settings: Settings = Settings()) {
         
         self.contentView = AllNotesView(palette: palette)
-        self.palette = palette
         
         self.noteRepository = noteRepository
         self.tagsRepository = tagRepository
@@ -45,7 +44,8 @@ class AllNotesViewController: ThemableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupBindings() {
+    override func setupBindings() {
+        super.setupBindings()
         self.contentView.delegate = self
         self.contentView.collectionView.dataSource = dataSource
         self.tagsRepository.delegate = self

@@ -55,6 +55,7 @@ class ThemableViewController: UIViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.largeTitle]
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.largeTitle]
         navigationController?.navigationBar.tintColor = colorSet.actionColor
+        navigationController?.navigationBar.barTintColor = colorSet.background
     }
     
 }

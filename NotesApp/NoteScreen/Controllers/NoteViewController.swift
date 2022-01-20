@@ -186,8 +186,9 @@ private extension NoteViewController {
     private typealias NoteCellRegistration = UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel>
     
     private func makeNoteCellRegistration() -> NoteCellRegistration {
-        NoteCellRegistration { cell, indexPath, note in
-            cell.setup(colorPalette: ColorSet.classic, viewModel: note)
+        NoteCellRegistration { [weak self] cell, indexPath, note in
+            guard let self = self else { return }
+            cell.setup(palette: self.palette, viewModel: note)
         }
     }
     
