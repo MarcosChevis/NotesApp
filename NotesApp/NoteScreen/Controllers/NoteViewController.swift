@@ -117,7 +117,7 @@ class NoteViewController: UIViewController {
             self.currentHighlightedNote = nil
             try self.repository.deleteNote(currentHighlightedNote)
         } catch {
-            self.presentErrorAlert(with: "Não foi possivel deletar esse item")
+            self.presentErrorAlert(with: "It was not possible to delete this note!")
         }
     }
 }

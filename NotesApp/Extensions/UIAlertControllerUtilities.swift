@@ -50,7 +50,7 @@ extension UIAlertController.CommonAlert {
     var content: UIAlertController.AlertContent {
         switch self {
         case .onDeletingItem:
-            return .init(title: "Are your sure you want to delete it?",
+            return .init(title: "Are you sure you want to delete it?",
                          message: "This action cannot be undone",
                          actionTitle: "Delete",
                          actionStyle: .destructive)
