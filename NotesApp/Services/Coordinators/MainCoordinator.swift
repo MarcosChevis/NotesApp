@@ -11,7 +11,7 @@ protocol MainCoordinatorProtocol: AnyObject {
     func navigateToAllNotes()
 }
 
-class MainCoordinator: NSObject, CoordinatorProtocol, MainCoordinatorProtocol {
+class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
     let navigationController: UINavigationController
     let settings: Settings
     var childCoordinators: [CoordinatorProtocol]
@@ -26,7 +26,6 @@ class MainCoordinator: NSObject, CoordinatorProtocol, MainCoordinatorProtocol {
         self.settings = settings
         self.childCoordinators = []
         self.notificationService = notificationService
-        super.init()
         notificationService.addObserver(self, selector: #selector(didComeBackFromModal), name: .didComebackFromModal, object: nil)
     }
     

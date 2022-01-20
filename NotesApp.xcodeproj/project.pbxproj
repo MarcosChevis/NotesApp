@@ -28,6 +28,10 @@
 		5B3FF1B027999C6100828097 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1AF27999C6100828097 /* CoordinatorProtocol.swift */; };
 		5B3FF1B22799AEC000828097 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1B12799AEC000828097 /* MainCoordinator.swift */; };
 		5B3FF1B42799AECB00828097 /* AllNotesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1B32799AECB00828097 /* AllNotesCoordinator.swift */; };
+		5B3FF1B62799AF8600828097 /* MainCoordinatorDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1B52799AF8600828097 /* MainCoordinatorDummy.swift */; };
+		5B3FF1B82799AF9100828097 /* AllNotesCoordinatorDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1B72799AF9100828097 /* AllNotesCoordinatorDummy.swift */; };
+		5B3FF1BA2799B09800828097 /* LocalStorageServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1B92799B09800828097 /* LocalStorageServiceDummy.swift */; };
+		5B3FF1BC2799B21E00828097 /* MainCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3FF1BB2799B21E00828097 /* MainCoordinatorTests.swift */; };
 		5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4576192790593100EF1036 /* CoreDataStack.swift */; };
 		5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761B2790593100EF1036 /* NotesRepository.swift */; };
 		5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */; };
@@ -112,6 +116,10 @@
 		5B3FF1AF27999C6100828097 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5B3FF1B12799AEC000828097 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		5B3FF1B32799AECB00828097 /* AllNotesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesCoordinator.swift; sourceTree = "<group>"; };
+		5B3FF1B52799AF8600828097 /* MainCoordinatorDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorDummy.swift; sourceTree = "<group>"; };
+		5B3FF1B72799AF9100828097 /* AllNotesCoordinatorDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesCoordinatorDummy.swift; sourceTree = "<group>"; };
+		5B3FF1B92799B09800828097 /* LocalStorageServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageServiceDummy.swift; sourceTree = "<group>"; };
+		5B3FF1BB2799B21E00828097 /* MainCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinatorTests.swift; sourceTree = "<group>"; };
 		5B4576192790593100EF1036 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5B45761B2790593100EF1036 /* NotesRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
 		5B45761F279059C400EF1036 /* NotesRepositoryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRepositoryTest.swift; sourceTree = "<group>"; };
@@ -335,6 +343,9 @@
 				5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */,
 				5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */,
 				5BB7FE032795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift */,
+				5B3FF1B52799AF8600828097 /* MainCoordinatorDummy.swift */,
+				5B3FF1B72799AF9100828097 /* AllNotesCoordinatorDummy.swift */,
+				5B3FF1B92799B09800828097 /* LocalStorageServiceDummy.swift */,
 			);
 			path = Dummies;
 			sourceTree = "<group>";
@@ -401,6 +412,7 @@
 				5B3FF1892799938E00828097 /* ViewControllers */,
 				5B35900E2796F5EA00ECF0C1 /* Views */,
 				5B45762E279078FB00EF1036 /* Dummies */,
+				5B3FF1BB2799B21E00828097 /* MainCoordinatorTests.swift */,
 			);
 			path = NotesAppTests;
 			sourceTree = "<group>";
@@ -678,11 +690,15 @@
 				9DE31E81279849BF005B21BC /* TagDummy.swift in Sources */,
 				5BB7FE042795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift in Sources */,
 				9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */,
+				5B3FF1B62799AF8600828097 /* MainCoordinatorDummy.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
 				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
 				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,
+				5B3FF1BA2799B09800828097 /* LocalStorageServiceDummy.swift in Sources */,
 				5B4576302790791400EF1036 /* FetchResultsControllerDelegateDummy.swift in Sources */,
+				5B3FF1B82799AF9100828097 /* AllNotesCoordinatorDummy.swift in Sources */,
 				5B3590102796F5FA00ECF0C1 /* NoteViewTest.swift in Sources */,
+				5B3FF1BC2799B21E00828097 /* MainCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
