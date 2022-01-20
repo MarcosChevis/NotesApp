@@ -31,6 +31,11 @@ class AllNotesView: ThemableView {
         return but
     }()
     
+    lazy var closeButton: UIBarButtonItem = {
+        var but = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(didTapClose))
+        return but
+    }()
+    
     let searchController = UISearchController(searchResultsController: nil)
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
@@ -103,8 +108,6 @@ class AllNotesView: ThemableView {
     
     weak var delegate: AllNotesViewDelegate?
     
-    
-    
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
@@ -120,7 +123,6 @@ class AllNotesView: ThemableView {
         let colorSet = palette.palette()
         self.backgroundColor = colorSet.background
         collectionView.backgroundColor = colorSet.background
-        
     }
     
     func setupConstraints() {
@@ -138,5 +140,9 @@ class AllNotesView: ThemableView {
     
     @objc func didTapAddNote() {
         delegate?.didTapAddNote()
+    }
+    
+    @objc func didTapClose() {
+        delegate?.didTapClose()
     }
 }

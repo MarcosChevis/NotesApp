@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension NoteViewController {
+extension UIViewController {
     func presentAlert(for alertCase: UIAlertController.CommonAlert, _ action: @escaping() -> Void) {
         let alert = UIAlertController.singleActionAlert(for: alertCase) { [weak self] in
             self?.dismiss(animated: true, completion: nil)

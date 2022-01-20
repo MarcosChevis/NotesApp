@@ -10,4 +10,5 @@ import Foundation
 protocol AllNotesViewDelegate: AnyObject {
     func didTapSettings()
     func didTapAddNote()
+    func didTapClose()
 }
