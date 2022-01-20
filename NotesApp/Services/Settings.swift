@@ -24,18 +24,10 @@ class Settings {
     
     var theme: ColorSet {
         get {
-            if let cachedTheme = cachedTheme {
-                return cachedTheme
-            }
-            
-            let colorSet = ColorSet(rawValue: localStorageService.string(forKey: "theme") ?? ColorSet.classic.rawValue) ?? .classic
-            cachedTheme = colorSet
-            
-            return colorSet
+            ColorSet(rawValue: localStorageService.string(forKey: "theme") ?? ColorSet.classic.rawValue) ?? .classic
         }
         set {
             localStorageService.set(newValue.rawValue, forKey: "theme")
-            cachedTheme = nil
         }
     }
     
