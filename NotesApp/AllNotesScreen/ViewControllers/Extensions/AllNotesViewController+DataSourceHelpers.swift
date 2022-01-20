@@ -57,7 +57,7 @@ extension AllNotesViewController {
     func makeNoteCellRegistration() -> NoteCellRegistration {
         return NoteCellRegistration { [weak self] cell, indexPath, note in
             cell.delegate = self
-            cell.setup(with: note, colorSet: .classic)
+            cell.setup(palette: .classic, viewModel: note)
         }
     }
     
