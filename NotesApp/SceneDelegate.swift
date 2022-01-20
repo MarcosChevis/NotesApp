@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
 //        window.rootViewController = UINavigationController(rootViewController: NoteViewController(palette: .classic, repository: NotesRepository()))
-        window.rootViewController = UINavigationController(rootViewController: AllNotesViewController(palette: .neon))
+        window.rootViewController = UINavigationController(rootViewController: AllNotesViewController(palette: .classic))
         window.makeKeyAndVisible()
         self.window = window
 
