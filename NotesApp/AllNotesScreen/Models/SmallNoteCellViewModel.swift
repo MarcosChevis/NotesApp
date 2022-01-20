@@ -12,3 +12,5 @@ struct SmallNoteCellViewModel {
     var title: String
     var content: String
 }
+
+

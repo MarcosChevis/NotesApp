@@ -12,16 +12,9 @@ class NoteViewController: ThemableViewController {
     private var contentView: NoteView
     private var currentHighlightedNote: NoteProtocol?
     
-    private lazy var dataSource: UICollectionViewDiffableDataSource<Section, NoteCellViewModel> = {
-        let cellRegistration: UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> = UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel> { cell, indexPath, note in
-            cell.setup(palette: self.palette, viewModel: note)
-        }
-        
-        let dataSource = UICollectionViewDiffableDataSource<Section, NoteCellViewModel>(collectionView: contentView.collectionView)
-        { collectionView, indexPath, viewModel in
-            collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: viewModel)
-        }
-        
+    private lazy var dataSource: NoteDataSource = {
+        let cellRegistration: NoteCellRegistration = makeNoteCellRegistration()
+        let dataSource: NoteDataSource = makeDatasource(with: cellRegistration)
         return dataSource
     }()
     
@@ -50,13 +43,6 @@ class NoteViewController: ThemableViewController {
         self.repository.delegate = self
         self.contentView.delegate = self
         contentView.collectionView.dataSource = dataSource
-        contentView.collectionView.delegate = self
-        super.notificationService.addObserver(self, selector: #selector(createNewNoteOnAppear), name: UIApplication.didBecomeActiveNotification, object: nil)
-    }
-    
-    
-    @objc private func createNewNoteOnAppear() {
-        scrollToEmptyNote(true)
     }
     
     override func loadView() {
@@ -67,13 +53,18 @@ class NoteViewController: ThemableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
-        
+        setupKeyboardDismissGesture()
+        setupToolbar()
+        setupInitialData()
+    }
+    
+    private func setupKeyboardDismissGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-        
-        setupToolbar()
-        
+    }
+    
+    private func setupInitialData() {
         do {
             let data = try repository.getInitialData()
             var snapshot = dataSource.snapshot()
@@ -86,7 +77,7 @@ class NoteViewController: ThemableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        scrollToEmptyNote()
+        scrollToEmptyNote(animated)
     }
     
     private func setupToolbar() {
@@ -110,8 +101,8 @@ class NoteViewController: ThemableViewController {
         }
     }
     
-    private func presentAlert(with content: UIAlertController.AlertContent, _ action: @escaping() -> Void) {
-        let alert = UIAlertController.singleActionAlert(with: content) { [weak self] in
+    private func presentAlert(for alertCase: UIAlertController.CommonAlert, _ action: @escaping() -> Void) {
+        let alert = UIAlertController.singleActionAlert(for: alertCase) { [weak self] in
             self?.dismiss(animated: true, completion: nil)
             action()
         }
@@ -119,9 +110,7 @@ class NoteViewController: ThemableViewController {
     }
     
     private func presentErrorAlert(with errorMessage: String) {
-        let content = UIAlertController.AlertContent(title: "Um erro aconteceu!", message: errorMessage, actionTitle: "", actionStyle: .default)
-        
-        let alert = UIAlertController.errorAlert(with: content)
+        let alert = UIAlertController.errorAlert(for: .unexpectedError(error: errorMessage))
         self.present(alert, animated: true)
     }
     
@@ -129,11 +118,11 @@ class NoteViewController: ThemableViewController {
         guard let currentHighlightedNote = self.currentHighlightedNote else {
             return
         }
-    
         do {
+            self.currentHighlightedNote = nil
             try self.repository.deleteNote(currentHighlightedNote)
         } catch {
-            self.presentErrorAlert(with: "Não foi possivel deletar esse item")
+            self.presentErrorAlert(with: "It was not possible to delete this note!")
         }
     }
 }
@@ -153,11 +142,7 @@ extension NoteViewController: NoteViewDelegate {
     }
     
     func didDelete() {
-        let content: UIAlertController.AlertContent = .init(title: "Tem certeza que deseja deletar?",
-                                                            message: "Essa ação não é reversível",
-                                                            actionTitle: "Deletar",
-                                                            actionStyle: .destructive)
-        presentAlert(with: content) { [weak self] in
+        presentAlert(for: .onDeletingItem) { [weak self] in
             guard let self = self else { return }
             self.deleteNote()
         }
@@ -177,22 +162,39 @@ extension NoteViewController: NoteViewDelegate {
     }
     
     func didShare() {
-        let note = "ooooi"
+        guard let currentHighlightedNote = self.currentHighlightedNote else {
+            presentErrorAlert(with: "You do not have notes to share")
+            return
+        }
         
-        // set up activity view controller
-        let noteToShare = note
-        let activityViewController = UIActivityViewController(activityItems: [noteToShare], applicationActivities: nil)
-        present(activityViewController, animated: true)
+        do {
+            let shareScreen = try UIActivityViewController.shareNote(currentHighlightedNote)
+            present(shareScreen, animated: true, completion: nil)
+        } catch {
+            presentErrorAlert(with: "Your note is empty")
+        }
+        
     }
 }
 
-extension NoteViewController: UICollectionViewDelegate {
-    
-}
-
-extension NoteViewController {
+private extension NoteViewController {
     private enum Section {
         case main
+    }
+    
+    private typealias NoteDataSource = UICollectionViewDiffableDataSource<Section, NoteCellViewModel>
+    private typealias NoteCellRegistration = UICollectionView.CellRegistration<NoteCollectionViewCell, NoteCellViewModel>
+    
+    private func makeNoteCellRegistration() -> NoteCellRegistration {
+        NoteCellRegistration { cell, indexPath, note in
+            cell.setup(colorPalette: ColorSet.classic, viewModel: note)
+        }
+    }
+    
+    private func makeDatasource(with noteCellRegistration: NoteCellRegistration) -> NoteDataSource {
+        NoteDataSource(collectionView: contentView.collectionView) { collectionView, indexPath, viewModel in
+            collectionView.dequeueConfiguredReusableCell(using: noteCellRegistration, for: indexPath, item: viewModel)
+        }
     }
 }
 
@@ -207,15 +209,12 @@ extension NoteViewController: NoteRepositoryProtocolDelegate {
     func deleteNote(_ note: NoteCellViewModel) {
         var snapshot = dataSource.snapshot()
         
-        guard let viewModel = snapshot.itemIdentifiers.filter({ note.note.noteID == $0.note.noteID }).first else {
+        guard let viewModel = snapshot.itemIdentifiers.filter({ note.note.noteID == $0.note.noteID }).first
+        else {
             return
-            }
+        }
         
         snapshot.deleteItems([viewModel])
         dataSource.apply(snapshot, animatingDifferences: true)
-    }
-    
-    func updateNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
-        
     }
 }

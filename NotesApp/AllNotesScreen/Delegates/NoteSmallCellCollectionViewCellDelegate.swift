@@ -8,7 +8,7 @@
 import Foundation
 
 protocol NoteSmallCellCollectionViewCellDelegate: AnyObject {
-    func didTapDelete(for noteViewModel: SmallNoteCellViewModel)
-    func didTapShare(for noteViewModel: SmallNoteCellViewModel)
-    func didTapEdit(for noteViewModel: SmallNoteCellViewModel)
+    func didTapDelete(for noteViewModel: NoteCellViewModel)
+    func didTapShare(for noteViewModel: NoteCellViewModel)
+    func didTapEdit(for noteViewModel: NoteCellViewModel)
 }

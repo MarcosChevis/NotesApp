@@ -36,11 +36,12 @@ class NotesRepositoryTest: XCTestCase {
         cancelables = nil
     }
     
-    func testNoteAdition() throws {
-        try creatNote(withMessage: "oooi")
-        
-        XCTAssertEqual(1, sut.numberOfElements)
-        XCTAssertEqual("oooi", repositoryDelegate.data.first!.note.content)
+    func testNoteCreation() throws {
+        try creatNote(withMessage: "Uma nova nota")
+        try sut.saveChanges()
+
+        XCTAssertEqual(repositoryDelegate.data.count, 1)
+        XCTAssertEqual(repositoryDelegate.data.first!.note.content, "Uma nova nota")
     }
     
     func testNoteEdit() throws {
@@ -62,7 +63,7 @@ class NotesRepositoryTest: XCTestCase {
         XCTAssertEqual("vou deletar", note.note.content)
 
         try sut.deleteNote(note.note)
-        let count = sut.numberOfElements
+        let count = repositoryDelegate.data.count
         XCTAssertEqual(0, count)
     }
     
