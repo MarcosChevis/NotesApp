@@ -16,8 +16,12 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     
 
     var delegate: NoteSmallCellCollectionViewCellDelegate? {
-        didSet {
-            noteSmallContentView.delegate = delegate
+        set {
+            noteSmallContentView.delegate = newValue
+        }
+        
+        get {
+            noteSmallContentView.delegate
         }
     }
     
@@ -54,7 +58,7 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
         self.viewModel = viewModel
         self.palette = palette
-        noteSmallContentView.setup(with: viewModel, colorSet: palette)
+        noteSmallContentView.setup(with: viewModel, palette: palette)
     }
     
     override func prepareForReuse() {

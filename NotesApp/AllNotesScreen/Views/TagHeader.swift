@@ -36,7 +36,8 @@ class TagHeader: UICollectionReusableView {
         ])
     }
     
-    func setup(with name: String) {
+    func setup(with name: String, color: UIColor) {
         label.text = name
+        label.textColor = color
     }
 }
