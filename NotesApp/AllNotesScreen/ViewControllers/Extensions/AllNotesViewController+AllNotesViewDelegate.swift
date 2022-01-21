@@ -9,7 +9,7 @@ import UIKit
 
 extension AllNotesViewController: AllNotesViewDelegate {
     func didTapClose() {
-        print("fechar")
+        coordinator?.dismiss()
     }
     
     func didTapSettings() {
