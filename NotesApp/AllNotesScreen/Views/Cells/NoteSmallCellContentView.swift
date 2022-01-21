@@ -26,25 +26,18 @@ class NoteSmallCellContentView: ThemableView {
         label.textAlignment = .left
         label.numberOfLines = 1
         
-        
-        
-        
         return label
     }()
     
     
     private lazy var contentTextView: UILabel = {
         let label = UILabel()
-        
         label.font = .preferredFont(forTextStyle: .body)
         label.textAlignment = .left
         label.numberOfLines = 2
-        
-        
-        
+            
         return label
     }()
-    
     
     private lazy var buttonsStackView: UIStackView = {
         let stack = UIStackView()
@@ -52,13 +45,10 @@ class NoteSmallCellContentView: ThemableView {
         stack.axis = .horizontal
         stack.spacing = 12
         stack.alignment = .center
-        
         stack.addArrangedSubview(deleteButton)
         stack.addArrangedSubview(shareButton)
         stack.addArrangedSubview(editButton)
-        
-        
-        
+          
         return stack
     }()
     
@@ -66,7 +56,6 @@ class NoteSmallCellContentView: ThemableView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "trash"), for: .normal)
         button.layer.cornerRadius = 8
-
         button.addAction(UIAction(handler: {[weak self] _ in
             guard let self = self, let viewModel = self.viewModel else { return }
             self.delegate?.didTapDelete(for: viewModel)
@@ -79,7 +68,6 @@ class NoteSmallCellContentView: ThemableView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         button.layer.cornerRadius = 8
-        
         button.addAction(UIAction(handler: {[weak self] _ in
             guard let self = self, let viewModel = self.viewModel else { return }
             self.delegate?.didTapShare(for: viewModel)
@@ -92,9 +80,6 @@ class NoteSmallCellContentView: ThemableView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
         button.layer.cornerRadius = 8
-        
-       
-        
         button.addAction(UIAction(handler: {[weak self] _ in
             guard let self = self, let viewModel = self.viewModel else { return }
             self.delegate?.didTapEdit(for: viewModel)
@@ -102,7 +87,6 @@ class NoteSmallCellContentView: ThemableView {
         
         return button
     }()
-    
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings()) {
@@ -122,7 +106,6 @@ class NoteSmallCellContentView: ThemableView {
     }
     
     func setupConstraints() {
-        
         titleView.translatesAutoresizingMaskIntoConstraints = false
         contentTextView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -163,18 +146,15 @@ class NoteSmallCellContentView: ThemableView {
             editButton.heightAnchor.constraint(equalTo: editButton.widthAnchor)
         ]
         
-        
         NSLayoutConstraint.activate(titleViewConstraints)
         NSLayoutConstraint.activate(contentTextViewConstraints)
         NSLayoutConstraint.activate(buttonsStackViewConstraints)
         NSLayoutConstraint.activate(deleteButtonConstraints)
         NSLayoutConstraint.activate(shareButtonConstraints)
         NSLayoutConstraint.activate(editButtonConstraints)
-        
     }
     
     func setup(with viewModel: NoteCellViewModel, palette: ColorSet) {
-        
         self.palette = palette
         self.viewModel = viewModel
         let provisoryTitle = viewModel.note.noteID.suffix(5)
@@ -196,5 +176,4 @@ class NoteSmallCellContentView: ThemableView {
         shareButton.backgroundColor = colorSet.buttonBackground
         backgroundColor = colorSet.noteBackground
     }
-    
 }

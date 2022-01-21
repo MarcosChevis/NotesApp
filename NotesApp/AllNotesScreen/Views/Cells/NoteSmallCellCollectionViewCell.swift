@@ -19,7 +19,6 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
         set {
             noteSmallContentView.delegate = newValue
         }
-        
         get {
             noteSmallContentView.delegate
         }
@@ -27,7 +26,6 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     
     private var shouldHidContent: Bool
     
-
     override init(frame: CGRect) {
         noteSmallContentView = NoteSmallCellContentView(palette: .classic)
         noteSmallContentView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +41,6 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     private func setupConstraints() {
         let noteSmallContentViewConstraints: [NSLayoutConstraint] = [
@@ -66,5 +63,4 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
         viewModel = nil
         delegate = nil
     }
-    
 }
