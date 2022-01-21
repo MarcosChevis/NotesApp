@@ -12,6 +12,12 @@ class ThemesViewController: ThemableViewController {
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSouce
     weak var coordinator: AllNotesCoordinatorProtocol?
+    override var palette: ColorSet {
+        didSet {
+            setColors(palette: palette)
+            setNeedsStatusBarAppearanceUpdate()
+        }
+    }
     
     init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSouce, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {

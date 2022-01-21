@@ -16,6 +16,9 @@ class ThemableViewController: UIViewController {
     }
     let notificationService: NotificationService
     let settings: Settings
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return palette.palette().statusBarStyle
+    }
     
     init(palette: ColorSet, notificationService: NotificationService,
          settings: Settings) {
@@ -24,9 +27,7 @@ class ThemableViewController: UIViewController {
         self.palette = palette
         super.init(nibName: nil, bundle: nil)
         
-        
         setupBindings()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +57,6 @@ class ThemableViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.largeTitle]
         navigationController?.navigationBar.tintColor = colorSet.actionColor
         navigationController?.navigationBar.barTintColor = colorSet.background
+        
     }
-    
 }

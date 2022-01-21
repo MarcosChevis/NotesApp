@@ -19,7 +19,7 @@ class MainCoordinatorTest: XCTestCase {
         notificationService = .init()
         localStorageService = .init()
         settings = .init(localStorageService: localStorageService, notificationService: notificationService)
-        sut = .init(navigationController: UINavigationController(), settings: settings, notificationService: notificationService)
+        sut = .init(navigationController: NavigationController(), settings: settings, notificationService: notificationService)
         sut.start()
     }
     

@@ -14,12 +14,12 @@ protocol AllNotesCoordinatorProtocol: AnyObject {
 }
 
 class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
-    let navigationController: UINavigationController
+    let navigationController: NavigationController
     var settings: Settings
     let notificationService: NotificationService
     var childCoordinators: [CoordinatorProtocol]
     
-    init(navigationController: UINavigationController,
+    init(navigationController: NavigationController,
          settings: Settings = Settings(localStorageService: UserDefaults.standard,
                                        notificationService: NotificationCenter.default),
          notificationService: NotificationService = NotificationCenter.default)

@@ -27,7 +27,7 @@ extension AllNotesViewController {
         return { [weak self] (collectionView: UICollectionView,
                   kind: String,
                   indexPath: IndexPath) -> UICollectionReusableView? in
-            let textColor = self?.palette.palette().text ?? ColorSet.classic.palette().text
+            let textColor = self?.palette.palette().largeTitle ?? ColorSet.classic.palette().largeTitle
             switch kind {
             case UICollectionView.elementKindSectionHeader:
                 if indexPath.section == 0 {
