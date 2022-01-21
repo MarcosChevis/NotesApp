@@ -10,6 +10,7 @@ import UIKit
 class ThemeCollectionViewCell: UICollectionViewCell {
     static var identifier: String = "ThemeCollectionViewCell"
     
+    
     lazy var title: UILabel = {
         var title = UILabel()
         title.translatesAutoresizingMaskIntoConstraints = false

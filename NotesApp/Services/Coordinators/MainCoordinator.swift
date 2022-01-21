@@ -12,12 +12,12 @@ protocol MainCoordinatorProtocol: AnyObject {
 }
 
 class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
-    let navigationController: UINavigationController
+    let navigationController: NavigationController
     let settings: Settings
     var childCoordinators: [CoordinatorProtocol]
     let notificationService: NotificationService
     
-    init(navigationController: UINavigationController,
+    init(navigationController: NavigationController,
          settings: Settings = Settings(localStorageService: UserDefaults.standard,
                                        notificationService: NotificationCenter.default),
          notificationService: NotificationService = NotificationCenter.default)
@@ -40,7 +40,7 @@ class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
     }
     
     func navigateToAllNotes() {
-        let childCoordinator = AllNotesCoordinator(navigationController: UINavigationController(), settings: settings)
+        let childCoordinator = AllNotesCoordinator(navigationController: NavigationController(), settings: settings)
         childCoordinator.start()
         childCoordinators.append(childCoordinator)
         navigationController.present(childCoordinator.navigationController, animated: true)

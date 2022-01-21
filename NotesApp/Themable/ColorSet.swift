@@ -12,8 +12,8 @@ enum ColorSet: String, CaseIterable {
     case classic
     case neon
     case christmas
-    case bi
-    case paulinha
+    case pastel
+    case bookish
     
     func palette() -> CustomColorSet {
         switch self {
@@ -22,34 +22,34 @@ enum ColorSet: String, CaseIterable {
                                   background: UIColor(Color("NeonBackground")),
                                   buttonBackground: UIColor(Color("NeonButtonBackground")),
                                   noteBackground: UIColor(Color("NeonNoteBackground")),
-                                  text: UIColor(Color("NeonText")), largeTitle: UIColor(Color("NeonText")), statusBarStyle: .darkContent)
+                                  text: UIColor(Color("NeonText")), largeTitle: UIColor(Color("NeonText")), statusBarStyle: .lightContent)
         case .classic:
             return CustomColorSet(actionColor: UIColor(Color("ClassicAction")),
                                   background: UIColor(Color("ClassicBackground")),
                                   buttonBackground: UIColor(Color("ClassicButtonBackground")),
                                   noteBackground: UIColor(Color("ClassicNoteBackground")),
-                                  text: UIColor(Color("ClassicText")), largeTitle: UIColor(Color("ClassicText")), statusBarStyle: .lightContent)
+                                  text: UIColor(Color("ClassicText")), largeTitle: UIColor(Color("ClassicText")), statusBarStyle: .darkContent)
             
         case .christmas:
             return CustomColorSet(actionColor: UIColor(Color("ChristmasAction")),
                                   background: UIColor(Color("ChristmasBackground")),
                                   buttonBackground: UIColor(Color("ChristmasButtonBackground")),
                                   noteBackground: UIColor(Color("ChristmasNoteBackground")),
-                                  text: UIColor(Color("ChristmasText")), largeTitle: UIColor(Color("ChristmasLargeTitle")), statusBarStyle: .darkContent)
+                                  text: UIColor(Color("ChristmasText")), largeTitle: UIColor(Color("ChristmasLargeTitle")), statusBarStyle: .lightContent)
             
-        case .bi:
+        case .pastel:
             return CustomColorSet(actionColor: UIColor(Color("BiAction")),
                                   background: UIColor(Color("BiBackground")),
                                   buttonBackground: UIColor(Color("BiButtonBackground")),
                                   noteBackground: UIColor(Color("BiNoteBackground")),
                                   text: UIColor(Color("BiText")), largeTitle: UIColor(Color("BiLargeTitle")), statusBarStyle: .lightContent)
             
-        case .paulinha:
+        case .bookish:
             return CustomColorSet(actionColor: UIColor(Color("PaulinhaAction")),
                                   background: UIColor(Color("PaulinhaBackground")),
                                   buttonBackground: UIColor(Color("PaulinhaButtonBackground")),
                                   noteBackground: UIColor(Color("PaulinhaNoteBackground")),
-                                  text: UIColor(Color("PaulinhaText")), largeTitle: UIColor(Color("PaulinhaText")), statusBarStyle: .lightContent)
+                                  text: UIColor(Color("PaulinhaText")), largeTitle: UIColor(Color("PaulinhaText")), statusBarStyle: .darkContent)
         }
     }
 }

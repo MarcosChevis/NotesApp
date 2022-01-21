@@ -49,7 +49,7 @@ class AllNoteViewTest: XCTestCase {
         
         noteRepositoryDummy.mock = [NoteCellViewModel(note: NoteDummy(noteID: "id1" , content: "nota1")), NoteCellViewModel(note: NoteDummy(noteID: "id2" , content: "nota2")), NoteCellViewModel(note: NoteDummy(noteID: "id3" , content: "nota3"))]
         
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         return navigation
         
     }
@@ -73,7 +73,7 @@ class AllNoteViewTest: XCTestCase {
     func setupViewWithTagsOnly() -> UIViewController {
         tagRepositoryDummy.mock = [TagCellViewModel(tag: TagDummy(name: "#tag1", tagID: "id1" )), TagCellViewModel(tag: TagDummy(name: "#tag2", tagID: "id2" )), TagCellViewModel(tag: TagDummy(name: "#tag3", tagID: "id3" ))]
         
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         return navigation
     }
     
@@ -96,7 +96,7 @@ class AllNoteViewTest: XCTestCase {
     func setupViewWithNotesOnly() -> UIViewController {
         noteRepositoryDummy.mock = [NoteCellViewModel(note: NoteDummy(noteID: "id1" , content: "nota1")), NoteCellViewModel(note: NoteDummy(noteID: "id2" , content: "nota2")), NoteCellViewModel(note: NoteDummy(noteID: "id3" , content: "nota3"))]
         
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         return navigation
     }
     
@@ -117,7 +117,7 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func setupWithNoTagsAndNotes() -> UIViewController {
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         return navigation
     }
     

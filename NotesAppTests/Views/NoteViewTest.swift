@@ -44,24 +44,24 @@ class NoteViewTest: XCTestCase {
     }
     
     func testLayoutWithNoItemsOnIphone12() {
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         assertSnapshot(matching: navigation, as: .image(on: .iPhone12))
     }
     
     func testLayoutWithNoItemsOnIphoneSE() {
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         assertSnapshot(matching: navigation, as: .image(on: .iPhoneSe))
     }
     
     func testLayoutWithNoItemsOnIphone12ProMax() {
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         assertSnapshot(matching: navigation, as: .image(on: .iPhone12ProMax))
     }
     
     func setupLayoutTestWithMoreThanItem() -> UIViewController {
         repositoryDummy.mock = [NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 01", content: "Essa é uma nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 02", content: "Essa é uma outra nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 03", content: "Essa é uma outra outra nota de teste, oi tudo bem com você?"))]
         
-        let navigation = UINavigationController(rootViewController: sut)
+        let navigation = NavigationController(rootViewController: sut)
         return navigation
     }
 }
