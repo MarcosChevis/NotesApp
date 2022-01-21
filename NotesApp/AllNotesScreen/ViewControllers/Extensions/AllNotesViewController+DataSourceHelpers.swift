@@ -24,22 +24,23 @@ extension AllNotesViewController {
     
     func makeSupplementaryViewProvider() -> UICollectionViewDiffableDataSource<Section, Item>.SupplementaryViewProvider? {
         
-        return { (collectionView: UICollectionView,
+        return { [weak self] (collectionView: UICollectionView,
                   kind: String,
                   indexPath: IndexPath) -> UICollectionReusableView? in
+            let textColor = self?.palette.palette().text ?? ColorSet.classic.palette().text
             switch kind {
             case UICollectionView.elementKindSectionHeader:
                 if indexPath.section == 0 {
                     guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier, for: indexPath) as? TagHeader else {
                         fatalError()
                     }
-                    header.setup(with: "Tags")
+                    header.setup(with: "Tags", color: textColor)
                     return header
                 } else {
                     guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier, for: indexPath) as? NoteHeader else {
                         fatalError()
                     }
-                    header.setup(with: "All Notes")
+                    header.setup(with: "All Notes", color: textColor)
                     return header
                 }
             default:
@@ -49,15 +50,17 @@ extension AllNotesViewController {
     }
     
     func makeTagCellRegistration() -> TagCellRegistration {
-        return TagCellRegistration { cell, indexPath, tag in
-            cell.setup(with: tag, colorSet: .classic)
+        return TagCellRegistration { [weak self] cell, indexPath, tag in
+            let palette = self?.palette ?? .classic
+            cell.setup(with: tag, colorSet: palette)
         }
     }
     
     func makeNoteCellRegistration() -> NoteCellRegistration {
         return NoteCellRegistration { [weak self] cell, indexPath, note in
+            let palette = self?.palette ?? .classic
             cell.delegate = self
-            cell.setup(with: note, colorSet: .classic)
+            cell.setup(palette: palette, viewModel: note)
         }
     }
     

@@ -79,6 +79,7 @@
 		C87AA53C2797101500E2AEF1 /* ThemableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA53B2797101500E2AEF1 /* ThemableViewController.swift */; };
 		C87AA53F2797207D00E2AEF1 /* ThemableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA53E2797207D00E2AEF1 /* ThemableView.swift */; };
 		C87AA54127972D5F00E2AEF1 /* NoteCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA54027972D5F00E2AEF1 /* NoteCellContentView.swift */; };
+		C88C7A6A27999E760090613F /* NoteSmallCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88C7A6927999E760090613F /* NoteSmallCellContentView.swift */; };
 		E935C95727906F9100835897 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95627906F9100835897 /* SettingsView.swift */; };
 		E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95B27906FFC00835897 /* SettingsViewController.swift */; };
 		E935C95E2790787D00835897 /* SettingTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95D2790787D00835897 /* SettingTableDataSource.swift */; };
@@ -171,6 +172,7 @@
 		C87AA53B2797101500E2AEF1 /* ThemableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableViewController.swift; sourceTree = "<group>"; };
 		C87AA53E2797207D00E2AEF1 /* ThemableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableView.swift; sourceTree = "<group>"; };
 		C87AA54027972D5F00E2AEF1 /* NoteCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellContentView.swift; sourceTree = "<group>"; };
+		C88C7A6927999E760090613F /* NoteSmallCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSmallCellContentView.swift; sourceTree = "<group>"; };
 		E935C95627906F9100835897 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E935C95B27906FFC00835897 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E935C95D2790787D00835897 /* SettingTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableDataSource.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 			children = (
 				5B73C9F2278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift */,
 				5B4576212790651B00EF1036 /* TagCollectionViewCell.swift */,
+				C88C7A6927999E760090613F /* NoteSmallCellContentView.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 				5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */,
+				C88C7A6A27999E760090613F /* NoteSmallCellContentView.swift in Sources */,
 				E935C95727906F9100835897 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

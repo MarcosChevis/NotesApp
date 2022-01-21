@@ -19,7 +19,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         noteContentView.translatesAutoresizingMaskIntoConstraints = false
 
         super.init(frame: frame)
-        setupHierarchy()
+        contentView.addSubview(noteContentView)
         setupConstraints()
         setupStyle()
         noteContentView.textView.delegate = self
@@ -31,10 +31,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupHierarchy() {
-        contentView.addSubview(noteContentView)
-        
-    }
     
     private func setupConstraints() {
         let noteContentViewConstraints: [NSLayoutConstraint] = [

@@ -117,4 +117,8 @@ class AllNotesViewController: ThemableViewController {
         // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada
         definesPresentationContext = true
     }
+    override func setColors(palette: ColorSet) {
+        super.setColors(palette: palette)
+        contentView.collectionView.reloadData()
+    }
 }
