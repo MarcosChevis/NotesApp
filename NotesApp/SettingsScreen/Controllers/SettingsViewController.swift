@@ -9,7 +9,7 @@ import UIKit
 
 class SettingsViewController: ThemableViewController {
     var contentView: SettingsView
-    
+    weak var coordinator: AllNotesCoordinatorProtocol?
     var tableDataSource: SettingTableDataSource
     
     init(palette: ColorSet, tableDataSource: SettingTableDataSource, notificationService: NotificationService = NotificationCenter.default,

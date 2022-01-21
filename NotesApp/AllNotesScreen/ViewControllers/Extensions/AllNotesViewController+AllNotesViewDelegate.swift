@@ -8,8 +8,12 @@
 import UIKit
 
 extension AllNotesViewController: AllNotesViewDelegate {
+    func didTapClose() {
+        print("fechar")
+    }
+    
     func didTapSettings() {
-        
+        coordinator?.navigateToSettings()
     }
     
     func didTapAddNote() {

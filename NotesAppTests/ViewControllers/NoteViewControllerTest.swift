@@ -12,10 +12,19 @@ class NoteViewControllerTest: XCTestCase {
     
     var repositoryDummy: NoteRepositoryDummy!
     var sut: NoteViewController!
+    var coordinatorDummy: MainCoordinatorDummy!
+    var settings: Settings!
+    var localStorageServiceDummy: LocalStorageServiceDummy!
+    var notificationServiceDummy: NotificationServiceDummy!
 
     override func setUp() {
         repositoryDummy = .init()
-        sut = .init(palette: .classic, repository: repositoryDummy)
+        coordinatorDummy = .init()
+        localStorageServiceDummy = .init()
+        notificationServiceDummy = .init()
+        settings = .init(localStorageService: localStorageServiceDummy, notificationService: notificationServiceDummy)
+        sut = NoteViewController(palette: .classic, repository: repositoryDummy, notificationService: notificationServiceDummy, settings: settings)
+        sut.coordinator = coordinatorDummy
         _ = sut.view
     }
     
@@ -34,6 +43,11 @@ class NoteViewControllerTest: XCTestCase {
         sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
         sut.deleteNote()
         XCTAssertEqual(0, repositoryDummy.mock.count)
+    }
+    
+    func testDidNavigateToAllNotes() {
+        sut.didAllNotes()
+        XCTAssertTrue(coordinatorDummy.didNavigateToAllNotes)
     }
     
     

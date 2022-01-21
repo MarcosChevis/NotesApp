@@ -9,10 +9,19 @@ import UIKit
 
 extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
     func didTapDelete(for noteViewModel: NoteCellViewModel) {
-        deleteNote(noteViewModel)
+        presentAlert(for: .onDeletingItem, { [weak self] in
+            guard let self = self else { return }
+            self.deleteNote(noteViewModel)
+        })
     }
     
     func didTapShare(for noteViewModel: NoteCellViewModel) {
+        do {
+            let shareScreen = try UIActivityViewController.shareNote(noteViewModel.note)
+            present(shareScreen, animated: true, completion: nil)
+        } catch {
+            presentErrorAlert(with: "Your note is empty")
+        }
         print("share")
     }
     

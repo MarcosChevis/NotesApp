@@ -14,4 +14,8 @@ extension Notification.Name {
     static var didChangeTheme: Self {
         .init(rawValue: "ThemeManager_DidChangeTheme")
     }
+    
+    static var didComebackFromModal: Self {
+        .init(rawValue: "AllNotesCoordinator_DidComebackFromModal")
+    }
 }
