@@ -31,4 +31,6 @@ class Settings {
         }
     }
     
+    private var cachedTheme: ColorSet?
+    
 }

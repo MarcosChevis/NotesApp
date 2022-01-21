@@ -11,7 +11,7 @@ class ThemesViewController: ThemableViewController {
     
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSouce
-    
+    weak var coordinator: AllNotesCoordinatorProtocol?
     
     init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSouce, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {

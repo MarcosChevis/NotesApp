@@ -135,7 +135,7 @@ class AllNotesView: ThemableView {
     }
     
     @objc func didTapSettings() {
-        print("settings")
+        delegate?.didTapSettings()
     }
     
     @objc func didTapAddNote() {
