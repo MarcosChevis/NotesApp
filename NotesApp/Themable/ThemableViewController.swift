@@ -59,7 +59,4 @@ class ThemableViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = colorSet.background
         
     }
-    
-    
-    
 }
