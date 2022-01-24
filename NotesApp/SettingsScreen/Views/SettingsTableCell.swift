@@ -18,6 +18,7 @@ class SettingsTableCell: UITableViewCell {
     
     func setupSettingsViewCell(palette: ColorSet) {
         self.palette = palette
+        self.layer.cornerRadius = 10
     }
     
     func setColors(palette: ColorSet?) {
