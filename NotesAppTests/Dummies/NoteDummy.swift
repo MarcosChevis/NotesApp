@@ -11,9 +11,11 @@ import Foundation
 class NoteDummy: NoteProtocol {
     var noteID: String
     var content: String?
+    var title: String?
     
-    init(noteID: String, content: String? = nil) {
+    init(noteID: String, content: String? = nil, title: String? = nil) {
         self.noteID = noteID
         self.content = content
+        self.title = title
     }
 }

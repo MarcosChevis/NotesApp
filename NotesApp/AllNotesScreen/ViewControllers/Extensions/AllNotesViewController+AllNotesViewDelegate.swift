@@ -21,8 +21,7 @@ extension AllNotesViewController: AllNotesViewDelegate {
             _ = try noteRepository.createEmptyNote()
             
         } catch {
-            print("erro")
-            #warning("fazer o erro")
+            presentErrorAlert(with: "An Error Ocurred trying to add a note")
         }
     }
 }

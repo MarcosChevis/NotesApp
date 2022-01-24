@@ -58,6 +58,32 @@ class NoteViewController: ThemableViewController {
         setupInitialData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        do {
+            let data = try repository.getInitialData()
+            var snapshot = dataSource.snapshot()
+            
+            
+            if snapshot.numberOfItems > 0 {
+                snapshot.deleteAllItems()
+                snapshot.appendSections([.main])
+            }
+            
+            snapshot.appendItems(data, toSection: .main)
+            dataSource.apply(snapshot, animatingDifferences: false)
+        } catch  {
+            
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        scrollToEmptyNote(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        repository.saveChangesWithoutEmptyNotes()
+    }
+    
     private func setupKeyboardDismissGesture() {
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         tap.cancelsTouchesInView = false
@@ -65,19 +91,9 @@ class NoteViewController: ThemableViewController {
     }
     
     private func setupInitialData() {
-        do {
-            let data = try repository.getInitialData()
-            var snapshot = dataSource.snapshot()
-            snapshot.appendSections([.main])
-            snapshot.appendItems(data, toSection: .main)
-            dataSource.apply(snapshot, animatingDifferences: false)
-        } catch {
-            
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        scrollToEmptyNote(animated)
+        var snapshot = dataSource.snapshot()
+        snapshot.appendSections([.main])
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func setupToolbar() {
@@ -92,6 +108,7 @@ class NoteViewController: ThemableViewController {
     
     
     private func scrollToEmptyNote(_ animated: Bool = false) {
+        repository.saveChangesWithoutEmptyNotes()
         do {
             _ = try repository.createEmptyNote()
             let count = dataSource.snapshot().numberOfItems
