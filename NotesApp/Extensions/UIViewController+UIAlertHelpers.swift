@@ -9,8 +9,7 @@ import UIKit
 
 extension UIViewController {
     func presentAlert(for alertCase: UIAlertController.CommonAlert, _ action: @escaping() -> Void) {
-        let alert = UIAlertController.singleActionAlert(for: alertCase) { [weak self] in
-            self?.dismiss(animated: true, completion: nil)
+        let alert = UIAlertController.singleActionAlert(for: alertCase) {
             action()
         }
         self.present(alert, animated: true)
