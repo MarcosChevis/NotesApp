@@ -78,7 +78,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
             .store(in: &cancelables)
         
         notificationService.publisher(for: UIApplication.willResignActiveNotification, with: nil)
-            .sink(receiveValue: removeEmptyAndSave)
+            .sink(receiveValue: removeEmptyAndSaveNotification)
             .store(in: &cancelables)
     }
     
@@ -90,7 +90,11 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         }
     }
     
-    func removeEmptyAndSave(_ notification: Notification) {
+    private func removeEmptyAndSaveNotification(_ notification: Notification) {
+        saveChangesWithoutEmptyNotes()
+    }
+    
+    func saveChangesWithoutEmptyNotes() {
         do {
             removeEmptyObjects()
             try saveChanges()
