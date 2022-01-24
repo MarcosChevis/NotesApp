@@ -21,10 +21,12 @@ class NoteCellContentView: ThemableView {
         } else {
             title.font = .preferredFont(forTextStyle: .title2)
         }
-        
         title.textAlignment = .left
         return title
     }()
+    
+    private var placeholder: NSMutableAttributedString
+    private var placeholderContent: String = "A Great Title..."
     
     lazy var textView: UITextView = {
         let textView = UITextView()
@@ -36,6 +38,8 @@ class NoteCellContentView: ThemableView {
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings()) {
+        
+        placeholder = .init(string: placeholderContent)
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupHierarchy()
         setupConstraints()
@@ -69,14 +73,11 @@ class NoteCellContentView: ThemableView {
     }
     
     func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
-        
-        
         self.palette = palette
-        
-        let provisoryTitle = viewModel.note.noteID.suffix(5)
-        
-        self.title.text = String(provisoryTitle)
+        self.title.text = viewModel.note.title
         self.textView.text = viewModel.note.content
+        
+        title.attributedPlaceholder = placeholder
     }
     
     override func setColors(palette: ColorSet?) {
@@ -85,5 +86,10 @@ class NoteCellContentView: ThemableView {
         self.title.textColor = colorSet.text
         self.textView.textColor = colorSet.text
         backgroundColor = colorSet.noteBackground
+        
+        let attributeRange = NSRange(location: 0, length: placeholderContent.count)
+        placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
+        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: colorSet.text.withAlphaComponent(0.4)], range: attributeRange)
+        
     }
 }

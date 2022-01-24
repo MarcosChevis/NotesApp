@@ -54,6 +54,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     func createEmptyNote() throws -> NoteProtocol {
         let note = Note(context: coreDataStack.mainContext)
         note.content = ""
+        note.title = ""
         try saveChanges()
         return note
     }

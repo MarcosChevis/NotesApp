@@ -66,20 +66,21 @@ class AllNotesViewController: ThemableViewController {
     }
     
     private func setupInitialData() {
+        var snapshot = dataSource.snapshot()
+        snapshot.appendSections(Section.allCases)
+        
         do {
-            var snapshot = dataSource.snapshot()
-            snapshot.appendSections(Section.allCases)
-            
             let tagItems = try fetchTagData()
             snapshot.appendItems(tagItems, toSection: .tags)
             
             let noteItems = try fetchNoteData()
             snapshot.appendItems(noteItems, toSection: .text)
             
-            dataSource.apply(snapshot, animatingDifferences: false)
         } catch {
-            #warning("Implementar mensagem de erro")
+            presentErrorAlert(with: "An error ocurred fetching your notes!")
         }
+        
+        dataSource.apply(snapshot, animatingDifferences: false)
     }
     
     private func fetchTagData() throws -> [Item] {
