@@ -34,6 +34,8 @@ class ThemesCollectionDataSouce: NSObject, UICollectionViewDataSource {
         }
         
         cell.setupThemesViewCell(palette: data[indexPath.row].colorSet, isSelected: data[indexPath.row].isSelected)
+        UIApplication.shared.setAlternateIconName("AppIcon-2")
+        print(UIApplication.shared.alternateIconName ?? "normal")
         
         return cell
     }
