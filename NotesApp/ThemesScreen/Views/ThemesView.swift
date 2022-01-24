@@ -95,10 +95,14 @@ class ThemesView: ThemableView {
         case .classic:
             exampleImage.image = UIImage(named: "ClassicThemeExample")
         case .christmas:
-            exampleImage.image = UIImage(named: "toti")
-        case .pastel:
+            exampleImage.image = UIImage(named: "ChristmasThemeExample")
+        case .candy:
             exampleImage.image = UIImage(named: "toti")
         case .bookish:
+            exampleImage.image = UIImage(named: "BookishThemeExample")
+        case .halloween:
+            exampleImage.image = UIImage(named: "HalloweenThemeExample")
+        case .sunshine:
             exampleImage.image = UIImage(named: "toti")
         }
         

@@ -123,6 +123,20 @@ class AllNotesView: ThemableView {
         let colorSet = palette.palette()
         self.backgroundColor = colorSet.background
         collectionView.backgroundColor = colorSet.background
+        searchController.searchBar.tintColor = colorSet.actionColor
+        searchController.searchBar.searchTextField.backgroundColor = colorSet.noteBackground.withAlphaComponent(0.6)
+        switch colorSet.statusBarStyle {
+            
+        case .default:
+            searchController.searchBar.barStyle = .default
+        case .lightContent:
+            searchController.searchBar.barStyle = .black
+        case .darkContent:
+            searchController.searchBar.barStyle = .default
+        @unknown default:
+            searchController.searchBar.barStyle = .default
+        }
+        
     }
     
     func setupConstraints() {
