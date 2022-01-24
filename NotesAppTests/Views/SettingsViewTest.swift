@@ -11,12 +11,12 @@ import SnapshotTesting
 
 class SettingsViewTest: XCTestCase {
     
-    var sut: NoteViewController!
+    var sut: SettingsViewController!
     var colorSet: ColorSet!
 
     override func setUp() {
         colorSet = .classic
-        sut = .init(palette: colorSet)
+        sut = .init(palette: colorSet, tableDataSource: SettingTableDataSource(palette: colorSet))
         isRecording = false
     }
     
@@ -26,27 +26,45 @@ class SettingsViewTest: XCTestCase {
     }
 
     func setupLayoutTest(with palette: ColorSet = .classic) -> UIViewController {
-        sut = .init(palette: palette)
+        sut = .init(palette: palette, tableDataSource: SettingTableDataSource(palette: palette))
         let navigation = NavigationController(rootViewController: sut)
         return navigation
     }
     
-    func testLayoutWithMoreThanOneItemOnIphone12() {
-        let view = setupLayoutTestWithMoreThanItem()
+    func testLayoutIphone12() {
+        let view = setupLayoutTest()
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     
-    func testLayoutWithMoreThanOneItemOnIphoneSE() {
-        let view = setupLayoutTestWithMoreThanItem()
+    func testLayoutOnIphoneSE() {
+        let view = setupLayoutTest()
         assertSnapshot(matching: view, as: .image(on: .iPhoneSe))
     }
     
-    func testLayoutWithMoreThanOneItemOnIphone12ProMax() {
-        let view = setupLayoutTestWithMoreThanItem()
+    func testLayoutOnIphone12ProMax() {
+        let view = setupLayoutTest()
         assertSnapshot(matching: view, as: .image(on: .iPhone12ProMax))
     }
-
     
+    func testLayoutIphone12neon() {
+        let view = setupLayoutTest(with: .neon)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+    
+    func testLayoutIphone12pastel() {
+        let view = setupLayoutTest(with: .pastel)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+    
+    func testLayoutIphone12bookish() {
+        let view = setupLayoutTest(with: .bookish)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+    
+    func testLayoutIphone12christmas() {
+        let view = setupLayoutTest(with: .christmas)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
 
 }
