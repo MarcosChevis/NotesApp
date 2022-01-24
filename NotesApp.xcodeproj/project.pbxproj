@@ -54,6 +54,7 @@
 		9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* NoteHeader.swift */; };
 		9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35F2791C13A000F6B4A /* TagHeader.swift */; };
 		9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */; };
+		9D51C9C2279EDAD900092FCC /* ThemesViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */; };
 		9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */; };
 		9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7027970A3F005B21BC /* TagProtocol.swift */; };
 		9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */; };
@@ -145,6 +146,7 @@
 		9D31F35D2791C02D000F6B4A /* NoteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHeader.swift; sourceTree = "<group>"; };
 		9D31F35F2791C13A000F6B4A /* TagHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeader.swift; sourceTree = "<group>"; };
 		9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerUtilities.swift; sourceTree = "<group>"; };
+		9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewTest.swift; sourceTree = "<group>"; };
 		9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DE31E7027970A3F005B21BC /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellViewModel.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 				5B35900F2796F5FA00ECF0C1 /* NoteViewTest.swift */,
 				9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */,
 				C88C7A6F279ED9BA0090613F /* SettingsViewTest.swift */,
+				9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */,
 				5B3FF1B62799AF8600828097 /* MainCoordinatorDummy.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
+				9D51C9C2279EDAD900092FCC /* ThemesViewTest.swift in Sources */,
 				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
 				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,
 				5B3FF1BA2799B09800828097 /* LocalStorageServiceDummy.swift in Sources */,
@@ -809,7 +813,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87UTUM347S;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
@@ -829,7 +833,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 87UTUM347S;
+				DEVELOPMENT_TEAM = R36LU3NVAA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
