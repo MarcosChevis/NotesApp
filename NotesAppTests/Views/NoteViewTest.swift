@@ -33,6 +33,7 @@ class NoteViewTest: XCTestCase {
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
+    
     func testLayoutWithMoreThanOneItemOnIphoneSE() {
         let view = setupLayoutTestWithMoreThanItem()
         assertSnapshot(matching: view, as: .image(on: .iPhoneSe))
@@ -58,8 +59,30 @@ class NoteViewTest: XCTestCase {
         assertSnapshot(matching: navigation, as: .image(on: .iPhone12ProMax))
     }
     
-    func setupLayoutTestWithMoreThanItem() -> UIViewController {
+    func testLayoutWithMoreThanOneItemOnIphone12neon() {
+        let view = setupLayoutTestWithMoreThanItem(with: .neon)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+    
+    func testLayoutWithMoreThanOneItemOnIphone12bookish() {
+        let view = setupLayoutTestWithMoreThanItem(with: .bookish)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+    
+    func testLayoutWithMoreThanOneItemOnIphone12pastel() {
+        let view = setupLayoutTestWithMoreThanItem(with: .pastel)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+    
+    func testLayoutWithMoreThanOneItemOnIphone12christmas() {
+        let view = setupLayoutTestWithMoreThanItem(with: .christmas)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+    
+    
+    func setupLayoutTestWithMoreThanItem(with palette: ColorSet = .classic) -> UIViewController {
         repositoryDummy.mock = [NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 01", content: "Essa é uma nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 02", content: "Essa é uma outra nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 03", content: "Essa é uma outra outra nota de teste, oi tudo bem com você?"))]
+        sut = .init(palette: palette, repository: repositoryDummy)
         
         let navigation = NavigationController(rootViewController: sut)
         return navigation
