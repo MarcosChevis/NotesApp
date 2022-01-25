@@ -9,7 +9,6 @@ import Foundation
 @testable import NotesApp
 
 class NoteRepositoryDummy: NotesRepositoryProtocol {
-    
     var mock: [NoteCellViewModel] = []
     weak var delegate: NoteRepositoryProtocolDelegate?
     var didCallSaveChanges: Bool = false
@@ -37,6 +36,10 @@ class NoteRepositoryDummy: NotesRepositoryProtocol {
     
     func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
         []
+    }
+    
+    func saveChangesWithoutEmptyNotes() {
+        mock = mock.filter { !($0.note.content?.isEmpty ?? true) }
     }
     
 }

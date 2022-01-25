@@ -12,8 +12,11 @@ enum ColorSet: String, CaseIterable {
     case classic
     case neon
     case christmas
-    case pastel
+    case grape
     case bookish
+    case halloween
+    case devotional
+    case crt
     
     func palette() -> CustomColorSet {
         switch self {
@@ -37,12 +40,12 @@ enum ColorSet: String, CaseIterable {
                                   noteBackground: UIColor(Color("ChristmasNoteBackground")),
                                   text: UIColor(Color("ChristmasText")), largeTitle: UIColor(Color("ChristmasLargeTitle")), statusBarStyle: .lightContent)
             
-        case .pastel:
+        case .grape:
             return CustomColorSet(actionColor: UIColor(Color("BiAction")),
                                   background: UIColor(Color("BiBackground")),
                                   buttonBackground: UIColor(Color("BiButtonBackground")),
                                   noteBackground: UIColor(Color("BiNoteBackground")),
-                                  text: UIColor(Color("BiText")), largeTitle: UIColor(Color("BiLargeTitle")), statusBarStyle: .lightContent)
+                                  text: UIColor(Color("BiText")), largeTitle: UIColor(Color("BiLargeTitle")), statusBarStyle: .darkContent)
             
         case .bookish:
             return CustomColorSet(actionColor: UIColor(Color("PaulinhaAction")),
@@ -50,6 +53,25 @@ enum ColorSet: String, CaseIterable {
                                   buttonBackground: UIColor(Color("PaulinhaButtonBackground")),
                                   noteBackground: UIColor(Color("PaulinhaNoteBackground")),
                                   text: UIColor(Color("PaulinhaText")), largeTitle: UIColor(Color("PaulinhaText")), statusBarStyle: .darkContent)
+        case .halloween:
+            return CustomColorSet(actionColor: UIColor(Color("HalloweenAction")),
+                                  background: UIColor(Color("HalloweenBackground")),
+                                  buttonBackground: UIColor(Color("HalloweenButtonBackground")),
+                                  noteBackground: UIColor(Color("HalloweenNoteBackground")),
+                                  text: UIColor(Color("HalloweenText")), largeTitle: UIColor(Color("HalloweenText")), statusBarStyle: .lightContent)
+        case .devotional:
+            return CustomColorSet(actionColor: UIColor(Color("SunshineAction")),
+                                  background: UIColor(Color("SunshineBackground")),
+                                  buttonBackground: UIColor(Color("SunshineButtonBackground")),
+                                  noteBackground: UIColor(Color("SunshineNoteBackground")),
+                                  text: UIColor(Color("SunshineText")), largeTitle: UIColor(Color("SunshineText")), statusBarStyle: .darkContent)
+            
+        case .crt:
+            return CustomColorSet(actionColor: UIColor(Color("MatrixAction")),
+                                  background: UIColor(Color("MatrixBackground")),
+                                  buttonBackground: UIColor(Color("MatrixButtonBackground")),
+                                  noteBackground: UIColor(Color("MatrixNoteBackground")),
+                                  text: UIColor(Color("MatrixText")), largeTitle: UIColor(Color("MatrixText")), statusBarStyle: .darkContent)
         }
     }
 }

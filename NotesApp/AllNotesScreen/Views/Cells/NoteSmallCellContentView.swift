@@ -157,8 +157,7 @@ class NoteSmallCellContentView: ThemableView {
     func setup(with viewModel: NoteCellViewModel, palette: ColorSet) {
         self.palette = palette
         self.viewModel = viewModel
-        let provisoryTitle = viewModel.note.noteID.suffix(5)
-        titleView.text = String(provisoryTitle)
+        titleView.text = viewModel.note.title
         contentTextView.text = viewModel.note.content
         buttonsStackView.axis = .horizontal
     }

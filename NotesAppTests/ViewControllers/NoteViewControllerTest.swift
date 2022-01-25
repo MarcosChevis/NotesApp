@@ -49,6 +49,4 @@ class NoteViewControllerTest: XCTestCase {
         sut.didAllNotes()
         XCTAssertTrue(coordinatorDummy.didNavigateToAllNotes)
     }
-    
-    
 }

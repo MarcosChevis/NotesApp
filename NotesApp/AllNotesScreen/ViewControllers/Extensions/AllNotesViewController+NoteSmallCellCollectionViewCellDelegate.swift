@@ -11,7 +11,11 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
     func didTapDelete(for noteViewModel: NoteCellViewModel) {
         presentAlert(for: .onDeletingItem, { [weak self] in
             guard let self = self else { return }
-            self.deleteNote(noteViewModel)
+            do {
+                try self.noteRepository.deleteNote(noteViewModel.note)
+            } catch {
+                self.presentErrorAlert(with: "An error Occured deleting the item!")
+            }
         })
     }
     
