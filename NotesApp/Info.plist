@@ -73,7 +73,7 @@
         </dict>
         <key>CFBundleAlternateIcons</key>
         <dict>
-            <key>AppIcon-2</key>
+            <key>NeonTheme</key>
             <dict>
                 <key>CFBundleIconFiles</key>
                 <array>
@@ -82,11 +82,11 @@
                 <key>UIPrerenderedIcon</key>
                 <false/>
             </dict>
-            <key>AppIcon-3</key>
+            <key>ChristmasTheme</key>
             <dict>
                 <key>CFBundleIconFiles</key>
                 <array>
-                    <string>Neon</string>
+                    <string>Christmas</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>

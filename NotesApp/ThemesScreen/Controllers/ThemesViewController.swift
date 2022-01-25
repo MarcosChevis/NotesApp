@@ -52,4 +52,25 @@ class ThemesViewController: ThemableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
+    func changeIcon(palette: ColorSet) {
+        switch palette {
+        case .classic:
+            UIApplication.shared.setAlternateIconName(nil)
+        case .neon:
+            UIApplication.shared.setAlternateIconName("NeonTheme")
+        case .christmas:
+            UIApplication.shared.setAlternateIconName("ChristmasTheme")
+        case .pastel:
+            UIApplication.shared.setAlternateIconName(nil)
+        case .bookish:
+            UIApplication.shared.setAlternateIconName(nil)
+        }
+    }
+    
+    override func didChangeTheme(_ notification: Notification) {
+        super.didChangeTheme(notification)
+        
+        changeIcon(palette: palette)
+    }
+    
 }
