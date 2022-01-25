@@ -106,6 +106,8 @@ class ThemesView: ThemableView {
             exampleImage.image = UIImage(named: "DevotionalThemeExample")
         case .crt:
             exampleImage.image = UIImage(named: "CRTThemeExample")
+        case .dark:
+            exampleImage.image = UIImage(named: "CRTThemeExample")
         }
         
     }
