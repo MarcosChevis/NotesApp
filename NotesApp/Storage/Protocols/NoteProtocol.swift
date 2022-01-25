@@ -14,16 +14,6 @@ protocol NoteProtocol {
 }
 
 extension Note: NoteProtocol {
-    var title: String? {
-        get {
-            return ""
-        }
-        set {
-            return
-        }
-    }
-    
-    
     var noteID: String {
         objectID.uriRepresentation().absoluteString
     }
