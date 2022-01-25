@@ -39,8 +39,8 @@ class SettingsView: ThemableView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
             tableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
