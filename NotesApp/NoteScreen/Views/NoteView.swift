@@ -25,6 +25,7 @@ class NoteView: ThemableView {
             guard let self = self else { return }
             
             self.endEditing(false)
+            
             if let indexPath = self.findCurrentCellIndexPath(for: point) {
                 self.delegate?.collectionViewDidMove(to: indexPath)
             }
@@ -122,6 +123,10 @@ class NoteView: ThemableView {
             let doubleResult = (point.x + cellCenter) / (cellWidth)
             let result = Int(doubleResult)
             let indexPath = IndexPath(item: result, section: 0)
+//            print(doubleResult)
+//            print(result)
+//            print(cellWidth, " ", UIScreen.main.bounds.width)
+        
             return indexPath
         } else {
             return nil
