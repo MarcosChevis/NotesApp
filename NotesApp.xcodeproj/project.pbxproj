@@ -53,8 +53,11 @@
 		5BB7FE052796EB8600A6F335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */; };
 		9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* NoteHeader.swift */; };
 		9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35F2791C13A000F6B4A /* TagHeader.swift */; };
+		9D388413279AF9C0006FA73B /* AllNotesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */; };
+		9D388415279AFDD4006FA73B /* SettingsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */; };
 		9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */; };
 		9D51C9C2279EDAD900092FCC /* ThemesViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */; };
+		9D5C3C0F27A032EF00A85AE6 /* ThemesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5C3C0E27A032EF00A85AE6 /* ThemesViewControllerTest.swift */; };
 		9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */; };
 		9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7027970A3F005B21BC /* TagProtocol.swift */; };
 		9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */; };
@@ -145,8 +148,11 @@
 		5BFD81DC278DB2FA004833F5 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D31F35D2791C02D000F6B4A /* NoteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHeader.swift; sourceTree = "<group>"; };
 		9D31F35F2791C13A000F6B4A /* TagHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeader.swift; sourceTree = "<group>"; };
+		9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewControllerTest.swift; sourceTree = "<group>"; };
+		9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTest.swift; sourceTree = "<group>"; };
 		9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerUtilities.swift; sourceTree = "<group>"; };
 		9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewTest.swift; sourceTree = "<group>"; };
+		9D5C3C0E27A032EF00A85AE6 /* ThemesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewControllerTest.swift; sourceTree = "<group>"; };
 		9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DE31E7027970A3F005B21BC /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellViewModel.swift; sourceTree = "<group>"; };
@@ -231,6 +237,9 @@
 			isa = PBXGroup;
 			children = (
 				5B00566027959741002BBFD0 /* NoteViewControllerTest.swift */,
+				9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */,
+				9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */,
+				9D5C3C0E27A032EF00A85AE6 /* ThemesViewControllerTest.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -704,6 +713,9 @@
 				9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */,
 				5B3FF1B62799AF8600828097 /* MainCoordinatorDummy.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
+				9D388413279AF9C0006FA73B /* AllNotesViewControllerTest.swift in Sources */,
+				9D388415279AFDD4006FA73B /* SettingsViewControllerTest.swift in Sources */,
+				9D5C3C0F27A032EF00A85AE6 /* ThemesViewControllerTest.swift in Sources */,
 				9D51C9C2279EDAD900092FCC /* ThemesViewTest.swift in Sources */,
 				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
 				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,
