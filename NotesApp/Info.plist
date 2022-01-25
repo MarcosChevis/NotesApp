@@ -91,6 +91,51 @@
                 <key>UIPrerenderedIcon</key>
                 <false/>
             </dict>
+            <key>GrapeTheme</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Grape</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>BookishTheme</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Bookish</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>HalloweenTheme</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Halloween</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>DevotionalTheme</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Devotional</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>MatrixTheme</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Matrix</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
         </dict>
     </dict>
 </dict>

@@ -60,10 +60,19 @@ class ThemesViewController: ThemableViewController {
             UIApplication.shared.setAlternateIconName("NeonTheme")
         case .christmas:
             UIApplication.shared.setAlternateIconName("ChristmasTheme")
-        case .pastel:
-            UIApplication.shared.setAlternateIconName(nil)
+        case .grape:
+            UIApplication.shared.setAlternateIconName("GrapeTheme")
         case .bookish:
-            UIApplication.shared.setAlternateIconName(nil)
+            UIApplication.shared.setAlternateIconName("BookishTheme")
+        case .halloween:
+            UIApplication.shared.setAlternateIconName("HalloweenTheme")
+        case .devotional:
+            UIApplication.shared.setAlternateIconName("DevotionalTheme")
+        case .crt:
+            UIApplication.shared.setAlternateIconName("MatrixTheme")
+        default:
+            break
+            
         }
     }
     

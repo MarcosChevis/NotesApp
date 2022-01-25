@@ -86,12 +86,22 @@
 		E935C95727906F9100835897 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95627906F9100835897 /* SettingsView.swift */; };
 		E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95B27906FFC00835897 /* SettingsViewController.swift */; };
 		E935C95E2790787D00835897 /* SettingTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95D2790787D00835897 /* SettingTableDataSource.swift */; };
-		E973032327A0303A006E41E3 /* Christmas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032127A0303A006E41E3 /* Christmas@2x.png */; };
-		E973032427A0303A006E41E3 /* Christmas@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032227A0303A006E41E3 /* Christmas@3x.png */; };
+		E973032727A03931006E41E3 /* Neon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032527A03931006E41E3 /* Neon@2x.png */; };
+		E973032827A03931006E41E3 /* Neon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032627A03931006E41E3 /* Neon@3x.png */; };
+		E973032B27A03966006E41E3 /* Christmas@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032927A03966006E41E3 /* Christmas@3x.png */; };
+		E973032C27A03966006E41E3 /* Christmas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032A27A03966006E41E3 /* Christmas@2x.png */; };
+		E973032F27A0456A006E41E3 /* Grape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032D27A04569006E41E3 /* Grape@3x.png */; };
+		E973033027A0456A006E41E3 /* Grape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973032E27A04569006E41E3 /* Grape@2x.png */; };
+		E973033327A0463B006E41E3 /* Bookish@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033127A0463B006E41E3 /* Bookish@3x.png */; };
+		E973033427A0463B006E41E3 /* Bookish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033227A0463B006E41E3 /* Bookish@2x.png */; };
+		E973033727A04710006E41E3 /* Halloween@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033527A04710006E41E3 /* Halloween@2x.png */; };
+		E973033827A04710006E41E3 /* Halloween@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033627A04710006E41E3 /* Halloween@3x.png */; };
+		E973033B27A04877006E41E3 /* Devotional@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033927A04877006E41E3 /* Devotional@2x.png */; };
+		E973033C27A04877006E41E3 /* Devotional@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033A27A04877006E41E3 /* Devotional@3x.png */; };
+		E973033F27A0494E006E41E3 /* Matrix@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033D27A0494E006E41E3 /* Matrix@2x.png */; };
+		E973034027A0494E006E41E3 /* Matrix@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033E27A0494E006E41E3 /* Matrix@3x.png */; };
 		E9E5DE672791BFF80047C805 /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */; };
 		E9E5DE692791C1A30047C805 /* ThemesCollectionDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5DE682791C1A30047C805 /* ThemesCollectionDataSouce.swift */; };
-		E9FD31B0279EF91400E8A881 /* Neon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FD31AF279EF91400E8A881 /* Neon@2x.png */; };
-		E9FD31B2279EF92000E8A881 /* Neon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9FD31B1279EF92000E8A881 /* Neon@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,12 +196,22 @@
 		E935C95627906F9100835897 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E935C95B27906FFC00835897 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E935C95D2790787D00835897 /* SettingTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableDataSource.swift; sourceTree = "<group>"; };
-		E973032127A0303A006E41E3 /* Christmas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Christmas@2x.png"; path = "../../../../../../Downloads/Hotpot Design-4/AppIcon.appiconset/Christmas@2x.png"; sourceTree = "<group>"; };
-		E973032227A0303A006E41E3 /* Christmas@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Christmas@3x.png"; path = "../../../../../../Downloads/Hotpot Design-4/AppIcon.appiconset/Christmas@3x.png"; sourceTree = "<group>"; };
+		E973032527A03931006E41E3 /* Neon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Neon@2x.png"; path = "../../../../../../Downloads/AppIcons-2/Assets.xcassets/AppIcon.appiconset/Neon@2x.png"; sourceTree = "<group>"; };
+		E973032627A03931006E41E3 /* Neon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Neon@3x.png"; path = "../../../../../../Downloads/AppIcons-2/Assets.xcassets/AppIcon.appiconset/Neon@3x.png"; sourceTree = "<group>"; };
+		E973032927A03966006E41E3 /* Christmas@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Christmas@3x.png"; path = "../../../../../../Downloads/AppIcons/Assets.xcassets/AppIcon.appiconset/Christmas@3x.png"; sourceTree = "<group>"; };
+		E973032A27A03966006E41E3 /* Christmas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Christmas@2x.png"; path = "../../../../../../Downloads/AppIcons/Assets.xcassets/AppIcon.appiconset/Christmas@2x.png"; sourceTree = "<group>"; };
+		E973032D27A04569006E41E3 /* Grape@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Grape@3x.png"; path = "../../../../../../Downloads/AppIcons 2/Assets.xcassets/AppIcon.appiconset/Grape@3x.png"; sourceTree = "<group>"; };
+		E973032E27A04569006E41E3 /* Grape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Grape@2x.png"; path = "../../../../../../Downloads/AppIcons 2/Assets.xcassets/AppIcon.appiconset/Grape@2x.png"; sourceTree = "<group>"; };
+		E973033127A0463B006E41E3 /* Bookish@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bookish@3x.png"; path = "../../../../../../Downloads/AppIcons-2 2/Assets.xcassets/AppIcon.appiconset/Bookish@3x.png"; sourceTree = "<group>"; };
+		E973033227A0463B006E41E3 /* Bookish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Bookish@2x.png"; path = "../../../../../../Downloads/AppIcons-2 2/Assets.xcassets/AppIcon.appiconset/Bookish@2x.png"; sourceTree = "<group>"; };
+		E973033527A04710006E41E3 /* Halloween@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Halloween@2x.png"; path = "../../../../../../Downloads/AppIcons-3/Assets.xcassets/AppIcon.appiconset/Halloween@2x.png"; sourceTree = "<group>"; };
+		E973033627A04710006E41E3 /* Halloween@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Halloween@3x.png"; path = "../../../../../../Downloads/AppIcons-3/Assets.xcassets/AppIcon.appiconset/Halloween@3x.png"; sourceTree = "<group>"; };
+		E973033927A04877006E41E3 /* Devotional@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Devotional@2x.png"; path = "../../../../../../Downloads/AppIcons-4/Assets.xcassets/AppIcon.appiconset/Devotional@2x.png"; sourceTree = "<group>"; };
+		E973033A27A04877006E41E3 /* Devotional@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Devotional@3x.png"; path = "../../../../../../Downloads/AppIcons-4/Assets.xcassets/AppIcon.appiconset/Devotional@3x.png"; sourceTree = "<group>"; };
+		E973033D27A0494E006E41E3 /* Matrix@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Matrix@2x.png"; path = "../../../../../../Downloads/AppIcons-5/Assets.xcassets/AppIcon.appiconset/Matrix@2x.png"; sourceTree = "<group>"; };
+		E973033E27A0494E006E41E3 /* Matrix@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Matrix@3x.png"; path = "../../../../../../Downloads/AppIcons-5/Assets.xcassets/AppIcon.appiconset/Matrix@3x.png"; sourceTree = "<group>"; };
 		E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9E5DE682791C1A30047C805 /* ThemesCollectionDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionDataSouce.swift; sourceTree = "<group>"; };
-		E9FD31AF279EF91400E8A881 /* Neon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Neon@2x.png"; path = "../../../../../../Downloads/AppIcon.appiconset 2/Neon@2x.png"; sourceTree = "<group>"; };
-		E9FD31B1279EF92000E8A881 /* Neon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Neon@3x.png"; path = "../../../../../../Downloads/AppIcon.appiconset 2/Neon@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -603,10 +623,20 @@
 		E9FD31AA279EF4FD00E8A881 /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
-				E9FD31AF279EF91400E8A881 /* Neon@2x.png */,
-				E9FD31B1279EF92000E8A881 /* Neon@3x.png */,
-				E973032127A0303A006E41E3 /* Christmas@2x.png */,
-				E973032227A0303A006E41E3 /* Christmas@3x.png */,
+				E973032527A03931006E41E3 /* Neon@2x.png */,
+				E973032627A03931006E41E3 /* Neon@3x.png */,
+				E973032A27A03966006E41E3 /* Christmas@2x.png */,
+				E973032927A03966006E41E3 /* Christmas@3x.png */,
+				E973032E27A04569006E41E3 /* Grape@2x.png */,
+				E973032D27A04569006E41E3 /* Grape@3x.png */,
+				E973033227A0463B006E41E3 /* Bookish@2x.png */,
+				E973033127A0463B006E41E3 /* Bookish@3x.png */,
+				E973033527A04710006E41E3 /* Halloween@2x.png */,
+				E973033627A04710006E41E3 /* Halloween@3x.png */,
+				E973033927A04877006E41E3 /* Devotional@2x.png */,
+				E973033A27A04877006E41E3 /* Devotional@3x.png */,
+				E973033D27A0494E006E41E3 /* Matrix@2x.png */,
+				E973033E27A0494E006E41E3 /* Matrix@3x.png */,
 			);
 			path = AppIcons;
 			sourceTree = "<group>";
@@ -704,12 +734,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E973032427A0303A006E41E3 /* Christmas@3x.png in Resources */,
-				E9FD31B2279EF92000E8A881 /* Neon@3x.png in Resources */,
-				E973032327A0303A006E41E3 /* Christmas@2x.png in Resources */,
+				E973033B27A04877006E41E3 /* Devotional@2x.png in Resources */,
+				E973032B27A03966006E41E3 /* Christmas@3x.png in Resources */,
+				E973033727A04710006E41E3 /* Halloween@2x.png in Resources */,
+				E973034027A0494E006E41E3 /* Matrix@3x.png in Resources */,
+				E973032727A03931006E41E3 /* Neon@2x.png in Resources */,
+				E973033827A04710006E41E3 /* Halloween@3x.png in Resources */,
+				E973032F27A0456A006E41E3 /* Grape@3x.png in Resources */,
+				E973033327A0463B006E41E3 /* Bookish@3x.png in Resources */,
 				BAB1E030269DBBFA001FC3CC /* LaunchScreen.storyboard in Resources */,
+				E973032C27A03966006E41E3 /* Christmas@2x.png in Resources */,
+				E973033C27A04877006E41E3 /* Devotional@3x.png in Resources */,
+				E973033027A0456A006E41E3 /* Grape@2x.png in Resources */,
+				E973033427A0463B006E41E3 /* Bookish@2x.png in Resources */,
+				E973033F27A0494E006E41E3 /* Matrix@2x.png in Resources */,
 				BAB1E02D269DBBFA001FC3CC /* Assets.xcassets in Resources */,
-				E9FD31B0279EF91400E8A881 /* Neon@2x.png in Resources */,
+				E973032827A03931006E41E3 /* Neon@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
