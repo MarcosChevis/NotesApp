@@ -10,20 +10,19 @@ import CoreData
 
 class NoteView: ThemableView {
     private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.99))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.85), heightDimension: .fractionalHeight(1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
-        section.interGroupSpacing = 12
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 0)
+        section.interGroupSpacing = 10
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         // funcao pra dar dismiss no teclado quando scrolla pro lado na collection
         section.visibleItemsInvalidationHandler = ({ [weak self] (visibleItems, point, env) in
             guard let self = self else { return }
-            
             self.endEditing(false)
             if let indexPath = self.findCurrentCellIndexPath(for: point) {
                 self.delegate?.collectionViewDidMove(to: indexPath)
@@ -118,7 +117,8 @@ class NoteView: ThemableView {
     private func findCurrentCellIndexPath(for point: CGPoint) -> IndexPath? {
         if let layout = collectionView.layoutAttributesForItem(at: IndexPath(item: 0, section: 0)) {
             let cellWidth = layout.bounds.width
-            let cellCenter = cellWidth/2
+            let cellCenter = layout.center.x
+            let spacing = (cellWidth - UIScreen.main.bounds.width + 10)
             let doubleResult = (point.x + cellCenter) / (cellWidth)
             let result = Int(doubleResult)
             let indexPath = IndexPath(item: result, section: 0)

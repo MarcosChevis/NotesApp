@@ -53,7 +53,7 @@ class ThemesViewTest: XCTestCase {
     }
     
     func testLayoutIphone12pastel() {
-        let view = setupLayoutTest(with: .pastel)
+        let view = setupLayoutTest(with: .candy)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     

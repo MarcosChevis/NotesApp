@@ -75,7 +75,9 @@ class NoteCellContentView: ThemableView {
     
     func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
         self.palette = palette
-        self.title.text = viewModel.note.title
+        //self.title.text = viewModel.note.title
+        let provisoryTitle = viewModel.note.noteID.suffix(5)
+        title.text = String(provisoryTitle)
         self.textView.text = viewModel.note.content
         
         title.attributedPlaceholder = placeholder
