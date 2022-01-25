@@ -10,6 +10,7 @@ import SwiftUI
 
 enum ColorSet: String, CaseIterable {
     case classic
+    case dark
     case neon
     case christmas
     case grape
@@ -17,7 +18,7 @@ enum ColorSet: String, CaseIterable {
     case halloween
     case devotional
     case crt
-    case dark
+    
     
     func palette() -> CustomColorSet {
         switch self {
