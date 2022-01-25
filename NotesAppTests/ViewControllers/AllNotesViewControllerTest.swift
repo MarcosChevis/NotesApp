@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import NotesApp
+import SwiftUI
 
 class AllNotesViewControllerTest: XCTestCase {
 
@@ -51,4 +52,8 @@ class AllNotesViewControllerTest: XCTestCase {
         XCTAssertTrue(coordinatorDummy.didDismiss)
     }
 
+    func testDeletenote() {
+        sut.deleteNote(NoteCellViewModel(note: NoteDummy(noteID: "id1", content: "conteudo", title: "titulo")))
+        XCTAssertEqual(0, noteRepositoryDummy.mock.count)
+    }
 }
