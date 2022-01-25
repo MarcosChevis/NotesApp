@@ -99,25 +99,4 @@ class ThemesView: ThemableView {
             collectionView.heightAnchor.constraint(equalToConstant: 150)])
     }
     
-//    func setExampleImage(palette: ColorSet) {
-//        switch palette {
-//        case .neon:
-//            exampleImage.image = UIImage(named: "NeonThemeExample")
-//        case .classic:
-//            exampleImage.image = UIImage(named: "ClassicThemeExample")
-//        case .christmas:
-//            exampleImage.image = UIImage(named: "ChristmasThemeExample")
-//        case .grape:
-//            exampleImage.image = UIImage(named: "GrapeThemeExample")
-//        case .bookish:
-//            exampleImage.image = UIImage(named: "BookishThemeExample")
-//        case .halloween:
-//            exampleImage.image = UIImage(named: "HalloweenThemeExample")
-//        case .devotional:
-//            exampleImage.image = UIImage(named: "DevotionalThemeExample")
-//        case .crt:
-//            exampleImage.image = UIImage(named: "CRTThemeExample")
-//        }
-//
-//    }
 }
