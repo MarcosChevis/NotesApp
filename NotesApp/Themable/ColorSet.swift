@@ -16,7 +16,7 @@ enum ColorSet: String, CaseIterable {
     case bookish
     case halloween
     case devotional
-    case matrix
+    case crt
     
     func palette() -> CustomColorSet {
         switch self {
@@ -66,7 +66,7 @@ enum ColorSet: String, CaseIterable {
                                   noteBackground: UIColor(Color("SunshineNoteBackground")),
                                   text: UIColor(Color("SunshineText")), largeTitle: UIColor(Color("SunshineText")), statusBarStyle: .darkContent)
             
-        case .matrix:
+        case .crt:
             return CustomColorSet(actionColor: UIColor(Color("MatrixAction")),
                                   background: UIColor(Color("MatrixBackground")),
                                   buttonBackground: UIColor(Color("MatrixButtonBackground")),
