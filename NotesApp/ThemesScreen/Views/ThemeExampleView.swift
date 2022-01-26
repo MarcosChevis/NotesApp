@@ -135,7 +135,6 @@ class ThemeExampleView: ThemableView {
             middleView.topAnchor.constraint(equalTo: bigTitle.bottomAnchor, constant: 4),
             middleView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             middleView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-//            middleView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
