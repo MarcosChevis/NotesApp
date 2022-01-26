@@ -103,9 +103,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
             themeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
-    
-    
-    //TODO: COLOCAR user DEJFRT aqui
+  
     func didSelect() {
         contentView.layer.borderWidth = 4
     }
