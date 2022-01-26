@@ -136,6 +136,24 @@
                 <key>UIPrerenderedIcon</key>
                 <false/>
             </dict>
+            <key>DarkTheme</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Dark</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>UnicornTheme</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>Unicorn</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
         </dict>
     </dict>
 </dict>

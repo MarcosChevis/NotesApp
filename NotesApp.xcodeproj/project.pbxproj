@@ -104,6 +104,10 @@
 		E973033C27A04877006E41E3 /* Devotional@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033A27A04877006E41E3 /* Devotional@3x.png */; };
 		E973033F27A0494E006E41E3 /* Matrix@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033D27A0494E006E41E3 /* Matrix@2x.png */; };
 		E973034027A0494E006E41E3 /* Matrix@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E973033E27A0494E006E41E3 /* Matrix@3x.png */; };
+		E9AB511E27A19AA90077F33C /* Dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB511C27A19AA90077F33C /* Dark@3x.png */; };
+		E9AB511F27A19AA90077F33C /* Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB511D27A19AA90077F33C /* Dark@2x.png */; };
+		E9AB512227A19C570077F33C /* Unicorn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB512027A19C570077F33C /* Unicorn@2x.png */; };
+		E9AB512327A19C570077F33C /* Unicorn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB512127A19C570077F33C /* Unicorn@3x.png */; };
 		E9E5DE672791BFF80047C805 /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */; };
 		E9E5DE692791C1A30047C805 /* ThemesCollectionDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5DE682791C1A30047C805 /* ThemesCollectionDataSouce.swift */; };
 /* End PBXBuildFile section */
@@ -218,6 +222,10 @@
 		E973033A27A04877006E41E3 /* Devotional@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Devotional@3x.png"; path = "../../../../../../Downloads/AppIcons-4/Assets.xcassets/AppIcon.appiconset/Devotional@3x.png"; sourceTree = "<group>"; };
 		E973033D27A0494E006E41E3 /* Matrix@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Matrix@2x.png"; path = "../../../../../../Downloads/AppIcons-5/Assets.xcassets/AppIcon.appiconset/Matrix@2x.png"; sourceTree = "<group>"; };
 		E973033E27A0494E006E41E3 /* Matrix@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Matrix@3x.png"; path = "../../../../../../Downloads/AppIcons-5/Assets.xcassets/AppIcon.appiconset/Matrix@3x.png"; sourceTree = "<group>"; };
+		E9AB511C27A19AA90077F33C /* Dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dark@3x.png"; path = "../../../../../../Downloads/AppIcons-6/Assets.xcassets/AppIcon.appiconset/Dark@3x.png"; sourceTree = "<group>"; };
+		E9AB511D27A19AA90077F33C /* Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Dark@2x.png"; path = "../../../../../../Downloads/AppIcons-6/Assets.xcassets/AppIcon.appiconset/Dark@2x.png"; sourceTree = "<group>"; };
+		E9AB512027A19C570077F33C /* Unicorn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Unicorn@2x.png"; path = "../../../../../../Downloads/AppIcons-7/Assets.xcassets/AppIcon.appiconset/Unicorn@2x.png"; sourceTree = "<group>"; };
+		E9AB512127A19C570077F33C /* Unicorn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Unicorn@3x.png"; path = "../../../../../../Downloads/AppIcons-7/Assets.xcassets/AppIcon.appiconset/Unicorn@3x.png"; sourceTree = "<group>"; };
 		E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9E5DE682791C1A30047C805 /* ThemesCollectionDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionDataSouce.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -649,6 +657,10 @@
 				E973033A27A04877006E41E3 /* Devotional@3x.png */,
 				E973033D27A0494E006E41E3 /* Matrix@2x.png */,
 				E973033E27A0494E006E41E3 /* Matrix@3x.png */,
+				E9AB511D27A19AA90077F33C /* Dark@2x.png */,
+				E9AB511C27A19AA90077F33C /* Dark@3x.png */,
+				E9AB512027A19C570077F33C /* Unicorn@2x.png */,
+				E9AB512127A19C570077F33C /* Unicorn@3x.png */,
 			);
 			path = AppIcons;
 			sourceTree = "<group>";
@@ -749,6 +761,7 @@
 				E973033B27A04877006E41E3 /* Devotional@2x.png in Resources */,
 				E973032B27A03966006E41E3 /* Christmas@3x.png in Resources */,
 				E973033727A04710006E41E3 /* Halloween@2x.png in Resources */,
+				E9AB511F27A19AA90077F33C /* Dark@2x.png in Resources */,
 				E973034027A0494E006E41E3 /* Matrix@3x.png in Resources */,
 				E973032727A03931006E41E3 /* Neon@2x.png in Resources */,
 				E973033827A04710006E41E3 /* Halloween@3x.png in Resources */,
@@ -758,10 +771,13 @@
 				E973032C27A03966006E41E3 /* Christmas@2x.png in Resources */,
 				E973033C27A04877006E41E3 /* Devotional@3x.png in Resources */,
 				E973033027A0456A006E41E3 /* Grape@2x.png in Resources */,
+				E9AB511E27A19AA90077F33C /* Dark@3x.png in Resources */,
 				E973033427A0463B006E41E3 /* Bookish@2x.png in Resources */,
+				E9AB512327A19C570077F33C /* Unicorn@3x.png in Resources */,
 				E973033F27A0494E006E41E3 /* Matrix@2x.png in Resources */,
 				BAB1E02D269DBBFA001FC3CC /* Assets.xcassets in Resources */,
 				E973032827A03931006E41E3 /* Neon@3x.png in Resources */,
+				E9AB512227A19C570077F33C /* Unicorn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

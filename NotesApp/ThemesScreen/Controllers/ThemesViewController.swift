@@ -56,6 +56,8 @@ class ThemesViewController: ThemableViewController {
         switch palette {
         case .classic:
             UIApplication.shared.setAlternateIconName(nil)
+        case .dark:
+            UIApplication.shared.setAlternateIconName("DarkTheme")
         case .neon:
             UIApplication.shared.setAlternateIconName("NeonTheme")
         case .christmas:
@@ -70,9 +72,8 @@ class ThemesViewController: ThemableViewController {
             UIApplication.shared.setAlternateIconName("DevotionalTheme")
         case .crt:
             UIApplication.shared.setAlternateIconName("MatrixTheme")
-        default:
-            break
-            
+        case .unicorn:
+            UIApplication.shared.setAlternateIconName("UnicornTheme")
         }
     }
     
