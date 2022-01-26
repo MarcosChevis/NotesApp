@@ -86,7 +86,7 @@ enum ColorSet: String, CaseIterable {
                                   background: UIColor(Color("UnicornBackground")),
                                   buttonBackground: UIColor(Color("UnicornButtonBackground")),
                                   noteBackground: UIColor(Color("UnicornNoteBackground")),
-                                  text: UIColor(Color("UnicornText")), largeTitle: UIColor(Color("UnicornText")), statusBarStyle: .darkContent)
+                                  text: UIColor(Color("UnicornText")), largeTitle: UIColor(Color("UnicornLargeTitle")), statusBarStyle: .darkContent)
         }
     }
 }
