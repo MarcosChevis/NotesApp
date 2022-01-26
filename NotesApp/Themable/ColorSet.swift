@@ -18,6 +18,7 @@ enum ColorSet: String, CaseIterable {
     case halloween
     case devotional
     case crt
+    case unicorn
     
     
     func palette() -> CustomColorSet {
@@ -80,6 +81,12 @@ enum ColorSet: String, CaseIterable {
                                   buttonBackground: UIColor(Color("SwiftDarkButtonBackground")),
                                   noteBackground: UIColor(Color("SwiftDarkNoteBackground")),
                                   text: UIColor(Color("SwiftDarkText")), largeTitle: UIColor(Color("SwiftDarkText")), statusBarStyle: .lightContent)
+        case .unicorn:
+            return CustomColorSet(actionColor: UIColor(Color("UnicornAction")),
+                                  background: UIColor(Color("UnicornBackground")),
+                                  buttonBackground: UIColor(Color("UnicornButtonBackground")),
+                                  noteBackground: UIColor(Color("UnicornNoteBackground")),
+                                  text: UIColor(Color("UnicornText")), largeTitle: UIColor(Color("UnicornLargeTitle")), statusBarStyle: .darkContent)
         }
     }
 }

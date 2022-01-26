@@ -14,8 +14,6 @@ class ThemesView: ThemableView {
         }
     }
     
-
-    
     lazy var exampleView: ThemeExampleView = {
         var view = ThemeExampleView(palette: palette)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -85,5 +83,4 @@ class ThemesView: ThemableView {
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 150)])
     }
-    
 }
