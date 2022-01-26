@@ -16,9 +16,11 @@ class NotificationServiceDummy: NotificationService {
     var removeObservers: [String] = []
     var expectations: [XCTestExpectation] = []
     var notificationSubject: PassthroughSubject<Notification, Never> = .init()
+    var postedObjects: [Any?] = []
     
     func post(name: NSNotification.Name, object: Any?) {
         postedNotification.append(name)
+        postedObjects.append(object)
     }
     
     func addObserver(_ observer: Any, selector: Selector, name: NSNotification.Name?, object: Any?) {
