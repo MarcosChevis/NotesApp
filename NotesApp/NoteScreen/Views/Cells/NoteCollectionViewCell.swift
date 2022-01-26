@@ -23,7 +23,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(noteContentView)
         setupConstraints()
-        setupStyle()
         noteContentView.textView.delegate = self
         noteContentView.title.delegate = self
         contentView.backgroundColor = .clear
@@ -44,15 +43,6 @@ class NoteCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(noteContentViewConstraints)
     }
     
-    private func setupStyle() {
-        contentView.layer.masksToBounds = true
-        contentView.layer.cornerRadius = 16
-        
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.1
-        layer.shadowRadius = 4
-        layer.shadowOffset = CGSize(width: 2, height: 2)
-    }
     
     func setup(palette: ColorSet,
                viewModel: NoteCellViewModel,

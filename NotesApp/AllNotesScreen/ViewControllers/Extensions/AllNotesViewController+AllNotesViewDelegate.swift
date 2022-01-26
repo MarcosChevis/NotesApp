@@ -15,13 +15,4 @@ extension AllNotesViewController: AllNotesViewDelegate {
     func didTapSettings() {
         coordinator?.navigateToSettings()
     }
-    
-    func didTapAddNote() {
-        do {
-            _ = try noteRepository.createEmptyNote()
-            
-        } catch {
-            presentErrorAlert(with: "An Error Ocurred trying to add a note")
-        }
-    }
 }

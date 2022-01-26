@@ -11,11 +11,27 @@ import Combine
 import UIKit
 
 class NotesRepository: NSObject, NotesRepositoryProtocol {
+    func filterForContent(_ content: String) -> [NoteCellViewModel] {
+       
+        let allNotes = fetchResultsController.fetchedObjects ?? []
+        
+        if content.isEmpty {
+            return allNotes.map(NoteCellViewModel.init)
+        }
+        
+        let filteredNotes = allNotes.filter { note in
+            let doesContainInContent = note.content?.contains(content) ?? false
+            let doesContainInTitle = note.title?.contains(content) ?? false
+            return doesContainInTitle || doesContainInContent
+        }
+        
+        return filteredNotes.map(NoteCellViewModel.init)
+    }
+    
     func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
         []
     }
-    
-    
+
     private let coreDataStack: CoreDataStack
     private var cancelables: Set<AnyCancellable>
     private let notificationService: NotificationService
