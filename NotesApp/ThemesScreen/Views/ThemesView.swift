@@ -10,23 +10,11 @@ import UIKit
 class ThemesView: ThemableView {
     override var palette: ColorSet {
         didSet {
-//            setExampleImage(palette: palette)
             setColors(palette: palette)
         }
     }
     
-//    lazy var exampleImage: UIImageView = {
-//        var img = UIImageView()
-//        img.translatesAutoresizingMaskIntoConstraints = false
-//        img.layer.shadowRadius = 4
-//        img.layer.shadowOffset = CGSize(width: 2, height: 2)
-//        img.layer.shadowColor = UIColor.black.cgColor
-//        img.layer.shadowOpacity = 0.5
-//        img.contentMode = .scaleAspectFit
-//        addSubview(img)
-//
-//        return img
-//    }()
+
     
     lazy var exampleView: ThemeExampleView = {
         var view = ThemeExampleView(palette: palette)
@@ -69,7 +57,6 @@ class ThemesView: ThemableView {
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
-//        setExampleImage(palette: palette)
         setupConstraints()
     }
     
