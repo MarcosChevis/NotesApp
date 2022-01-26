@@ -70,6 +70,7 @@
 		BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */; };
 		BA2D1BED2795AEA100849955 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEC2795AEA100849955 /* Settings.swift */; };
 		BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */; };
+		BA2F99E627A03C9F00A05201 /* ThemeExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F99E527A03C9F00A05201 /* ThemeExampleView.swift */; };
 		BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D56278EFC6A000617F6 /* NoteViewController.swift */; };
 		BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D58278EFCEB000617F6 /* NoteView.swift */; };
 		BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D5A278F025F000617F6 /* ColorSet.swift */; };
@@ -165,6 +166,7 @@
 		BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionData.swift; sourceTree = "<group>"; };
 		BA2D1BEC2795AEA100849955 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
+		BA2F99E527A03C9F00A05201 /* ThemeExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeExampleView.swift; sourceTree = "<group>"; };
 		BA578D56278EFC6A000617F6 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		BA578D58278EFCEB000617F6 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BA578D5A278F025F000617F6 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 			children = (
 				C87AA5392791A57D00E2AEF1 /* ThemesView.swift */,
 				E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */,
+				BA2F99E527A03C9F00A05201 /* ThemeExampleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -767,6 +770,7 @@
 				5B3FF1AD2799996F00828097 /* ThemesViewController+UICollectionViewDelegate.swift in Sources */,
 				5B45762B279073EE00EF1036 /* NoteCellViewModel.swift in Sources */,
 				5B3FF1B027999C6100828097 /* CoordinatorProtocol.swift in Sources */,
+				BA2F99E627A03C9F00A05201 /* ThemeExampleView.swift in Sources */,
 				5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */,
 				5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */,
 				E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */,
