@@ -46,9 +46,26 @@ class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
         navigationController.present(childCoordinator.navigationController, animated: true)
     }
     
-    @objc private func didComeBackFromModal() {
+    @objc private func didComeBackFromModal(_ notification: Notification) {
         childCoordinators.removeAll(where: {
             ($0 as? AllNotesCoordinator) != nil
         })
+        
+        guard
+            let id = notification.object as? String
+        else { return }
+        
+        scrollToCurrentItem(with: id)
     }
+    
+    private func scrollToCurrentItem(with id: String?) {
+        guard let rootVC = navigationController.viewControllers.first as? NoteViewController else {
+            return
+        }
+        
+        if let id = id {
+            rootVC.highlightNote(with: id)
+        }
+    }
+    
 }

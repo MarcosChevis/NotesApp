@@ -9,6 +9,7 @@ import UIKit
 
 protocol AllNotesCoordinatorProtocol: AnyObject {
     func dismiss()
+    func editNote(with id: String)
     func navigateToSettings()
     func navigateToThemes()
 }
@@ -38,8 +39,16 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     }
     
     func dismiss() {
+        dismiss(with: nil)
+    }
+    
+    func editNote(with id: String) {
+        dismiss(with: id)
+    }
+    
+    private func dismiss(with id: String?) {
         navigationController.dismiss(animated: true) { [weak notificationService] in
-            notificationService?.post(name: .didComebackFromModal, object: nil)
+            notificationService?.post(name: .didComebackFromModal, object: id)
         }
     }
     
