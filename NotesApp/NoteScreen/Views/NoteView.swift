@@ -117,10 +117,6 @@ class NoteView: ThemableView {
             let doubleResult = (point.x + 20 + (0.05*cellWidth)) / (cellWidth+10)
             let result = Int(round(doubleResult))
             let indexPath = IndexPath(item: result, section: 0)
-//            print(doubleResult)
-//            print(result)
-//            print(cellWidth, " ", UIScreen.main.bounds.width)
-        
             return indexPath
         } else {
             return nil
