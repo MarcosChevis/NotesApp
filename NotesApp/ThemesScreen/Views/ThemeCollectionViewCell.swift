@@ -44,8 +44,6 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         return theme
     }()
     
-    var firstSelected: Bool = false
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
                 
@@ -107,6 +105,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     //TODO: COLOCAR user DEJFRT aqui
     func didSelect() {
         contentView.layer.borderWidth = 4
+        
     }
     
     func didUnselect() {
