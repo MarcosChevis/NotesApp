@@ -24,6 +24,7 @@ class NoteView: ThemableView {
         section.visibleItemsInvalidationHandler = ({ [weak self] (visibleItems, point, env) in
             guard let self = self else { return }
             self.endEditing(false)
+            
             if let indexPath = self.findCurrentCellIndexPath(for: point) {
                 self.delegate?.collectionViewDidMove(to: indexPath)
             }
@@ -116,6 +117,10 @@ class NoteView: ThemableView {
             let doubleResult = (point.x + 20 + (0.05*cellWidth)) / (cellWidth+10)
             let result = Int(round(doubleResult))
             let indexPath = IndexPath(item: result, section: 0)
+//            print(doubleResult)
+//            print(result)
+//            print(cellWidth, " ", UIScreen.main.bounds.width)
+        
             return indexPath
         } else {
             return nil

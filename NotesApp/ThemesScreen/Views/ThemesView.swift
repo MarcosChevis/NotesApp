@@ -10,22 +10,16 @@ import UIKit
 class ThemesView: ThemableView {
     override var palette: ColorSet {
         didSet {
-            setExampleImage(palette: palette)
             setColors(palette: palette)
         }
     }
     
-    lazy var exampleImage: UIImageView = {
-        var img = UIImageView()
-        img.translatesAutoresizingMaskIntoConstraints = false
-        img.layer.shadowRadius = 4
-        img.layer.shadowOffset = CGSize(width: 2, height: 2)
-        img.layer.shadowColor = UIColor.black.cgColor
-        img.layer.shadowOpacity = 0.5
-        img.contentMode = .scaleAspectFit
-        addSubview(img)
+    lazy var exampleView: ThemeExampleView = {
+        var view = ThemeExampleView(palette: palette)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
         
-        return img
+        return view
     }()
     
     private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
@@ -61,7 +55,6 @@ class ThemesView: ThemableView {
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
-        setExampleImage(palette: palette)
         setupConstraints()
     }
     
@@ -75,38 +68,19 @@ class ThemesView: ThemableView {
     }
     
     func setupConstraints() {
+        let ratio = UIScreen.main.bounds.width/UIScreen.main.bounds.height
+        
+        
         NSLayoutConstraint.activate([
-            exampleImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            exampleImage.leadingAnchor.constraint(equalTo: leadingAnchor),
-            exampleImage.trailingAnchor.constraint(equalTo: trailingAnchor)])
+            exampleView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            exampleView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            exampleView.widthAnchor.constraint(equalTo: exampleView.heightAnchor, multiplier: ratio)])
        
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: exampleImage.bottomAnchor, constant: 30),
+            collectionView.topAnchor.constraint(equalTo: exampleView.bottomAnchor, constant: 30),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 150)])
-    }
-    
-    func setExampleImage(palette: ColorSet) {
-        switch palette {
-        case .neon:
-            exampleImage.image = UIImage(named: "NeonThemeExample")
-        case .classic:
-            exampleImage.image = UIImage(named: "ClassicThemeExample")
-        case .christmas:
-            exampleImage.image = UIImage(named: "ChristmasThemeExample")
-        case .grape:
-            exampleImage.image = UIImage(named: "GrapeThemeExample")
-        case .bookish:
-            exampleImage.image = UIImage(named: "BookishThemeExample")
-        case .halloween:
-            exampleImage.image = UIImage(named: "HalloweenThemeExample")
-        case .devotional:
-            exampleImage.image = UIImage(named: "DevotionalThemeExample")
-        case .crt:
-            exampleImage.image = UIImage(named: "CRTThemeExample")
-        }
-        
     }
 }
