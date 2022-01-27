@@ -66,8 +66,7 @@ extension AllNotesViewController {
     
     func makeDataSource(tagCellRegistration: TagCellRegistration, noteCellRegistration: NoteCellRegistration) -> AllNotesDataSource {
         
-        return AllNotesDataSource(collectionView: contentView.collectionView)
-        { collectionView, indexPath, item in
+        return AllNotesDataSource(collectionView: contentView.collectionView) { collectionView, indexPath, item in
             switch item {
             case .tag(let tagViewModel):
                 return collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tagViewModel)
