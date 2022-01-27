@@ -10,7 +10,7 @@ import UIKit
 class ThemesViewController: ThemableViewController {
     
     var contentView: ThemesView
-    var collectionDataSource: ThemesCollectionDataSouce
+    var collectionDataSource: ThemesCollectionDataSource
     weak var coordinator: AllNotesCoordinatorProtocol?
     override var palette: ColorSet {
         didSet {
@@ -19,7 +19,7 @@ class ThemesViewController: ThemableViewController {
         }
     }
     
-    init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSouce, notificationService: NotificationService = NotificationCenter.default,
+    init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         
         self.contentView = ThemesView(palette: palette)

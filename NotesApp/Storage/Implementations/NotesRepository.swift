@@ -11,11 +11,29 @@ import Combine
 import UIKit
 
 class NotesRepository: NSObject, NotesRepositoryProtocol {
+    func filterForContent(_ content: String) -> [NoteCellViewModel] {
+        let upperCasedContent = content.uppercased()
+        let allNotes = fetchResultsController.fetchedObjects ?? []
+        
+        if content.isEmpty {
+            return allNotes.map(NoteCellViewModel.init)
+        }
+        
+        let filteredNotes = allNotes.filter { note in
+            let upperCasedNoteContent = note.content?.uppercased()
+            let upperCasedNoteTitle = note.title?.uppercased()
+            let doesContainInContent = upperCasedNoteContent?.contains(upperCasedContent) ?? false
+            let doesContainInTitle = upperCasedNoteTitle?.contains(upperCasedContent) ?? false
+            return doesContainInTitle || doesContainInContent
+        }
+        
+        return filteredNotes.map(NoteCellViewModel.init)
+    }
+    
     func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
         []
     }
-    
-    
+
     private let coreDataStack: CoreDataStack
     private var cancelables: Set<AnyCancellable>
     private let notificationService: NotificationService
@@ -23,18 +41,18 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     
     weak var delegate: NoteRepositoryProtocolDelegate?
     
-    init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default) {
+    init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default, isAscending: Bool = true) {
         self.coreDataStack = coreDataStack
         
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: isAscending)]
         
-        let fetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchResultsController = fetchResultsController
+        let noteFetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchResultsController = noteFetchResultsController
         self.cancelables = .init()
         self.notificationService = notificationService
         super.init()
-        fetchResultsController.delegate = self
+        noteFetchResultsController.delegate = self
         setupBindings()
     }
     
@@ -130,7 +148,7 @@ extension NotesRepository: NSFetchedResultsControllerDelegate {
         case .move:
             break
         case .update:
-            updateUIWithUpdateNote(anObject as? Note, at: indexPath)
+            break
         @unknown default:
             break
         }
@@ -151,12 +169,5 @@ extension NotesRepository: NSFetchedResultsControllerDelegate {
         }
         
         delegate?.deleteNote(NoteCellViewModel(note: note))
-    }
-    
-    private func updateUIWithUpdateNote(_ note: Note?, at indexPath: IndexPath?) {
-//        guard let note = note, let indexPath = indexPath else {
-//            return
-//        }
-        
     }
 }

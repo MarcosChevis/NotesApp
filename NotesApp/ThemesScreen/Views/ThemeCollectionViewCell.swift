@@ -80,9 +80,10 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     }
     
     func setupLayers(palette: ColorSet) {
-        contentView.layer.cornerRadius = 20
+        contentView.layer.cornerRadius = 16
         contentView.layer.masksToBounds = true
         
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
         layer.shadowRadius = 4
         layer.shadowOffset = CGSize(width: 4, height: 4)
         layer.shadowColor = UIColor.black.cgColor
@@ -102,9 +103,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
             themeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
-    
-    
-    //TODO: COLOCAR user DEJFRT aqui
+  
     func didSelect() {
         contentView.layer.borderWidth = 4
     }
