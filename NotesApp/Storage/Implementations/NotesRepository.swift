@@ -41,11 +41,11 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     
     weak var delegate: NoteRepositoryProtocolDelegate?
     
-    init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default) {
+    init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default, isAscending: Bool = true) {
         self.coreDataStack = coreDataStack
         
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: true)]
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: isAscending)]
         
         let noteFetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchResultsController = noteFetchResultsController
