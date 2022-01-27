@@ -104,7 +104,7 @@ class AllNotesViewController: ThemableViewController {
     private func setupNavigationBar() {
         title = "All Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
+        navigationItem.rightBarButtonItems = [ contentView.settingsButton]
         navigationItem.leftBarButtonItem = contentView.closeButton
     }
     
