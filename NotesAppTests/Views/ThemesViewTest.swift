@@ -26,7 +26,7 @@ class ThemesViewTest: XCTestCase {
     }
 
     func setupLayoutTest(with palette: ColorSet = .classic) -> UIViewController {
-        sut = .init(palette: palette, collectionDataSource: ThemesCollectionDataSource())
+        sut = .init(palette: palette, collectionDataSource: ThemesCollectionDataSource(), notificationService: NotificationServiceDummy(), settings: Settings(localStorageService: LocalStorageServiceDummy(), notificationService: NotificationServiceDummy()))
         let navigation = NavigationController(rootViewController: sut)
         return navigation
     }
