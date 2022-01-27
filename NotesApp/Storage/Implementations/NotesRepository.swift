@@ -12,7 +12,7 @@ import UIKit
 
 class NotesRepository: NSObject, NotesRepositoryProtocol {
     func filterForContent(_ content: String) -> [NoteCellViewModel] {
-       
+        let upperCasedContent = content.uppercased()
         let allNotes = fetchResultsController.fetchedObjects ?? []
         
         if content.isEmpty {
@@ -20,8 +20,10 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         }
         
         let filteredNotes = allNotes.filter { note in
-            let doesContainInContent = note.content?.contains(content) ?? false
-            let doesContainInTitle = note.title?.contains(content) ?? false
+            let upperCasedNoteContent = note.content?.uppercased()
+            let upperCasedNoteTitle = note.title?.uppercased()
+            let doesContainInContent = upperCasedNoteContent?.contains(upperCasedContent) ?? false
+            let doesContainInTitle = upperCasedNoteTitle?.contains(upperCasedContent) ?? false
             return doesContainInTitle || doesContainInContent
         }
         

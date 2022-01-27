@@ -100,7 +100,7 @@ class NotesRepositoryTest: XCTestCase {
     
     func testFilterNoteWithContent() throws {
         try createNote(withMessage: "miau")
-        try createNote(withMessage: "Outra nota")
+        try createNote(withMessage: "Outra NOTA")
         try createNote(withMessage: "Outra mais uma nota")
         let filteredNotes = sut.filterForContent("nota")
         
