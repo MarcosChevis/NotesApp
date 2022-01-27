@@ -37,11 +37,6 @@ class AllNotesViewControllerTest: XCTestCase {
         noteRepositoryDummy = nil
     }
     
-    func testDidAddNote() {
-        sut.didTapAddNote()
-        XCTAssertEqual(1, noteRepositoryDummy.mock.count)
-    }
-    
     func testDidNavigateToSettings() {
         sut.didTapSettings()
         XCTAssertTrue(coordinatorDummy.didNavigateToSettings)

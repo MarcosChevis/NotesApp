@@ -26,11 +26,6 @@ class AllNotesView: ThemableView {
         return but
     }()
     
-    lazy var addNoteButton: UIBarButtonItem = {
-        var but = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(didTapAddNote))
-        return but
-    }()
-    
     lazy var closeButton: UIBarButtonItem = {
         var but = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(didTapClose))
         return but
@@ -150,10 +145,6 @@ class AllNotesView: ThemableView {
     
     @objc func didTapSettings() {
         delegate?.didTapSettings()
-    }
-    
-    @objc func didTapAddNote() {
-        delegate?.didTapAddNote()
     }
     
     @objc func didTapClose() {
