@@ -187,4 +187,22 @@ class ThemeExampleView: ThemableView {
         smallTitle.text = palette.rawValue.capitalized + " Theme"
     }
     
+    func setColorsForCustomTheme(colorSet: ThemeProtocol) {
+        
+        backgroundColor = colorSet.background
+        shareButton.tintColor = colorSet.actionColor
+        bigTitle.textColor = colorSet.largeTitle
+        middleView.backgroundColor = colorSet.noteBackground
+        trashButton.tintColor = colorSet.actionColor
+        noteButton.tintColor = colorSet.actionColor
+        plusButton.tintColor = colorSet.actionColor
+        smallTitle.textColor = colorSet.text
+        textView.textColor = colorSet.text
+
+        
+        layer.shadowColor = colorSet.actionColor?.cgColor
+        
+        smallTitle.text = palette.rawValue.capitalized + " Theme"
+    }
+    
 }

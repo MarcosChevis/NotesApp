@@ -74,7 +74,8 @@ class ThemesView: ThemableView {
         NSLayoutConstraint.activate([
             exampleView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
             exampleView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            exampleView.widthAnchor.constraint(equalTo: exampleView.heightAnchor, multiplier: ratio)])
+            exampleView.widthAnchor.constraint(equalTo: exampleView.heightAnchor, multiplier: ratio)
+        ])
        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: exampleView.bottomAnchor, constant: 30),
