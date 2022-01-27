@@ -28,8 +28,8 @@ extension AllNotesViewController {
                   kind: String,
                   indexPath: IndexPath) -> UICollectionReusableView? in
             let textColor = self?.palette.palette().largeTitle ?? ColorSet.classic.palette().largeTitle
-            switch kind {
-            case UICollectionView.elementKindSectionHeader:
+            
+            if kind == UICollectionView.elementKindSectionHeader {
                 if indexPath.section == 0 {
                     guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
                         fatalError()
@@ -43,7 +43,7 @@ extension AllNotesViewController {
                     header.setup(with: "All Notes", color: textColor)
                     return header
                 }
-            default:
+            } else {
                 return nil
             }
         }
