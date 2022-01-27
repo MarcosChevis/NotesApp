@@ -51,8 +51,7 @@
 		5BB7FE022795EDB800A6F335 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FE012795EDB800A6F335 /* NotificationName.swift */; };
 		5BB7FE042795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FE032795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift */; };
 		5BB7FE052796EB8600A6F335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */; };
-		9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* NoteHeader.swift */; };
-		9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35F2791C13A000F6B4A /* TagHeader.swift */; };
+		9D31F35E2791C02D000F6B4A /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* Header.swift */; };
 		9D388413279AF9C0006FA73B /* AllNotesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */; };
 		9D388415279AFDD4006FA73B /* SettingsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */; };
 		9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */; };
@@ -165,8 +164,7 @@
 		5BB7FE012795EDB800A6F335 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		5BB7FE032795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryDelegateDummy.swift; sourceTree = "<group>"; };
 		5BFD81DC278DB2FA004833F5 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D31F35D2791C02D000F6B4A /* NoteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHeader.swift; sourceTree = "<group>"; };
-		9D31F35F2791C13A000F6B4A /* TagHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeader.swift; sourceTree = "<group>"; };
+		9D31F35D2791C02D000F6B4A /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewControllerTest.swift; sourceTree = "<group>"; };
 		9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTest.swift; sourceTree = "<group>"; };
 		9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerUtilities.swift; sourceTree = "<group>"; };
@@ -431,8 +429,7 @@
 			children = (
 				5B73C9F0278F2AB5005F2D89 /* Cells */,
 				5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */,
-				9D31F35D2791C02D000F6B4A /* NoteHeader.swift */,
-				9D31F35F2791C13A000F6B4A /* TagHeader.swift */,
+				9D31F35D2791C02D000F6B4A /* Header.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -843,7 +840,6 @@
 				5B3FF1A32799982F00828097 /* NoteViewController+NoteRepositoryProtocolDelegate.swift in Sources */,
 				C87AA54127972D5F00E2AEF1 /* NoteCellContentView.swift in Sources */,
 				E9E5DE692791C1A30047C805 /* ThemesCollectionDataSouce.swift in Sources */,
-				9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */,
 				BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */,
 				5B3FF1952799956500828097 /* AllNotesViewController+UISearchResultsUpdating.swift in Sources */,
 				5B73C9FE278F8114005F2D89 /* AllNotesViewController.swift in Sources */,
@@ -871,7 +867,7 @@
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
 				5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
-				9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */,
+				9D31F35E2791C02D000F6B4A /* Header.swift in Sources */,
 				9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 				5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */,

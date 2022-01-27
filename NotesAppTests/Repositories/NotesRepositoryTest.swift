@@ -90,9 +90,9 @@ class NotesRepositoryTest: XCTestCase {
     }
     
     func testFilteredNotesWithEmptyContent() throws {
-        try createNote(withMessage: "miau")
-        try createNote(withMessage: "Outra nota")
-        try createNote(withMessage: "Outra mais uma nota")
+        try createNote(withMessage: "miau 1")
+        try createNote(withMessage: "Outra nota 1")
+        try createNote(withMessage: "Outra mais uma nota 1")
         let filteredNotes = sut.filterForContent("")
         
         XCTAssertEqual(filteredNotes.count, 3)
@@ -108,18 +108,18 @@ class NotesRepositoryTest: XCTestCase {
     }
     
     func testFilterNoteWithContentWhenResultZero() throws {
-        try createNote(withMessage: "miau")
-        try createNote(withMessage: "Outra nota")
-        try createNote(withMessage: "Outra mais uma nota")
+        try createNote(withMessage: "miau 3")
+        try createNote(withMessage: "Outra nota 3")
+        try createNote(withMessage: "Outra mais uma nota 3")
         let filteredNotes = sut.filterForContent("toti")
         
         XCTAssertEqual(filteredNotes.count, 0)
     }
     
     func testFilterNoteWithContentAndTitle() throws {
-        try createNote(withMessage: "miau")
-        try createNote(withMessage: "Outra nota", title: "miau")
-        try createNote(withMessage: "Outra mais uma nota")
+        try createNote(withMessage: "miau 4")
+        try createNote(withMessage: "Outra nota 4", title: "miau")
+        try createNote(withMessage: "Outra mais uma nota 4")
         let filteredNotes = sut.filterForContent("miau")
         
         XCTAssertEqual(filteredNotes.count, 2)

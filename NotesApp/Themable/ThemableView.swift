@@ -49,6 +49,6 @@ class ThemableView: UIView {
     }
     
     func setColors(palette: ColorSet) {
-        
+        // Deve ficar vazia, pois essa função será implementada em outras classes que têm herdam dessa
     }
 }

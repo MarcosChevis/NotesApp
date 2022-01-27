@@ -47,12 +47,12 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: true)]
         
-        let fetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchResultsController = fetchResultsController
+        let noteFetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchResultsController = noteFetchResultsController
         self.cancelables = .init()
         self.notificationService = notificationService
         super.init()
-        fetchResultsController.delegate = self
+        noteFetchResultsController.delegate = self
         setupBindings()
     }
     
@@ -148,7 +148,7 @@ extension NotesRepository: NSFetchedResultsControllerDelegate {
         case .move:
             break
         case .update:
-            updateUIWithUpdateNote(anObject as? Note, at: indexPath)
+            break
         @unknown default:
             break
         }
@@ -169,12 +169,5 @@ extension NotesRepository: NSFetchedResultsControllerDelegate {
         }
         
         delegate?.deleteNote(NoteCellViewModel(note: note))
-    }
-    
-    private func updateUIWithUpdateNote(_ note: Note?, at indexPath: IndexPath?) {
-//        guard let note = note, let indexPath = indexPath else {
-//            return
-//        }
-        
     }
 }

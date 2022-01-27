@@ -48,9 +48,9 @@ extension TagRepository: NSFetchedResultsControllerDelegate {
         case .move:
             break
         case .update:
-            updateTag(tag)
+            break
         @unknown default:
-            fatalError()
+            break
         }
     }
     
@@ -62,9 +62,5 @@ extension TagRepository: NSFetchedResultsControllerDelegate {
     func deleteTag(_ tag: Tag) {
         let viewModel = TagCellViewModel(tag: tag)
         delegate?.deleteTag(viewModel)
-    }
-    
-    func updateTag(_ tag: Tag) {
-        
     }
 }

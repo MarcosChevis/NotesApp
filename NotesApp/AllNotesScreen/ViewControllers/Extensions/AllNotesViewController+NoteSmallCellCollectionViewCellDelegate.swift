@@ -29,6 +29,6 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
     }
     
     func didTapEdit(for noteViewModel: NoteCellViewModel) {
-        
+        // Implementação está em outra branch
     }
 }

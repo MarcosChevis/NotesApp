@@ -22,12 +22,12 @@ class AllNotesView: ThemableView {
     }()
     
     lazy var settingsButton: UIBarButtonItem = {
-        var but = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain , target: self, action: #selector(didTapSettings))
+        let but = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain , target: self, action: #selector(didTapSettings))
         return but
     }()
     
     lazy var closeButton: UIBarButtonItem = {
-        var but = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(didTapClose))
+        let but = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(didTapClose))
         return but
     }()
     
@@ -44,8 +44,8 @@ class AllNotesView: ThemableView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: NoteSmallCellCollectionViewCell.identifier)
         collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
-        collectionView.register(NoteHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier)
-        collectionView.register(TagHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier)
+        collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier)
+        collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier)
         
         return collectionView
     }()

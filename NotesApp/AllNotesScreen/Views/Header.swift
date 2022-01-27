@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-class NoteHeader: UICollectionReusableView {
-    static var identifier: String = "noteHeaderID"
+class Header: UICollectionReusableView {
+    static var identifier: String = "HeaderID"
     
     private lazy var label: UILabel = {
         let label = UILabel()
