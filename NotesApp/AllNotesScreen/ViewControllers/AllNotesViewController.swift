@@ -26,7 +26,7 @@ class AllNotesViewController: ThemableViewController {
     }()
     
     init(palette: ColorSet,
-         noteRepository: NotesRepositoryProtocol = NotesRepository(),
+         noteRepository: NotesRepositoryProtocol = NotesRepository(isAscending: false),
          tagRepository: TagRepositoryProtocol = TagRepository(),
          notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
