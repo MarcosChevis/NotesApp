@@ -16,7 +16,7 @@ class ThemesViewTest: XCTestCase {
 
     override func setUp() {
         colorSet = .classic
-        sut = .init(palette: colorSet, collectionDataSource: ThemesCollectionDataSouce())
+        sut = .init(palette: colorSet, collectionDataSource: ThemesCollectionDataSource())
         isRecording = false
     }
     
@@ -26,7 +26,7 @@ class ThemesViewTest: XCTestCase {
     }
 
     func setupLayoutTest(with palette: ColorSet = .classic) -> UIViewController {
-        sut = .init(palette: palette, collectionDataSource: ThemesCollectionDataSouce())
+        sut = .init(palette: palette, collectionDataSource: ThemesCollectionDataSource())
         let navigation = NavigationController(rootViewController: sut)
         return navigation
     }

@@ -23,7 +23,7 @@ class ThemesViewControllerTest: XCTestCase {
         notificationServiceDummy = .init()
         localStorageServiceDummy = .init()
         settings = .init(localStorageService: localStorageServiceDummy, notificationService: notificationServiceDummy)
-        sut = ThemesViewController(palette: .classic, collectionDataSource: ThemesCollectionDataSouce(), notificationService: notificationServiceDummy, settings: settings)
+        sut = ThemesViewController(palette: .classic, collectionDataSource: ThemesCollectionDataSource(), notificationService: notificationServiceDummy, settings: settings)
         sut.coordinator = coordinatorDummy
         _ = sut.view
     }
