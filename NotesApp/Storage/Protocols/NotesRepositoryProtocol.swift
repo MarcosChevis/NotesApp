@@ -23,4 +23,3 @@ protocol NoteRepositoryProtocolDelegate: AnyObject {
     func deleteNote(_ note: NoteCellViewModel)
     
 }
-

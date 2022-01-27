@@ -16,9 +16,7 @@ extension NoteViewController: NoteViewDelegate {
               }
         
         currentHighlightedNote = note
-        print(note.noteID)
-        
-        title = "Page \(indexPath.row)"
+        title = "Page \(indexPath.row+1)"
     }
     
     func didDelete() {
@@ -37,7 +35,7 @@ extension NoteViewController: NoteViewDelegate {
         do {
             _ = try repository.createEmptyNote()
         } catch {
-            
+            presentErrorAlert(with: "An error occured trying to add an note")
         }
     }
     

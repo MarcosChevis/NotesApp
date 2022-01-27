@@ -26,10 +26,9 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
         } catch {
             presentErrorAlert(with: "Your note is empty")
         }
-        print("share")
     }
     
     func didTapEdit(for noteViewModel: NoteCellViewModel) {
-        print("edit")
+        
     }
 }
