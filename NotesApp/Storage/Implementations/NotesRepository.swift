@@ -45,12 +45,12 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: true)]
         
-        let fetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchResultsController = fetchResultsController
+        let noteFetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchResultsController = noteFetchResultsController
         self.cancelables = .init()
         self.notificationService = notificationService
         super.init()
-        fetchResultsController.delegate = self
+        noteFetchResultsController.delegate = self
         setupBindings()
     }
     
