@@ -8,16 +8,11 @@
 import UIKit
 
 protocol NoteShareCoordinatorProtocol {
-    func shareNote(_ note: NoteProtocol)
+    func shareContent(_ content: String)
 }
 
 extension NoteShareCoordinatorProtocol where Self : CoordinatorProtocol, Self : AlertCoordinatorProtocol {
-    func shareNote(_ note: NoteProtocol) {
-        guard let content = note.content, !content.isEmpty else {
-            presentErrorAlert(with: "Your note is empty")
-            return
-        }
-        
+    func shareContent(_ content: String) {
         let shareScreen = UIActivityViewController(activityItems: [content], applicationActivities: nil)
         navigationController.present(shareScreen, animated: true, completion: nil)
     }

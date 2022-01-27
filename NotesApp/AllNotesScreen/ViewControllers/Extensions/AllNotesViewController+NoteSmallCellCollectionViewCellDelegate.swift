@@ -14,13 +14,19 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
             do {
                 try self.noteRepository.deleteNote(noteViewModel.note)
             } catch {
-                self.presentErrorAlert(with: "An error Occured deleting the item!")
+                self.coordinator?.presentErrorAlert(with: "An error Occured deleting the item!")
             }
         })
     }
     
     func didTapShare(for noteViewModel: NoteCellViewModel) {
-        coordinator?.shareNote(noteViewModel.note)
+        guard let content = noteViewModel.note.content, !content.isEmpty
+        else {
+            coordinator?.presentErrorAlert(with: "Your note is empty")
+            return
+        }
+        
+        coordinator?.shareContent(content)
     }
     
     func didTapEdit(for noteViewModel: NoteCellViewModel) {

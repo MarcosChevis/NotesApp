@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIViewController {
+extension UINavigationController {
     func presentAlert(for alertCase: UIAlertController.CommonAlert, _ action: @escaping() -> Void) {
         let alert = UIAlertController.singleActionAlert(for: alertCase) {
             action()

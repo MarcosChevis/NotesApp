@@ -126,7 +126,7 @@ class NoteViewController: ThemableViewController {
             self.currentHighlightedNote = nil
             try self.repository.deleteNote(currentHighlightedNote)
         } catch {
-            self.presentErrorAlert(with: "It was not possible to delete this note!")
+            coordinator?.presentErrorAlert(with: "It was not possible to delete this note!")
         }
     }
     

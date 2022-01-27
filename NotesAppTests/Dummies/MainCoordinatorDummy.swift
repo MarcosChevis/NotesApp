@@ -29,9 +29,9 @@ class MainCoordinatorDummy: MainCoordinatorProtocol {
         didPresentErrorAlert.content = message
     }
     
-    func shareNote(_ note: NoteProtocol) {
+    func shareContent(_ content: String) {
         didPresentShareSheet.didPresent = true
-        didPresentShareSheet.content = note.content!
+        didPresentShareSheet.content = content
     }
 }
 

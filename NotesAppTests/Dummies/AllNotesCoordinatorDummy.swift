@@ -13,6 +13,10 @@ class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
     var didNavigateToSettings: Bool = false
     var didNavigateToThemes: Bool = false
     var didNavigateToEditNote: Bool = false
+    var editedNote: String = ""
+    var didPresentErrorAlert: Bool = false
+    var didPresentSingleAlertAction: Bool = false
+    var sharedNote: String = ""
     
     func dismiss() {
         didDismiss = true
@@ -27,18 +31,19 @@ class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
     }
     
     func editNote(with id: String) {
-        
+        editedNote = id
     }
     
     func presentSingleActionAlert(for alertCase: UIAlertController.CommonAlert, _ action: @escaping () -> Void) {
-        
+        didPresentSingleAlertAction = true
+        action()
     }
     
     func presentErrorAlert(with message: String) {
-        
+        didPresentErrorAlert = true
     }
     
-    func shareNote(_ note: NoteProtocol) {
-        
+    func shareContent(_ content: String) {
+        sharedNote = content
     }
 }
