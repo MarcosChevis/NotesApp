@@ -10,6 +10,8 @@ import UIKit
 class CustomThemeBuilderView: ThemableView {
     
     weak var delegate: CustomThemeBuilderViewDelegate?
+    private var placeholder: NSMutableAttributedString
+    private var placeholderContent: String = "Your theme name here"
     
     lazy var cancelButton: UIBarButtonItem = {
         let but = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancel))
@@ -27,7 +29,6 @@ class CustomThemeBuilderView: ThemableView {
         let textView = UITextField(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
         
-        textView.placeholder = "Your theme name here"
         textView.font = UIFont.boldSystemFont(ofSize: 34)
         
         
@@ -74,6 +75,9 @@ class CustomThemeBuilderView: ThemableView {
 
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
+        
+        self.placeholder = .init(string: placeholderContent)
+        
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         
         setupHierarchy()
@@ -127,5 +131,11 @@ class CustomThemeBuilderView: ThemableView {
         super.setColors(palette: palette)
         let colorSet = palette.palette()
         backgroundColor = colorSet.background
+        saveButton.tintColor = colorSet.actionColor
+        cancelButton.tintColor = colorSet.actionColor
+        
+        let attributeRange = NSRange(location: 0, length: placeholderContent.count)
+        placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
+        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: colorSet.text.withAlphaComponent(0.4)], range: attributeRange)
     }
 }

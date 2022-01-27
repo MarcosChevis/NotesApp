@@ -21,6 +21,7 @@ enum ColorSet: String, CaseIterable {
     case unicorn
     
     
+    
     func palette() -> CustomColorSet {
         switch self {
         case .neon:
@@ -87,6 +88,7 @@ enum ColorSet: String, CaseIterable {
                                   buttonBackground: UIColor(Color("UnicornButtonBackground")),
                                   noteBackground: UIColor(Color("UnicornNoteBackground")),
                                   text: UIColor(Color("UnicornText")), largeTitle: UIColor(Color("UnicornLargeTitle")), statusBarStyle: .darkContent)
+            
         }
     }
 }
