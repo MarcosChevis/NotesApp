@@ -22,7 +22,7 @@ class AllNotesView: ThemableView {
     }()
     
     lazy var settingsButton: UIBarButtonItem = {
-        var but = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain , target: self, action: #selector(didTapSettings))
+        let but = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain , target: self, action: #selector(didTapSettings))
         return but
     }()
     
