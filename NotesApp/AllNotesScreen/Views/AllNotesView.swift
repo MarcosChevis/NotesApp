@@ -44,8 +44,8 @@ class AllNotesView: ThemableView {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: NoteSmallCellCollectionViewCell.identifier)
         collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
-        collectionView.register(NoteHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier)
-        collectionView.register(TagHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier)
+        collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier)
+        collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier)
         
         return collectionView
     }()

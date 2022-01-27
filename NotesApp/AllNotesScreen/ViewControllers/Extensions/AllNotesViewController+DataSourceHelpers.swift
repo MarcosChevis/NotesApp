@@ -31,13 +31,13 @@ extension AllNotesViewController {
             switch kind {
             case UICollectionView.elementKindSectionHeader:
                 if indexPath.section == 0 {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier, for: indexPath) as? TagHeader else {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
                         fatalError()
                     }
                     header.setup(with: "Tags", color: textColor)
                     return header
                 } else {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier, for: indexPath) as? NoteHeader else {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
                         fatalError()
                     }
                     header.setup(with: "All Notes", color: textColor)
