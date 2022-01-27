@@ -29,7 +29,7 @@ jobs:
         set -o pipefail
         xcodebuild build \
         -scheme NotesApp \
-        -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
+        -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' \
         | xcpretty
         
   test:
@@ -55,5 +55,5 @@ jobs:
         set -o pipefail
         xcodebuild test \
         -scheme NotesApp \
-        -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
+        -destination 'platform=iOS Simulator,name=iPhone 12,OS=latest' \
         | xcpretty
