@@ -35,7 +35,7 @@ class NoteView: ThemableView {
     }()
     
     lazy var shareButton: UIBarButtonItem = {
-        var but = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(didTapShare))
+        let but = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(didTapShare))
         
         return but
     }()
@@ -53,7 +53,7 @@ class NoteView: ThemableView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        var layout = collectionViewLayout
+        let layout = collectionViewLayout
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         addSubview(collection)
