@@ -99,9 +99,9 @@ class NotesRepositoryTest: XCTestCase {
     }
     
     func testFilterNoteWithContent() throws {
-        try createNote(withMessage: "miau 2")
-        try createNote(withMessage: "Outra nota 2")
-        try createNote(withMessage: "Outra mais uma nota 2")
+        try createNote(withMessage: "miau")
+        try createNote(withMessage: "Outra NOTA")
+        try createNote(withMessage: "Outra mais uma nota")
         let filteredNotes = sut.filterForContent("nota")
         
         XCTAssertEqual(filteredNotes.count, 2)
