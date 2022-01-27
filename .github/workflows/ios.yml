@@ -53,7 +53,7 @@ jobs:
     - name: Test
       run: |
         set -o pipefail
-        xcodebuild test-without-building \
+        xcodebuild test \
         -scheme NotesApp \
         -destination 'platform=iOS Simulator,name=iPhone 11 Pro' \
         | xcpretty
