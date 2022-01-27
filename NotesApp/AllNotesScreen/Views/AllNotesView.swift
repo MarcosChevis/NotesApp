@@ -27,7 +27,7 @@ class AllNotesView: ThemableView {
     }()
     
     lazy var closeButton: UIBarButtonItem = {
-        var but = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(didTapClose))
+        let but = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: #selector(didTapClose))
         return but
     }()
     
