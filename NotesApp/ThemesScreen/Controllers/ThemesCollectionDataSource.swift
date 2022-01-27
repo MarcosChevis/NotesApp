@@ -1,5 +1,5 @@
 //
-//  ThemesCollectionDataSouce.swift
+//  ThemesCollectionDataSource.swift
 //  NotesApp
 //
 //  Created by Nathalia do Valle Papst on 14/01/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ThemesCollectionDataSouce: NSObject, UICollectionViewDataSource {
+class ThemesCollectionDataSource: NSObject, UICollectionViewDataSource {
     var data: [ThemeCollectionData] = []
     let settings: Settings = Settings()
 

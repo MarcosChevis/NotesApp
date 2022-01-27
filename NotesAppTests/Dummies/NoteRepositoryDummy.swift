@@ -9,6 +9,10 @@ import Foundation
 @testable import NotesApp
 
 class NoteRepositoryDummy: NotesRepositoryProtocol {
+    func filterForContent(_ content: String) -> [NoteCellViewModel] {
+        []
+    }
+    
     var mock: [NoteCellViewModel] = []
     weak var delegate: NoteRepositoryProtocolDelegate?
     var didCallSaveChanges: Bool = false

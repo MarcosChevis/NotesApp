@@ -28,22 +28,22 @@ extension AllNotesViewController {
                   kind: String,
                   indexPath: IndexPath) -> UICollectionReusableView? in
             let textColor = self?.palette.palette().largeTitle ?? ColorSet.classic.palette().largeTitle
-            switch kind {
-            case UICollectionView.elementKindSectionHeader:
+            
+            if kind == UICollectionView.elementKindSectionHeader {
                 if indexPath.section == 0 {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TagHeader.identifier, for: indexPath) as? TagHeader else {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
                         fatalError()
                     }
                     header.setup(with: "Tags", color: textColor)
                     return header
                 } else {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: NoteHeader.identifier, for: indexPath) as? NoteHeader else {
+                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
                         fatalError()
                     }
                     header.setup(with: "All Notes", color: textColor)
                     return header
                 }
-            default:
+            } else {
                 return nil
             }
         }
@@ -66,8 +66,7 @@ extension AllNotesViewController {
     
     func makeDataSource(tagCellRegistration: TagCellRegistration, noteCellRegistration: NoteCellRegistration) -> AllNotesDataSource {
         
-        return AllNotesDataSource(collectionView: contentView.collectionView)
-        { collectionView, indexPath, item in
+        return AllNotesDataSource(collectionView: contentView.collectionView) { collectionView, indexPath, item in
             switch item {
             case .tag(let tagViewModel):
                 return collectionView.dequeueConfiguredReusableCell(using: tagCellRegistration, for: indexPath, item: tagViewModel)
