@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol MainCoordinatorProtocol: AnyObject {
+protocol MainCoordinatorProtocol: AnyObject, AlertCoordinatorProtocol, NoteShareCoordinatorProtocol {
     func navigateToAllNotes()
 }
 

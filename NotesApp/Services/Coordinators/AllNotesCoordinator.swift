@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol AllNotesCoordinatorProtocol: AnyObject {
+protocol AllNotesCoordinatorProtocol: AnyObject, AlertCoordinatorProtocol, NoteShareCoordinatorProtocol {
     func dismiss()
     func editNote(with id: String)
     func navigateToSettings()
