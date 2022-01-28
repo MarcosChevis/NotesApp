@@ -44,7 +44,8 @@
 		5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9F6278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift */; };
 		5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */; };
 		5B73C9FE278F8114005F2D89 /* AllNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */; };
-		5BB5B9F7279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */; };
+		5B8E433827A22E3000AE83B2 /* AlertCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E433727A22E3000AE83B2 /* AlertCoordinatorProtocol.swift */; };
+		5B8E433A27A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E433927A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift */; };
 		5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */; };
 		5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */; };
 		5BB7FE002795C61B00A6F335 /* NoteRepositoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */; };
@@ -157,7 +158,8 @@
 		5B73C9F6278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteSmallCellCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesView.swift; sourceTree = "<group>"; };
 		5B73C9FD278F8114005F2D89 /* AllNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewController.swift; sourceTree = "<group>"; };
-		5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityViewController+NoteCellViewModel.swift"; sourceTree = "<group>"; };
+		5B8E433727A22E3000AE83B2 /* AlertCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		5B8E433927A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteShareCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDummy.swift; sourceTree = "<group>"; };
 		5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceDummy.swift; sourceTree = "<group>"; };
 		5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryDummy.swift; sourceTree = "<group>"; };
@@ -371,6 +373,8 @@
 				5B3FF1AF27999C6100828097 /* CoordinatorProtocol.swift */,
 				5B3FF1B12799AEC000828097 /* MainCoordinator.swift */,
 				5B3FF1B32799AECB00828097 /* AllNotesCoordinator.swift */,
+				5B8E433727A22E3000AE83B2 /* AlertCoordinatorProtocol.swift */,
+				5B8E433927A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -563,7 +567,6 @@
 				9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */,
 				5BB7FE012795EDB800A6F335 /* NotificationName.swift */,
 				5B3FF1A6279998C700828097 /* UIViewController+UIAlertHelpers.swift */,
-				5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -814,11 +817,13 @@
 			files = (
 				5B35900A2796EC1600ECF0C1 /* NotesViewDelegate.swift in Sources */,
 				5B3FF18E2799940A00828097 /* LocalStorageService.swift in Sources */,
+				5B8E433A27A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift in Sources */,
 				5BB7FE052796EB8600A6F335 /* AppDelegate.swift in Sources */,
 				5B3FF1A7279998C700828097 /* UIViewController+UIAlertHelpers.swift in Sources */,
 				9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */,
 				5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */,
+				5B8E433827A22E3000AE83B2 /* AlertCoordinatorProtocol.swift in Sources */,
 				5B3FF1B42799AECB00828097 /* AllNotesCoordinator.swift in Sources */,
 				C88C7A6E279AE89E0090613F /* NavigationController.swift in Sources */,
 				5BB7FE022795EDB800A6F335 /* NotificationName.swift in Sources */,
@@ -863,7 +868,6 @@
 				5B3FF1932799953200828097 /* AllNotesViewController+NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				5B3FF19C279996C600828097 /* AllNotesViewController+NoteRepositoryProtocolDelegate.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
-				5BB5B9F7279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift in Sources */,
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
 				5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SnapshotTesting
 @testable import NotesApp
 
 class MainCoordinatorTest: XCTestCase {
@@ -41,4 +42,5 @@ class MainCoordinatorTest: XCTestCase {
         notificationService.post(name: .didComebackFromModal, object: nil)
         XCTAssertEqual(0, sut.childCoordinators.count)
     }
+    
 }

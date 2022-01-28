@@ -20,7 +20,7 @@ extension NoteViewController: NoteViewDelegate {
     }
     
     func didDelete() {
-        presentAlert(for: .onDeletingItem) { [weak self] in
+        coordinator?.presentSingleActionAlert(for: .onDeletingItem) { [weak self] in
             guard let self = self else { return }
             self.deleteNote()
         }
@@ -35,22 +35,21 @@ extension NoteViewController: NoteViewDelegate {
         do {
             _ = try repository.createEmptyNote()
         } catch {
-            presentErrorAlert(with: "An error occured trying to add an note")
+            coordinator?.presentErrorAlert(with: "An error occured trying to add an note")
         }
     }
     
     func didShare() {
         guard let currentHighlightedNote = self.currentHighlightedNote else {
-            presentErrorAlert(with: "You do not have notes to share")
+            coordinator?.presentErrorAlert(with: "You do not have notes to share")
             return
         }
         
-        do {
-            let shareScreen = try UIActivityViewController.shareNote(currentHighlightedNote)
-            present(shareScreen, animated: true, completion: nil)
-        } catch {
-            presentErrorAlert(with: "Your note is empty")
+        guard let content = currentHighlightedNote.content, !content.isEmpty else {
+            coordinator?.presentErrorAlert(with: "Your note is empty")
+            return
         }
         
+        coordinator?.shareContent(content)
     }
 }
