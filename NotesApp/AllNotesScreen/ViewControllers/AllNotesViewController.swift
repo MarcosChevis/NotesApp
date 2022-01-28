@@ -77,7 +77,7 @@ class AllNotesViewController: ThemableViewController {
             snapshot.appendItems(noteItems, toSection: .text)
             
         } catch {
-            presentErrorAlert(with: "An error ocurred fetching your notes!")
+            coordinator?.presentErrorAlert(with: "An error ocurred fetching your notes!")
         }
         
         dataSource.apply(snapshot, animatingDifferences: false)

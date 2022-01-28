@@ -48,7 +48,23 @@ class AllNotesViewControllerTest: XCTestCase {
     }
 
     func testDeletenote() {
-        sut.deleteNote(NoteCellViewModel(note: NoteDummy(noteID: "id1", content: "conteudo", title: "titulo")))
+        let note = NoteCellViewModel(note: NoteDummy(noteID: "id1", content: "conteudo", title: "titulo"))
+        noteRepositoryDummy.mock.append(note)
+        XCTAssertEqual(1, noteRepositoryDummy.mock.count)
+        sut.didTapDelete(for: note)
         XCTAssertEqual(0, noteRepositoryDummy.mock.count)
+    }
+    
+    func testDidTapShare() {
+        let content = "teste content"
+        sut.didTapShare(for: NoteCellViewModel(note: NoteDummy(noteID: UUID().uuidString, content: content, title: "teste titulo")))
+        XCTAssertEqual(coordinatorDummy.sharedNote!, content)
+    }
+    
+    func testDidTapShareWithAEmptyHighlitedNote() throws {
+        let content = ""
+        sut.didTapShare(for: NoteCellViewModel(note: NoteDummy(noteID: UUID().uuidString, content: content, title: "titulo")))
+        XCTAssertNil(coordinatorDummy.sharedNote)
+        XCTAssertTrue(coordinatorDummy.didPresentErrorAlert)
     }
 }
