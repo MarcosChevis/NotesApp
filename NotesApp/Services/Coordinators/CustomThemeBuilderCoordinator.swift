@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol CustomThemeBuilderCoordinatorProtocol: AnyObject {
+protocol CustomThemeBuilderCoordinatorProtocol: AnyObject, AlertCoordinatorProtocol {
     func dismiss()
     func showColorPicker(delegate: UIColorPickerViewControllerDelegate)
 }

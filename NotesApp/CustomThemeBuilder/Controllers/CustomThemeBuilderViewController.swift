@@ -34,7 +34,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
     private let repository: ThemeRepositoryProtocol
 
     init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = .shared, themeRepository: ThemeRepositoryProtocol = ThemeRepository()) {
+         settings: Settings = .shared, themeRepository: ThemeRepositoryProtocol = ThemeRepository.shared) {
         
         self.contentView = .init(palette: palette)
         self.willChange = -1
@@ -102,9 +102,15 @@ extension CustomThemeBuilderViewController: UICollectionViewDelegate {
 
 extension CustomThemeBuilderViewController: CustomThemeBuilderViewDelegate {
     func didTapSave() {
-        customColorSet.name = contentView.themeNameTextView.text
-        repository.saveChanges()
-        coordinator?.dismiss()
+        let name = contentView.themeNameTextView.text
+        if !(name?.isEmpty ?? true) {
+            customColorSet.name = contentView.themeNameTextView.text
+            repository.saveChanges()
+            coordinator?.dismiss()
+        } else {
+            coordinator?.presentErrorAlert(with: "Your theme must have a name")
+        }
+        
     }
     
     func didTapCancel() {
@@ -118,12 +124,10 @@ extension CustomThemeBuilderViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
          guard let text = textField.text else { return true }
          let newLength = text.count + string.count - range.length
-         return newLength <= 15
+         return newLength <= 10
     }
 }
 
-#warning("proibir salvar sem nome")
-#warning("corrigir bug do settings")
 #warning("corrigir/criar testes")
 #warning("editar e deletar temas")
 #warning("AllNotesExampleView")

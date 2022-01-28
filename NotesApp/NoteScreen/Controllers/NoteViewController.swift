@@ -24,7 +24,7 @@ class NoteViewController: ThemableViewController {
     init(palette: ColorSet,
          repository: NotesRepositoryProtocol,
          notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+         settings: Settings = .shared) {
         self.contentView = NoteView(palette: palette)
 
         self.repository = repository

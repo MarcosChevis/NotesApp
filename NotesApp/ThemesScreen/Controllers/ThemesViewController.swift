@@ -20,7 +20,7 @@ class ThemesViewController: ThemableViewController {
     }
     
     init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+         settings: Settings = .shared) {
         
         self.contentView = ThemesView(palette: palette)
         self.collectionDataSource = collectionDataSource
@@ -48,6 +48,12 @@ class ThemesViewController: ThemableViewController {
         
         setupNavigationBar()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        collectionDataSource.createData()
+        contentView.collectionView.reloadData()
     }
     
     func setupNavigationBar() {

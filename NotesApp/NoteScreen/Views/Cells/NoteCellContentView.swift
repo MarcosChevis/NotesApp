@@ -38,7 +38,7 @@ class NoteCellContentView: ThemableView {
     }()
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-                  settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         
         placeholder = .init(string: placeholderContent)
         super.init(palette: palette, notificationService: notificationService, settings: settings)

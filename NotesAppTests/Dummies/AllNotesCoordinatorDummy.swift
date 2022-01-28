@@ -9,6 +9,10 @@ import UIKit
 @testable import NotesApp
 
 class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
+    func navigateToCustomTheme() {
+        
+    }
+    
     var didDismiss: Bool = false
     var didNavigateToSettings: Bool = false
     var didNavigateToThemes: Bool = false

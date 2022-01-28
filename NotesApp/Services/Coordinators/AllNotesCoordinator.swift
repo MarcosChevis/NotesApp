@@ -22,8 +22,7 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol]
     
     init(navigationController: NavigationController,
-         settings: Settings = Settings(localStorageService: UserDefaults.standard,
-                                       notificationService: NotificationCenter.default),
+         settings: Settings = .shared,
          notificationService: NotificationService = NotificationCenter.default)
     {
         self.navigationController = navigationController

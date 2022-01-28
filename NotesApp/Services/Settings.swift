@@ -16,7 +16,7 @@ class Settings {
     
     static var shared = Settings()
     
-    init(localStorageService: LocalStorageService = UserDefaults.standard, notificationService: NotificationService = NotificationCenter.default, themeRepository: ThemeRepositoryProtocol = ThemeRepository()) {
+    init(localStorageService: LocalStorageService = UserDefaults.standard, notificationService: NotificationService = NotificationCenter.default, themeRepository: ThemeRepositoryProtocol = ThemeRepository.shared) {
         self.localStorageService = localStorageService
         self.notificationService = notificationService
         self.themeRepository = themeRepository
@@ -26,7 +26,6 @@ class Settings {
     func changeTheme(palette: ColorSet) {
         theme = palette
         notificationService.post(name: .didChangeTheme, object: palette)
-        
     }
     
     var theme: ColorSet {
@@ -43,7 +42,4 @@ class Settings {
             localStorageService.set(newValue.id, forKey: themeKey)
         }
     }
-    
-    private var cachedTheme: ColorSet?
-    
 }

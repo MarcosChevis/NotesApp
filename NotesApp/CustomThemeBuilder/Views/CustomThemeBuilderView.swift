@@ -74,7 +74,7 @@ class CustomThemeBuilderView: ThemableView {
     }()
 
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         
         self.placeholder = .init(string: placeholderContent)
         

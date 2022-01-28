@@ -11,6 +11,8 @@ class ThemeRepository: ThemeRepositoryProtocol {
     private let coreDataStack: CoreDataStack
     private var standardThemes: [ColorSet]
     private var customThemes: [ColorSet]
+    
+    static let shared = ThemeRepository()
 
     init(coreDataStack: CoreDataStack = .shared) {
         self.coreDataStack = coreDataStack
@@ -55,9 +57,12 @@ class ThemeRepository: ThemeRepositoryProtocol {
     func saveChanges() {
         do {
             try coreDataStack.save()
+            customThemes = getAllCustomThemes()
+            
         } catch {
             coreDataStack.mainContext.rollback()
         }
+        
     }
     
     func cancelChanges() {

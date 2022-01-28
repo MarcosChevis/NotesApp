@@ -89,7 +89,7 @@ class NoteSmallCellContentView: ThemableView {
     }()
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-                  settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupHierarchy()
         setupConstraints()
