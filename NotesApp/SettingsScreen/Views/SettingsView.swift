@@ -26,6 +26,7 @@ class SettingsView: ThemableView {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setColors(palette: palette)
         setupConstraints()
+        self.tableView.separatorColor = .clear
     }
     
     required init?(coder: NSCoder) {

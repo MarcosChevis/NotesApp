@@ -36,7 +36,6 @@ class SettingsViewTest: XCTestCase {
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
-    
     func testLayoutOnIphoneSE() {
         let view = setupLayoutTest()
         assertSnapshot(matching: view, as: .image(on: .iPhoneSe))
@@ -53,7 +52,7 @@ class SettingsViewTest: XCTestCase {
     }
     
     func testLayoutIphone12pastel() {
-        let view = setupLayoutTest(with: .candy)
+        let view = setupLayoutTest(with: .grape)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     

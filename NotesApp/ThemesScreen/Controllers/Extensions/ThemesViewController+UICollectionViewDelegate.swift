@@ -12,7 +12,6 @@ extension ThemesViewController: UICollectionViewDelegate {
         for index in 0..<collectionDataSource.data.count {
             collectionDataSource.data[index].isSelected = index == indexPath.row
             if collectionDataSource.data[index].isSelected {
-                
                 settings.theme = collectionDataSource.data[index].colorSet
                 settings.changeTheme(palette: collectionDataSource.data[index].colorSet)
             }

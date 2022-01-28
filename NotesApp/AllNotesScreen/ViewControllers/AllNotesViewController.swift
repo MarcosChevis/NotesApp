@@ -26,7 +26,7 @@ class AllNotesViewController: ThemableViewController {
     }()
     
     init(palette: ColorSet,
-         noteRepository: NotesRepositoryProtocol = NotesRepository(),
+         noteRepository: NotesRepositoryProtocol = NotesRepository(isAscending: false),
          tagRepository: TagRepositoryProtocol = TagRepository(),
          notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
@@ -77,7 +77,7 @@ class AllNotesViewController: ThemableViewController {
             snapshot.appendItems(noteItems, toSection: .text)
             
         } catch {
-            presentErrorAlert(with: "An error ocurred fetching your notes!")
+            coordinator?.presentErrorAlert(with: "An error ocurred fetching your notes!")
         }
         
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -104,7 +104,7 @@ class AllNotesViewController: ThemableViewController {
     private func setupNavigationBar() {
         title = "All Notes"
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItems = [contentView.addNoteButton, contentView.settingsButton]
+        navigationItem.rightBarButtonItems = [ contentView.settingsButton]
         navigationItem.leftBarButtonItem = contentView.closeButton
     }
     

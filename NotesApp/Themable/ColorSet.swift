@@ -10,12 +10,16 @@ import SwiftUI
 
 enum ColorSet: String, CaseIterable {
     case classic
+    case dark
     case neon
     case christmas
-    case candy
+    case grape
     case bookish
     case halloween
-    case sunshine
+    case devotional
+    case crt
+    case unicorn
+    
     
     func palette() -> CustomColorSet {
         switch self {
@@ -39,7 +43,7 @@ enum ColorSet: String, CaseIterable {
                                   noteBackground: UIColor(Color("ChristmasNoteBackground")),
                                   text: UIColor(Color("ChristmasText")), largeTitle: UIColor(Color("ChristmasLargeTitle")), statusBarStyle: .lightContent)
             
-        case .candy:
+        case .grape:
             return CustomColorSet(actionColor: UIColor(Color("BiAction")),
                                   background: UIColor(Color("BiBackground")),
                                   buttonBackground: UIColor(Color("BiButtonBackground")),
@@ -58,12 +62,31 @@ enum ColorSet: String, CaseIterable {
                                   buttonBackground: UIColor(Color("HalloweenButtonBackground")),
                                   noteBackground: UIColor(Color("HalloweenNoteBackground")),
                                   text: UIColor(Color("HalloweenText")), largeTitle: UIColor(Color("HalloweenText")), statusBarStyle: .lightContent)
-        case .sunshine:
+        case .devotional:
             return CustomColorSet(actionColor: UIColor(Color("SunshineAction")),
                                   background: UIColor(Color("SunshineBackground")),
                                   buttonBackground: UIColor(Color("SunshineButtonBackground")),
                                   noteBackground: UIColor(Color("SunshineNoteBackground")),
                                   text: UIColor(Color("SunshineText")), largeTitle: UIColor(Color("SunshineText")), statusBarStyle: .darkContent)
+            
+        case .crt:
+            return CustomColorSet(actionColor: UIColor(Color("MatrixAction")),
+                                  background: UIColor(Color("MatrixBackground")),
+                                  buttonBackground: UIColor(Color("MatrixButtonBackground")),
+                                  noteBackground: UIColor(Color("MatrixNoteBackground")),
+                                  text: UIColor(Color("MatrixText")), largeTitle: UIColor(Color("MatrixText")), statusBarStyle: .lightContent)
+        case .dark:
+            return CustomColorSet(actionColor: UIColor(Color("SwiftDarkAction")),
+                                  background: UIColor(Color("SwiftDarkBackground")),
+                                  buttonBackground: UIColor(Color("SwiftDarkButtonBackground")),
+                                  noteBackground: UIColor(Color("SwiftDarkNoteBackground")),
+                                  text: UIColor(Color("SwiftDarkText")), largeTitle: UIColor(Color("SwiftDarkText")), statusBarStyle: .lightContent)
+        case .unicorn:
+            return CustomColorSet(actionColor: UIColor(Color("UnicornAction")),
+                                  background: UIColor(Color("UnicornBackground")),
+                                  buttonBackground: UIColor(Color("UnicornButtonBackground")),
+                                  noteBackground: UIColor(Color("UnicornNoteBackground")),
+                                  text: UIColor(Color("UnicornText")), largeTitle: UIColor(Color("UnicornLargeTitle")), statusBarStyle: .darkContent)
         }
     }
 }

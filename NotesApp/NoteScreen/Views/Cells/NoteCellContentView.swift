@@ -10,7 +10,7 @@ import UIKit
 
 class NoteCellContentView: ThemableView {
     private var viewModel: NoteCellViewModel?
-        
+    
     var title: UITextField = {
         var title = UITextField()
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +44,7 @@ class NoteCellContentView: ThemableView {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupHierarchy()
         setupConstraints()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -81,6 +82,17 @@ class NoteCellContentView: ThemableView {
         self.textView.text = viewModel.note.content
         
         title.attributedPlaceholder = placeholder
+        setupStyle()
+    }
+    
+    func setupStyle() {
+        layer.masksToBounds = false
+        layer.cornerRadius = 16
+        
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
+        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 4
+        layer.shadowOffset = CGSize(width: 2, height: 2)
     }
     
     override func setColors(palette: ColorSet?) {
@@ -93,6 +105,7 @@ class NoteCellContentView: ThemableView {
         let attributeRange = NSRange(location: 0, length: placeholderContent.count)
         placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
         placeholder.addAttributes([NSAttributedString.Key.foregroundColor: colorSet.text.withAlphaComponent(0.4)], range: attributeRange)
+        layer.shadowColor = UIColor.black.cgColor
         
     }
 }

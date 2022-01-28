@@ -107,12 +107,12 @@ class NoteViewController: ThemableViewController {
     }
     
     
-    private func scrollToEmptyNote(_ animated: Bool = false) {
+    func scrollToEmptyNote(_ animated: Bool = false) {
         repository.saveChangesWithoutEmptyNotes()
         do {
             _ = try repository.createEmptyNote()
             let count = dataSource.snapshot().numberOfItems
-            contentView.collectionView.scrollToItem(at: IndexPath(row: count-1, section: 0), at: .centeredHorizontally, animated: animated)
+            scrollToNote(at: count-1)
         } catch {
             
         }
@@ -126,7 +126,23 @@ class NoteViewController: ThemableViewController {
             self.currentHighlightedNote = nil
             try self.repository.deleteNote(currentHighlightedNote)
         } catch {
-            self.presentErrorAlert(with: "It was not possible to delete this note!")
+            coordinator?.presentErrorAlert(with: "It was not possible to delete this note!")
         }
+    }
+    
+    func highlightNote(with id: String) {
+        let snapshot = dataSource.snapshot()
+        
+        guard
+            let item = snapshot.itemIdentifiers.first(where: { $0.note.noteID == id }),
+            let index = snapshot.indexOfItem(item)
+        else {
+            return
+        }
+        scrollToNote(at: index, animated: true)
+    }
+    
+    private func scrollToNote(at index: Int, animated: Bool = true) {
+        contentView.collectionView.scrollToItem(at: IndexPath(row: index, section: 0), at: .centeredHorizontally, animated: animated)
     }
 }

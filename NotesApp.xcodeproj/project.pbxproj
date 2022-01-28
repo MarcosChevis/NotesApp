@@ -47,16 +47,20 @@
 		5BB5B9F7279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */; };
 		5BB70C8B27A0275D0012D48D /* TagBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB70C8A27A0275D0012D48D /* TagBuilder.swift */; };
 		5BB70C9027A035090012D48D /* TagBuilderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB70C8F27A035090012D48D /* TagBuilderTest.swift */; };
+		5B8E433827A22E3000AE83B2 /* AlertCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E433727A22E3000AE83B2 /* AlertCoordinatorProtocol.swift */; };
+		5B8E433A27A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B8E433927A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift */; };
 		5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */; };
 		5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */; };
 		5BB7FE002795C61B00A6F335 /* NoteRepositoryDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */; };
 		5BB7FE022795EDB800A6F335 /* NotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FE012795EDB800A6F335 /* NotificationName.swift */; };
 		5BB7FE042795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB7FE032795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift */; };
 		5BB7FE052796EB8600A6F335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */; };
-		9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* NoteHeader.swift */; };
-		9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35F2791C13A000F6B4A /* TagHeader.swift */; };
+		9D31F35E2791C02D000F6B4A /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D31F35D2791C02D000F6B4A /* Header.swift */; };
+		9D388413279AF9C0006FA73B /* AllNotesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */; };
+		9D388415279AFDD4006FA73B /* SettingsViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */; };
 		9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */; };
 		9D51C9C2279EDAD900092FCC /* ThemesViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */; };
+		9D5C3C0F27A032EF00A85AE6 /* ThemesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5C3C0E27A032EF00A85AE6 /* ThemesViewControllerTest.swift */; };
 		9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */; };
 		9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7027970A3F005B21BC /* TagProtocol.swift */; };
 		9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */; };
@@ -69,6 +73,7 @@
 		BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */; };
 		BA2D1BED2795AEA100849955 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEC2795AEA100849955 /* Settings.swift */; };
 		BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */; };
+		BA2F99E627A03C9F00A05201 /* ThemeExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2F99E527A03C9F00A05201 /* ThemeExampleView.swift */; };
 		BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D56278EFC6A000617F6 /* NoteViewController.swift */; };
 		BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D58278EFCEB000617F6 /* NoteView.swift */; };
 		BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D5A278F025F000617F6 /* ColorSet.swift */; };
@@ -88,8 +93,26 @@
 		E935C95727906F9100835897 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95627906F9100835897 /* SettingsView.swift */; };
 		E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95B27906FFC00835897 /* SettingsViewController.swift */; };
 		E935C95E2790787D00835897 /* SettingTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E935C95D2790787D00835897 /* SettingTableDataSource.swift */; };
+		E9AB515E27A1AFA60077F33C /* Christmas@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB514C27A1AFA50077F33C /* Christmas@3x.png */; };
+		E9AB515F27A1AFA60077F33C /* Halloween@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB514D27A1AFA50077F33C /* Halloween@3x.png */; };
+		E9AB516027A1AFA60077F33C /* Devotional@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB514E27A1AFA50077F33C /* Devotional@3x.png */; };
+		E9AB516127A1AFA60077F33C /* Grape@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB514F27A1AFA50077F33C /* Grape@3x.png */; };
+		E9AB516227A1AFA60077F33C /* Unicorn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515027A1AFA50077F33C /* Unicorn@2x.png */; };
+		E9AB516327A1AFA60077F33C /* Unicorn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515127A1AFA50077F33C /* Unicorn@3x.png */; };
+		E9AB516427A1AFA60077F33C /* Neon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515227A1AFA50077F33C /* Neon@2x.png */; };
+		E9AB516527A1AFA60077F33C /* Devotional@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515327A1AFA60077F33C /* Devotional@2x.png */; };
+		E9AB516627A1AFA60077F33C /* Grape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515427A1AFA60077F33C /* Grape@2x.png */; };
+		E9AB516727A1AFA60077F33C /* Halloween@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515527A1AFA60077F33C /* Halloween@2x.png */; };
+		E9AB516827A1AFA60077F33C /* Bookish@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515627A1AFA60077F33C /* Bookish@2x.png */; };
+		E9AB516927A1AFA60077F33C /* Dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515727A1AFA60077F33C /* Dark@2x.png */; };
+		E9AB516A27A1AFA60077F33C /* Matrix@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515827A1AFA60077F33C /* Matrix@3x.png */; };
+		E9AB516B27A1AFA60077F33C /* Christmas@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515927A1AFA60077F33C /* Christmas@2x.png */; };
+		E9AB516C27A1AFA60077F33C /* Dark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515A27A1AFA60077F33C /* Dark@3x.png */; };
+		E9AB516D27A1AFA60077F33C /* Neon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515B27A1AFA60077F33C /* Neon@3x.png */; };
+		E9AB516E27A1AFA60077F33C /* Matrix@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515C27A1AFA60077F33C /* Matrix@2x.png */; };
+		E9AB516F27A1AFA60077F33C /* Bookish@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9AB515D27A1AFA60077F33C /* Bookish@3x.png */; };
 		E9E5DE672791BFF80047C805 /* ThemeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */; };
-		E9E5DE692791C1A30047C805 /* ThemesCollectionDataSouce.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5DE682791C1A30047C805 /* ThemesCollectionDataSouce.swift */; };
+		E9E5DE692791C1A30047C805 /* ThemesCollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E5DE682791C1A30047C805 /* ThemesCollectionDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,16 +164,20 @@
 		5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIActivityViewController+NoteCellViewModel.swift"; sourceTree = "<group>"; };
 		5BB70C8A27A0275D0012D48D /* TagBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagBuilder.swift; sourceTree = "<group>"; };
 		5BB70C8F27A035090012D48D /* TagBuilderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagBuilderTest.swift; sourceTree = "<group>"; };
+		5B8E433727A22E3000AE83B2 /* AlertCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		5B8E433927A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteShareCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		5BB7FDFB2795C5B100A6F335 /* NoteDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDummy.swift; sourceTree = "<group>"; };
 		5BB7FDFD2795C5D000A6F335 /* NotificationServiceDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationServiceDummy.swift; sourceTree = "<group>"; };
 		5BB7FDFF2795C61B00A6F335 /* NoteRepositoryDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryDummy.swift; sourceTree = "<group>"; };
 		5BB7FE012795EDB800A6F335 /* NotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationName.swift; sourceTree = "<group>"; };
 		5BB7FE032795FF4E00A6F335 /* NoteRepositoryDelegateDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepositoryDelegateDummy.swift; sourceTree = "<group>"; };
 		5BFD81DC278DB2FA004833F5 /* NotesAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotesAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D31F35D2791C02D000F6B4A /* NoteHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteHeader.swift; sourceTree = "<group>"; };
-		9D31F35F2791C13A000F6B4A /* TagHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagHeader.swift; sourceTree = "<group>"; };
+		9D31F35D2791C02D000F6B4A /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesViewControllerTest.swift; sourceTree = "<group>"; };
+		9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerTest.swift; sourceTree = "<group>"; };
 		9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerUtilities.swift; sourceTree = "<group>"; };
 		9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewTest.swift; sourceTree = "<group>"; };
+		9D5C3C0E27A032EF00A85AE6 /* ThemesViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewControllerTest.swift; sourceTree = "<group>"; };
 		9DAC68F8278F3234005554B6 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DE31E7027970A3F005B21BC /* TagProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagProtocol.swift; sourceTree = "<group>"; };
 		9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCellViewModel.swift; sourceTree = "<group>"; };
@@ -163,6 +190,7 @@
 		BA2D1BEA2795A5EF00849955 /* ThemeCollectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionData.swift; sourceTree = "<group>"; };
 		BA2D1BEC2795AEA100849955 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		BA2D1BEE2795BB1200849955 /* SettingsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableCell.swift; sourceTree = "<group>"; };
+		BA2F99E527A03C9F00A05201 /* ThemeExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeExampleView.swift; sourceTree = "<group>"; };
 		BA578D56278EFC6A000617F6 /* NoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
 		BA578D58278EFCEB000617F6 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BA578D5A278F025F000617F6 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
@@ -186,8 +214,26 @@
 		E935C95627906F9100835897 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E935C95B27906FFC00835897 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E935C95D2790787D00835897 /* SettingTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableDataSource.swift; sourceTree = "<group>"; };
+		E9AB514C27A1AFA50077F33C /* Christmas@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Christmas@3x.png"; sourceTree = "<group>"; };
+		E9AB514D27A1AFA50077F33C /* Halloween@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Halloween@3x.png"; sourceTree = "<group>"; };
+		E9AB514E27A1AFA50077F33C /* Devotional@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Devotional@3x.png"; sourceTree = "<group>"; };
+		E9AB514F27A1AFA50077F33C /* Grape@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grape@3x.png"; sourceTree = "<group>"; };
+		E9AB515027A1AFA50077F33C /* Unicorn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Unicorn@2x.png"; sourceTree = "<group>"; };
+		E9AB515127A1AFA50077F33C /* Unicorn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Unicorn@3x.png"; sourceTree = "<group>"; };
+		E9AB515227A1AFA50077F33C /* Neon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Neon@2x.png"; sourceTree = "<group>"; };
+		E9AB515327A1AFA60077F33C /* Devotional@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Devotional@2x.png"; sourceTree = "<group>"; };
+		E9AB515427A1AFA60077F33C /* Grape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Grape@2x.png"; sourceTree = "<group>"; };
+		E9AB515527A1AFA60077F33C /* Halloween@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Halloween@2x.png"; sourceTree = "<group>"; };
+		E9AB515627A1AFA60077F33C /* Bookish@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bookish@2x.png"; sourceTree = "<group>"; };
+		E9AB515727A1AFA60077F33C /* Dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dark@2x.png"; sourceTree = "<group>"; };
+		E9AB515827A1AFA60077F33C /* Matrix@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Matrix@3x.png"; sourceTree = "<group>"; };
+		E9AB515927A1AFA60077F33C /* Christmas@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Christmas@2x.png"; sourceTree = "<group>"; };
+		E9AB515A27A1AFA60077F33C /* Dark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dark@3x.png"; sourceTree = "<group>"; };
+		E9AB515B27A1AFA60077F33C /* Neon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Neon@3x.png"; sourceTree = "<group>"; };
+		E9AB515C27A1AFA60077F33C /* Matrix@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Matrix@2x.png"; sourceTree = "<group>"; };
+		E9AB515D27A1AFA60077F33C /* Bookish@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bookish@3x.png"; sourceTree = "<group>"; };
 		E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCell.swift; sourceTree = "<group>"; };
-		E9E5DE682791C1A30047C805 /* ThemesCollectionDataSouce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionDataSouce.swift; sourceTree = "<group>"; };
+		E9E5DE682791C1A30047C805 /* ThemesCollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesCollectionDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +282,9 @@
 			isa = PBXGroup;
 			children = (
 				5B00566027959741002BBFD0 /* NoteViewControllerTest.swift */,
+				9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */,
+				9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */,
+				9D5C3C0E27A032EF00A85AE6 /* ThemesViewControllerTest.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -331,6 +380,8 @@
 				5B3FF1AF27999C6100828097 /* CoordinatorProtocol.swift */,
 				5B3FF1B12799AEC000828097 /* MainCoordinator.swift */,
 				5B3FF1B32799AECB00828097 /* AllNotesCoordinator.swift */,
+				5B8E433727A22E3000AE83B2 /* AlertCoordinatorProtocol.swift */,
+				5B8E433927A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -389,8 +440,7 @@
 			children = (
 				5B73C9F0278F2AB5005F2D89 /* Cells */,
 				5B73C9FA278F80FA005F2D89 /* AllNotesView.swift */,
-				9D31F35D2791C02D000F6B4A /* NoteHeader.swift */,
-				9D31F35F2791C13A000F6B4A /* TagHeader.swift */,
+				9D31F35D2791C02D000F6B4A /* Header.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -507,6 +557,7 @@
 		BAB1E01F269DBBF8001FC3CC /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				E9FD31AA279EF4FD00E8A881 /* AppIcons */,
 				BAC82D5726A9DD1100E52701 /* Extensions */,
 				5B3FF18F2799945F00828097 /* Models */,
 				5B4576182790593100EF1036 /* Storage */,
@@ -532,7 +583,6 @@
 				9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */,
 				5BB7FE012795EDB800A6F335 /* NotificationName.swift */,
 				5B3FF1A6279998C700828097 /* UIViewController+UIAlertHelpers.swift */,
-				5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -552,7 +602,7 @@
 			children = (
 				5B3FF1AB2799994200828097 /* Extensions */,
 				C87AA535279082FA00E2AEF1 /* ThemesViewController.swift */,
-				E9E5DE682791C1A30047C805 /* ThemesCollectionDataSouce.swift */,
+				E9E5DE682791C1A30047C805 /* ThemesCollectionDataSource.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -562,6 +612,7 @@
 			children = (
 				C87AA5392791A57D00E2AEF1 /* ThemesView.swift */,
 				E9E5DE662791BFF80047C805 /* ThemeCollectionViewCell.swift */,
+				BA2F99E527A03C9F00A05201 /* ThemeExampleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -603,6 +654,31 @@
 				E935C95D2790787D00835897 /* SettingTableDataSource.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		E9FD31AA279EF4FD00E8A881 /* AppIcons */ = {
+			isa = PBXGroup;
+			children = (
+				E9AB515627A1AFA60077F33C /* Bookish@2x.png */,
+				E9AB515D27A1AFA60077F33C /* Bookish@3x.png */,
+				E9AB515927A1AFA60077F33C /* Christmas@2x.png */,
+				E9AB514C27A1AFA50077F33C /* Christmas@3x.png */,
+				E9AB515727A1AFA60077F33C /* Dark@2x.png */,
+				E9AB515A27A1AFA60077F33C /* Dark@3x.png */,
+				E9AB515327A1AFA60077F33C /* Devotional@2x.png */,
+				E9AB514E27A1AFA50077F33C /* Devotional@3x.png */,
+				E9AB515427A1AFA60077F33C /* Grape@2x.png */,
+				E9AB514F27A1AFA50077F33C /* Grape@3x.png */,
+				E9AB515527A1AFA60077F33C /* Halloween@2x.png */,
+				E9AB514D27A1AFA50077F33C /* Halloween@3x.png */,
+				E9AB515C27A1AFA60077F33C /* Matrix@2x.png */,
+				E9AB515827A1AFA60077F33C /* Matrix@3x.png */,
+				E9AB515227A1AFA50077F33C /* Neon@2x.png */,
+				E9AB515B27A1AFA60077F33C /* Neon@3x.png */,
+				E9AB515027A1AFA50077F33C /* Unicorn@2x.png */,
+				E9AB515127A1AFA50077F33C /* Unicorn@3x.png */,
+			);
+			path = AppIcons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -698,8 +774,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9AB516427A1AFA60077F33C /* Neon@2x.png in Resources */,
+				E9AB516027A1AFA60077F33C /* Devotional@3x.png in Resources */,
 				BAB1E030269DBBFA001FC3CC /* LaunchScreen.storyboard in Resources */,
+				E9AB516F27A1AFA60077F33C /* Bookish@3x.png in Resources */,
+				E9AB516D27A1AFA60077F33C /* Neon@3x.png in Resources */,
+				E9AB516327A1AFA60077F33C /* Unicorn@3x.png in Resources */,
+				E9AB515F27A1AFA60077F33C /* Halloween@3x.png in Resources */,
+				E9AB516527A1AFA60077F33C /* Devotional@2x.png in Resources */,
+				E9AB516C27A1AFA60077F33C /* Dark@3x.png in Resources */,
 				BAB1E02D269DBBFA001FC3CC /* Assets.xcassets in Resources */,
+				E9AB515E27A1AFA60077F33C /* Christmas@3x.png in Resources */,
+				E9AB516827A1AFA60077F33C /* Bookish@2x.png in Resources */,
+				E9AB516727A1AFA60077F33C /* Halloween@2x.png in Resources */,
+				E9AB516127A1AFA60077F33C /* Grape@3x.png in Resources */,
+				E9AB516E27A1AFA60077F33C /* Matrix@2x.png in Resources */,
+				E9AB516B27A1AFA60077F33C /* Christmas@2x.png in Resources */,
+				E9AB516A27A1AFA60077F33C /* Matrix@3x.png in Resources */,
+				E9AB516627A1AFA60077F33C /* Grape@2x.png in Resources */,
+				E9AB516927A1AFA60077F33C /* Dark@2x.png in Resources */,
+				E9AB516227A1AFA60077F33C /* Unicorn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +813,9 @@
 				9DE31E8527984AD8005B21BC /* AllNoteViewTest.swift in Sources */,
 				5B3FF1B62799AF8600828097 /* MainCoordinatorDummy.swift in Sources */,
 				5B457620279059C400EF1036 /* NotesRepositoryTest.swift in Sources */,
+				9D388413279AF9C0006FA73B /* AllNotesViewControllerTest.swift in Sources */,
+				9D388415279AFDD4006FA73B /* SettingsViewControllerTest.swift in Sources */,
+				9D5C3C0F27A032EF00A85AE6 /* ThemesViewControllerTest.swift in Sources */,
 				9D51C9C2279EDAD900092FCC /* ThemesViewTest.swift in Sources */,
 				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
 				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,
@@ -737,11 +834,13 @@
 			files = (
 				5B35900A2796EC1600ECF0C1 /* NotesViewDelegate.swift in Sources */,
 				5B3FF18E2799940A00828097 /* LocalStorageService.swift in Sources */,
+				5B8E433A27A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift in Sources */,
 				5BB7FE052796EB8600A6F335 /* AppDelegate.swift in Sources */,
 				5B3FF1A7279998C700828097 /* UIViewController+UIAlertHelpers.swift in Sources */,
 				9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */,
 				5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */,
+				5B8E433827A22E3000AE83B2 /* AlertCoordinatorProtocol.swift in Sources */,
 				5B3FF1B42799AECB00828097 /* AllNotesCoordinator.swift in Sources */,
 				C88C7A6E279AE89E0090613F /* NavigationController.swift in Sources */,
 				5BB7FE022795EDB800A6F335 /* NotificationName.swift in Sources */,
@@ -762,14 +861,14 @@
 				BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */,
 				5B3FF1A32799982F00828097 /* NoteViewController+NoteRepositoryProtocolDelegate.swift in Sources */,
 				C87AA54127972D5F00E2AEF1 /* NoteCellContentView.swift in Sources */,
-				E9E5DE692791C1A30047C805 /* ThemesCollectionDataSouce.swift in Sources */,
-				9D31F3602791C13A000F6B4A /* TagHeader.swift in Sources */,
+				E9E5DE692791C1A30047C805 /* ThemesCollectionDataSource.swift in Sources */,
 				BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */,
 				5B3FF1952799956500828097 /* AllNotesViewController+UISearchResultsUpdating.swift in Sources */,
 				5B73C9FE278F8114005F2D89 /* AllNotesViewController.swift in Sources */,
 				5B3FF1AD2799996F00828097 /* ThemesViewController+UICollectionViewDelegate.swift in Sources */,
 				5B45762B279073EE00EF1036 /* NoteCellViewModel.swift in Sources */,
 				5B3FF1B027999C6100828097 /* CoordinatorProtocol.swift in Sources */,
+				BA2F99E627A03C9F00A05201 /* ThemeExampleView.swift in Sources */,
 				5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */,
 				5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */,
 				E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */,
@@ -787,11 +886,10 @@
 				5B3FF1932799953200828097 /* AllNotesViewController+NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				5B3FF19C279996C600828097 /* AllNotesViewController+NoteRepositoryProtocolDelegate.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
-				5BB5B9F7279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift in Sources */,
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
 				5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
-				9D31F35E2791C02D000F6B4A /* NoteHeader.swift in Sources */,
+				9D31F35E2791C02D000F6B4A /* Header.swift in Sources */,
 				9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 				5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */,
@@ -985,7 +1083,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 87UTUM347S;
+				DEVELOPMENT_TEAM = WK7599VNDW;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1006,7 +1104,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = 87UTUM347S;
+				DEVELOPMENT_TEAM = WK7599VNDW;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

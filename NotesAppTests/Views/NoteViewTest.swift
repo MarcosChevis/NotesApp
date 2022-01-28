@@ -70,7 +70,7 @@ class NoteViewTest: XCTestCase {
     }
     
     func testLayoutWithMoreThanOneItemOnIphone12pastel() {
-        let view = setupLayoutTestWithMoreThanItem(with: .candy)
+        let view = setupLayoutTestWithMoreThanItem(with: .grape)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     

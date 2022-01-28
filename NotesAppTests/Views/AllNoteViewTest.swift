@@ -55,7 +55,7 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithTagsAndNotesOnIphone12pastel() {
-        let view = setupViewWithTagsAndNotes(with: .candy)
+        let view = setupViewWithTagsAndNotes(with: .grape)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
@@ -97,7 +97,7 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithTagsOnlyOnIphone12pastel() {
-        let view = setupViewWithTagsOnly(with: .candy)
+        let view = setupViewWithTagsOnly(with: .grape)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
@@ -141,7 +141,7 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithNotesOnlyOnIphone12pastel() {
-        let view = setupViewWithNotesOnly(with: .candy)
+        let view = setupViewWithNotesOnly(with: .grape)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
@@ -185,7 +185,7 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithNoTagsAndNotesOnIphone12pastel() {
-        let view = setupWithNoTagsAndNotes(with: .candy)
+        let view = setupWithNoTagsAndNotes(with: .grape)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     

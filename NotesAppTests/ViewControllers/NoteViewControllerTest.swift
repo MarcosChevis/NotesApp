@@ -41,12 +41,40 @@ class NoteViewControllerTest: XCTestCase {
     func testDidDeleteNote() {
         sut.didAdd()
         sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
-        sut.deleteNote()
+        sut.didDelete()
+        XCTAssertTrue(coordinatorDummy.didPresentSingleActionAlert.didPresent)
         XCTAssertEqual(0, repositoryDummy.mock.count)
     }
     
     func testDidNavigateToAllNotes() {
         sut.didAllNotes()
         XCTAssertTrue(coordinatorDummy.didNavigateToAllNotes)
+    }
+    
+    func testDidTapShare() {
+        sut.didAdd()
+        sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
+        sut.currentHighlightedNote?.content = "Pudim é melhor que bacon"
+        sut.didShare()
+        
+        XCTAssertTrue(coordinatorDummy.didPresentShareSheet.didPresent)
+        XCTAssertEqual(coordinatorDummy.didPresentShareSheet.content, sut.currentHighlightedNote?.content!)
+    }
+    
+    func testDidTapShareWithoutAHighlitedNote() {
+        XCTAssertNil(sut.currentHighlightedNote)
+        XCTAssertEqual(0, repositoryDummy.mock.count)
+        
+        sut.didShare()
+        
+        XCTAssertFalse(coordinatorDummy.didPresentShareSheet.didPresent)
+        XCTAssertTrue(coordinatorDummy.didPresentErrorAlert.didPresent)
+    }
+    
+    func testDidTapShareWithAEmptyHighlitedNote() throws {
+        sut.didAdd()
+        sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
+        sut.didShare()
+        XCTAssertTrue(coordinatorDummy.didPresentErrorAlert.didPresent)
     }
 }

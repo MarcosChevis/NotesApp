@@ -9,6 +9,10 @@ import Foundation
 @testable import NotesApp
 
 class NoteRepositoryDummy: NotesRepositoryProtocol {
+    func filterForContent(_ content: String) -> [NoteCellViewModel] {
+        []
+    }
+    
     var mock: [NoteCellViewModel] = []
     weak var delegate: NoteRepositoryProtocolDelegate?
     var didCallSaveChanges: Bool = false
@@ -23,7 +27,7 @@ class NoteRepositoryDummy: NotesRepositoryProtocol {
     }
     
     func createEmptyNote() throws -> NoteProtocol {
-        let vm = NoteCellViewModel.init(note: NoteDummy(noteID: UUID().uuidString, content: "Nota criada"))
+        let vm = NoteCellViewModel.init(note: NoteDummy(noteID: UUID().uuidString, content: ""))
         delegate?.insertNote(vm, at: IndexPath(row: mock.count, section: 0))
         mock.append(vm)
         return vm.note
