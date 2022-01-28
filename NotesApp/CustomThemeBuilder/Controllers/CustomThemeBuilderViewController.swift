@@ -102,6 +102,7 @@ extension CustomThemeBuilderViewController: UICollectionViewDelegate {
 
 extension CustomThemeBuilderViewController: CustomThemeBuilderViewDelegate {
     func didTapSave() {
+        customColorSet.name = contentView.themeNameTextView.text
         repository.saveChanges()
         coordinator?.dismiss()
     }
@@ -120,3 +121,12 @@ extension CustomThemeBuilderViewController: UITextFieldDelegate {
          return newLength <= 15
     }
 }
+
+#warning("proibir salvar sem nome")
+#warning("corrigir bug do settings")
+#warning("corrigir/criar testes")
+#warning("editar e deletar temas")
+#warning("AllNotesExampleView")
+#warning("onboarding")
+#warning("empty state")
+
