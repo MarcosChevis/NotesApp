@@ -8,6 +8,9 @@
 import UIKit
 
 class ThemesView: ThemableView {
+    
+    weak var delegate: ThemesViewProtocol?
+    
     override var palette: ColorSet {
         didSet {
             setColors(palette: palette)
@@ -20,6 +23,11 @@ class ThemesView: ThemableView {
         addSubview(view)
         
         return view
+    }()
+    
+    lazy var plusButton: UIBarButtonItem = {
+        let but = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain , target: self, action: #selector(didTapPlus))
+        return but
     }()
     
     private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
@@ -83,5 +91,9 @@ class ThemesView: ThemableView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 150)])
+    }
+    
+    @objc func didTapPlus() {
+        delegate?.didTapPlus()
     }
 }

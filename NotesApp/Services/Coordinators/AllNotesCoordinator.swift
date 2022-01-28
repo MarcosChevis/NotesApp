@@ -11,6 +11,7 @@ protocol AllNotesCoordinatorProtocol: AnyObject {
     func dismiss()
     func navigateToSettings()
     func navigateToThemes()
+    func navigateToCustomTheme()
 }
 
 class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
@@ -54,4 +55,24 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func navigateToCustomTheme() {
+        let childCoordinator = CustomThemeBuilderCoordinator(navigationController: NavigationController())
+        childCoordinators.append(childCoordinator)
+        childCoordinator.start()
+        childCoordinator.delegate = self
+        navigationController.present(childCoordinator.navigationController, animated: true, completion: nil)
+        print(childCoordinators)
+    }
+}
+
+extension AllNotesCoordinator: CustomThemeBuilderCoordinatorDelegate {
+    func didDismiss() {
+        childCoordinators.removeAll(where: {
+            ($0 as? CustomThemeBuilderCoordinator) != nil
+        })
+        print(childCoordinators)
+    }
+    
+    
 }

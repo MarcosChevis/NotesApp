@@ -14,6 +14,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
     }()
     
     var contentView: CustomThemeBuilderView
+    weak var coordinator: CustomThemeBuilderCoordinatorProtocol?
     
     lazy var customColorSet: ThemeProtocol = {
         
@@ -33,7 +34,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
     private let repository: ThemeRepositoryProtocol
 
     init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-                  settings: Settings = Settings(), themeRepository: ThemeRepositoryProtocol = ThemeRepository()) {
+         settings: Settings = .shared, themeRepository: ThemeRepositoryProtocol = ThemeRepository()) {
         
         self.contentView = .init(palette: palette)
         self.willChange = -1
@@ -95,22 +96,19 @@ extension CustomThemeBuilderViewController: UIColorPickerViewControllerDelegate 
 extension CustomThemeBuilderViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.willChange = indexPath.row
-        let vc = UIColorPickerViewController()
-        vc.delegate = self
-        present(vc, animated: true)
-        
+        coordinator?.showColorPicker(delegate: self)
     }
 }
 
 extension CustomThemeBuilderViewController: CustomThemeBuilderViewDelegate {
     func didTapSave() {
         repository.saveChanges()
-        print(repository.getAllThemes())
+        coordinator?.dismiss()
     }
     
     func didTapCancel() {
         repository.cancelChanges()
-        print(repository.getAllThemes())
+        coordinator?.dismiss()
     }
     
 }

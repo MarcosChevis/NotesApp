@@ -29,6 +29,9 @@ class ThemesViewController: ThemableViewController {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         self.contentView.collectionView.delegate = self
         self.contentView.collectionView.dataSource = collectionDataSource
+        self.contentView.delegate = self
+        
+        navigationItem.rightBarButtonItems = [ contentView.plusButton]
     }
     
     required init?(coder: NSCoder) {
@@ -53,31 +56,7 @@ class ThemesViewController: ThemableViewController {
     }
     
     func changeIcon(palette: ColorSet) {
-        
         UIApplication.shared.setAlternateIconName(palette.icon)
-       
-//        switch palette {
-//        case .classic:
-//            UIApplication.shared.setAlternateIconName(nil)
-//        case .dark:
-//            UIApplication.shared.setAlternateIconName("DarkTheme")
-//        case .neon:
-//            UIApplication.shared.setAlternateIconName("NeonTheme")
-//        case .christmas:
-//            UIApplication.shared.setAlternateIconName("ChristmasTheme")
-//        case .grape:
-//            UIApplication.shared.setAlternateIconName("GrapeTheme")
-//        case .bookish:
-//            UIApplication.shared.setAlternateIconName("BookishTheme")
-//        case .halloween:
-//            UIApplication.shared.setAlternateIconName("HalloweenTheme")
-//        case .devotional:
-//            UIApplication.shared.setAlternateIconName("DevotionalTheme")
-//        case .crt:
-//            UIApplication.shared.setAlternateIconName("MatrixTheme")
-//        case .unicorn:
-//            UIApplication.shared.setAlternateIconName("UnicornTheme")
-//        }
     }
     
     override func didChangeTheme(_ notification: Notification) {
@@ -85,5 +64,13 @@ class ThemesViewController: ThemableViewController {
         
         changeIcon(palette: palette)
     }
+    
+}
+
+extension ThemesViewController: ThemesViewProtocol {
+    func didTapPlus() {
+        coordinator?.navigateToCustomTheme()
+    }
+    
     
 }

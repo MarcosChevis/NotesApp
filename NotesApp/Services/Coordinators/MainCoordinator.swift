@@ -18,8 +18,7 @@ class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
     let notificationService: NotificationService
     
     init(navigationController: NavigationController,
-         settings: Settings = Settings(localStorageService: UserDefaults.standard,
-                                       notificationService: NotificationCenter.default),
+         settings: Settings = .shared,
          notificationService: NotificationService = NotificationCenter.default)
     {
         self.navigationController = navigationController
