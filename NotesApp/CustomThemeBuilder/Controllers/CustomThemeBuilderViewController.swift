@@ -32,7 +32,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
     
     private let repository: ThemeRepositoryProtocol
 
-    init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
+    init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings(), themeRepository: ThemeRepositoryProtocol = ThemeRepository()) {
         
         self.contentView = .init(palette: palette)

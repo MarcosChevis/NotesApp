@@ -8,9 +8,9 @@
 import UIKit
 
 class SettingTableDataSource: NSObject, UITableViewDataSource {
-    var palette: CustomColorSet
+    var palette: ColorSet
     
-    init(palette: CustomColorSet) {
+    init(palette: ColorSet) {
         self.palette = palette
         super.init()
     }

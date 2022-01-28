@@ -12,7 +12,7 @@ class SettingsViewController: ThemableViewController {
     weak var coordinator: AllNotesCoordinatorProtocol?
     var tableDataSource: SettingTableDataSource
     
-    init(palette: CustomColorSet, tableDataSource: SettingTableDataSource, notificationService: NotificationService = NotificationCenter.default,
+    init(palette: ColorSet, tableDataSource: SettingTableDataSource, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         self.contentView = SettingsView(palette: palette)
         self.tableDataSource = tableDataSource
@@ -43,7 +43,7 @@ class SettingsViewController: ThemableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    override func setColors(palette: CustomColorSet) {
+    override func setColors(palette: ColorSet) {
         super.setColors(palette: palette)
         
         tableDataSource.palette = palette

@@ -12,8 +12,9 @@ import UIKit
 extension UIColor {
     func isLight() -> Bool {
         // algorithm from: http://www.w3.org/WAI/ER/WD-AERT/#color-contrast
-        let components = cgColor.components
-        let brightness = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
+        guard let components = cgColor.components else { return false }
+        
+        let brightness: CGFloat = ((components[0] * 299) + (components[1] * 587) + (components[2] * 114)) / 1000
 
         if brightness < 0.5 {
             return false

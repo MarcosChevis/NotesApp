@@ -12,14 +12,14 @@ class ThemesViewController: ThemableViewController {
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSource
     weak var coordinator: AllNotesCoordinatorProtocol?
-    override var palette: CustomColorSet {
+    override var palette: ColorSet {
         didSet {
             setColors(palette: palette)
             setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    init(palette: CustomColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
+    init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         
         self.contentView = ThemesView(palette: palette)
@@ -52,7 +52,7 @@ class ThemesViewController: ThemableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func changeIcon(palette: CustomColorSet) {
+    func changeIcon(palette: ColorSet) {
         
         UIApplication.shared.setAlternateIconName(palette.icon)
        

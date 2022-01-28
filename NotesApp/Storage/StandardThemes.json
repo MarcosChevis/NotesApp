@@ -17,7 +17,8 @@
         "text": "#FFFFFFFF",
         "largeTitle": "#FFFFFFFF",
         "id": "50fab20d-3934-4a4a-8274-1ad502544a06",
-        "name": "Dark classic"
+        "name": "Dark",
+        "icon": "DarkTheme"
     },
     {
         "actionColor": "#6416C3FF",
@@ -27,7 +28,8 @@
         "text": "#111D66FF",
         "largeTitle": "#4A1883FF",
         "id": "6bcb4b2d-6afa-4a2a-b4dc-f2cca83a44c7",
-        "name": "Grape"
+        "name": "Grape",
+        "icon": "GrapeTheme"
     },
     {
         "actionColor": "#DE4F31FF",
@@ -37,7 +39,8 @@
         "text": "#FFFFFFFF",
         "largeTitle": "#FFFFFFFF",
         "id": "bf2ae775-8660-4e33-88d3-0676bdf47572",
-        "name": "Halloween"
+        "name": "Halloween",
+        "icon": "HalloweenTheme"
     },
     {
         "actionColor": "#EA3AC8FF",
@@ -47,7 +50,8 @@
         "text": "#CDFAFAFF",
         "largeTitle": "#CDFAFAFF",
         "id": "224462ed-d295-4ba7-a9bd-9b986ba751df",
-        "name": "Neon"
+        "name": "Neon",
+        "icon": "NeonTheme"
     },
     {
         "actionColor": "#000000FF",
@@ -57,7 +61,8 @@
         "text": "#000000FF",
         "largeTitle": "#000000FF",
         "id": "bc09ce57-6039-445f-83e4-c7165b4afc79",
-        "name": "Bookish"
+        "name": "Bookish",
+        "icon": "BookishTheme"
     },
     {
         "actionColor": "#EAC289FF",
@@ -67,7 +72,8 @@
         "text": "#F0D9A4FF",
         "largeTitle": "#E3BA85FF",
         "id": "0765f920-170e-4521-b077-cd496917f21b",
-        "name": "Sunshine"
+        "name": "Devotional",
+        "icon": "DevotionalTheme"
     },
     {
         "actionColor": "#1FFF1FFF",
@@ -77,7 +83,8 @@
         "text": "#1FFF1FFF",
         "largeTitle": "#1FFF1FFF",
         "id": "f5e3ec97-1b02-46f2-b2de-0592d7fe48b5",
-        "name": "CRT"
+        "name": "CRT",
+        "icon": "MatrixTheme"
     },
     {
         "actionColor": "#D114FFFF",
@@ -87,7 +94,8 @@
         "text": "#152451FF",
         "largeTitle": "#D114FFFF",
         "id": "8de332a6-2120-45b8-b638-f2c86b017aa5",
-        "name": "Unicorn"
+        "name": "Unicorn",
+        "icon": "UnicornTheme"
     },
     {
         "actionColor": "#FFFFFFFF",
@@ -97,6 +105,7 @@
         "text": "#FDFDFDFF",
         "largeTitle": "#FDFDFDFF",
         "id": "a1c6b360-2b91-473c-b24e-8a95d3ed45d9",
-        "name": "Christmas"
+        "name": "Christmas",
+        "icon": "ChristmasTheme"
     }
 ]

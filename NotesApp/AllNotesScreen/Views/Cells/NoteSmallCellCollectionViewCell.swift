@@ -13,7 +13,7 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     static var identifier: String = "AllNotes.NoteSmallCellCollectionViewCell"
     var noteSmallContentView: NoteSmallCellContentView
     private var viewModel: NoteCellViewModel?
-    private var palette: CustomColorSet? 
+    private var palette: ColorSet? 
     
 
     var delegate: NoteSmallCellCollectionViewCellDelegate? {
@@ -29,7 +29,7 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         
-        noteSmallContentView = NoteSmallCellContentView(palette: CustomColorSet.classic)
+        noteSmallContentView = NoteSmallCellContentView(palette: ColorSet.classic)
         noteSmallContentView.translatesAutoresizingMaskIntoConstraints = false
         self.shouldHidContent = true
         
@@ -54,7 +54,7 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(noteSmallContentViewConstraints)
     }
     
-    func setup(palette: CustomColorSet, viewModel: NoteCellViewModel) {
+    func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
         self.viewModel = viewModel
         self.palette = palette
         noteSmallContentView.setup(with: viewModel, palette: palette)

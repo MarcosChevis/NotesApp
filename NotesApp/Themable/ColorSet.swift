@@ -93,7 +93,7 @@ import SwiftUI
 //    }
 //}
 
-struct CustomColorSet: Equatable {
+struct ColorSet: Equatable {
     
     let actionColor: UIColor?
     
@@ -150,10 +150,22 @@ struct CustomColorSet: Equatable {
         id = theme.id?.uuidString ?? ""
         self.icon = nil
     }
+    
+    init(theme: StandardTheme) {
+        actionColor = UIColor.init(hex: theme.actionColor)
+        background = UIColor.init(hex: theme.background)
+        buttonBackground = UIColor.init(hex: theme.buttonBackground)
+        noteBackground = UIColor.init(hex: theme.noteBackground)
+        text = UIColor.init(hex: theme.text)
+        largeTitle = UIColor.init(hex: theme.largeTitle)
+        name = theme.name
+        id = theme.id
+        self.icon = theme.icon
+    }
 
 }
 
 
-extension CustomColorSet {
-    static var classic = CustomColorSet(actionColor: UIColor(hex: "#1D58D9FF"), background: UIColor(hex: "#F1F1F6FF"), buttonBackground: UIColor(hex: "#1D58D926"), noteBackground: UIColor(hex: "#FFFFFFFF"), text: UIColor(hex: "#000000FF"), largeTitle: UIColor(hex: "#000000FF"), name: "classic", id: "b4489fa5-6c2b-4515-9c35-be7e226cdbfa")
+extension ColorSet {
+    static var classic = ColorSet(actionColor: UIColor(hex: "#1D58D9FF"), background: UIColor(hex: "#F1F1F6FF"), buttonBackground: UIColor(hex: "#1D58D926"), noteBackground: UIColor(hex: "#FFFFFFFF"), text: UIColor(hex: "#000000FF"), largeTitle: UIColor(hex: "#000000FF"), name: "classic", id: "b4489fa5-6c2b-4515-9c35-be7e226cdbfa")
 }

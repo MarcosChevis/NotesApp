@@ -18,7 +18,7 @@ class NoteViewTest: XCTestCase {
     
     override func setUp() {
         #warning("mudar implementacao")
-        let palette = CustomColorSet(actionColor: UIColor(Color("ClassicAction")),
+        let palette = ColorSet(actionColor: UIColor(Color("ClassicAction")),
                                   background: UIColor(Color("ClassicBackground")),
                                   buttonBackground: UIColor(Color("ClassicButtonBackground")),
                                   noteBackground: UIColor(Color("ClassicNoteBackground")),
@@ -87,7 +87,7 @@ class NoteViewTest: XCTestCase {
 //    }
     
     
-    func setupLayoutTestWithMoreThanItem(with palette: CustomColorSet) -> UIViewController {
+    func setupLayoutTestWithMoreThanItem(with palette: ColorSet) -> UIViewController {
         repositoryDummy.mock = [NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 01", content: "Essa é uma nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 02", content: "Essa é uma outra nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 03", content: "Essa é uma outra outra nota de teste, oi tudo bem com você?"))]
         sut = .init(palette: palette, repository: repositoryDummy)
         

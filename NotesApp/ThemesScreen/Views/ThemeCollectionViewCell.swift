@@ -56,7 +56,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupThemesViewCell(palette: CustomColorSet, isSelected: Bool) {
+    func setupThemesViewCell(palette: ColorSet, isSelected: Bool) {
         
         setupLayers(palette: palette)
              
@@ -79,7 +79,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         contentView.backgroundColor = palette.background
     }
     
-    func setupLayers(palette: CustomColorSet) {
+    func setupLayers(palette: ColorSet) {
         contentView.layer.cornerRadius = 16
         contentView.layer.masksToBounds = true
         

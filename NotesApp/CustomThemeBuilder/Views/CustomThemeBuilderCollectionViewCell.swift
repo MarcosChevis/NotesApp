@@ -10,17 +10,17 @@ import SwiftUI
 
 class CustomThemeBuilderCollectionViewCell: UICollectionViewCell {
     static var identifier: String = "CustomThemeBuilderCollectionViewCell"
-    var palette: CustomColorSet?
+    var palette: ColorSet?
     
     lazy var builderContentView: CustomThemeBuilderCollectionViewCellContentView = {
         
-        var view = CustomThemeBuilderCollectionViewCellContentView(palette: palette ?? CustomColorSet.classic)
+        var view = CustomThemeBuilderCollectionViewCellContentView(palette: palette ?? ColorSet.classic)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
     
-    func setupCell(color: UIColor?, colorName: String, palette: CustomColorSet) {
+    func setupCell(color: UIColor?, colorName: String, palette: ColorSet) {
         setupHierarchy()
         setupConstraints()
         self.builderContentView.palette = palette

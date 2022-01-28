@@ -25,7 +25,7 @@ class AllNotesViewController: ThemableViewController {
         return dataSource
     }()
     
-    init(palette: CustomColorSet,
+    init(palette: ColorSet,
          noteRepository: NotesRepositoryProtocol = NotesRepository(isAscending: false),
          tagRepository: TagRepositoryProtocol = TagRepository(),
          notificationService: NotificationService = NotificationCenter.default,
@@ -118,7 +118,7 @@ class AllNotesViewController: ThemableViewController {
         // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada
         definesPresentationContext = true
     }
-    override func setColors(palette: CustomColorSet) {
+    override func setColors(palette: ColorSet) {
         super.setColors(palette: palette)
         contentView.collectionView.reloadData()
     }

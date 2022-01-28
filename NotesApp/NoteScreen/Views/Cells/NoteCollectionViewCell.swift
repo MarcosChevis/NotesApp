@@ -14,11 +14,11 @@ class NoteCollectionViewCell: UICollectionViewCell {
     private var viewModel: NoteCellViewModel?
     private var notificationService: NotificationService?
     
-    var palette: CustomColorSet?
+    var palette: ColorSet?
     
     override init(frame: CGRect) {
         
-        noteContentView = NoteCellContentView(palette: CustomColorSet.classic)
+        noteContentView = NoteCellContentView(palette: ColorSet.classic)
         noteContentView.translatesAutoresizingMaskIntoConstraints = false
         notificationService = nil
 
@@ -46,7 +46,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func setup(palette: CustomColorSet,
+    func setup(palette: ColorSet,
                viewModel: NoteCellViewModel,
                notificationService: NotificationService = NotificationCenter.default) {
         self.viewModel = viewModel

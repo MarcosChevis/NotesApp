@@ -10,18 +10,18 @@ import UIKit
 
 class SettingsTableCell: UITableViewCell {
     static var identifier: String = "SettingsTableCell"
-    var palette: CustomColorSet? {
+    var palette: ColorSet? {
         didSet {
             setColors(palette: palette)
         }
     }
     
-    func setupSettingsViewCell(palette: CustomColorSet) {
+    func setupSettingsViewCell(palette: ColorSet) {
         self.palette = palette
         self.layer.cornerRadius = 10
     }
     
-    func setColors(palette: CustomColorSet?) {
+    func setColors(palette: ColorSet?) {
         guard let palette = palette else { return }
         
         backgroundColor = palette.noteBackground

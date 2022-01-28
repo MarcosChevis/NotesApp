@@ -37,7 +37,7 @@ class NoteCellContentView: ThemableView {
         return textView
     }()
     
-    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings()) {
         
         placeholder = .init(string: placeholderContent)
@@ -74,7 +74,7 @@ class NoteCellContentView: ThemableView {
         NSLayoutConstraint.activate(textViewConstraints)
     }
     
-    func setup(palette: CustomColorSet, viewModel: NoteCellViewModel) {
+    func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
         self.palette = palette
         self.title.text = viewModel.note.title
         self.textView.text = viewModel.note.content
@@ -93,7 +93,7 @@ class NoteCellContentView: ThemableView {
         layer.shadowOffset = CGSize(width: 2, height: 2)
     }
     
-    override func setColors(palette: CustomColorSet?) {
+    override func setColors(palette: ColorSet?) {
         guard let palette = palette else { return }
         
         self.title.textColor = palette.text

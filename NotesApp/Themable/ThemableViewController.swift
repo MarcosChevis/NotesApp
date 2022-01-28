@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ThemableViewController: UIViewController {
-    var palette: CustomColorSet{
+    var palette: ColorSet{
         didSet {
             setColors(palette: palette)
         }
@@ -20,7 +20,7 @@ class ThemableViewController: UIViewController {
         return palette.statusBarStyle
     }
     
-    init(palette: CustomColorSet, notificationService: NotificationService,
+    init(palette: ColorSet, notificationService: NotificationService,
          settings: Settings) {
         self.settings = settings
         self.notificationService = notificationService
@@ -47,11 +47,11 @@ class ThemableViewController: UIViewController {
     }
     
     @objc func didChangeTheme(_ notification: Notification) {
-        guard let palette = notification.object as? CustomColorSet else { return }
+        guard let palette = notification.object as? ColorSet else { return }
         self.palette = palette
     }
     
-    func setColors(palette: CustomColorSet) {
+    func setColors(palette: ColorSet) {
         guard let titleColor = palette.largeTitle else { return }
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]

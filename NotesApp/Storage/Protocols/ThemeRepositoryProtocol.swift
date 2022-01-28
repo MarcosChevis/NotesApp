@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ThemeRepositoryProtocol {
-    func getAllThemes() -> [CustomColorSet]
+    func getAllThemes() -> [ColorSet]
         
     func createEmptyTheme() -> ThemeProtocol
     
@@ -16,7 +16,7 @@ protocol ThemeRepositoryProtocol {
     
     func cancelChanges()
     
-    func getTheme(with id: String) -> CustomColorSet?
+    func getTheme(with id: String) -> ColorSet?
     
 }
 

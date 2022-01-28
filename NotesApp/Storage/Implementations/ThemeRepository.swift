@@ -9,31 +9,41 @@ import UIKit
 
 class ThemeRepository: ThemeRepositoryProtocol {
     private let coreDataStack: CoreDataStack
+    private var standardThemes: [ColorSet]
+    private var customThemes: [ColorSet]
 
     init(coreDataStack: CoreDataStack = .shared) {
         self.coreDataStack = coreDataStack
-    }
-    
-    func getAllThemes() -> [CustomColorSet] {
+        self.standardThemes = []
+        self.customThemes = []
+        
         let customThemes = getAllCustomThemes()
         let standardThemes = getAllStandardThemes()
         
+        self.standardThemes = standardThemes
+        self.customThemes = customThemes
+    }
+    
+    func getAllThemes() -> [ColorSet] {
         return customThemes + standardThemes
     }
     
-    private func getAllCustomThemes() -> [CustomColorSet] {
+    private func getAllCustomThemes() -> [ColorSet] {
         let request = Theme.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Theme.name, ascending: true)]
         do {
             let themes = try coreDataStack.mainContext.fetch(request)
-            return themes.map(CustomColorSet.init)
+            return themes.map(ColorSet.init)
         } catch {
             return []
         }
     }
     
-    private func getAllStandardThemes() -> [CustomColorSet] {
-        return []
+    private func getAllStandardThemes() -> [ColorSet] {
+        
+        let standardThemes = JSONDecoder().decode(from: "StandardThemes", decodeTo: [StandardTheme].self) ?? []
+        
+        return standardThemes.map(ColorSet.init)
     }
     
     func createEmptyTheme() -> ThemeProtocol {
@@ -54,7 +64,7 @@ class ThemeRepository: ThemeRepositoryProtocol {
         coreDataStack.mainContext.rollback()
     }
     
-    func getTheme(with id: String) -> CustomColorSet? {
+    func getTheme(with id: String) -> ColorSet? {
         
         //procurar no json os temas padroes
         if let theme = getThemeFromStandard(with: id) {
@@ -69,12 +79,16 @@ class ThemeRepository: ThemeRepositoryProtocol {
         return nil
     }
     
-    private func getThemeFromStandard(with id: String) -> CustomColorSet? {
-        return nil
+    private func getThemeFromStandard(with id: String) -> ColorSet? {
+        return standardThemes.first { colorSet in
+            return colorSet.id == id
+        }
     }
     
-    private func getThemeFromCustom(with id: String) -> CustomColorSet? {
-        return nil
+    private func getThemeFromCustom(with id: String) -> ColorSet? {
+        return customThemes.first { colorSet in
+            return colorSet.id == id
+        }
     }
     
 

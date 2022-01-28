@@ -8,6 +8,6 @@
 import Foundation
 
 struct ThemeCollectionData {
-    var colorSet: CustomColorSet
+    var colorSet: ColorSet
     var isSelected: Bool
 }

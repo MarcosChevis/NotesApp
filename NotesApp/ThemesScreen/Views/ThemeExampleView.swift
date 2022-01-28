@@ -88,7 +88,7 @@ class ThemeExampleView: ThemableView {
         return textView
     }()
     
-    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         
@@ -168,7 +168,7 @@ class ThemeExampleView: ThemableView {
         
     }
 
-    override func setColors(palette: CustomColorSet) {
+    override func setColors(palette: ColorSet) {
         super.setColors(palette: palette)
         backgroundColor = palette.background
         shareButton.tintColor = palette.actionColor

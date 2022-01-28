@@ -88,7 +88,7 @@ class NoteSmallCellContentView: ThemableView {
         return button
     }()
     
-    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupHierarchy()
@@ -154,7 +154,7 @@ class NoteSmallCellContentView: ThemableView {
         NSLayoutConstraint.activate(editButtonConstraints)
     }
     
-    func setup(with viewModel: NoteCellViewModel, palette: CustomColorSet) {
+    func setup(with viewModel: NoteCellViewModel, palette: ColorSet) {
         self.palette = palette
         self.viewModel = viewModel
         titleView.text = viewModel.note.title
@@ -162,7 +162,7 @@ class NoteSmallCellContentView: ThemableView {
         buttonsStackView.axis = .horizontal
     }
     
-    override func setColors(palette: CustomColorSet?) {
+    override func setColors(palette: ColorSet?) {
         guard let palette = palette else { return }
         
         titleView.textColor = palette.text

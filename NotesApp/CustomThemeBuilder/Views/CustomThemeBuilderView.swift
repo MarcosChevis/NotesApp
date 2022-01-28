@@ -73,7 +73,7 @@ class CustomThemeBuilderView: ThemableView {
         return layout
     }()
 
-    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         
         self.placeholder = .init(string: placeholderContent)
@@ -127,7 +127,7 @@ class CustomThemeBuilderView: ThemableView {
         delegate?.didTapCancel()
     }
     
-    override func setColors(palette: CustomColorSet) {
+    override func setColors(palette: ColorSet) {
         super.setColors(palette: palette)
         
         backgroundColor = palette.background

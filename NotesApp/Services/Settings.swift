@@ -23,13 +23,13 @@ class Settings {
         
 }
     
-    func changeTheme(palette: CustomColorSet) {
+    func changeTheme(palette: ColorSet) {
         theme = palette
         notificationService.post(name: .didChangeTheme, object: palette)
         
     }
     
-    var theme: CustomColorSet {
+    var theme: ColorSet {
         get {
             guard
                 let id = localStorageService.string(forKey: themeKey),
@@ -44,6 +44,6 @@ class Settings {
         }
     }
     
-    private var cachedTheme: CustomColorSet?
+    private var cachedTheme: ColorSet?
     
 }
