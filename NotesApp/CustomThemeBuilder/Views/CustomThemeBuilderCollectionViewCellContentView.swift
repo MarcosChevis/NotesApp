@@ -34,7 +34,7 @@ class CustomThemeBuilderCollectionViewCellContentView: ThemableView {
         return label
     }()
     
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         
@@ -68,9 +68,9 @@ class CustomThemeBuilderCollectionViewCellContentView: ThemableView {
         ])
     }
     
-    override func setColors(palette: ColorSet) {
-        colorNameLabel.textColor = palette.palette().text
-        colorView.layer.shadowColor = palette.palette().actionColor.cgColor
+    override func setColors(palette: CustomColorSet) {
+        colorNameLabel.textColor = palette.text
+        colorView.layer.shadowColor = palette.actionColor?.cgColor
     }
     
     

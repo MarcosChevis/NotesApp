@@ -37,7 +37,7 @@ class NoteCellContentView: ThemableView {
         return textView
     }()
     
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings()) {
         
         placeholder = .init(string: placeholderContent)
@@ -74,7 +74,7 @@ class NoteCellContentView: ThemableView {
         NSLayoutConstraint.activate(textViewConstraints)
     }
     
-    func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
+    func setup(palette: CustomColorSet, viewModel: NoteCellViewModel) {
         self.palette = palette
         self.title.text = viewModel.note.title
         self.textView.text = viewModel.note.content
@@ -93,16 +93,18 @@ class NoteCellContentView: ThemableView {
         layer.shadowOffset = CGSize(width: 2, height: 2)
     }
     
-    override func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
+    override func setColors(palette: CustomColorSet?) {
+        guard let palette = palette else { return }
         
-        self.title.textColor = colorSet.text
-        self.textView.textColor = colorSet.text
-        backgroundColor = colorSet.noteBackground
+        self.title.textColor = palette.text
+        self.textView.textColor = palette.text
+        backgroundColor = palette.noteBackground
+        
+        guard let textColor = palette.text?.withAlphaComponent(0.4) else { return }
         
         let attributeRange = NSRange(location: 0, length: placeholderContent.count)
         placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
-        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: colorSet.text.withAlphaComponent(0.4)], range: attributeRange)
+        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: textColor], range: attributeRange)
         layer.shadowColor = UIColor.black.cgColor
         
     }

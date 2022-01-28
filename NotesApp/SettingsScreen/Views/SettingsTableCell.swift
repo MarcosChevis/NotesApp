@@ -10,22 +10,22 @@ import UIKit
 
 class SettingsTableCell: UITableViewCell {
     static var identifier: String = "SettingsTableCell"
-    var palette: ColorSet? {
+    var palette: CustomColorSet? {
         didSet {
             setColors(palette: palette)
         }
     }
     
-    func setupSettingsViewCell(palette: ColorSet) {
+    func setupSettingsViewCell(palette: CustomColorSet) {
         self.palette = palette
         self.layer.cornerRadius = 10
     }
     
-    func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
+    func setColors(palette: CustomColorSet?) {
+        guard let palette = palette else { return }
         
-        backgroundColor = colorSet.noteBackground
-        textLabel?.textColor = colorSet.text
+        backgroundColor = palette.noteBackground
+        textLabel?.textColor = palette.text
     }
     
     

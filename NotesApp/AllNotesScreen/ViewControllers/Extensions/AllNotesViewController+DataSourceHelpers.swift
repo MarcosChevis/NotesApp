@@ -27,7 +27,8 @@ extension AllNotesViewController {
         return { [weak self] (collectionView: UICollectionView,
                   kind: String,
                   indexPath: IndexPath) -> UICollectionReusableView? in
-            let textColor = self?.palette.palette().largeTitle ?? ColorSet.classic.palette().largeTitle
+            guard let color = self?.palette.text else { return nil }
+            let textColor = color
             
             if kind == UICollectionView.elementKindSectionHeader {
                 if indexPath.section == 0 {
@@ -51,14 +52,14 @@ extension AllNotesViewController {
     
     func makeTagCellRegistration() -> TagCellRegistration {
         return TagCellRegistration { [weak self] cell, indexPath, tag in
-            let palette = self?.palette ?? .classic
-            cell.setup(with: tag, colorSet: palette)
+            guard let palette = self?.palette else { return }
+            cell.setup(with: tag, palette: palette)
         }
     }
     
     func makeNoteCellRegistration() -> NoteCellRegistration {
         return NoteCellRegistration { [weak self] cell, indexPath, note in
-            let palette = self?.palette ?? .classic
+            guard let palette = self?.palette else { return }
             cell.delegate = self
             cell.setup(palette: palette, viewModel: note)
         }

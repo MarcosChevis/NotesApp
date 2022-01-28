@@ -27,7 +27,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private var palette: ColorSet? {
+    private var palette: CustomColorSet? {
         didSet {
             setColors(palette: palette)
         }
@@ -42,17 +42,17 @@ class TagCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(with viewModel: TagCellViewModel, colorSet: ColorSet) {
-        self.palette = colorSet
+    func setup(with viewModel: TagCellViewModel, palette: CustomColorSet) {
+        self.palette = palette
         setColors(palette: palette)
         
         tagLabel.text = viewModel.tag.name ?? ""
     }
     
-    func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
+    func setColors(palette: CustomColorSet?) {
+        guard let palette = palette else { return }
 
-        contentView.backgroundColor = colorSet.noteBackground
-        tagLabel.textColor = colorSet.actionColor
+        contentView.backgroundColor = palette.noteBackground
+        tagLabel.textColor = palette.actionColor
     }
 }

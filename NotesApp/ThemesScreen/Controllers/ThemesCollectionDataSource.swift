@@ -10,6 +10,7 @@ import UIKit
 class ThemesCollectionDataSource: NSObject, UICollectionViewDataSource {
     var data: [ThemeCollectionData] = []
     let settings: Settings = Settings()
+    let themeRepository: ThemeRepository = ThemeRepository()
 
     override init() {
         super.init()
@@ -18,7 +19,7 @@ class ThemesCollectionDataSource: NSObject, UICollectionViewDataSource {
     }
     
     func createData() {
-        for cases in ColorSet.allCases {
+        for cases in themeRepository.getAllThemes() {
             data.append(ThemeCollectionData(colorSet: cases, isSelected: settings.theme == cases))
         }
     }

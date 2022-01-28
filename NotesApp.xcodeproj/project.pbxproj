@@ -84,6 +84,8 @@
 		BAC0FD8D27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0FD8C27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift */; };
 		BAC0FD9027A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0FD8F27A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift */; };
 		BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC82D5826A9DD2300E52701 /* NoteExtension.swift */; };
+		BAEC252327A3984C00C54C72 /* themes.json in Resources */ = {isa = PBXBuildFile; fileRef = BAEC252227A3984C00C54C72 /* themes.json */; };
+		BAEC252527A3989200C54C72 /* UIColor+isLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC252427A3989200C54C72 /* UIColor+isLight.swift */; };
 		BAEF61AA27A2D0FB00C64A17 /* CustomColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61A927A2D0FB00C64A17 /* CustomColorData.swift */; };
 		BAEF61AD27A2D42D00C64A17 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61AC27A2D42D00C64A17 /* UIColor+Hex.swift */; };
 		BAEF61AF27A2D4A300C64A17 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61AE27A2D4A300C64A17 /* UIColor+Hex.swift */; };
@@ -213,6 +215,8 @@
 		BAC0FD8C27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		BAC0FD8F27A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderViewDelegate.swift; sourceTree = "<group>"; };
 		BAC82D5826A9DD2300E52701 /* NoteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtension.swift; sourceTree = "<group>"; };
+		BAEC252227A3984C00C54C72 /* themes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = themes.json; sourceTree = "<group>"; };
+		BAEC252427A3989200C54C72 /* UIColor+isLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+isLight.swift"; sourceTree = "<group>"; };
 		BAEF61A927A2D0FB00C64A17 /* CustomColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorData.swift; sourceTree = "<group>"; };
 		BAEF61AC27A2D42D00C64A17 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		BAEF61AE27A2D4A300C64A17 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -409,6 +413,7 @@
 				5B3FF18B279993C700828097 /* Protocols */,
 				5B4576192790593100EF1036 /* CoreDataStack.swift */,
 				BAB1E029269DBBF8001FC3CC /* NotesModel.xcdatamodeld */,
+				BAEC252227A3984C00C54C72 /* themes.json */,
 			);
 			name = Storage;
 			path = NotesApp/Storage;
@@ -632,6 +637,7 @@
 				5BB7FE012795EDB800A6F335 /* NotificationName.swift */,
 				5B3FF1A6279998C700828097 /* UIViewController+UIAlertHelpers.swift */,
 				5BB5B9F6279886C200F9CCF6 /* UIActivityViewController+NoteCellViewModel.swift */,
+				BAEC252427A3989200C54C72 /* UIColor+isLight.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -835,6 +841,7 @@
 				E9AB516027A1AFA60077F33C /* Devotional@3x.png in Resources */,
 				BAB1E030269DBBFA001FC3CC /* LaunchScreen.storyboard in Resources */,
 				E9AB516F27A1AFA60077F33C /* Bookish@3x.png in Resources */,
+				BAEC252327A3984C00C54C72 /* themes.json in Resources */,
 				E9AB516D27A1AFA60077F33C /* Neon@3x.png in Resources */,
 				E9AB516327A1AFA60077F33C /* Unicorn@3x.png in Resources */,
 				E9AB515F27A1AFA60077F33C /* Halloween@3x.png in Resources */,
@@ -897,6 +904,7 @@
 				5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */,
 				BAA8DFBA27A1BF3100D3704C /* CustomThemeBuilderView.swift in Sources */,
+				BAEC252527A3989200C54C72 /* UIColor+isLight.swift in Sources */,
 				5B3FF1B42799AECB00828097 /* AllNotesCoordinator.swift in Sources */,
 				C88C7A6E279AE89E0090613F /* NavigationController.swift in Sources */,
 				5BB7FE022795EDB800A6F335 /* NotificationName.swift in Sources */,

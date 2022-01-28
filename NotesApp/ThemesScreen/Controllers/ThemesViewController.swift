@@ -12,14 +12,14 @@ class ThemesViewController: ThemableViewController {
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSource
     weak var coordinator: AllNotesCoordinatorProtocol?
-    override var palette: ColorSet {
+    override var palette: CustomColorSet {
         didSet {
             setColors(palette: palette)
             setNeedsStatusBarAppearanceUpdate()
         }
     }
     
-    init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
+    init(palette: CustomColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         
         self.contentView = ThemesView(palette: palette)
@@ -52,29 +52,32 @@ class ThemesViewController: ThemableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    func changeIcon(palette: ColorSet) {
-        switch palette {
-        case .classic:
-            UIApplication.shared.setAlternateIconName(nil)
-        case .dark:
-            UIApplication.shared.setAlternateIconName("DarkTheme")
-        case .neon:
-            UIApplication.shared.setAlternateIconName("NeonTheme")
-        case .christmas:
-            UIApplication.shared.setAlternateIconName("ChristmasTheme")
-        case .grape:
-            UIApplication.shared.setAlternateIconName("GrapeTheme")
-        case .bookish:
-            UIApplication.shared.setAlternateIconName("BookishTheme")
-        case .halloween:
-            UIApplication.shared.setAlternateIconName("HalloweenTheme")
-        case .devotional:
-            UIApplication.shared.setAlternateIconName("DevotionalTheme")
-        case .crt:
-            UIApplication.shared.setAlternateIconName("MatrixTheme")
-        case .unicorn:
-            UIApplication.shared.setAlternateIconName("UnicornTheme")
-        }
+    func changeIcon(palette: CustomColorSet) {
+        
+        UIApplication.shared.setAlternateIconName(palette.icon)
+       
+//        switch palette {
+//        case .classic:
+//            UIApplication.shared.setAlternateIconName(nil)
+//        case .dark:
+//            UIApplication.shared.setAlternateIconName("DarkTheme")
+//        case .neon:
+//            UIApplication.shared.setAlternateIconName("NeonTheme")
+//        case .christmas:
+//            UIApplication.shared.setAlternateIconName("ChristmasTheme")
+//        case .grape:
+//            UIApplication.shared.setAlternateIconName("GrapeTheme")
+//        case .bookish:
+//            UIApplication.shared.setAlternateIconName("BookishTheme")
+//        case .halloween:
+//            UIApplication.shared.setAlternateIconName("HalloweenTheme")
+//        case .devotional:
+//            UIApplication.shared.setAlternateIconName("DevotionalTheme")
+//        case .crt:
+//            UIApplication.shared.setAlternateIconName("MatrixTheme")
+//        case .unicorn:
+//            UIApplication.shared.setAlternateIconName("UnicornTheme")
+//        }
     }
     
     override func didChangeTheme(_ notification: Notification) {

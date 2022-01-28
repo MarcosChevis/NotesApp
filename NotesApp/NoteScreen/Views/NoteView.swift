@@ -66,7 +66,7 @@ class NoteView: ThemableView {
     
     weak var delegate: NoteViewDelegate?
     
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupConstraints()
@@ -76,12 +76,12 @@ class NoteView: ThemableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setColors(palette: ColorSet) {
-        let colorSet = palette.palette()
-        backgroundColor = colorSet.background
+    override func setColors(palette: CustomColorSet) {
+        
+        backgroundColor = palette.background
         
         for item in toolbarItems {
-            item.tintColor = colorSet.actionColor
+            item.tintColor = palette.actionColor
         }
     }
     

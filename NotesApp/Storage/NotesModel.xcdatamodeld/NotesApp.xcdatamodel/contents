@@ -15,6 +15,7 @@
         <attribute name="actionColorHex" optional="YES" attributeType="String"/>
         <attribute name="backgroundHex" optional="YES" attributeType="String"/>
         <attribute name="buttonBackgroundHex" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="largeTitleHex" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="noteBackgroundHex" optional="YES" attributeType="String"/>
@@ -23,6 +24,6 @@
     <elements>
         <element name="Note" positionX="-63" positionY="-18" width="128" height="104"/>
         <element name="Tag" positionX="-45" positionY="27" width="128" height="59"/>
-        <element name="Theme" positionX="-54" positionY="27" width="128" height="134"/>
+        <element name="Theme" positionX="-54" positionY="27" width="128" height="149"/>
     </elements>
 </model>

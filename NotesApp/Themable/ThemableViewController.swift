@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ThemableViewController: UIViewController {
-    var palette: ColorSet{
+    var palette: CustomColorSet{
         didSet {
             setColors(palette: palette)
         }
@@ -17,10 +17,10 @@ class ThemableViewController: UIViewController {
     let notificationService: NotificationService
     let settings: Settings
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return palette.palette().statusBarStyle
+        return palette.statusBarStyle
     }
     
-    init(palette: ColorSet, notificationService: NotificationService,
+    init(palette: CustomColorSet, notificationService: NotificationService,
          settings: Settings) {
         self.settings = settings
         self.notificationService = notificationService
@@ -47,16 +47,16 @@ class ThemableViewController: UIViewController {
     }
     
     @objc func didChangeTheme(_ notification: Notification) {
-        guard let palette = notification.object as? ColorSet else { return }
+        guard let palette = notification.object as? CustomColorSet else { return }
         self.palette = palette
     }
     
-    func setColors(palette: ColorSet) {
-        let colorSet = palette.palette()
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.largeTitle]
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: colorSet.largeTitle]
-        navigationController?.navigationBar.tintColor = colorSet.actionColor
-        navigationController?.navigationBar.barTintColor = colorSet.background
+    func setColors(palette: CustomColorSet) {
+        guard let titleColor = palette.largeTitle else { return }
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: titleColor]
+        navigationController?.navigationBar.tintColor = palette.actionColor
+        navigationController?.navigationBar.barTintColor = palette.background
         
     }
 }

@@ -20,6 +20,10 @@ protocol ThemeProtocol {
     var text: UIColor? { get set }
     
     var largeTitle: UIColor? { get set }
+    
+    var id: UUID? { get }
+    
+    var name: String? { get set }
 }
 
 extension Theme: ThemeProtocol {

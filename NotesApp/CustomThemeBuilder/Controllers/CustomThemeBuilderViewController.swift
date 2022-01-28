@@ -16,14 +16,14 @@ class CustomThemeBuilderViewController: ThemableViewController {
     var contentView: CustomThemeBuilderView
     
     lazy var customColorSet: ThemeProtocol = {
-        let colorSet = palette.palette()
+        
         var theme = repository.createEmptyTheme()
-        theme.actionColor = colorSet.actionColor
-        theme.buttonBackground = colorSet.buttonBackground
-        theme.largeTitle = colorSet.largeTitle
-        theme.noteBackground = colorSet.noteBackground
-        theme.background = colorSet.background
-        theme.text = colorSet.text
+        theme.actionColor = palette.actionColor
+        theme.buttonBackground = palette.buttonBackground
+        theme.largeTitle = palette.largeTitle
+        theme.noteBackground = palette.noteBackground
+        theme.background = palette.background
+        theme.text = palette.text
         
         return theme
     }()
@@ -32,7 +32,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
     
     private let repository: ThemeRepositoryProtocol
 
-    init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings(), themeRepository: ThemeRepositoryProtocol = ThemeRepository()) {
         
         self.contentView = .init(palette: palette)

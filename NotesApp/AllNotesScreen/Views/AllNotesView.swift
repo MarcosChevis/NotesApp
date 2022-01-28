@@ -103,7 +103,7 @@ class AllNotesView: ThemableView {
     
     weak var delegate: AllNotesViewDelegate?
     
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         
@@ -114,14 +114,15 @@ class AllNotesView: ThemableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setColors(palette: ColorSet) {
-        let colorSet = palette.palette()
-        self.backgroundColor = colorSet.background
-        collectionView.backgroundColor = colorSet.background
-        searchController.searchBar.tintColor = colorSet.actionColor
-        searchController.searchBar.searchTextField.backgroundColor = colorSet.noteBackground.withAlphaComponent(0.6)
-        switch colorSet.statusBarStyle {
-            
+    override func setColors(palette: CustomColorSet) {
+        
+        self.backgroundColor = palette.background
+        collectionView.backgroundColor = palette.background
+        searchController.searchBar.tintColor = palette.actionColor
+        searchController.searchBar.searchTextField.backgroundColor = palette.noteBackground?.withAlphaComponent(0.6)
+        
+        switch palette.statusBarStyle {
+
         case .default:
             searchController.searchBar.barStyle = .default
         case .lightContent:

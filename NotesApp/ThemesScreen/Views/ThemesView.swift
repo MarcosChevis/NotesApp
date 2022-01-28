@@ -8,7 +8,7 @@
 import UIKit
 
 class ThemesView: ThemableView {
-    override var palette: ColorSet {
+    override var palette: CustomColorSet {
         didSet {
             setColors(palette: palette)
         }
@@ -52,7 +52,7 @@ class ThemesView: ThemableView {
         return collection
     }()
 
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupConstraints()
@@ -62,9 +62,9 @@ class ThemesView: ThemableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setColors(palette: ColorSet) {
-        let colorSet = palette.palette()
-        backgroundColor = colorSet.background
+    override func setColors(palette: CustomColorSet) {
+        
+        backgroundColor = palette.background
     }
     
     func setupConstraints() {

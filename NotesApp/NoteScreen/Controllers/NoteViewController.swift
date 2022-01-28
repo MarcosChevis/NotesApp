@@ -21,7 +21,7 @@ class NoteViewController: ThemableViewController {
     let repository: NotesRepositoryProtocol
     
     
-    init(palette: ColorSet,
+    init(palette: CustomColorSet,
          repository: NotesRepositoryProtocol,
          notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {

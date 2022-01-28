@@ -88,7 +88,7 @@ class NoteSmallCellContentView: ThemableView {
         return button
     }()
     
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupHierarchy()
@@ -154,7 +154,7 @@ class NoteSmallCellContentView: ThemableView {
         NSLayoutConstraint.activate(editButtonConstraints)
     }
     
-    func setup(with viewModel: NoteCellViewModel, palette: ColorSet) {
+    func setup(with viewModel: NoteCellViewModel, palette: CustomColorSet) {
         self.palette = palette
         self.viewModel = viewModel
         titleView.text = viewModel.note.title
@@ -162,17 +162,17 @@ class NoteSmallCellContentView: ThemableView {
         buttonsStackView.axis = .horizontal
     }
     
-    override func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
+    override func setColors(palette: CustomColorSet?) {
+        guard let palette = palette else { return }
         
-        titleView.textColor = colorSet.text
-        contentTextView.textColor = colorSet.text
-        editButton.tintColor = colorSet.actionColor
-        editButton.backgroundColor = colorSet.buttonBackground
-        deleteButton.tintColor = colorSet.actionColor
-        deleteButton.backgroundColor = colorSet.buttonBackground
-        shareButton.tintColor = colorSet.actionColor
-        shareButton.backgroundColor = colorSet.buttonBackground
-        backgroundColor = colorSet.noteBackground
+        titleView.textColor = palette.text
+        contentTextView.textColor = palette.text
+        editButton.tintColor = palette.actionColor
+        editButton.backgroundColor = palette.buttonBackground
+        deleteButton.tintColor = palette.actionColor
+        deleteButton.backgroundColor = palette.buttonBackground
+        shareButton.tintColor = palette.actionColor
+        shareButton.backgroundColor = palette.buttonBackground
+        backgroundColor = palette.noteBackground
     }
 }

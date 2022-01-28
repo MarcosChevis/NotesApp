@@ -73,7 +73,7 @@ class CustomThemeBuilderView: ThemableView {
         return layout
     }()
 
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         
         self.placeholder = .init(string: placeholderContent)
@@ -127,15 +127,17 @@ class CustomThemeBuilderView: ThemableView {
         delegate?.didTapCancel()
     }
     
-    override func setColors(palette: ColorSet) {
+    override func setColors(palette: CustomColorSet) {
         super.setColors(palette: palette)
-        let colorSet = palette.palette()
-        backgroundColor = colorSet.background
-        saveButton.tintColor = colorSet.actionColor
-        cancelButton.tintColor = colorSet.actionColor
+        
+        backgroundColor = palette.background
+        saveButton.tintColor = palette.actionColor
+        cancelButton.tintColor = palette.actionColor
+        
+        guard let textColor = palette.text?.withAlphaComponent(0.4) else { return }
         
         let attributeRange = NSRange(location: 0, length: placeholderContent.count)
         placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
-        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: colorSet.text.withAlphaComponent(0.4)], range: attributeRange)
+        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: textColor], range: attributeRange)
     }
 }

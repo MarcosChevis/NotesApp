@@ -21,7 +21,7 @@ class SettingsView: ThemableView {
         return table
     }()
     
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setColors(palette: palette)
@@ -33,8 +33,8 @@ class SettingsView: ThemableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setColors(palette: ColorSet) {
-        self.backgroundColor = palette.palette().background
+    override func setColors(palette: CustomColorSet) {
+        self.backgroundColor = palette.background
     }
     
     func setupConstraints() {

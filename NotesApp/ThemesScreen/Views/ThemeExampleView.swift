@@ -88,7 +88,7 @@ class ThemeExampleView: ThemableView {
         return textView
     }()
     
-    override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
+    override init(palette: CustomColorSet, notificationService: NotificationService = NotificationCenter.default,
          settings: Settings = Settings()) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         
@@ -168,23 +168,22 @@ class ThemeExampleView: ThemableView {
         
     }
 
-    override func setColors(palette: ColorSet) {
+    override func setColors(palette: CustomColorSet) {
         super.setColors(palette: palette)
-        let colorSet = palette.palette()
-        backgroundColor = colorSet.background
-        shareButton.tintColor = colorSet.actionColor
-        bigTitle.textColor = colorSet.largeTitle
-        middleView.backgroundColor = colorSet.noteBackground
-        trashButton.tintColor = colorSet.actionColor
-        noteButton.tintColor = colorSet.actionColor
-        plusButton.tintColor = colorSet.actionColor
-        smallTitle.textColor = colorSet.text
-        textView.textColor = colorSet.text
+        backgroundColor = palette.background
+        shareButton.tintColor = palette.actionColor
+        bigTitle.textColor = palette.largeTitle
+        middleView.backgroundColor = palette.noteBackground
+        trashButton.tintColor = palette.actionColor
+        noteButton.tintColor = palette.actionColor
+        plusButton.tintColor = palette.actionColor
+        smallTitle.textColor = palette.text
+        textView.textColor = palette.text
 
         
-        layer.shadowColor = colorSet.actionColor.cgColor
+        layer.shadowColor = palette.actionColor?.cgColor
         
-        smallTitle.text = palette.rawValue.capitalized + " Theme"
+        smallTitle.text = palette.name.capitalized + " Theme"
     }
     
     func setColorsForCustomTheme(colorSet: ThemeProtocol) {
@@ -202,7 +201,7 @@ class ThemeExampleView: ThemableView {
         
         layer.shadowColor = colorSet.actionColor?.cgColor
         
-        smallTitle.text = palette.rawValue.capitalized + " Theme"
+        smallTitle.text = palette.name.capitalized + " Theme"
     }
     
 }

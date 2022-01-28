@@ -56,7 +56,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupThemesViewCell(palette: ColorSet, isSelected: Bool) {
+    func setupThemesViewCell(palette: CustomColorSet, isSelected: Bool) {
         
         setupLayers(palette: palette)
              
@@ -66,20 +66,20 @@ class ThemeCollectionViewCell: UICollectionViewCell {
             didUnselect()
         }
         
-        var titleText = palette.rawValue
+        var titleText = palette.name
         titleText = titleText.capitalized
         
-        let colorSet = palette.palette()
+        
         
         title.text = titleText
-        title.textColor = colorSet.actionColor
+        title.textColor = palette.actionColor
         
-        themeLabel.textColor = colorSet.text
+        themeLabel.textColor = palette.text
         
-        contentView.backgroundColor = colorSet.background
+        contentView.backgroundColor = palette.background
     }
     
-    func setupLayers(palette: ColorSet) {
+    func setupLayers(palette: CustomColorSet) {
         contentView.layer.cornerRadius = 16
         contentView.layer.masksToBounds = true
         
@@ -89,7 +89,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.33
         
-        contentView.layer.borderColor = palette.palette().actionColor.cgColor
+        contentView.layer.borderColor = palette.actionColor?.cgColor
     }
     
     func setupConstraints() {

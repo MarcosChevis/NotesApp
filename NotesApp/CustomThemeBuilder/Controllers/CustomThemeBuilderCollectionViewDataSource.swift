@@ -8,11 +8,11 @@
 import UIKit
 
 class CustomThemeBuilderCollectionViewDataSource: NSObject, UICollectionViewDataSource {
-    var palette: ColorSet
+    var palette: CustomColorSet
     
     var data: [CustomColorData] = []
     
-    init(colorSet: ThemeProtocol, palette: ColorSet) {
+    init(colorSet: ThemeProtocol, palette: CustomColorSet) {
         self.palette = palette
         
         self.data.append(CustomColorData(name: "Background", color: colorSet.background))

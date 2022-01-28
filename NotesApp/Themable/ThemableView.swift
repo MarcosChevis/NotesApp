@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class ThemableView: UIView {
-    var palette: ColorSet{
+    var palette: CustomColorSet{
         didSet {
             setColors(palette: palette)
         }
@@ -18,7 +18,7 @@ class ThemableView: UIView {
     let notificationService: NotificationService
     let settings: Settings
     
-    init(palette: ColorSet, notificationService: NotificationService,
+    init(palette: CustomColorSet, notificationService: NotificationService,
          settings: Settings) {
         self.settings = settings
         self.notificationService = notificationService
@@ -43,12 +43,12 @@ class ThemableView: UIView {
     }
     
     @objc func didChangeTheme(_ notification: Notification) {
-        guard let palette = notification.object as? ColorSet else { return }
+        guard let palette = notification.object as? CustomColorSet else { return }
         self.palette = palette
         
     }
     
-    func setColors(palette: ColorSet) {
+    func setColors(palette: CustomColorSet) {
         // Deve ficar vazia, pois essa função será implementada em outras classes que têm herdam dessa
     }
 }
