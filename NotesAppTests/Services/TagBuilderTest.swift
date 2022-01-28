@@ -11,9 +11,11 @@ import XCTest
 class TagBuilderTest: XCTestCase {
 
     var sut: TagBuilder!
+    var coreDataStack: CoreDataStack!
     
     override func setUp() {
-        sut = TagBuilder(coreDataStack: CoreDataStack(.inMemory))
+        coreDataStack = CoreDataStack(.inMemory)
+        sut = TagBuilder(coreDataStack: coreDataStack)
     }
 
     override func tearDown() {
@@ -21,9 +23,8 @@ class TagBuilderTest: XCTestCase {
     }
     
     func testCheckTagsCreation() {
-        let content = "some notes #swiftie #pudim #melhorQueBacon"
-        let tags = sut.findTagContent(for: content)
+        let note1 = Note(context: coreDataStack.mainContext)
+        note1.content = ""
         
-        XCTAssertEqual(tags, ["#swiftie", "#pudim", "#melhorQueBacon"])
     }
 }
