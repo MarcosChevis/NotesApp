@@ -44,12 +44,15 @@ struct TagBuilder: TagBuilderProtocol {
             .compactMap(\.content)
             .map(findTagContent)
             .flatMap { $0 }
-            .filter{ existingTagsContent.contains($0) }
+            .filter{ !existingTagsContent.contains($0) }
+        
         let tagSet = Set<String>(tagContent)
         
         let tags = tagSet.map { content -> Tag in
             let tag = Tag(context: coreDataStack.mainContext)
             tag.name = content
+            let notesWithTag = notes.filter { filterNoteWithTag($0, tagContent: content) }.compactMap { $0 as? Note }
+            tag.addToNotes(NSSet(array: notesWithTag))
             return tag
         }
         
@@ -64,6 +67,14 @@ struct TagBuilder: TagBuilderProtocol {
         let tags = separetedContent
             .filter { $0.starts(with: "#") }
         return tags
+    }
+    
+    private func filterNoteWithTag(_ note: NoteProtocol, tagContent: String) -> Bool {
+        if findTagContent(for: note.content ?? "").contains(tagContent) {
+            return true
+        } else {
+            return false
+        }
     }
     
     enum TagBuilderError: Error {
