@@ -15,16 +15,14 @@ class NoteViewTest: XCTestCase {
     var sut: NoteViewController!
     var repositoryDummy: NoteRepositoryDummy!
     var colorSet: ColorSet!
+    var themeRepository: ThemeRepositoryProtocol!
     
     override func setUp() {
         #warning("mudar implementacao")
-        let palette = ColorSet(actionColor: UIColor(Color("ClassicAction")),
-                                  background: UIColor(Color("ClassicBackground")),
-                                  buttonBackground: UIColor(Color("ClassicButtonBackground")),
-                                  noteBackground: UIColor(Color("ClassicNoteBackground")),
-                                  text: UIColor(Color("ClassicText")), largeTitle: UIColor(Color("ClassicText")), statusBarStyle: .darkContent)
+        
         repositoryDummy = .init()
-        sut = .init(palette: palette, repository: repositoryDummy)
+        themeRepository = ThemeRepository(coreDataStack: .init(.inMemory))
+        sut = .init(palette: .classic, repository: repositoryDummy)
         isRecording = false
     }
     
@@ -35,42 +33,42 @@ class NoteViewTest: XCTestCase {
     }
     
     #warning("reimplementar testes")
-//    func testLayoutWithMoreThanOneItemOnIphone12() {
-//        let view = setupLayoutTestWithMoreThanItem()
-//        assertSnapshot(matching: view, as: .image(on: .iPhone12))
-//    }
-//
-//
-//    func testLayoutWithMoreThanOneItemOnIphoneSE() {
-//        let view = setupLayoutTestWithMoreThanItem()
-//        assertSnapshot(matching: view, as: .image(on: .iPhoneSe))
-//    }
-//
-//    func testLayoutWithMoreThanOneItemOnIphone12ProMax() {
-//        let view = setupLayoutTestWithMoreThanItem()
-//        assertSnapshot(matching: view, as: .image(on: .iPhone12ProMax))
-//    }
-//
-//    func testLayoutWithNoItemsOnIphone12() {
-//        let navigation = NavigationController(rootViewController: sut)
-//        assertSnapshot(matching: navigation, as: .image(on: .iPhone12))
-//    }
-//
-//    func testLayoutWithNoItemsOnIphoneSE() {
-//        let navigation = NavigationController(rootViewController: sut)
-//        assertSnapshot(matching: navigation, as: .image(on: .iPhoneSe))
-//    }
-//
-//    func testLayoutWithNoItemsOnIphone12ProMax() {
-//        let navigation = NavigationController(rootViewController: sut)
-//        assertSnapshot(matching: navigation, as: .image(on: .iPhone12ProMax))
-//    }
-//
-//    func testLayoutWithMoreThanOneItemOnIphone12neon() {
-//        let view = setupLayoutTestWithMoreThanItem(with: .neon)
-//        assertSnapshot(matching: view, as: .image(on: .iPhone12))
-//    }
-//
+    func testLayoutWithMoreThanOneItemOnIphone12() {
+        let view = setupLayoutTestWithMoreThanItem(with: .classic)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+
+
+    func testLayoutWithMoreThanOneItemOnIphoneSE() {
+        let view = setupLayoutTestWithMoreThanItem(with: .classic)
+        assertSnapshot(matching: view, as: .image(on: .iPhoneSe))
+    }
+
+    func testLayoutWithMoreThanOneItemOnIphone12ProMax() {
+        let view = setupLayoutTestWithMoreThanItem(with: .classic)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12ProMax))
+    }
+
+    func testLayoutWithNoItemsOnIphone12() {
+        let navigation = NavigationController(rootViewController: sut)
+        assertSnapshot(matching: navigation, as: .image(on: .iPhone12))
+    }
+
+    func testLayoutWithNoItemsOnIphoneSE() {
+        let navigation = NavigationController(rootViewController: sut)
+        assertSnapshot(matching: navigation, as: .image(on: .iPhoneSe))
+    }
+
+    func testLayoutWithNoItemsOnIphone12ProMax() {
+        let navigation = NavigationController(rootViewController: sut)
+        assertSnapshot(matching: navigation, as: .image(on: .iPhone12ProMax))
+    }
+
+    func testLayoutWithMoreThanOneItemOnIphone12neon() {
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "224462ed-d295-4ba7-a9bd-9b986ba751df") ?? .classic)
+        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+    }
+
 //    func testLayoutWithMoreThanOneItemOnIphone12bookish() {
 //        let view = setupLayoutTestWithMoreThanItem(with: .bookish)
 //        assertSnapshot(matching: view, as: .image(on: .iPhone12))

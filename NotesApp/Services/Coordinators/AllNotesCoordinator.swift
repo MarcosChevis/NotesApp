@@ -70,7 +70,6 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
         childCoordinator.start()
         childCoordinator.delegate = self
         navigationController.present(childCoordinator.navigationController, animated: true, completion: nil)
-        print(childCoordinators)
     }
 }
 
@@ -79,7 +78,6 @@ extension AllNotesCoordinator: CustomThemeBuilderCoordinatorDelegate {
         childCoordinators.removeAll(where: {
             ($0 as? CustomThemeBuilderCoordinator) != nil
         })
-        print(childCoordinators)
     }
     
     

@@ -9,6 +9,7 @@ import UIKit
 
 class ThemesViewController: ThemableViewController {
     
+    var themeRepository: ThemeRepositoryProtocol
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSource
     weak var coordinator: AllNotesCoordinatorProtocol?
@@ -20,10 +21,11 @@ class ThemesViewController: ThemableViewController {
     }
     
     init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = .shared) {
+         settings: Settings = .shared, themeRepository: ThemeRepositoryProtocol = ThemeRepository.shared) {
         
         self.contentView = ThemesView(palette: palette)
         self.collectionDataSource = collectionDataSource
+        self.themeRepository = themeRepository
      
         
         super.init(palette: palette, notificationService: notificationService, settings: settings)
@@ -52,7 +54,8 @@ class ThemesViewController: ThemableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        collectionDataSource.createData()
+        let data = themeRepository.getAllThemes()
+        collectionDataSource.setupData(data: data)
         contentView.collectionView.reloadData()
     }
     

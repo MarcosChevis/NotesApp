@@ -47,24 +47,24 @@ class ThemesViewTest: XCTestCase {
         assertSnapshot(matching: view, as: .image(on: .iPhone12ProMax))
     }
     
-    func testLayoutIphone12neon() {
-        let view = setupLayoutTest(with: .neon)
-        assertSnapshot(matching: view, as: .image(on: .iPhone12))
-    }
-    
-    func testLayoutIphone12pastel() {
-        let view = setupLayoutTest(with: .grape)
-        assertSnapshot(matching: view, as: .image(on: .iPhone12))
-    }
-    
-    func testLayoutIphone12bookish() {
-        let view = setupLayoutTest(with: .bookish)
-        assertSnapshot(matching: view, as: .image(on: .iPhone12))
-    }
-    
-    func testLayoutIphone12christmas() {
-        let view = setupLayoutTest(with: .christmas)
-        assertSnapshot(matching: view, as: .image(on: .iPhone12))
-    }
+//    func testLayoutIphone12neon() {
+//        let view = setupLayoutTest(with: .neon)
+//        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+//    }
+//    
+//    func testLayoutIphone12pastel() {
+//        let view = setupLayoutTest(with: .grape)
+//        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+//    }
+//    
+//    func testLayoutIphone12bookish() {
+//        let view = setupLayoutTest(with: .bookish)
+//        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+//    }
+//    
+//    func testLayoutIphone12christmas() {
+//        let view = setupLayoutTest(with: .christmas)
+//        assertSnapshot(matching: view, as: .image(on: .iPhone12))
+//    }
 
 }
