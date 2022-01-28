@@ -16,7 +16,7 @@ class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
     var editedNote: String = ""
     var didPresentErrorAlert: Bool = false
     var didPresentSingleAlertAction: Bool = false
-    var sharedNote: String = ""
+    var sharedNote: String? = nil
     
     func dismiss() {
         didDismiss = true
