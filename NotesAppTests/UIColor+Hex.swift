@@ -9,7 +9,7 @@ import XCTest
 @testable import NotesApp
 import UIKit
 
-class UIColor_Hex: XCTestCase {
+class UIColorHexExtension: XCTestCase {
 
     func testHexToColor() {
         let red = "ff0000"

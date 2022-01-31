@@ -44,7 +44,7 @@ class CustomThemeBuilderView: ThemableView {
     }()
     
     lazy var collectionView: UICollectionView = {
-        var layout = collectionViewLayout
+        let layout = collectionViewLayout
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(CustomThemeBuilderCollectionViewCell.self, forCellWithReuseIdentifier: CustomThemeBuilderCollectionViewCell.identifier)
