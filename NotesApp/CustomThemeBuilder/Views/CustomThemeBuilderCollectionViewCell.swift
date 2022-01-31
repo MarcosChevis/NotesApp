@@ -44,6 +44,5 @@ class CustomThemeBuilderCollectionViewCell: UICollectionViewCell {
             builderContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
-   
     
 }

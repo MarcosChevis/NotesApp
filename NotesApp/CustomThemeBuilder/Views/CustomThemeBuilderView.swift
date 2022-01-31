@@ -28,11 +28,8 @@ class CustomThemeBuilderView: ThemableView {
     lazy var themeNameTextField: UITextField = {
         let textView = UITextField(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
-        
         textView.font = UIFont.boldSystemFont(ofSize: 34)
-        
-        
-        
+    
         return textView
     }()
     
@@ -58,7 +55,6 @@ class CustomThemeBuilderView: ThemableView {
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalHeight(1), heightDimension: .fractionalHeight(1))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-//        group.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 12, bottom: 5, trailing: 12)
         
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 12
@@ -87,7 +83,6 @@ class CustomThemeBuilderView: ThemableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     
     func setupHierarchy() {
         addSubview(themeNameTextField)

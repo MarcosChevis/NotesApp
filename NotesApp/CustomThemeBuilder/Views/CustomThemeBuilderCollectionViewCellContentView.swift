@@ -13,14 +13,12 @@ class CustomThemeBuilderCollectionViewCellContentView: ThemableView {
         var view = UIView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 8
-        
         view.layer.shadowPath = UIBezierPath(roundedRect: CGRect(origin: .zero, size: CGSize(width: 100, height: 100)), cornerRadius: 8).cgPath
         
         view.layer.shadowOpacity = 0.4
         view.layer.shadowRadius = 5
         view.layer.shadowOffset = CGSize(width: 4, height: 4)
         view.layer.masksToBounds = false
-        
         
         return view
     }()
@@ -37,7 +35,6 @@ class CustomThemeBuilderCollectionViewCellContentView: ThemableView {
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = .shared) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
-        
         
         setupHierarchy()
         setupConstraints()
@@ -72,7 +69,5 @@ class CustomThemeBuilderCollectionViewCellContentView: ThemableView {
         colorNameLabel.textColor = palette.text
         colorView.layer.shadowColor = palette.actionColor?.cgColor
     }
-    
-    
     
 }

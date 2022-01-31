@@ -34,7 +34,6 @@ class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
     
     func start() {
         let vc = NoteViewController(palette: settings.theme, repository: NotesRepository())
-//        let vc = CustomThemeBuilderViewController(palette: .classic)
         navigationController.pushViewController(vc, animated: false)
         vc.coordinator = self
     }

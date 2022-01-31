@@ -22,7 +22,6 @@ class CustomThemeBuilderCollectionViewDataSource: NSObject, UICollectionViewData
         self.data.append(CustomColorData(name: "Buttons Background", color: colorSet.buttonBackground))
         self.data.append(CustomColorData(name: "Buttons", color: colorSet.actionColor))
         
-        
         super.init()
     }
     
@@ -41,7 +40,6 @@ class CustomThemeBuilderCollectionViewDataSource: NSObject, UICollectionViewData
         return cell
     }
     
-
 }
 
 

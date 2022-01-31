@@ -81,5 +81,4 @@ extension ThemesViewController: ThemesViewProtocol {
         coordinator?.navigateToCustomTheme()
     }
     
-    
 }

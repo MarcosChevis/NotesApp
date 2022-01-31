@@ -14,12 +14,10 @@ protocol CustomThemeBuilderCoordinatorProtocol: AnyObject, AlertCoordinatorProto
 }
 
 class CustomThemeBuilderCoordinator: CoordinatorProtocol, CustomThemeBuilderCoordinatorProtocol {
+    
     var navigationController: NavigationController
-    
     var childCoordinators: [CoordinatorProtocol]
-    
     var settings: Settings
-    
     weak var delegate: CustomThemeBuilderCoordinatorDelegate?
     
     init(navigationController: NavigationController, settings: Settings = .shared) {
@@ -46,6 +44,5 @@ class CustomThemeBuilderCoordinator: CoordinatorProtocol, CustomThemeBuilderCoor
         vc.delegate = delegate
         navigationController.present(vc, animated: true)
     }
-    
     
 }

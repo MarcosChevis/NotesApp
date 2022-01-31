@@ -165,7 +165,6 @@ class ThemeExampleView: ThemableView {
             textView.bottomAnchor.constraint(equalTo: middleView.bottomAnchor, constant: -8)
         ])
 
-        
     }
 
     override func setColors(palette: ColorSet) {
@@ -180,7 +179,6 @@ class ThemeExampleView: ThemableView {
         smallTitle.textColor = palette.text
         textView.textColor = palette.text
 
-        
         layer.shadowColor = palette.actionColor?.cgColor
         
         smallTitle.text = palette.name.capitalized + " Theme"
@@ -198,7 +196,6 @@ class ThemeExampleView: ThemableView {
         smallTitle.textColor = colorSet.text
         textView.textColor = colorSet.text
 
-        
         layer.shadowColor = colorSet.actionColor?.cgColor
         
         smallTitle.text = palette.name.capitalized + " Theme"

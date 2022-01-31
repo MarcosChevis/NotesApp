@@ -51,7 +51,6 @@ class CustomThemeBuilderViewTest: XCTestCase {
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
-    
     func testLayoutOnIphoneSE() {
         let view = setupLayoutTest()
         assertSnapshot(matching: view, as: .image(on: .iPhoneSe))
@@ -107,5 +106,4 @@ class CustomThemeBuilderViewTest: XCTestCase {
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
-
 }
