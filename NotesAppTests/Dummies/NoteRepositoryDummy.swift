@@ -28,7 +28,7 @@ class NoteRepositoryDummy: NotesRepositoryProtocol {
     
     func createEmptyNote() throws -> NoteProtocol {
         let vm = NoteCellViewModel.init(note: NoteDummy(noteID: UUID().uuidString, content: ""))
-        delegate?.insertNote(vm, at: IndexPath(row: mock.count, section: 0))
+        delegate?.insertNote(vm)
         mock.append(vm)
         return vm.note
         

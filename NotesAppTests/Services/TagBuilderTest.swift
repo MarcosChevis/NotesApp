@@ -80,7 +80,7 @@ class TagBuilderTest: XCTestCase {
         
         try coreDataStack.save()
         
-        XCTAssertEqual([2,3], existingNotes.map(\.allTags.count))
+        XCTAssertEqual([2,3], existingNotes.map(\.allTags.count).sorted())
         XCTAssertEqual(4, existingTags.count)
         XCTAssertEqual([1,1,1,2], existingTags.compactMap(\.notes).map(\.count).sorted())
     }

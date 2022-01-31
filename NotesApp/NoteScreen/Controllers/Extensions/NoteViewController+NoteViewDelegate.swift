@@ -27,6 +27,7 @@ extension NoteViewController: NoteViewDelegate {
     }
     
     func didAllNotes() {
+        repository.saveChangesWithoutEmptyNotes()
         coordinator?.navigateToAllNotes()
         
     }

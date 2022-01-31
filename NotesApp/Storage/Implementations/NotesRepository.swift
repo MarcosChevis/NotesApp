@@ -15,18 +15,19 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     private var cancelables: Set<AnyCancellable>
     private let notificationService: NotificationService
     private let tagBuilder: TagBuilder
-    let fetchResultsController: NSFetchedResultsController<Note>
+    private let isAscending: Bool
+    
+    private lazy var noteRequest: NSFetchRequest<Note> = {
+        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: isAscending)]
+        return fetchRequest
+    }()
     
     weak var delegate: NoteRepositoryProtocolDelegate?
     
     init(coreDataStack: CoreDataStack = .shared, notificationService: NotificationService = NotificationCenter.default, isAscending: Bool = true) {
         self.coreDataStack = coreDataStack
-        
-        let fetchRequest: NSFetchRequest<Note> = Note.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Note.creationDate, ascending: isAscending)]
-        
-        let noteFetchResultsController: NSFetchedResultsController<Note> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchResultsController = noteFetchResultsController
+        self.isAscending = isAscending
         self.cancelables = .init()
         self.notificationService = notificationService
         self.tagBuilder = TagBuilder {[weak coreDataStack] in
@@ -34,29 +35,19 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
             return Tag(context: coreDataStack.mainContext)
         }
         super.init()
-        noteFetchResultsController.delegate = self
         setupBindings()
     }
     
     private func setupBindings() {
-        notificationService.publisher(for: .saveChanges, with: nil)
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.current, options: .none)
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: triggerSave)
-            .store(in: &cancelables)
-        
         notificationService.publisher(for: UIApplication.willResignActiveNotification, with: nil)
-            .sink(receiveValue: removeEmptyAndSaveNotification)
+            .sink(receiveValue: triggerSave)
             .store(in: &cancelables)
     }
     
     private func triggerSave(_ notification: Notification) {
         do {
-            let tags = try coreDataStack.mainContext.fetch(Tag.fetchRequest())
-            let newTags = tagBuilder.buildNewTags(for: addedAndUncommitedNotes, existingTags: tags)
-            tagBuilder.updateExistingTags(tags + newTags, with: addedAndUncommitedNotes)
+            removeEmptyObjects()
             try saveChanges()
-            
         } catch {
             coreDataStack.mainContext.rollback()
         }
@@ -71,6 +62,9 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     }
     
     func saveChanges() throws {
+        let tags = try coreDataStack.mainContext.fetch(Tag.fetchRequest())
+        let newTags = tagBuilder.buildNewTags(for: addedAndUncommitedNotes, existingTags: tags)
+        tagBuilder.updateExistingTags(tags + newTags, with: addedAndUncommitedNotes)
         try coreDataStack.save()
     }
     
@@ -79,25 +73,32 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
             throw RepositoryError.incorrectObjectType
         }
         
+        delegate?.deleteNote(.init(note: note))
         coreDataStack.mainContext.delete(note)
+        
+        guard let tags = note.tags?.allObjects as? [Tag] else {
+            return
+        }
+        
         try saveChanges()
+        
+        tags.forEach {
+            if $0.notes?.count == 0 {
+                coreDataStack.mainContext.delete($0)
+            }
+        }
     }
     
     func createEmptyNote() throws -> NoteProtocol {
         let note = Note(context: coreDataStack.mainContext)
         note.content = ""
         note.title = ""
-        try saveChanges()
+        delegate?.insertNote(NoteCellViewModel(note: note))
         return note
     }
     
     func getInitialData() throws -> [NoteCellViewModel] {
-        try fetchResultsController.performFetch()
-        
-        guard let notes = fetchResultsController.fetchedObjects else {
-            throw RepositoryError.errorFetchingObjects
-        }
-        
+        let notes = try coreDataStack.mainContext.fetch(noteRequest)
         let viewModels = notes.map(NoteCellViewModel.init)
         return viewModels
     }
@@ -112,19 +113,22 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     }
     
     private func removeEmptyObjects() {
-        guard let notes = fetchResultsController.fetchedObjects else { return }
+        guard let notes = try? coreDataStack.mainContext.fetch(noteRequest) else { return }
         let emptyNotes = notes.filter {
             guard let content = $0.content else {
                 return true
             }
             return content.isEmpty
         }
-        emptyNotes.forEach { coreDataStack.mainContext.delete($0) }
+        emptyNotes.forEach {
+            delegate?.deleteNote(.init(note: $0))
+            coreDataStack.mainContext.delete($0)
+        }
     }
     
     func filterForContent(_ content: String) -> [NoteCellViewModel] {
         let upperCasedContent = content.uppercased()
-        let allNotes = fetchResultsController.fetchedObjects ?? []
+        let allNotes = (try? coreDataStack.mainContext.fetch(noteRequest)) ?? []
         
         if content.isEmpty {
             return allNotes.map(NoteCellViewModel.init)
@@ -142,45 +146,12 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
     }
     
     func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
-        []
+        let notes = try getInitialData()
+        let filteredNotes = notes.filter { $0.note.allTags.first { $0.tagID == tag.tagID } != nil  }
+        return filteredNotes
     }
-
 }
 
 enum RepositoryError: Error {
     case noObjectForID, incorrectObjectType, errorFetchingObjects
-}
-
-extension NotesRepository: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        switch type {
-        case .insert:
-            updateUIWithInsertNote(anObject as? Note, at: newIndexPath)
-        case .delete:
-            updateUIWithDeleteNote(anObject as? Note)
-        case .move:
-            break
-        case .update:
-            break
-        @unknown default:
-            break
-        }
-    }
-    
-    private func updateUIWithInsertNote(_ note: Note?, at indexPath: IndexPath?) {
-        guard let note = note, let indexPath = indexPath else {
-            return
-        }
-        
-        let viewModel = NoteCellViewModel(note: note)
-        delegate?.insertNote(viewModel, at: indexPath)
-    }
-    
-    private func updateUIWithDeleteNote(_ note: Note?) {
-        guard let note = note else {
-            return
-        }
-        
-        delegate?.deleteNote(NoteCellViewModel(note: note))
-    }
 }

@@ -24,7 +24,6 @@ class NotesRepositoryTest: XCTestCase {
         cancelables = .init()
         sut = NotesRepository(coreDataStack: coreDataStack, notificationService: notificationDummy)
         sut.delegate = repositoryDelegate
-        try sut.fetchResultsController.performFetch()
     }
     
     override func tearDown() {
@@ -37,11 +36,12 @@ class NotesRepositoryTest: XCTestCase {
     }
     
     func testNoteCreation() throws {
-        try createNote(withMessage: "Uma nova nota")
+        try createNote(withMessage: "Uma nova nota #tag")
         try sut.saveChanges()
 
         XCTAssertEqual(repositoryDelegate.data.count, 1)
-        XCTAssertEqual(repositoryDelegate.data.first!.note.content, "Uma nova nota")
+        XCTAssertEqual(repositoryDelegate.data.first!.note.content, "Uma nova nota #tag")
+        XCTAssertEqual(repositoryDelegate.data.first!.note.allTags.count, 1)
     }
     
     func testNoteEdit() throws {

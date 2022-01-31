@@ -8,7 +8,7 @@
 import UIKit
 
 extension AllNotesViewController: NoteRepositoryProtocolDelegate {
-    func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
+    func insertNote(_ note: NoteCellViewModel) {
         insertItem(.note(noteViewModel: note), at: .text)
     }
     

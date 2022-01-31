@@ -79,7 +79,7 @@ class TagBuilder {
             return nil
         }
         
-        let newNotes = notes.filter { !currentNotes.contains($0) && $0.content?.contains(tagContent) ?? false }
+        let newNotes = notes.filter { !currentNotes.contains($0) && findTagContent(for: $0.content ?? "").contains(tagContent) }
         
         if newNotes.isEmpty {
             return nil

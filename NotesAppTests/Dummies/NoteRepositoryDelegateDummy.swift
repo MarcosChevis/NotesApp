@@ -11,7 +11,7 @@ import Foundation
 class NoteRepositoryDelegateDummy: NoteRepositoryProtocolDelegate {
     var data: [NoteCellViewModel] = []
     
-    func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
+    func insertNote(_ note: NoteCellViewModel) {
         data.append(note)
     }
     
