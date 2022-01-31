@@ -19,11 +19,8 @@ class ThemeRepository: ThemeRepositoryProtocol {
         self.standardThemes = []
         self.customThemes = []
         
-        let customThemes = getAllCustomThemes()
-        let standardThemes = getAllStandardThemes()
-        
-        self.standardThemes = standardThemes
-        self.customThemes = customThemes
+        self.standardThemes = getAllStandardThemes()
+        self.customThemes = getAllCustomThemes()
     }
     
     func getAllThemes() -> [ColorSet] {

@@ -65,4 +65,9 @@ class ThemesViewControllerTest: XCTestCase {
         sut.collectionView(sut.contentView.collectionView, didSelectItemAt: IndexPath(row: index, section: 0))
     }
     
+    func testTapAddNewTheme() {
+        sut.didTapPlus()
+        XCTAssertTrue(coordinatorDummy.didNavigateToCustomThemes)
+    }
+    
 }

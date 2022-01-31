@@ -31,19 +31,17 @@ extension AllNotesViewController {
             let textColor = color
             
             if kind == UICollectionView.elementKindSectionHeader {
-                if indexPath.section == 0 {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
-                        fatalError()
-                    }
-                    header.setup(with: "Tags", color: textColor)
-                    return header
-                } else {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
-                        fatalError()
-                    }
-                    header.setup(with: "All Notes", color: textColor)
-                    return header
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
+                    fatalError()
                 }
+                if indexPath.section == 0 {
+                    header.setup(with: "Tags", color: textColor)
+                    
+                } else {
+                    header.setup(with: "All Notes", color: textColor)
+                }
+                
+                return header
             } else {
                 return nil
             }
