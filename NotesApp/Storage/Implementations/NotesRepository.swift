@@ -57,10 +57,6 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         coreDataStack.mainContext.insertedObjects.compactMap { $0 as? Note } + coreDataStack.mainContext.updatedObjects.compactMap { $0 as? Note}
     }
     
-    private func removeEmptyAndSaveNotification(_ notification: Notification) {
-        saveChangesWithoutEmptyNotes()
-    }
-    
     func saveChanges() throws {
         let tags = try coreDataStack.mainContext.fetch(Tag.fetchRequest())
         let newTags = tagBuilder.buildNewTags(for: addedAndUncommitedNotes, existingTags: tags)
