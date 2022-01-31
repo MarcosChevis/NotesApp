@@ -15,59 +15,105 @@ class TagBuilderTest: XCTestCase {
     
     override func setUp() {
         coreDataStack = CoreDataStack(.inMemory)
-        sut = TagBuilder(coreDataStack: coreDataStack)
+        sut = TagBuilder {[weak coreDataStack] in
+            guard let coreDataStack = coreDataStack else { return nil }
+            return Tag(context: coreDataStack.mainContext)
+        }
     }
     
     override func tearDown() {
         sut = nil
     }
     
+    var changedAndInsertedNotes: [Note] {
+        coreDataStack.mainContext.insertedObjects.compactMap { $0 as? Note } + coreDataStack.mainContext.updatedObjects.compactMap { $0 as? Note}
+    }
+    
+    var existingTags: [Tag] {
+        try! coreDataStack.mainContext.fetch(Tag.fetchRequest())
+    }
+    
+    var existingNotes: [Note] {
+        try! coreDataStack.mainContext.fetch(Note.fetchRequest())
+    }
+    
     func testCheckTagsCreation() throws {
         
-        let notes = try createNotes()
+        _ = try createNotes()
         
         let inputedTags = ["#firstTag", "#secondTag", "#thirdTag"]
-        let tags = sut.build(for: notes)
+        
+        XCTAssertEqual(2, changedAndInsertedNotes.count)
+        XCTAssertEqual(0, existingTags.count)
+        
+        let tags = sut.buildNewTags(for: changedAndInsertedNotes, existingTags: existingTags)
         
         tags.compactMap(\.name).forEach {
             XCTAssertTrue(inputedTags.contains($0))
         }
         XCTAssertEqual(inputedTags.count, tags.count)
         
+        try coreDataStack.save()
         
+        XCTAssertEqual([2,2], existingNotes.map(\.allTags.count))
+        XCTAssertTrue(coreDataStack.mainContext.insertedObjects.isEmpty)
     }
     
     func testCheckTagsCreationWithExistingTags() throws {
         let notes = try createNotes()
-        let tags = sut.build(for: notes)
-        let tagsEntities = tags as! [Tag]
+        _ = sut.buildNewTags(for: changedAndInsertedNotes, existingTags: existingTags)
+        
         try coreDataStack.save()
         
-        let request = Tag.fetchRequest()
-        let savedTags = try coreDataStack.mainContext.fetch(request)
+        let tagCount = try coreDataStack.mainContext.count(for: Tag.fetchRequest())
+        let noteCount = try coreDataStack.mainContext.count(for: Note.fetchRequest())
         
-        XCTAssertEqual(savedTags.count, tags.count)
-        
-        let noteCounts = tagsEntities.compactMap(\.notes).map(\.count).sorted()
-         
-        XCTAssertEqual([1, 1, 2], noteCounts)
-        XCTAssertEqual([2,2], notes.map(\.allTags.count).sorted())
+        XCTAssertEqual(2, noteCount)
+        XCTAssertEqual(3, tagCount)
+        XCTAssertEqual([1,1,2], existingTags.compactMap(\.notes).map(\.count).sorted())
         
         notes[0].content?.append(" #fourthTag")
-        try coreDataStack.save()
         
-        let newTags = sut.build(for: notes)
+        let newTags = sut.buildNewTags(for: changedAndInsertedNotes, existingTags: existingTags)
+        
         XCTAssertEqual(1, newTags.count)
-        XCTAssertEqual("#fourthTag", newTags.first!.name)
         
         try coreDataStack.save()
         
-        let updatedNotes = try coreDataStack.mainContext.fetch(Note.fetchRequest())
-        let updatedTags = try coreDataStack.mainContext.fetch(Tag.fetchRequest())
+        XCTAssertEqual([2,3], existingNotes.map(\.allTags.count))
+        XCTAssertEqual(4, existingTags.count)
+        XCTAssertEqual([1,1,1,2], existingTags.compactMap(\.notes).map(\.count).sorted())
+    }
+    
+    func testCreateNewTagDoesNotRepeatTag() throws {
+        _ = try createNotes()
+        _ = sut.buildNewTags(for: changedAndInsertedNotes, existingTags: existingTags)
+        try coreDataStack.save()
         
-        XCTAssertEqual(updatedTags.count, 4)
-        XCTAssertEqual([1, 1, 1, 2], updatedTags.compactMap(\.notes).map(\.count).sorted())
-        XCTAssertEqual([2,3], updatedNotes.map(\.allTags.count).sorted())
+        let newNote = Note(context: coreDataStack.mainContext)
+        newNote.content = "oi oi tchau #firstTag"
+        
+        let newTags = sut.buildNewTags(for: changedAndInsertedNotes, existingTags: existingTags)
+        
+        XCTAssertTrue(newTags.isEmpty)
+    }
+    
+    func testAddExistingTagsIntoNote() throws {
+        _ = try createNotes()
+        _ = sut.buildNewTags(for: changedAndInsertedNotes, existingTags: existingTags)
+        try coreDataStack.save()
+        
+        let newNote = Note(context: coreDataStack.mainContext)
+        newNote.content = "oi oi tchau #firstTag"
+        
+        let updatedTags = sut.updateExistingTags(existingTags, with: changedAndInsertedNotes)
+        
+        XCTAssertEqual(1, updatedTags.count)
+        XCTAssertEqual("#firstTag", updatedTags.first!.name!)
+        
+        try coreDataStack.save()
+        
+        XCTAssertEqual(3, updatedTags.first!.notes!.count)
     }
     
     func createNotes() throws -> [Note] {
@@ -77,7 +123,6 @@ class TagBuilderTest: XCTestCase {
         let note2 = Note(context: coreDataStack.mainContext)
         note2.content = "some content #firstTag #thirdTag"
         
-        try coreDataStack.save()
         return [note1, note2]
     }
 }

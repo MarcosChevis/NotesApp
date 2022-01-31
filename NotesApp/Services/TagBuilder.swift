@@ -7,39 +7,21 @@
 
 import Foundation
 
-protocol TagBuilderProtocol {
-    func build(for notes: [NoteProtocol]) -> [TagProtocol]
-}
-
-struct TagBuilder: TagBuilderProtocol {
-    private let coreDataStack: CoreDataStack
+class TagBuilder {
+    private var buildEmptyTag: (() -> Tag?)?
     
-    init(coreDataStack: CoreDataStack) {
-        self.coreDataStack = coreDataStack
+    init(buildEmptyTag: (() -> Tag?)? = nil) {
+        self.buildEmptyTag = buildEmptyTag
     }
     
-    func build(for notes: [NoteProtocol]) -> [TagProtocol] {
-        do {
-            let existingTags = try fetchExistingTags()
-            let existingTagContent = existingTags.compactMap(\.name)
-            let newTags = buildTagsForNotes(notes, existingTagsContent: existingTagContent)
-            return newTags
-        } catch {
-            return []
-        }
+    @discardableResult
+    func buildNewTags(for notes: [Note], existingTags: [Tag]) -> [Tag] {
+        let exisingTagContent = existingTags.compactMap(\.name)
+        let newTags = buildTagsForNotes(notes, existingTagsContent: exisingTagContent)
+        return newTags
     }
     
-    private func fetchExistingTags() throws -> [Tag] {
-        do {
-            let tagsRequest = Tag.fetchRequest()
-            let tags = try coreDataStack.mainContext.fetch(tagsRequest)
-            return tags
-        } catch {
-            throw TagBuilderError.failedFetchingExistingNotes
-        }
-    }
-    
-    private func buildTagsForNotes(_ notes: [NoteProtocol], existingTagsContent: [String]) -> [Tag] {
+    private func buildTagsForNotes(_ notes: [Note], existingTagsContent: [String]) -> [Tag] {
         let tagContent = notes
             .compactMap(\.content)
             .map(findTagContent)
@@ -48,10 +30,14 @@ struct TagBuilder: TagBuilderProtocol {
         
         let tagSet = Set<String>(tagContent)
         
-        let tags = tagSet.map { content -> Tag in
-            let tag = Tag(context: coreDataStack.mainContext)
+        let tags = tagSet.compactMap { content -> Tag? in
+            
+            guard let buildEmptyTag = buildEmptyTag, let tag = buildEmptyTag() else {
+                return nil
+            }
+            
             tag.name = content
-            let notesWithTag = notes.filter { filterNoteWithTag($0, tagContent: content) }.compactMap { $0 as? Note }
+            let notesWithTag = notes.filter { filterNoteWithTag($0, tagContent: content) }
             tag.addToNotes(NSSet(array: notesWithTag))
             return tag
         }
@@ -69,7 +55,7 @@ struct TagBuilder: TagBuilderProtocol {
         return tags
     }
     
-    private func filterNoteWithTag(_ note: NoteProtocol, tagContent: String) -> Bool {
+    private func filterNoteWithTag(_ note: Note, tagContent: String) -> Bool {
         if findTagContent(for: note.content ?? "").contains(tagContent) {
             return true
         } else {
@@ -77,7 +63,29 @@ struct TagBuilder: TagBuilderProtocol {
         }
     }
     
-    enum TagBuilderError: Error {
-        case failedFetchingExistingNotes
+    @discardableResult
+    func updateExistingTags(_ existingTags: [Tag], with notes: [Note]) -> [Tag] {
+        let updatedTags = existingTags.compactMap {
+            updateExistingTag($0, with: notes)
+        }
+        
+        return updatedTags
+    }
+    
+
+    
+    private func updateExistingTag(_ tag: Tag, with notes: [Note]) -> Tag? {
+        guard let currentNotes = tag.notes?.allObjects as? [Note], let tagContent = tag.name else {
+            return nil
+        }
+        
+        let newNotes = notes.filter { !currentNotes.contains($0) && $0.content?.contains(tagContent) ?? false }
+        
+        if newNotes.isEmpty {
+            return nil
+        }
+        
+        tag.addToNotes(NSSet(array: newNotes))
+        return tag
     }
 }

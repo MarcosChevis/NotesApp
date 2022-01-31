@@ -11,32 +11,10 @@ import Combine
 import UIKit
 
 class NotesRepository: NSObject, NotesRepositoryProtocol {
-    func filterForContent(_ content: String) -> [NoteCellViewModel] {
-        let upperCasedContent = content.uppercased()
-        let allNotes = fetchResultsController.fetchedObjects ?? []
-        
-        if content.isEmpty {
-            return allNotes.map(NoteCellViewModel.init)
-        }
-        
-        let filteredNotes = allNotes.filter { note in
-            let upperCasedNoteContent = note.content?.uppercased()
-            let upperCasedNoteTitle = note.title?.uppercased()
-            let doesContainInContent = upperCasedNoteContent?.contains(upperCasedContent) ?? false
-            let doesContainInTitle = upperCasedNoteTitle?.contains(upperCasedContent) ?? false
-            return doesContainInTitle || doesContainInContent
-        }
-        
-        return filteredNotes.map(NoteCellViewModel.init)
-    }
-    
-    func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
-        []
-    }
-
     private let coreDataStack: CoreDataStack
     private var cancelables: Set<AnyCancellable>
     private let notificationService: NotificationService
+    private let tagBuilder: TagBuilder
     let fetchResultsController: NSFetchedResultsController<Note>
     
     weak var delegate: NoteRepositoryProtocolDelegate?
@@ -51,9 +29,45 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         self.fetchResultsController = noteFetchResultsController
         self.cancelables = .init()
         self.notificationService = notificationService
+        self.tagBuilder = TagBuilder {[weak coreDataStack] in
+            guard let coreDataStack = coreDataStack else { return nil }
+            return Tag(context: coreDataStack.mainContext)
+        }
         super.init()
         noteFetchResultsController.delegate = self
         setupBindings()
+    }
+    
+    private func setupBindings() {
+        notificationService.publisher(for: .saveChanges, with: nil)
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.current, options: .none)
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: triggerSave)
+            .store(in: &cancelables)
+        
+        notificationService.publisher(for: UIApplication.willResignActiveNotification, with: nil)
+            .sink(receiveValue: removeEmptyAndSaveNotification)
+            .store(in: &cancelables)
+    }
+    
+    private func triggerSave(_ notification: Notification) {
+        do {
+            let tags = try coreDataStack.mainContext.fetch(Tag.fetchRequest())
+            let newTags = tagBuilder.buildNewTags(for: addedAndUncommitedNotes, existingTags: tags)
+            tagBuilder.updateExistingTags(tags + newTags, with: addedAndUncommitedNotes)
+            try saveChanges()
+            
+        } catch {
+            coreDataStack.mainContext.rollback()
+        }
+    }
+    
+    private var addedAndUncommitedNotes: [Note] {
+        coreDataStack.mainContext.insertedObjects.compactMap { $0 as? Note } + coreDataStack.mainContext.updatedObjects.compactMap { $0 as? Note}
+    }
+    
+    private func removeEmptyAndSaveNotification(_ notification: Notification) {
+        saveChangesWithoutEmptyNotes()
     }
     
     func saveChanges() throws {
@@ -88,30 +102,6 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         return viewModels
     }
     
-    private func setupBindings() {
-        notificationService.publisher(for: .saveChanges, with: nil)
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.current, options: .none)
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: triggerSave)
-            .store(in: &cancelables)
-        
-        notificationService.publisher(for: UIApplication.willResignActiveNotification, with: nil)
-            .sink(receiveValue: removeEmptyAndSaveNotification)
-            .store(in: &cancelables)
-    }
-    
-    private func triggerSave(_ notification: Notification) {
-        do {
-            try saveChanges()
-        } catch {
-            coreDataStack.mainContext.rollback()
-        }
-    }
-    
-    private func removeEmptyAndSaveNotification(_ notification: Notification) {
-        saveChangesWithoutEmptyNotes()
-    }
-    
     func saveChangesWithoutEmptyNotes() {
         do {
             removeEmptyObjects()
@@ -130,6 +120,29 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
             return content.isEmpty
         }
         emptyNotes.forEach { coreDataStack.mainContext.delete($0) }
+    }
+    
+    func filterForContent(_ content: String) -> [NoteCellViewModel] {
+        let upperCasedContent = content.uppercased()
+        let allNotes = fetchResultsController.fetchedObjects ?? []
+        
+        if content.isEmpty {
+            return allNotes.map(NoteCellViewModel.init)
+        }
+        
+        let filteredNotes = allNotes.filter { note in
+            let upperCasedNoteContent = note.content?.uppercased()
+            let upperCasedNoteTitle = note.title?.uppercased()
+            let doesContainInContent = upperCasedNoteContent?.contains(upperCasedContent) ?? false
+            let doesContainInTitle = upperCasedNoteTitle?.contains(upperCasedContent) ?? false
+            return doesContainInTitle || doesContainInContent
+        }
+        
+        return filteredNotes.map(NoteCellViewModel.init)
+    }
+    
+    func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel] {
+        []
     }
 
 }
