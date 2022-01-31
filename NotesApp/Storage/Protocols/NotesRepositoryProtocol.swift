@@ -19,7 +19,7 @@ protocol NotesRepositoryProtocol: AnyObject {
 }
 
 protocol NoteRepositoryProtocolDelegate: AnyObject {
-    func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath)
+    func insertNote(_ note: NoteCellViewModel)
     func deleteNote(_ note: NoteCellViewModel)
     
 }
