@@ -10,10 +10,10 @@
         "name": "Classic"
     },
     {
-        "actionColor": "#0C79FCFF",
-        "background": "#000010FF",
-        "buttonBackground": "#040712F2",
-        "noteBackground": "#00003EFF",
+        "actionColor": "#0A84FFFF",
+        "background": "#000000FF",
+        "buttonBackground": "#048AFF1A",
+        "noteBackground": "#1C1C1EFF",
         "text": "#FFFFFFFF",
         "largeTitle": "#FFFFFFFF",
         "id": "50fab20d-3934-4a4a-8274-1ad502544a06",
