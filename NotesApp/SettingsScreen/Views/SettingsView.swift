@@ -22,7 +22,7 @@ class SettingsView: ThemableView {
     }()
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setColors(palette: palette)
         setupConstraints()
@@ -34,7 +34,7 @@ class SettingsView: ThemableView {
     }
     
     override func setColors(palette: ColorSet) {
-        self.backgroundColor = palette.palette().background
+        self.backgroundColor = palette.background
     }
     
     func setupConstraints() {

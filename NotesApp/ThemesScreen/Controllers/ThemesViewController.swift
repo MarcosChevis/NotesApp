@@ -9,6 +9,7 @@ import UIKit
 
 class ThemesViewController: ThemableViewController {
     
+    var themeRepository: ThemeRepositoryProtocol
     var contentView: ThemesView
     var collectionDataSource: ThemesCollectionDataSource
     weak var coordinator: AllNotesCoordinatorProtocol?
@@ -20,15 +21,19 @@ class ThemesViewController: ThemableViewController {
     }
     
     init(palette: ColorSet, collectionDataSource: ThemesCollectionDataSource, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+         settings: Settings = .shared, themeRepository: ThemeRepositoryProtocol = ThemeRepository.shared) {
         
         self.contentView = ThemesView(palette: palette)
         self.collectionDataSource = collectionDataSource
+        self.themeRepository = themeRepository
      
         
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         self.contentView.collectionView.delegate = self
         self.contentView.collectionView.dataSource = collectionDataSource
+        self.contentView.delegate = self
+        
+        navigationItem.rightBarButtonItems = [ contentView.plusButton]
     }
     
     required init?(coder: NSCoder) {
@@ -46,6 +51,13 @@ class ThemesViewController: ThemableViewController {
         setupNavigationBar()
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let data = themeRepository.getAllThemes()
+        collectionDataSource.setupData(data: data)
+        contentView.collectionView.reloadData()
+    }
     
     func setupNavigationBar() {
         title = "Themes"
@@ -53,34 +65,20 @@ class ThemesViewController: ThemableViewController {
     }
     
     func changeIcon(palette: ColorSet) {
-        switch palette {
-        case .classic:
-            UIApplication.shared.setAlternateIconName(nil)
-        case .dark:
-            UIApplication.shared.setAlternateIconName("DarkTheme")
-        case .neon:
-            UIApplication.shared.setAlternateIconName("NeonTheme")
-        case .christmas:
-            UIApplication.shared.setAlternateIconName("ChristmasTheme")
-        case .grape:
-            UIApplication.shared.setAlternateIconName("GrapeTheme")
-        case .bookish:
-            UIApplication.shared.setAlternateIconName("BookishTheme")
-        case .halloween:
-            UIApplication.shared.setAlternateIconName("HalloweenTheme")
-        case .devotional:
-            UIApplication.shared.setAlternateIconName("DevotionalTheme")
-        case .crt:
-            UIApplication.shared.setAlternateIconName("MatrixTheme")
-        case .unicorn:
-            UIApplication.shared.setAlternateIconName("UnicornTheme")
-        }
+        UIApplication.shared.setAlternateIconName(palette.icon)
     }
     
     override func didChangeTheme(_ notification: Notification) {
         super.didChangeTheme(notification)
         
         changeIcon(palette: palette)
+    }
+    
+}
+
+extension ThemesViewController: ThemesViewProtocol {
+    func didTapPlus() {
+        coordinator?.navigateToCustomTheme()
     }
     
 }

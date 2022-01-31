@@ -38,7 +38,7 @@ class NoteCellContentView: ThemableView {
     }()
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-                  settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         
         placeholder = .init(string: placeholderContent)
         super.init(palette: palette, notificationService: notificationService, settings: settings)
@@ -94,15 +94,17 @@ class NoteCellContentView: ThemableView {
     }
     
     override func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
+        guard let palette = palette else { return }
         
-        self.title.textColor = colorSet.text
-        self.textView.textColor = colorSet.text
-        backgroundColor = colorSet.noteBackground
+        self.title.textColor = palette.text
+        self.textView.textColor = palette.text
+        backgroundColor = palette.noteBackground
+        
+        guard let textColor = palette.text?.withAlphaComponent(0.4) else { return }
         
         let attributeRange = NSRange(location: 0, length: placeholderContent.count)
         placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
-        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: colorSet.text.withAlphaComponent(0.4)], range: attributeRange)
+        placeholder.addAttributes([NSAttributedString.Key.foregroundColor: textColor], range: attributeRange)
         layer.shadowColor = UIColor.black.cgColor
         
     }

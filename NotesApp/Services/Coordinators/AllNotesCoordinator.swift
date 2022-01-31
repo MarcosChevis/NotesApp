@@ -12,6 +12,7 @@ protocol AllNotesCoordinatorProtocol: AnyObject, AlertCoordinatorProtocol, NoteS
     func editNote(with id: String)
     func navigateToSettings()
     func navigateToThemes()
+    func navigateToCustomTheme()
 }
 
 class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
@@ -21,8 +22,7 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol]
     
     init(navigationController: NavigationController,
-         settings: Settings = Settings(localStorageService: UserDefaults.standard,
-                                       notificationService: NotificationCenter.default),
+         settings: Settings = .shared,
          notificationService: NotificationService = NotificationCenter.default)
     {
         self.navigationController = navigationController
@@ -63,4 +63,22 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func navigateToCustomTheme() {
+        let childCoordinator = CustomThemeBuilderCoordinator(navigationController: NavigationController())
+        childCoordinators.append(childCoordinator)
+        childCoordinator.start()
+        childCoordinator.delegate = self
+        navigationController.present(childCoordinator.navigationController, animated: true, completion: nil)
+    }
+}
+
+extension AllNotesCoordinator: CustomThemeBuilderCoordinatorDelegate {
+    func didDismiss() {
+        childCoordinators.removeAll(where: {
+            ($0 as? CustomThemeBuilderCoordinator) != nil
+        })
+    }
+    
+    
 }

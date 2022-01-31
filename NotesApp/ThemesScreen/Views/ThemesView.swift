@@ -8,6 +8,9 @@
 import UIKit
 
 class ThemesView: ThemableView {
+    
+    weak var delegate: ThemesViewProtocol?
+    
     override var palette: ColorSet {
         didSet {
             setColors(palette: palette)
@@ -20,6 +23,11 @@ class ThemesView: ThemableView {
         addSubview(view)
         
         return view
+    }()
+    
+    lazy var plusButton: UIBarButtonItem = {
+        let but = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain , target: self, action: #selector(didTapPlus))
+        return but
     }()
     
     private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
@@ -53,7 +61,7 @@ class ThemesView: ThemableView {
     }()
 
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupConstraints()
     }
@@ -63,8 +71,8 @@ class ThemesView: ThemableView {
     }
     
     override func setColors(palette: ColorSet) {
-        let colorSet = palette.palette()
-        backgroundColor = colorSet.background
+        
+        backgroundColor = palette.background
     }
     
     func setupConstraints() {
@@ -74,7 +82,8 @@ class ThemesView: ThemableView {
         NSLayoutConstraint.activate([
             exampleView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
             exampleView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            exampleView.widthAnchor.constraint(equalTo: exampleView.heightAnchor, multiplier: ratio)])
+            exampleView.widthAnchor.constraint(equalTo: exampleView.heightAnchor, multiplier: ratio)
+        ])
        
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: exampleView.bottomAnchor, constant: 30),
@@ -82,5 +91,9 @@ class ThemesView: ThemableView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: 150)])
+    }
+    
+    @objc func didTapPlus() {
+        delegate?.didTapPlus()
     }
 }

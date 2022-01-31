@@ -9,18 +9,18 @@ import UIKit
 
 class ThemesCollectionDataSource: NSObject, UICollectionViewDataSource {
     var data: [ThemeCollectionData] = []
-    let settings: Settings = Settings()
+    let settings: Settings
 
-    override init() {
+    init(settings: Settings = .shared) {
+        self.settings = settings
         super.init()
         
-        createData()
     }
     
-    func createData() {
-        for cases in ColorSet.allCases {
-            data.append(ThemeCollectionData(colorSet: cases, isSelected: settings.theme == cases))
-        }
+    func setupData(data: [ColorSet]) {
+        self.data = data.map({ colorSet in
+            ThemeCollectionData(colorSet: colorSet, isSelected: settings.theme == colorSet)
+        })
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -27,22 +27,21 @@ extension AllNotesViewController {
         return { [weak self] (collectionView: UICollectionView,
                   kind: String,
                   indexPath: IndexPath) -> UICollectionReusableView? in
-            let textColor = self?.palette.palette().largeTitle ?? ColorSet.classic.palette().largeTitle
+            guard let color = self?.palette.text else { return nil }
+            let textColor = color
             
             if kind == UICollectionView.elementKindSectionHeader {
-                if indexPath.section == 0 {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
-                        fatalError()
-                    }
-                    header.setup(with: "Tags", color: textColor)
-                    return header
-                } else {
-                    guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
-                        fatalError()
-                    }
-                    header.setup(with: "All Notes", color: textColor)
-                    return header
+                guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier, for: indexPath) as? Header else {
+                    fatalError()
                 }
+                if indexPath.section == 0 {
+                    header.setup(with: "Tags", color: textColor)
+                    
+                } else {
+                    header.setup(with: "All Notes", color: textColor)
+                }
+                
+                return header
             } else {
                 return nil
             }
@@ -51,14 +50,14 @@ extension AllNotesViewController {
     
     func makeTagCellRegistration() -> TagCellRegistration {
         return TagCellRegistration { [weak self] cell, indexPath, tag in
-            let palette = self?.palette ?? .classic
+            guard let palette = self?.palette else { return }
             cell.setup(with: tag, colorSet: palette)
         }
     }
     
     func makeNoteCellRegistration() -> NoteCellRegistration {
         return NoteCellRegistration { [weak self] cell, indexPath, note in
-            let palette = self?.palette ?? .classic
+            guard let palette = self?.palette else { return }
             cell.delegate = self
             cell.setup(palette: palette, viewModel: note)
         }

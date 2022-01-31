@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     
@@ -27,7 +28,8 @@ class NoteSmallCellCollectionViewCell: UICollectionViewCell {
     private var shouldHidContent: Bool
     
     override init(frame: CGRect) {
-        noteSmallContentView = NoteSmallCellContentView(palette: .classic)
+        
+        noteSmallContentView = NoteSmallCellContentView(palette: ColorSet.classic)
         noteSmallContentView.translatesAutoresizingMaskIntoConstraints = false
         self.shouldHidContent = true
         

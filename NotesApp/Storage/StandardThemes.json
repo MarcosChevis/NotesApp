@@ -1,0 +1,111 @@
+[
+    {
+        "actionColor": "#1D58D9FF",
+        "background": "#F1F1F6FF",
+        "buttonBackground": "#1D58D926",
+        "noteBackground": "#FFFFFFFF",
+        "text": "#000000FF",
+        "largeTitle": "#000000FF",
+        "id": "b4489fa5-6c2b-4515-9c35-be7e226cdbfa",
+        "name": "Classic"
+    },
+    {
+        "actionColor": "#0A84FFFF",
+        "background": "#000000FF",
+        "buttonBackground": "#048AFF1A",
+        "noteBackground": "#1C1C1EFF",
+        "text": "#FFFFFFFF",
+        "largeTitle": "#FFFFFFFF",
+        "id": "50fab20d-3934-4a4a-8274-1ad502544a06",
+        "name": "Dark",
+        "icon": "DarkTheme"
+    },
+    {
+        "actionColor": "#6416C3FF",
+        "background": "#E9E1FFFF",
+        "buttonBackground": "#7605DB0D",
+        "noteBackground": "#EDF4FF",
+        "text": "#111D66FF",
+        "largeTitle": "#4A1883FF",
+        "id": "6bcb4b2d-6afa-4a2a-b4dc-f2cca83a44c7",
+        "name": "Grape",
+        "icon": "GrapeTheme"
+    },
+    {
+        "actionColor": "#DE4F31FF",
+        "background": "#1E1E34FF",
+        "buttonBackground": "#BA412826",
+        "noteBackground": "#302F51FF",
+        "text": "#FFFFFFFF",
+        "largeTitle": "#FFFFFFFF",
+        "id": "bf2ae775-8660-4e33-88d3-0676bdf47572",
+        "name": "Halloween",
+        "icon": "HalloweenTheme"
+    },
+    {
+        "actionColor": "#EA3AC8FF",
+        "background": "#1E2765FF",
+        "buttonBackground": "#EA39C733",
+        "noteBackground": "#12183FFF",
+        "text": "#CDFAFAFF",
+        "largeTitle": "#CDFAFAFF",
+        "id": "224462ed-d295-4ba7-a9bd-9b986ba751df",
+        "name": "Neon",
+        "icon": "NeonTheme"
+    },
+    {
+        "actionColor": "#000000FF",
+        "background": "#DCC7A3FF",
+        "buttonBackground": "#CEA42B26",
+        "noteBackground": "#F4DFB9FF",
+        "text": "#000000FF",
+        "largeTitle": "#000000FF",
+        "id": "bc09ce57-6039-445f-83e4-c7165b4afc79",
+        "name": "Bookish",
+        "icon": "BookishTheme"
+    },
+    {
+        "actionColor": "#EAC289FF",
+        "background": "#707E77FF",
+        "buttonBackground": "#BA823F33",
+        "noteBackground": "#E3BA85FF",
+        "text": "#F0D9A4FF",
+        "largeTitle": "#E3BA85FF",
+        "id": "0765f920-170e-4521-b077-cd496917f21b",
+        "name": "Devotional",
+        "icon": "DevotionalTheme"
+    },
+    {
+        "actionColor": "#1FFF1FFF",
+        "background": "#000000FF",
+        "buttonBackground": "#094013FF",
+        "noteBackground": "#10270FFF",
+        "text": "#1FFF1FFF",
+        "largeTitle": "#1FFF1FFF",
+        "id": "f5e3ec97-1b02-46f2-b2de-0592d7fe48b5",
+        "name": "CRT",
+        "icon": "MatrixTheme"
+    },
+    {
+        "actionColor": "#D114FFFF",
+        "background": "#F9FFF8FF",
+        "buttonBackground": "#FEFFA3FF",
+        "noteBackground": "#A2E0FFFF",
+        "text": "#152451FF",
+        "largeTitle": "#D114FFFF",
+        "id": "8de332a6-2120-45b8-b638-f2c86b017aa5",
+        "name": "Unicorn",
+        "icon": "UnicornTheme"
+    },
+    {
+        "actionColor": "#FFFFFFFF",
+        "background": "#AB0800FF",
+        "buttonBackground": "#20BE7380",
+        "noteBackground": "#164943FF",
+        "text": "#FDFDFDFF",
+        "largeTitle": "#FDFDFDFF",
+        "id": "a1c6b360-2b91-473c-b24e-8a95d3ed45d9",
+        "name": "Christmas",
+        "icon": "ChristmasTheme"
+    }
+]

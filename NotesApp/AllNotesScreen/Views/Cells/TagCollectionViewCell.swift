@@ -41,21 +41,21 @@ class TagCollectionViewCell: UICollectionViewCell {
     
     func setup(with viewModel: TagCellViewModel, colorSet: ColorSet) {
         self.palette = colorSet
-        setColors(palette: palette, isSelected: viewModel.isSelected)
+        setColors(colorSet: palette, isSelected: viewModel.isSelected)
         
         tagLabel.text = viewModel.tag.name ?? ""
     }
     
-    func setColors(palette: ColorSet?, isSelected: Bool) {
-        guard let colorSet = palette?.palette() else { return }
+    func setColors(colorSet: ColorSet?, isSelected: Bool) {
+        guard let colorSet = colorSet else { return }
 
         contentView.backgroundColor = colorSet.noteBackground
         tagLabel.textColor = colorSet.actionColor
         
         if isSelected {
-            contentView.layer.borderColor = colorSet.actionColor.cgColor
+            contentView.layer.borderColor = colorSet.actionColor?.cgColor
         } else {
-            contentView.layer.borderColor = colorSet.noteBackground.cgColor
+            contentView.layer.borderColor = colorSet.noteBackground?.cgColor
         }
     }
 }

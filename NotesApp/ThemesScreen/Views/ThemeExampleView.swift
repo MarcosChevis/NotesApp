@@ -89,7 +89,7 @@ class ThemeExampleView: ThemableView {
     }()
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         
         isUserInteractionEnabled = false
@@ -165,12 +165,27 @@ class ThemeExampleView: ThemableView {
             textView.bottomAnchor.constraint(equalTo: middleView.bottomAnchor, constant: -8)
         ])
 
-        
     }
 
     override func setColors(palette: ColorSet) {
         super.setColors(palette: palette)
-        let colorSet = palette.palette()
+        backgroundColor = palette.background
+        shareButton.tintColor = palette.actionColor
+        bigTitle.textColor = palette.largeTitle
+        middleView.backgroundColor = palette.noteBackground
+        trashButton.tintColor = palette.actionColor
+        noteButton.tintColor = palette.actionColor
+        plusButton.tintColor = palette.actionColor
+        smallTitle.textColor = palette.text
+        textView.textColor = palette.text
+
+        layer.shadowColor = palette.actionColor?.cgColor
+        
+        smallTitle.text = palette.name.capitalized + " Theme"
+    }
+    
+    func setColorsForCustomTheme(colorSet: ThemeProtocol) {
+        
         backgroundColor = colorSet.background
         shareButton.tintColor = colorSet.actionColor
         bigTitle.textColor = colorSet.largeTitle
@@ -181,10 +196,9 @@ class ThemeExampleView: ThemableView {
         smallTitle.textColor = colorSet.text
         textView.textColor = colorSet.text
 
+        layer.shadowColor = colorSet.actionColor?.cgColor
         
-        layer.shadowColor = colorSet.actionColor.cgColor
-        
-        smallTitle.text = palette.rawValue.capitalized + " Theme"
+        smallTitle.text = palette.name.capitalized + " Theme"
     }
     
 }

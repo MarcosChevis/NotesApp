@@ -67,7 +67,7 @@ class NoteView: ThemableView {
     weak var delegate: NoteViewDelegate?
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupConstraints()
     }
@@ -77,11 +77,11 @@ class NoteView: ThemableView {
     }
     
     override func setColors(palette: ColorSet) {
-        let colorSet = palette.palette()
-        backgroundColor = colorSet.background
+        
+        backgroundColor = palette.background
         
         for item in toolbarItems {
-            item.tintColor = colorSet.actionColor
+            item.tintColor = palette.actionColor
         }
     }
     

@@ -24,7 +24,7 @@ class NoteViewController: ThemableViewController {
     init(palette: ColorSet,
          repository: NotesRepositoryProtocol,
          notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+         settings: Settings = .shared) {
         self.contentView = NoteView(palette: palette)
 
         self.repository = repository
@@ -74,6 +74,11 @@ class NoteViewController: ThemableViewController {
         } catch  {
             
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollToEmptyNote()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

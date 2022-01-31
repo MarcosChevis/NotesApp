@@ -13,7 +13,7 @@ class SettingsViewController: ThemableViewController {
     var tableDataSource: SettingTableDataSource
     
     init(palette: ColorSet, tableDataSource: SettingTableDataSource, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+         settings: Settings = .shared) {
         self.contentView = SettingsView(palette: palette)
         self.tableDataSource = tableDataSource
         

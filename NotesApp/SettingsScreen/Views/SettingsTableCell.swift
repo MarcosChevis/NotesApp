@@ -22,10 +22,10 @@ class SettingsTableCell: UITableViewCell {
     }
     
     func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
+        guard let palette = palette else { return }
         
-        backgroundColor = colorSet.noteBackground
-        textLabel?.textColor = colorSet.text
+        backgroundColor = palette.noteBackground
+        textLabel?.textColor = palette.text
     }
     
     

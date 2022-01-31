@@ -29,7 +29,7 @@ class AllNotesViewController: ThemableViewController {
          noteRepository: NotesRepositoryProtocol = NotesRepository(isAscending: false),
          tagRepository: TagRepositoryProtocol = TagRepository(),
          notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = Settings()) {
+         settings: Settings = .shared) {
         
         self.contentView = AllNotesView(palette: palette)
         

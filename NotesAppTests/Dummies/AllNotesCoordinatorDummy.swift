@@ -15,6 +15,7 @@ class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
     var didNavigateToEditNote: Bool = false
     var editedNote: String = ""
     var didPresentErrorAlert: Bool = false
+    var didNavigateToCustomThemes: Bool = false
     var didPresentSingleAlertAction: Bool = false
     var sharedNote: String? = nil
     
@@ -45,5 +46,9 @@ class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
     
     func shareContent(_ content: String) {
         sharedNote = content
+    }
+    
+    func navigateToCustomTheme() {
+        didNavigateToCustomThemes = true
     }
 }

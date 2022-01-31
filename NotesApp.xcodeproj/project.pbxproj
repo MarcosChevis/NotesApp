@@ -77,11 +77,34 @@
 		BA578D57278EFC6A000617F6 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D56278EFC6A000617F6 /* NoteViewController.swift */; };
 		BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D58278EFCEB000617F6 /* NoteView.swift */; };
 		BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA578D5A278F025F000617F6 /* ColorSet.swift */; };
+		BA6B29F427A8517800951644 /* CustomThemeBuilderViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B29F327A8517800951644 /* CustomThemeBuilderViewControllerTest.swift */; };
+		BA6B29F627A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B29F527A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift */; };
+		BA6B29F827A85CD700951644 /* CustomThemeBuilderViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B29F727A85CD700951644 /* CustomThemeBuilderViewTest.swift */; };
+		BA9720D327A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9720D227A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift */; };
+		BA9720D627A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9720D527A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift */; };
+		BA9720D827A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9720D727A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift */; };
+		BA9720DB27A41CD000E084E2 /* ThemesViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9720DA27A41CD000E084E2 /* ThemesViewProtocol.swift */; };
+		BAA8DFB627A1BCCE00D3704C /* CustomThemeBuilderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA8DFB527A1BCCE00D3704C /* CustomThemeBuilderViewController.swift */; };
+		BAA8DFBA27A1BF3100D3704C /* CustomThemeBuilderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA8DFB927A1BF3100D3704C /* CustomThemeBuilderView.swift */; };
+		BAA8DFBC27A1C4C500D3704C /* CustomThemeBuilderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA8DFBB27A1C4C500D3704C /* CustomThemeBuilderCollectionViewCell.swift */; };
+		BAA8DFBE27A1C72D00D3704C /* CustomThemeBuilderCollectionViewCellContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA8DFBD27A1C72D00D3704C /* CustomThemeBuilderCollectionViewCellContentView.swift */; };
 		BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */; };
 		BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAB1E029269DBBF8001FC3CC /* NotesModel.xcdatamodeld */; };
 		BAB1E02D269DBBFA001FC3CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAB1E02C269DBBFA001FC3CC /* Assets.xcassets */; };
 		BAB1E030269DBBFA001FC3CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAB1E02E269DBBFA001FC3CC /* LaunchScreen.storyboard */; };
+		BAC0FD8D27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0FD8C27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift */; };
+		BAC0FD9027A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC0FD8F27A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift */; };
 		BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAC82D5826A9DD2300E52701 /* NoteExtension.swift */; };
+		BAEC252527A3989200C54C72 /* UIColor+isLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC252427A3989200C54C72 /* UIColor+isLight.swift */; };
+		BAEC252727A39C0D00C54C72 /* StandardThemes.json in Resources */ = {isa = PBXBuildFile; fileRef = BAEC252627A39C0D00C54C72 /* StandardThemes.json */; };
+		BAEC252927A39E1700C54C72 /* StandardTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC252827A39E1700C54C72 /* StandardTheme.swift */; };
+		BAEC252B27A3A0A300C54C72 /* JSONDecoderUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEC252A27A3A0A300C54C72 /* JSONDecoderUtilities.swift */; };
+		BAEF61AA27A2D0FB00C64A17 /* CustomColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61A927A2D0FB00C64A17 /* CustomColorData.swift */; };
+		BAEF61AD27A2D42D00C64A17 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61AC27A2D42D00C64A17 /* UIColor+Hex.swift */; };
+		BAEF61AF27A2D4A300C64A17 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61AE27A2D4A300C64A17 /* UIColor+Hex.swift */; };
+		BAEF61B127A2D99000C64A17 /* ThemeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61B027A2D99000C64A17 /* ThemeRepositoryProtocol.swift */; };
+		BAEF61B327A2DD0D00C64A17 /* ThemeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61B227A2DD0D00C64A17 /* ThemeProtocol.swift */; };
+		BAEF61B527A2DD4500C64A17 /* ThemeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEF61B427A2DD4500C64A17 /* ThemeRepository.swift */; };
 		C87AA536279082FA00E2AEF1 /* ThemesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA535279082FA00E2AEF1 /* ThemesViewController.swift */; };
 		C87AA53A2791A57D00E2AEF1 /* ThemesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA5392791A57D00E2AEF1 /* ThemesView.swift */; };
 		C87AA53C2797101500E2AEF1 /* ThemableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87AA53B2797101500E2AEF1 /* ThemableViewController.swift */; };
@@ -195,6 +218,17 @@
 		BA578D58278EFCEB000617F6 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		BA578D5A278F025F000617F6 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
 		BA578D5F278F1A2D000617F6 /* NotesViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewDelegate.swift; sourceTree = "<group>"; };
+		BA6B29F327A8517800951644 /* CustomThemeBuilderViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderViewControllerTest.swift; sourceTree = "<group>"; };
+		BA6B29F527A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCoordinatorDummy.swift; sourceTree = "<group>"; };
+		BA6B29F727A85CD700951644 /* CustomThemeBuilderViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderViewTest.swift; sourceTree = "<group>"; };
+		BA9720D227A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCoordinator.swift; sourceTree = "<group>"; };
+		BA9720D527A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		BA9720D727A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCoordinatorDelegate.swift; sourceTree = "<group>"; };
+		BA9720DA27A41CD000E084E2 /* ThemesViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewProtocol.swift; sourceTree = "<group>"; };
+		BAA8DFB527A1BCCE00D3704C /* CustomThemeBuilderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderViewController.swift; sourceTree = "<group>"; };
+		BAA8DFB927A1BF3100D3704C /* CustomThemeBuilderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderView.swift; sourceTree = "<group>"; };
+		BAA8DFBB27A1C4C500D3704C /* CustomThemeBuilderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCollectionViewCell.swift; sourceTree = "<group>"; };
+		BAA8DFBD27A1C72D00D3704C /* CustomThemeBuilderCollectionViewCellContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCollectionViewCellContentView.swift; sourceTree = "<group>"; };
 		BAB1E01D269DBBF8001FC3CC /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAB1E020269DBBF8001FC3CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BAB1E022269DBBF8001FC3CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -202,7 +236,19 @@
 		BAB1E02C269DBBFA001FC3CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAB1E02F269DBBFA001FC3CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAB1E031269DBBFA001FC3CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BAC0FD8C27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		BAC0FD8F27A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderViewDelegate.swift; sourceTree = "<group>"; };
 		BAC82D5826A9DD2300E52701 /* NoteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtension.swift; sourceTree = "<group>"; };
+		BAEC252427A3989200C54C72 /* UIColor+isLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+isLight.swift"; sourceTree = "<group>"; };
+		BAEC252627A39C0D00C54C72 /* StandardThemes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StandardThemes.json; sourceTree = "<group>"; };
+		BAEC252827A39E1700C54C72 /* StandardTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardTheme.swift; sourceTree = "<group>"; };
+		BAEC252A27A3A0A300C54C72 /* JSONDecoderUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderUtilities.swift; sourceTree = "<group>"; };
+		BAEF61A927A2D0FB00C64A17 /* CustomColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorData.swift; sourceTree = "<group>"; };
+		BAEF61AC27A2D42D00C64A17 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		BAEF61AE27A2D4A300C64A17 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		BAEF61B027A2D99000C64A17 /* ThemeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryProtocol.swift; sourceTree = "<group>"; };
+		BAEF61B227A2DD0D00C64A17 /* ThemeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocol.swift; sourceTree = "<group>"; };
+		BAEF61B427A2DD4500C64A17 /* ThemeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepository.swift; sourceTree = "<group>"; };
 		C87AA535279082FA00E2AEF1 /* ThemesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesViewController.swift; sourceTree = "<group>"; };
 		C87AA5392791A57D00E2AEF1 /* ThemesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemesView.swift; sourceTree = "<group>"; };
 		C87AA53B2797101500E2AEF1 /* ThemableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemableViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +320,7 @@
 				9DE31E8427984AD8005B21BC /* AllNoteViewTest.swift */,
 				C88C7A6F279ED9BA0090613F /* SettingsViewTest.swift */,
 				9D51C9C1279EDAD900092FCC /* ThemesViewTest.swift */,
+				BA6B29F727A85CD700951644 /* CustomThemeBuilderViewTest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,6 +332,7 @@
 				9D388412279AF9C0006FA73B /* AllNotesViewControllerTest.swift */,
 				9D388414279AFDD4006FA73B /* SettingsViewControllerTest.swift */,
 				9D5C3C0E27A032EF00A85AE6 /* ThemesViewControllerTest.swift */,
+				BA6B29F327A8517800951644 /* CustomThemeBuilderViewControllerTest.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -304,6 +352,8 @@
 				9DE31E7827972F6F005B21BC /* TagRepositoryProtocol.swift */,
 				9DE31E7027970A3F005B21BC /* TagProtocol.swift */,
 				5B4576332791A0B000EF1036 /* NoteProtocol.swift */,
+				BAEF61B027A2D99000C64A17 /* ThemeRepositoryProtocol.swift */,
+				BAEF61B227A2DD0D00C64A17 /* ThemeProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -313,6 +363,7 @@
 			children = (
 				5B45761B2790593100EF1036 /* NotesRepository.swift */,
 				9DE31E7A27972FA6005B21BC /* TagRepository.swift */,
+				BAEF61B427A2DD4500C64A17 /* ThemeRepository.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -322,6 +373,7 @@
 			children = (
 				5B45762A279073EE00EF1036 /* NoteCellViewModel.swift */,
 				9DE31E7227970AF4005B21BC /* TagCellViewModel.swift */,
+				BAEC252827A39E1700C54C72 /* StandardTheme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -377,9 +429,11 @@
 		5B3FF1AE27999C5200828097 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				BA9720D427A3AB7A00E084E2 /* Delegates */,
 				5B3FF1AF27999C6100828097 /* CoordinatorProtocol.swift */,
 				5B3FF1B12799AEC000828097 /* MainCoordinator.swift */,
 				5B3FF1B32799AECB00828097 /* AllNotesCoordinator.swift */,
+				BA9720D227A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift */,
 				5B8E433727A22E3000AE83B2 /* AlertCoordinatorProtocol.swift */,
 				5B8E433927A2421F00AE83B2 /* NoteShareCoordinatorProtocol.swift */,
 			);
@@ -393,6 +447,7 @@
 				5B3FF18B279993C700828097 /* Protocols */,
 				5B4576192790593100EF1036 /* CoreDataStack.swift */,
 				BAB1E029269DBBF8001FC3CC /* NotesModel.xcdatamodeld */,
+				BAEC252627A39C0D00C54C72 /* StandardThemes.json */,
 			);
 			name = Storage;
 			path = NotesApp/Storage;
@@ -411,6 +466,7 @@
 				5B3FF1B52799AF8600828097 /* MainCoordinatorDummy.swift */,
 				5B3FF1B72799AF9100828097 /* AllNotesCoordinatorDummy.swift */,
 				5B3FF1B92799B09800828097 /* LocalStorageServiceDummy.swift */,
+				BA6B29F527A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift */,
 			);
 			path = Dummies;
 			sourceTree = "<group>";
@@ -487,6 +543,7 @@
 				5B35900E2796F5EA00ECF0C1 /* Views */,
 				5B45762E279078FB00EF1036 /* Dummies */,
 				5B3FF1BB2799B21E00828097 /* MainCoordinatorTests.swift */,
+				BAEF61AE27A2D4A300C64A17 /* UIColor+Hex.swift */,
 			);
 			path = NotesAppTests;
 			sourceTree = "<group>";
@@ -535,6 +592,53 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		BA9720D427A3AB7A00E084E2 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				BA9720D527A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift */,
+				BA9720D727A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		BA9720D927A41CBC00E084E2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BA9720DA27A41CD000E084E2 /* ThemesViewProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BAA8DFB427A1BC8F00D3704C /* CustomThemeBuilder */ = {
+			isa = PBXGroup;
+			children = (
+				BAEF61AB27A2D10900C64A17 /* Models */,
+				BAC0FD8E27A224EC00BE406E /* Protocols */,
+				BAA8DFB827A1BEE900D3704C /* Views */,
+				BAA8DFB727A1BCD700D3704C /* Controllers */,
+			);
+			path = CustomThemeBuilder;
+			sourceTree = "<group>";
+		};
+		BAA8DFB727A1BCD700D3704C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BAA8DFB527A1BCCE00D3704C /* CustomThemeBuilderViewController.swift */,
+				BAC0FD8C27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		BAA8DFB827A1BEE900D3704C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BAA8DFB927A1BF3100D3704C /* CustomThemeBuilderView.swift */,
+				BAA8DFBB27A1C4C500D3704C /* CustomThemeBuilderCollectionViewCell.swift */,
+				BAA8DFBD27A1C72D00D3704C /* CustomThemeBuilderCollectionViewCellContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BAB1E014269DBBF8001FC3CC = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +661,7 @@
 		BAB1E01F269DBBF8001FC3CC /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				BAA8DFB427A1BC8F00D3704C /* CustomThemeBuilder */,
 				E9FD31AA279EF4FD00E8A881 /* AppIcons */,
 				BAC82D5726A9DD1100E52701 /* Extensions */,
 				5B3FF18F2799945F00828097 /* Models */,
@@ -576,20 +681,40 @@
 			path = NotesApp;
 			sourceTree = "<group>";
 		};
+		BAC0FD8E27A224EC00BE406E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BAC0FD8F27A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		BAC82D5726A9DD1100E52701 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BAEF61AC27A2D42D00C64A17 /* UIColor+Hex.swift */,
 				BAC82D5826A9DD2300E52701 /* NoteExtension.swift */,
 				9D40CF3E2795BEC400818D9B /* UIAlertControllerUtilities.swift */,
 				5BB7FE012795EDB800A6F335 /* NotificationName.swift */,
 				5B3FF1A6279998C700828097 /* UIViewController+UIAlertHelpers.swift */,
+				BAEC252427A3989200C54C72 /* UIColor+isLight.swift */,
+				BAEC252A27A3A0A300C54C72 /* JSONDecoderUtilities.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BAEF61AB27A2D10900C64A17 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BAEF61A927A2D0FB00C64A17 /* CustomColorData.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		C87AA534279082D400E2AEF1 /* ThemesScreen */ = {
 			isa = PBXGroup;
 			children = (
+				BA9720D927A41CBC00E084E2 /* Protocols */,
 				BA2D1BE92795A58A00849955 /* Model */,
 				C87AA5382791A55900E2AEF1 /* Views */,
 				C87AA5372791A55000E2AEF1 /* Controllers */,
@@ -784,6 +909,7 @@
 				E9AB516527A1AFA60077F33C /* Devotional@2x.png in Resources */,
 				E9AB516C27A1AFA60077F33C /* Dark@3x.png in Resources */,
 				BAB1E02D269DBBFA001FC3CC /* Assets.xcassets in Resources */,
+				BAEC252727A39C0D00C54C72 /* StandardThemes.json in Resources */,
 				E9AB515E27A1AFA60077F33C /* Christmas@3x.png in Resources */,
 				E9AB516827A1AFA60077F33C /* Bookish@2x.png in Resources */,
 				E9AB516727A1AFA60077F33C /* Halloween@2x.png in Resources */,
@@ -804,6 +930,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAEF61AF27A2D4A300C64A17 /* UIColor+Hex.swift in Sources */,
 				5BB7FE002795C61B00A6F335 /* NoteRepositoryDummy.swift in Sources */,
 				9DE31E83279849F0005B21BC /* TagRepositoryDummy.swift in Sources */,
 				5B00566127959741002BBFD0 /* NoteViewControllerTest.swift in Sources */,
@@ -819,11 +946,14 @@
 				9D51C9C2279EDAD900092FCC /* ThemesViewTest.swift in Sources */,
 				5BB7FDFE2795C5D000A6F335 /* NotificationServiceDummy.swift in Sources */,
 				5BB7FDFC2795C5B100A6F335 /* NoteDummy.swift in Sources */,
+				BA6B29F427A8517800951644 /* CustomThemeBuilderViewControllerTest.swift in Sources */,
 				5B3FF1BA2799B09800828097 /* LocalStorageServiceDummy.swift in Sources */,
 				5B4576302790791400EF1036 /* FetchResultsControllerDelegateDummy.swift in Sources */,
 				5B3FF1B82799AF9100828097 /* AllNotesCoordinatorDummy.swift in Sources */,
 				C88C7A70279ED9BA0090613F /* SettingsViewTest.swift in Sources */,
+				BA6B29F627A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift in Sources */,
 				5B3590102796F5FA00ECF0C1 /* NoteViewTest.swift in Sources */,
+				BA6B29F827A85CD700951644 /* CustomThemeBuilderViewTest.swift in Sources */,
 				5B3FF1BC2799B21E00828097 /* MainCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,6 +970,8 @@
 				9DE31E7127970A3F005B21BC /* TagProtocol.swift in Sources */,
 				5B73C9F7278F755C005F2D89 /* NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				9DE31E7B27972FA6005B21BC /* TagRepository.swift in Sources */,
+				BAA8DFBA27A1BF3100D3704C /* CustomThemeBuilderView.swift in Sources */,
+				BAEC252527A3989200C54C72 /* UIColor+isLight.swift in Sources */,
 				5B8E433827A22E3000AE83B2 /* AlertCoordinatorProtocol.swift in Sources */,
 				5B3FF1B42799AECB00828097 /* AllNotesCoordinator.swift in Sources */,
 				C88C7A6E279AE89E0090613F /* NavigationController.swift in Sources */,
@@ -850,15 +982,19 @@
 				9DE31E75279714DE005B21BC /* AllNotesViewDelegate.swift in Sources */,
 				C87AA536279082FA00E2AEF1 /* ThemesViewController.swift in Sources */,
 				BAC82D5926A9DD2300E52701 /* NoteExtension.swift in Sources */,
+				BAC0FD9027A2250A00BE406E /* CustomThemeBuilderViewDelegate.swift in Sources */,
+				BAEC252B27A3A0A300C54C72 /* JSONDecoderUtilities.swift in Sources */,
 				BA2D1BEB2795A5EF00849955 /* ThemeCollectionData.swift in Sources */,
 				C87AA53F2797207D00E2AEF1 /* ThemableView.swift in Sources */,
 				E9E5DE672791BFF80047C805 /* ThemeCollectionViewCell.swift in Sources */,
+				BAEF61B527A2DD4500C64A17 /* ThemeRepository.swift in Sources */,
 				5B4576342791A0B000EF1036 /* NoteProtocol.swift in Sources */,
 				5B73C9F3278F2B14005F2D89 /* NoteSmallCellCollectionViewCell.swift in Sources */,
 				E935C95E2790787D00835897 /* SettingTableDataSource.swift in Sources */,
 				C87AA53C2797101500E2AEF1 /* ThemableViewController.swift in Sources */,
 				C87AA53A2791A57D00E2AEF1 /* ThemesView.swift in Sources */,
 				BAB1E023269DBBF8001FC3CC /* SceneDelegate.swift in Sources */,
+				BAA8DFBC27A1C4C500D3704C /* CustomThemeBuilderCollectionViewCell.swift in Sources */,
 				5B3FF1A32799982F00828097 /* NoteViewController+NoteRepositoryProtocolDelegate.swift in Sources */,
 				C87AA54127972D5F00E2AEF1 /* NoteCellContentView.swift in Sources */,
 				E9E5DE692791C1A30047C805 /* ThemesCollectionDataSource.swift in Sources */,
@@ -868,16 +1004,21 @@
 				5B3FF1AD2799996F00828097 /* ThemesViewController+UICollectionViewDelegate.swift in Sources */,
 				5B45762B279073EE00EF1036 /* NoteCellViewModel.swift in Sources */,
 				5B3FF1B027999C6100828097 /* CoordinatorProtocol.swift in Sources */,
+				BA9720DB27A41CD000E084E2 /* ThemesViewProtocol.swift in Sources */,
 				BA2F99E627A03C9F00A05201 /* ThemeExampleView.swift in Sources */,
 				5B73C9FB278F80FA005F2D89 /* AllNotesView.swift in Sources */,
 				5B45761C2790593100EF1036 /* CoreDataStack.swift in Sources */,
 				E935C95C27906FFC00835897 /* SettingsViewController.swift in Sources */,
+				BAEF61AA27A2D0FB00C64A17 /* CustomColorData.swift in Sources */,
 				BA578D59278EFCEB000617F6 /* NoteView.swift in Sources */,
 				9D40CF3F2795BEC400818D9B /* UIAlertControllerUtilities.swift in Sources */,
 				5B3FF1992799968C00828097 /* AllNotesViewController+TagRepositoryDelegate.swift in Sources */,
+				BAA8DFBE27A1C72D00D3704C /* CustomThemeBuilderCollectionViewCellContentView.swift in Sources */,
 				9DAC68F9278F3234005554B6 /* NoteCollectionViewCell.swift in Sources */,
 				5B3FF19E279996E900828097 /* AllNotesViewController+AllNotesViewDelegate.swift in Sources */,
+				BAEF61AD27A2D42D00C64A17 /* UIColor+Hex.swift in Sources */,
 				5B3FF1B22799AEC000828097 /* MainCoordinator.swift in Sources */,
+				BAEF61B327A2DD0D00C64A17 /* ThemeProtocol.swift in Sources */,
 				9DE31E7927972F6F005B21BC /* TagRepositoryProtocol.swift in Sources */,
 				BA2D1BED2795AEA100849955 /* Settings.swift in Sources */,
 				5BB70C8B27A0275D0012D48D /* TagBuilder.swift in Sources */,
@@ -886,14 +1027,21 @@
 				5B3FF1932799953200828097 /* AllNotesViewController+NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				5B3FF19C279996C600828097 /* AllNotesViewController+NoteRepositoryProtocolDelegate.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,
+				BAC0FD8D27A1D09100BE406E /* CustomThemeBuilderCollectionViewDataSource.swift in Sources */,
+				BA9720D627A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift in Sources */,
 				5B4576222790651B00EF1036 /* TagCollectionViewCell.swift in Sources */,
 				5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */,
+				BAEC252927A39E1700C54C72 /* StandardTheme.swift in Sources */,
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
+				BAA8DFB627A1BCCE00D3704C /* CustomThemeBuilderViewController.swift in Sources */,
 				9D31F35E2791C02D000F6B4A /* Header.swift in Sources */,
 				9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */,
+				BAEF61B127A2D99000C64A17 /* ThemeRepositoryProtocol.swift in Sources */,
+				BA9720D827A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift in Sources */,
 				5B45761E2790593100EF1036 /* NotesRepository.swift in Sources */,
 				5B45763227919FCF00EF1036 /* NotesRepositoryProtocol.swift in Sources */,
 				C88C7A6A27999E760090613F /* NoteSmallCellContentView.swift in Sources */,
+				BA9720D327A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift in Sources */,
 				E935C95727906F9100835897 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1083,7 +1231,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = WK7599VNDW;
+				DEVELOPMENT_TEAM = QRB568C47A;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1104,7 +1252,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = WK7599VNDW;
+				DEVELOPMENT_TEAM = QRB568C47A;
 				INFOPLIST_FILE = NotesApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

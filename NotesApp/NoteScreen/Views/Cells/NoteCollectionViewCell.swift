@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class NoteCollectionViewCell: UICollectionViewCell {
     var noteContentView: NoteCellContentView
@@ -16,7 +17,8 @@ class NoteCollectionViewCell: UICollectionViewCell {
     var palette: ColorSet?
     
     override init(frame: CGRect) {
-        noteContentView = NoteCellContentView(palette: .classic)
+        
+        noteContentView = NoteCellContentView(palette: ColorSet.classic)
         noteContentView.translatesAutoresizingMaskIntoConstraints = false
         notificationService = nil
 

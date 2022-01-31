@@ -89,7 +89,7 @@ class NoteSmallCellContentView: ThemableView {
     }()
     
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-                  settings: Settings = Settings()) {
+                  settings: Settings = .shared) {
         super.init(palette: palette, notificationService: notificationService, settings: settings)
         setupHierarchy()
         setupConstraints()
@@ -163,16 +163,16 @@ class NoteSmallCellContentView: ThemableView {
     }
     
     override func setColors(palette: ColorSet?) {
-        guard let colorSet = palette?.palette() else { return }
+        guard let palette = palette else { return }
         
-        titleView.textColor = colorSet.text
-        contentTextView.textColor = colorSet.text
-        editButton.tintColor = colorSet.actionColor
-        editButton.backgroundColor = colorSet.buttonBackground
-        deleteButton.tintColor = colorSet.actionColor
-        deleteButton.backgroundColor = colorSet.buttonBackground
-        shareButton.tintColor = colorSet.actionColor
-        shareButton.backgroundColor = colorSet.buttonBackground
-        backgroundColor = colorSet.noteBackground
+        titleView.textColor = palette.text
+        contentTextView.textColor = palette.text
+        editButton.tintColor = palette.actionColor
+        editButton.backgroundColor = palette.buttonBackground
+        deleteButton.tintColor = palette.actionColor
+        deleteButton.backgroundColor = palette.buttonBackground
+        shareButton.tintColor = palette.actionColor
+        shareButton.backgroundColor = palette.buttonBackground
+        backgroundColor = palette.noteBackground
     }
 }
