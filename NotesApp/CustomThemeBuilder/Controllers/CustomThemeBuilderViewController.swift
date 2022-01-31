@@ -60,8 +60,6 @@ class CustomThemeBuilderViewController: ThemableViewController {
         navigationItem.leftBarButtonItem = contentView.cancelButton
         navigationItem.rightBarButtonItem = contentView.saveButton
     }
-    
-    
 }
 
 extension CustomThemeBuilderViewController: UIColorPickerViewControllerDelegate {
