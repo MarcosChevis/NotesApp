@@ -76,6 +76,11 @@ class NoteViewController: ThemableViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollToEmptyNote()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         repository.saveChangesWithoutEmptyNotes()
     }

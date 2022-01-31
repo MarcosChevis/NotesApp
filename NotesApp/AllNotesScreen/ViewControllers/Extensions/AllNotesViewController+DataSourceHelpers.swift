@@ -53,7 +53,7 @@ extension AllNotesViewController {
     func makeTagCellRegistration() -> TagCellRegistration {
         return TagCellRegistration { [weak self] cell, indexPath, tag in
             guard let palette = self?.palette else { return }
-            cell.setup(with: tag, palette: palette)
+            cell.setup(with: tag, colorSet: palette)
         }
     }
     
