@@ -44,7 +44,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
 
         self.view = self.contentView
         self.contentView.delegate = self
-        self.contentView.themeNameTextView.delegate = self
+        self.contentView.themeNameTextField.delegate = self
         self.contentView.collectionView.dataSource = customThemeBuilderColectionViewDataSource
         self.contentView.collectionView.delegate = self
         
@@ -102,9 +102,9 @@ extension CustomThemeBuilderViewController: UICollectionViewDelegate {
 
 extension CustomThemeBuilderViewController: CustomThemeBuilderViewDelegate {
     func didTapSave() {
-        let name = contentView.themeNameTextView.text
+        let name = contentView.themeNameTextField.text
         if !(name?.isEmpty ?? true) {
-            customColorSet.name = contentView.themeNameTextView.text
+            customColorSet.name = contentView.themeNameTextField.text
             repository.saveChanges()
             coordinator?.dismiss()
         } else {
@@ -128,7 +128,6 @@ extension CustomThemeBuilderViewController: UITextFieldDelegate {
     }
 }
 
-#warning("corrigir/criar testes")
 #warning("editar e deletar temas")
 #warning("AllNotesExampleView")
 #warning("onboarding")

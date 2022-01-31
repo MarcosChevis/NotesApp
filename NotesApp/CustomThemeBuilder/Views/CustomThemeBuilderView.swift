@@ -25,7 +25,7 @@ class CustomThemeBuilderView: ThemableView {
         return but
     }()
     
-    lazy var themeNameTextView: UITextField = {
+    lazy var themeNameTextField: UITextField = {
         let textView = UITextField(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -90,7 +90,7 @@ class CustomThemeBuilderView: ThemableView {
     
     
     func setupHierarchy() {
-        addSubview(themeNameTextView)
+        addSubview(themeNameTextField)
         addSubview(exampleView)
         addSubview(collectionView)
     }
@@ -99,13 +99,13 @@ class CustomThemeBuilderView: ThemableView {
         let ratio = UIScreen.main.bounds.width/UIScreen.main.bounds.height
         
         NSLayoutConstraint.activate([
-            themeNameTextView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-            themeNameTextView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            themeNameTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            themeNameTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            themeNameTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            themeNameTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
         
         NSLayoutConstraint.activate([
-            exampleView.topAnchor.constraint(equalTo: themeNameTextView.bottomAnchor, constant: 16),
+            exampleView.topAnchor.constraint(equalTo: themeNameTextField.bottomAnchor, constant: 16),
             exampleView.centerXAnchor.constraint(equalTo: centerXAnchor),
             exampleView.widthAnchor.constraint(equalTo: exampleView.heightAnchor, multiplier: ratio)
         ])
