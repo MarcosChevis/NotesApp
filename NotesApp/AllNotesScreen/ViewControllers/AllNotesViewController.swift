@@ -50,6 +50,7 @@ class AllNotesViewController: ThemableViewController {
         self.contentView.collectionView.dataSource = dataSource
         self.tagsRepository.delegate = self
         self.noteRepository.delegate = self
+        self.contentView.collectionView.delegate = self
     }
     
     override func loadView() {
@@ -121,5 +122,64 @@ class AllNotesViewController: ThemableViewController {
     override func setColors(palette: ColorSet) {
         super.setColors(palette: palette)
         contentView.collectionView.reloadData()
+    }
+}
+
+extension AllNotesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard
+            let item = dataSource.itemIdentifier(for: indexPath)
+        else { return }
+        switch item {
+        case .tag(tagViewModel: let tagViewModel):
+            tapCell(with: tagViewModel)
+        case .note(noteViewModel: _):
+            return
+        }
+    }
+    
+    private func tapCell(with viewModel: TagCellViewModel) {
+        viewModel.isSelected.toggle()
+        updateUIForCellTap(with: viewModel)
+        updateNotesForCellTap(with: viewModel)
+    }
+    
+    private func updateUIForCellTap(with viewModel: TagCellViewModel) {
+        let items = dataSource.snapshot().itemIdentifiers(inSection: .tags)
+        items.forEach { switch $0 {
+        case.tag(tagViewModel: let tagVm):
+            if tagVm != viewModel { tagVm.isSelected = false }
+        default:
+            break
+        }}
+        contentView.collectionView.reloadData()
+    }
+    
+    private func updateNotesForCellTap(with viewModel: TagCellViewModel) {
+        do {
+            let notes: [NoteCellViewModel]
+            
+            if viewModel.isSelected {
+                notes = try noteRepository.filterForTag(viewModel.tag)
+            } else {
+                notes = try noteRepository.getInitialData()
+            }
+            
+            updateUIForNoteFiltering(with: notes)
+        } catch {
+            coordinator?.presentErrorAlert(with: "An Internal error ocurred trying to filter your notes")
+        }
+    }
+    
+    private func updateUIForNoteFiltering(with notes: [NoteCellViewModel]) {
+        var sectionSnapshot = dataSource.snapshot()
+        
+        sectionSnapshot.deleteSections([.text])
+        sectionSnapshot.appendSections([.text])
+        let filteredItems = notes.map { cellViewModel in
+            Item.note(noteViewModel: cellViewModel)
+        }
+        sectionSnapshot.appendItems(filteredItems, toSection: .text)
+        dataSource.apply(sectionSnapshot, animatingDifferences: false)
     }
 }

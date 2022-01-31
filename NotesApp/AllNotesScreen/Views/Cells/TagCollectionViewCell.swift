@@ -27,32 +27,35 @@ class TagCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    private var palette: ColorSet? {
-        didSet {
-            setColors(palette: palette)
-        }
-    }
+    private var palette: ColorSet?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.layer.cornerRadius = 8
+        contentView.layer.borderWidth = 1
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setup(with viewModel: TagCellViewModel, palette: ColorSet) {
-        self.palette = palette
-        setColors(palette: palette)
+    func setup(with viewModel: TagCellViewModel, colorSet: ColorSet) {
+        self.palette = colorSet
+        setColors(palette: palette, isSelected: viewModel.isSelected)
         
         tagLabel.text = viewModel.tag.name ?? ""
     }
     
-    func setColors(palette: ColorSet?) {
-        guard let palette = palette else { return }
+    func setColors(palette: ColorSet?, isSelected: Bool) {
+        guard let colorSet = palette?.palette() else { return }
 
-        contentView.backgroundColor = palette.noteBackground
-        tagLabel.textColor = palette.actionColor
+        contentView.backgroundColor = colorSet.noteBackground
+        tagLabel.textColor = colorSet.actionColor
+        
+        if isSelected {
+            contentView.layer.borderColor = colorSet.actionColor.cgColor
+        } else {
+            contentView.layer.borderColor = colorSet.noteBackground.cgColor
+        }
     }
 }

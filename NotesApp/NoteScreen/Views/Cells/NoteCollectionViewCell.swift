@@ -11,7 +11,7 @@ import SwiftUI
 class NoteCollectionViewCell: UICollectionViewCell {
     var noteContentView: NoteCellContentView
     static var identifier: String = "Notes.NoteCollectionViewCell"
-    private var viewModel: NoteCellViewModel?
+    var viewModel: NoteCellViewModel?
     private var notificationService: NotificationService?
     
     var palette: ColorSet?

@@ -11,7 +11,7 @@ protocol NoteShareCoordinatorProtocol {
     func shareContent(_ content: String)
 }
 
-extension NoteShareCoordinatorProtocol where Self : CoordinatorProtocol, Self : AlertCoordinatorProtocol {
+extension NoteShareCoordinatorProtocol where Self : CoordinatorProtocol {
     func shareContent(_ content: String) {
         let shareScreen = UIActivityViewController(activityItems: [content], applicationActivities: nil)
         navigationController.present(shareScreen, animated: true, completion: nil)

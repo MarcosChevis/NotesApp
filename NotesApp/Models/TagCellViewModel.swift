@@ -9,9 +9,11 @@ import Foundation
 
 class TagCellViewModel {
     var tag: TagProtocol
+    var isSelected: Bool
     
     init(tag: TagProtocol) {
         self.tag = tag
+        self.isSelected = false
     }
 }
 

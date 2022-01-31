@@ -18,7 +18,10 @@ class TagRepository: NSObject, TagRepositoryProtocol {
         let request = Tag.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(keyPath: \Tag.name, ascending: true)]
         fetchResultsController = NSFetchedResultsController<Tag>(fetchRequest: request, managedObjectContext: coreDataStack.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+        
         super.init()
+        
+        fetchResultsController.delegate = self
     }
     
     func getAllTags() throws -> [TagCellViewModel] {

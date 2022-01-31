@@ -8,10 +8,11 @@
 import UIKit
 
 extension NoteViewController: NoteRepositoryProtocolDelegate {
-    func insertNote(_ note: NoteCellViewModel, at indexPath: IndexPath) {
+    func insertNote(_ note: NoteCellViewModel) {
         var snapshot = dataSource.snapshot()
         snapshot.appendItems([note], toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: true)
+        guard let indexPath = dataSource.indexPath(for: note) else { return }
         contentView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
