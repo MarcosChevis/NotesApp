@@ -18,7 +18,6 @@ class NoteViewTest: XCTestCase {
     var themeRepository: ThemeRepositoryProtocol!
     
     override func setUp() {
-        #warning("mudar implementacao")
         
         repositoryDummy = .init()
         themeRepository = ThemeRepository(coreDataStack: .init(.inMemory))
@@ -32,7 +31,6 @@ class NoteViewTest: XCTestCase {
         colorSet = nil
     }
     
-    #warning("reimplementar testes")
     func testLayoutWithMoreThanOneItemOnIphone12() {
         let view = setupLayoutTestWithMoreThanItem(with: .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))

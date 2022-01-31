@@ -30,10 +30,10 @@ class Settings {
     
     var theme: ColorSet {
         get {
-            guard
-                let id = localStorageService.string(forKey: themeKey),
-                let theme = themeRepository.getTheme(with: id)
-            else {
+            guard let id = localStorageService.string(forKey: themeKey) else {
+                return .classic
+            }
+            guard let theme = themeRepository.getTheme(with: id) else {
                 return .classic
             }
             return theme
