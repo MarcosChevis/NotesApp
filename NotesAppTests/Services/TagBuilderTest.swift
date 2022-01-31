@@ -19,6 +19,7 @@ class TagBuilderTest: XCTestCase {
             guard let coreDataStack = coreDataStack else { return nil }
             return Tag(context: coreDataStack.mainContext)
         }
+        
     }
     
     override func tearDown() {
