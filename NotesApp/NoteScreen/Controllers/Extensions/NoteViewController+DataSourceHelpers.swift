@@ -18,6 +18,7 @@ extension NoteViewController {
     func makeNoteCellRegistration() -> NoteCellRegistration {
         NoteCellRegistration { [weak self] cell, indexPath, note in
             guard let self = self else { return }
+            cell.delegate = self
             cell.setup(palette: self.palette, viewModel: note)
         }
     }

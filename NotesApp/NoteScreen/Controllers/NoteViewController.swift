@@ -54,7 +54,6 @@ class NoteViewController: ThemableViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupKeyboardDismissGesture()
-        setupToolbar()
         setupInitialData()
     }
     
@@ -97,14 +96,9 @@ class NoteViewController: ThemableViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
     
-    private func setupToolbar() {
-        self.navigationController?.isToolbarHidden = false
-        self.toolbarItems = contentView.toolbarItems
-    }
-    
     private func setupNavigationBar() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = contentView.shareButton   
+        navigationItem.rightBarButtonItems = [contentView.addButton, contentView.allNotesButton, ]
     }
     
     

@@ -34,10 +34,12 @@ class NoteView: ThemableView {
         return layout
     }()
     
-    lazy var shareButton: UIBarButtonItem = {
-        let but = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(didTapShare))
-        
-        return but
+    lazy var addButton: UIBarButtonItem = {
+        UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddNote))
+    }()
+    
+    lazy var allNotesButton: UIBarButtonItem = {
+        UIBarButtonItem(image: UIImage(systemName: "menucard"), style: .plain , target: self, action: #selector(didTapAllNotes))
     }()
     
     lazy var toolbarItems: [UIBarButtonItem] = {
