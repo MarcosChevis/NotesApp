@@ -94,7 +94,7 @@ extension CustomThemeBuilderViewController: UIColorPickerViewControllerDelegate 
 extension CustomThemeBuilderViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.willChange = indexPath.row
-        coordinator?.showColorPicker(delegate: self)
+        coordinator?.showColorPicker(delegate: self, color: customThemeBuilderColectionViewDataSource.data[indexPath.row].color ?? .black)
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 protocol CustomThemeBuilderCoordinatorProtocol: AnyObject, AlertCoordinatorProtocol {
     func dismiss()
-    func showColorPicker(delegate: UIColorPickerViewControllerDelegate)
+    func showColorPicker(delegate: UIColorPickerViewControllerDelegate, color: UIColor)
 }
 
 class CustomThemeBuilderCoordinator: CoordinatorProtocol, CustomThemeBuilderCoordinatorProtocol {
@@ -39,9 +39,10 @@ class CustomThemeBuilderCoordinator: CoordinatorProtocol, CustomThemeBuilderCoor
         })
     }
     
-    func showColorPicker(delegate: UIColorPickerViewControllerDelegate) {
+    func showColorPicker(delegate: UIColorPickerViewControllerDelegate, color: UIColor) {
         let vc = UIColorPickerViewController()
         vc.delegate = delegate
+        vc.selectedColor = color
         navigationController.present(vc, animated: true)
     }
     

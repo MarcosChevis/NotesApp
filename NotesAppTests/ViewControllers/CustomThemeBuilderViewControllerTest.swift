@@ -40,7 +40,7 @@ class CustomThemeBuilderViewControllerTest: XCTestCase {
     func testDidChangeColor() {
         sut.contentView.collectionView.delegate?.collectionView?(sut.contentView.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
         coordinatorDummy.selectColor = .blue
-        sut.coordinator?.showColorPicker(delegate: sut)
+        sut.coordinator?.showColorPicker(delegate: sut, color: sut.customThemeBuilderColectionViewDataSource.data[0].color ?? .clear)
         
         XCTAssertEqual(sut.customThemeBuilderColectionViewDataSource.data[0].color, UIColor.blue)
         XCTAssertEqual(sut.contentView.exampleView.backgroundColor, UIColor.blue)

@@ -21,7 +21,7 @@ class CustomThemeBuilderCoordinatorDummy: CustomThemeBuilderCoordinatorProtocol 
         didDismiss = true
     }
     
-    func showColorPicker(delegate: UIColorPickerViewControllerDelegate) {
+    func showColorPicker(delegate: UIColorPickerViewControllerDelegate, color: UIColor) {
         let colorPickerViewController = UIColorPickerViewController()
         colorPickerViewController.selectedColor = selectColor
         delegate.colorPickerViewControllerDidFinish?(colorPickerViewController)
