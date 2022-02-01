@@ -62,13 +62,13 @@ class NoteCellContentView: ThemableView {
         view.addSubview(deleteButton)
         
         let buttonConstraints: [NSLayoutConstraint] = [
-            shareButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            shareButton.widthAnchor.constraint(equalToConstant: 44),
-            shareButton.heightAnchor.constraint(equalTo: shareButton.widthAnchor),
-            
-            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            deleteButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             deleteButton.widthAnchor.constraint(equalToConstant: 44),
-            deleteButton.heightAnchor.constraint(equalTo: deleteButton.widthAnchor)
+            deleteButton.heightAnchor.constraint(equalTo: deleteButton.widthAnchor),
+            
+            shareButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            shareButton.widthAnchor.constraint(equalToConstant: 44),
+            shareButton.heightAnchor.constraint(equalTo: shareButton.widthAnchor)
         ]
         
         NSLayoutConstraint.activate(buttonConstraints)
