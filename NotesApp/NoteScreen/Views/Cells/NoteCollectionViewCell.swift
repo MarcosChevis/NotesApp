@@ -57,14 +57,14 @@ class NoteCollectionViewCell: UICollectionViewCell {
             guard let viewModel = self?.viewModel else {
                 return
             }
-            delegate.shareNote(viewModel)
+            delegate.didTapShareNote(viewModel)
         }
         
         noteContentView.deleteAction = {[weak self] in
             guard let viewModel = self?.viewModel else {
                 return
             }
-            delegate.deleteNote(viewModel)
+            delegate.didTapDeleteNote(viewModel)
         }
     }
     

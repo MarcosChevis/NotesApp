@@ -11,11 +11,11 @@ import Foundation
 class NoteRepositoryDelegateDummy: NoteRepositoryProtocolDelegate {
     var data: [NoteCellViewModel] = []
     
-    func insertNote(_ note: NoteCellViewModel) {
+    func didInsertNote(_ note: NoteCellViewModel) {
         data.append(note)
     }
     
-    func deleteNote(_ note: NoteCellViewModel) {
+    func didDeleteNote(_ note: NoteCellViewModel) {
         data = data.filter { $0.note.noteID != note.note.noteID }
     }
 }

@@ -42,18 +42,6 @@ class NoteView: ThemableView {
         UIBarButtonItem(image: UIImage(systemName: "menucard"), style: .plain , target: self, action: #selector(didTapAllNotes))
     }()
     
-    lazy var toolbarItems: [UIBarButtonItem] = {
-        var items = [UIBarButtonItem]()
-        
-        items.append( UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapDelete)))
-        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
-        items.append( UIBarButtonItem(image: UIImage(systemName: "note.text"), style: .plain , target: self, action: #selector(didTapAllNotes)))
-        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
-        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddNote)))
-        
-        return items
-    }()
-    
     lazy var collectionView: UICollectionView = {
         let layout = collectionViewLayout
         var collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -81,10 +69,6 @@ class NoteView: ThemableView {
     override func setColors(palette: ColorSet) {
         
         backgroundColor = palette.background
-        
-        for item in toolbarItems {
-            item.tintColor = palette.actionColor
-        }
     }
     
     func setupConstraints() {
@@ -94,14 +78,6 @@ class NoteView: ThemableView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-    }
-    
-    @objc func didTapShare() {
-        delegate?.didShare()
-    }
-    
-    @objc func didTapDelete() {
-        delegate?.didDelete()
     }
     
     @objc func didTapAllNotes() {

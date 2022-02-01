@@ -8,16 +8,11 @@
 import UIKit
 
 extension NoteViewController: NoteCollectionViewCellDelegate {
-    func shareNote(_ viewModel: NoteCellViewModel) {
-        guard let content = viewModel.note.content, !content.isEmpty else {
-            coordinator?.presentErrorAlert(with: "Your note is empty")
-            return
-        }
-        
-        coordinator?.shareContent(content)
+    func didTapDeleteNote(_ viewModel: NoteCellViewModel) {
+        deleteNote(viewModel.note)
     }
     
-    
-    
-
+    func didTapShareNote(_ viewModel: NoteCellViewModel) {
+        shareNote(viewModel.note)
+    }
 }

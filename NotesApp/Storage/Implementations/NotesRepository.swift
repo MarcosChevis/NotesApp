@@ -69,7 +69,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
             throw RepositoryError.incorrectObjectType
         }
         
-        delegate?.deleteNote(.init(note: note))
+        delegate?.didDeleteNote(.init(note: note))
         coreDataStack.mainContext.delete(note)
         
         guard let tags = note.tags?.allObjects as? [Tag] else {
@@ -89,7 +89,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         let note = Note(context: coreDataStack.mainContext)
         note.content = ""
         note.title = ""
-        delegate?.insertNote(NoteCellViewModel(note: note))
+        delegate?.didInsertNote(NoteCellViewModel(note: note))
         return note
     }
     
@@ -117,7 +117,7 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
             return content.isEmpty
         }
         emptyNotes.forEach {
-            delegate?.deleteNote(.init(note: $0))
+            delegate?.didDeleteNote(.init(note: $0))
             coreDataStack.mainContext.delete($0)
         }
     }
