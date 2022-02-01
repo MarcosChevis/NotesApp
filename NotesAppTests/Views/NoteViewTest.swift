@@ -11,7 +11,7 @@ import SwiftUI
 @testable import NotesApp
 
 class NoteViewTest: XCTestCase {
-    
+    var contentView: NoteView!
     var sut: NoteViewController!
     var repositoryDummy: NoteRepositoryDummy!
     var colorSet: ColorSet!
@@ -21,7 +21,8 @@ class NoteViewTest: XCTestCase {
         
         repositoryDummy = .init()
         themeRepository = ThemeRepository(coreDataStack: .init(.inMemory))
-        sut = .init(palette: .classic, repository: repositoryDummy)
+        contentView = .init(palette: .classic)
+        sut = .init(contentView: contentView, palette: .classic, repository: repositoryDummy)
         isRecording = false
     }
     
@@ -110,7 +111,7 @@ class NoteViewTest: XCTestCase {
     
     func setupLayoutTestWithMoreThanItem(with palette: ColorSet) -> UIViewController {
         repositoryDummy.mock = [NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 01", content: "Essa é uma nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 02", content: "Essa é uma outra nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 03", content: "Essa é uma outra outra nota de teste, oi tudo bem com você?"))]
-        sut = .init(palette: palette, repository: repositoryDummy)
+        sut = .init(contentView: NoteView(palette: palette), palette: palette, repository: repositoryDummy)
         
         let navigation = NavigationController(rootViewController: sut)
         return navigation

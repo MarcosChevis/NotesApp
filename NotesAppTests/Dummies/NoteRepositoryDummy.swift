@@ -23,12 +23,12 @@ class NoteRepositoryDummy: NotesRepositoryProtocol {
     
     func deleteNote(_ note: NoteProtocol) throws {
         mock.removeAll(where: { $0.note.noteID == note.noteID })
-        delegate?.deleteNote(.init(note: note))
+        delegate?.didDeleteNote(.init(note: note))
     }
     
     func createEmptyNote() throws -> NoteProtocol {
         let vm = NoteCellViewModel.init(note: NoteDummy(noteID: UUID().uuidString, content: ""))
-        delegate?.insertNote(vm)
+        delegate?.didInsertNote(vm)
         mock.append(vm)
         return vm.note
         

@@ -8,6 +8,6 @@
 import Foundation
 
 protocol NoteCollectionViewCellDelegate: AnyObject {
-    func deleteNote(_ viewModel: NoteCellViewModel)
-    func shareNote(_ viewModel: NoteCellViewModel)
+    func didTapDeleteNote(_ viewModel: NoteCellViewModel)
+    func didTapShareNote(_ viewModel: NoteCellViewModel)
 }
