@@ -8,11 +8,11 @@
 import UIKit
 
 extension AllNotesViewController: NoteRepositoryProtocolDelegate {
-    func insertNote(_ note: NoteCellViewModel) {
+    func didInsertNote(_ note: NoteCellViewModel) {
         insertItem(.note(noteViewModel: note), at: .text)
     }
     
-    func deleteNote(_ note: NoteCellViewModel) {
+    func didDeleteNote(_ note: NoteCellViewModel) {
         deleteItem(.note(noteViewModel: note), at: .text)
     }
 }

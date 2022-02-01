@@ -37,6 +37,48 @@ class NoteCellContentView: ThemableView {
         return textView
     }()
     
+    private lazy var deleteButton: UIButton = {
+        let button = UIButton(systemImage: "trash") { [weak self] in
+            guard let action = self?.deleteAction else { return }
+            action()
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var shareButton: UIButton = {
+        let button = UIButton(systemImage: "square.and.arrow.up") { [weak self] in
+            guard let action = self?.shareAction else { return }
+            action()
+        }
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private lazy var buttonsStackView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(shareButton)
+        view.addSubview(deleteButton)
+        
+        let buttonConstraints: [NSLayoutConstraint] = [
+            shareButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            shareButton.widthAnchor.constraint(equalToConstant: 44),
+            shareButton.heightAnchor.constraint(equalTo: shareButton.widthAnchor),
+            
+            deleteButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            deleteButton.widthAnchor.constraint(equalToConstant: 44),
+            deleteButton.heightAnchor.constraint(equalTo: deleteButton.widthAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(buttonConstraints)
+        
+        return view
+    }()
+    
+    var shareAction: (() -> Void)?
+    var deleteAction: (() -> Void)?
+    
     override init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
                   settings: Settings = .shared) {
         
@@ -54,6 +96,7 @@ class NoteCellContentView: ThemableView {
     private func setupHierarchy() {
         addSubview(title)
         addSubview(textView)
+        addSubview(buttonsStackView)
     }
     
     private func setupConstraints() {
@@ -66,12 +109,20 @@ class NoteCellContentView: ThemableView {
         let textViewConstraints: [NSLayoutConstraint] = [
             textView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: 4),
             textView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            textView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            textView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
+        ]
+        
+        let buttonStackView: [NSLayoutConstraint] = [
+            buttonsStackView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 16),
+            buttonsStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            buttonsStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+            buttonsStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            buttonsStackView.heightAnchor.constraint(equalToConstant: 44),
         ]
         
         NSLayoutConstraint.activate(titleConstraints)
         NSLayoutConstraint.activate(textViewConstraints)
+        NSLayoutConstraint.activate(buttonStackView)
     }
     
     func setup(palette: ColorSet, viewModel: NoteCellViewModel) {
@@ -99,6 +150,10 @@ class NoteCellContentView: ThemableView {
         self.title.textColor = palette.text
         self.textView.textColor = palette.text
         backgroundColor = palette.noteBackground
+        self.deleteButton.tintColor = palette.actionColor
+        self.deleteButton.backgroundColor = palette.buttonBackground
+        self.shareButton.tintColor = palette.actionColor
+        self.shareButton.backgroundColor = palette.buttonBackground
         
         guard let textColor = palette.text?.withAlphaComponent(0.4) else { return }
         

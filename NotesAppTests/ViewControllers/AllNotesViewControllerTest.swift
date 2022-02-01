@@ -7,7 +7,6 @@
 
 import XCTest
 @testable import NotesApp
-import SwiftUI
 
 class AllNotesViewControllerTest: XCTestCase {
 

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class CustomThemeBuilderCollectionViewCell: UICollectionViewCell {
     static var identifier: String = "CustomThemeBuilderCollectionViewCell"

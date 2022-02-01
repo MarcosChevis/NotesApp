@@ -18,12 +18,13 @@ extension NoteViewController {
     func makeNoteCellRegistration() -> NoteCellRegistration {
         NoteCellRegistration { [weak self] cell, indexPath, note in
             guard let self = self else { return }
+            cell.delegate = self
             cell.setup(palette: self.palette, viewModel: note)
         }
     }
     
-    func makeDatasource(with noteCellRegistration: NoteCellRegistration) -> NoteDataSource {
-        NoteDataSource(collectionView: contentView.collectionView) { collectionView, indexPath, viewModel in
+    func makeDatasource(with noteCellRegistration: NoteCellRegistration, for collectionView: UICollectionView) -> NoteDataSource {
+        NoteDataSource(collectionView: collectionView) { collectionView, indexPath, viewModel in
             collectionView.dequeueConfiguredReusableCell(using: noteCellRegistration, for: indexPath, item: viewModel)
         }
     }

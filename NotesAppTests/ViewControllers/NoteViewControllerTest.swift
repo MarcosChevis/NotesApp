@@ -11,6 +11,7 @@ import XCTest
 class NoteViewControllerTest: XCTestCase {
     
     var repositoryDummy: NoteRepositoryDummy!
+    var contentView: NoteView!
     var sut: NoteViewController!
     var coordinatorDummy: MainCoordinatorDummy!
     var settings: Settings!
@@ -23,7 +24,8 @@ class NoteViewControllerTest: XCTestCase {
         localStorageServiceDummy = .init()
         notificationServiceDummy = .init()
         settings = .init(localStorageService: localStorageServiceDummy, notificationService: notificationServiceDummy)
-        sut = NoteViewController(palette: .classic, repository: repositoryDummy, notificationService: notificationServiceDummy, settings: settings)
+        contentView = .init(palette: .classic)
+        sut = NoteViewController(contentView: contentView, palette: .classic, repository: repositoryDummy, notificationService: notificationServiceDummy, settings: settings)
         sut.coordinator = coordinatorDummy
         _ = sut.view
     }
@@ -34,14 +36,15 @@ class NoteViewControllerTest: XCTestCase {
     }
     
     func testDidAddNote() {
-        sut.didAdd()
+        sut.createNote()
         XCTAssertEqual(1, repositoryDummy.mock.count)
     }
     
     func testDidDeleteNote() {
-        sut.didAdd()
-        sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
-        sut.didDelete()
+        sut.createNote()
+        XCTAssertEqual(1, repositoryDummy.mock.count)
+        
+        sut.deleteNote(repositoryDummy.mock.first!.note)
         XCTAssertTrue(coordinatorDummy.didPresentSingleActionAlert.didPresent)
         XCTAssertEqual(0, repositoryDummy.mock.count)
     }
@@ -53,28 +56,18 @@ class NoteViewControllerTest: XCTestCase {
     
     func testDidTapShare() {
         sut.didAdd()
-        sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
-        sut.currentHighlightedNote?.content = "Pudim é melhor que bacon"
-        sut.didShare()
+        var note = repositoryDummy.mock.first!.note
+        note.content = "Pudim é melhor que bacon"
+        sut.shareNote(note)
         
         XCTAssertTrue(coordinatorDummy.didPresentShareSheet.didPresent)
-        XCTAssertEqual(coordinatorDummy.didPresentShareSheet.content, sut.currentHighlightedNote?.content!)
+        XCTAssertEqual(coordinatorDummy.didPresentShareSheet.content, note.content)
     }
     
-    func testDidTapShareWithoutAHighlitedNote() {
-        XCTAssertNil(sut.currentHighlightedNote)
-        XCTAssertEqual(0, repositoryDummy.mock.count)
-        
-        sut.didShare()
-        
-        XCTAssertFalse(coordinatorDummy.didPresentShareSheet.didPresent)
-        XCTAssertTrue(coordinatorDummy.didPresentErrorAlert.didPresent)
-    }
     
     func testDidTapShareWithAEmptyHighlitedNote() throws {
-        sut.didAdd()
-        sut.collectionViewDidMove(to: IndexPath(row: 0, section: 0))
-        sut.didShare()
+        sut.createNote()
+        sut.shareNote(repositoryDummy.mock.first!.note)
         XCTAssertTrue(coordinatorDummy.didPresentErrorAlert.didPresent)
     }
 }
