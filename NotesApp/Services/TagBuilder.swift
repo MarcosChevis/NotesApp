@@ -47,8 +47,12 @@ class TagBuilder {
     
     private func findTagContent(for content: String) -> [String] {
         let separetedContent = content
-            .split(separator: " ")
-            .map(String.init)
+            .split(separator: "\n")
+            .flatMap {
+                String($0)
+                .split(separator: " ")
+                .map(String.init)
+            }
         
         let tags = separetedContent
             .filter { $0.starts(with: "#") }

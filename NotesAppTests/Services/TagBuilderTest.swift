@@ -119,7 +119,7 @@ class TagBuilderTest: XCTestCase {
     
     func createNotes() throws -> [Note] {
         let note1 = Note(context: coreDataStack.mainContext)
-        note1.content = "some content #firstTag #secondTag"
+        note1.content = "some content #firstTag\n#secondTag"
         
         let note2 = Note(context: coreDataStack.mainContext)
         note2.content = "some content #firstTag #thirdTag"
