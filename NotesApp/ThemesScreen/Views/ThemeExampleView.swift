@@ -10,9 +10,8 @@ import UIKit
 class ThemeExampleView: ThemableView {
     
     lazy var shareButton: UIButton = {
-        let but = UIButton(systemImage: "square.and.arrow.up") {}
+        let but = UIButton(systemImage: "square.and.arrow.up") { return }
         but.translatesAutoresizingMaskIntoConstraints = false
-        but.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         
         return but
     }()
@@ -41,9 +40,8 @@ class ThemeExampleView: ThemableView {
     }()
     
     lazy var trashButton: UIButton = {
-        let but = UIButton(systemImage: "square.and.arrow.up") {}
+        let but = UIButton(systemImage: "trash") { return }
         but.translatesAutoresizingMaskIntoConstraints = false
-        but.setImage(UIImage(systemName: "trash"), for: .normal)
         
         return but
     }()
