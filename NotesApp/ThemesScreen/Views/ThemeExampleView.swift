@@ -11,6 +11,7 @@ class ThemeExampleView: ThemableView {
     
     lazy var shareButton: UIButton = {
         let but = UIButton(systemImage: "square.and.arrow.up") { return }
+        but.layer.cornerRadius = 5.45
         but.translatesAutoresizingMaskIntoConstraints = false
         
         return but
@@ -42,6 +43,7 @@ class ThemeExampleView: ThemableView {
     lazy var trashButton: UIButton = {
         let but = UIButton(systemImage: "trash") { return }
         but.translatesAutoresizingMaskIntoConstraints = false
+        but.layer.cornerRadius = 5.45
         
         return but
     }()
@@ -212,16 +214,4 @@ class ThemeExampleView: ThemableView {
         smallTitle.text = palette.name.capitalized + " Theme"
     }
     
-}
-
-private extension UIButton {
-    
-    convenience init(systemImage: String, action: @escaping () -> Void) {
-        self.init()
-        setImage(UIImage(systemName: systemImage), for: .normal)
-        layer.cornerRadius = 5.45
-        addAction(UIAction(handler: { _ in
-            action()
-        }), for: .touchUpInside)
-    }
 }
