@@ -57,47 +57,47 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithTagsAndNotesOnIphone12neon() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idNeon) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idNeon) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsAndNotesOnIphone12bookish() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idBookish) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idBookish) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsAndNotesOnIphone12grape() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idGrape) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idGrape) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsAndNotesOnIphone12christmas() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idChristmas) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idChristmas) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsAndNotesOnIphone12dark() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idDark) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idDark) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsAndNotesOnIphone12halloween() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idHalloween) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idHalloween) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsAndNotesOnIphone12devotional() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idDevotional) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idDevotional) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsAndNotesOnIphone12matrix() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idCRT) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idCRT) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsAndNotesOnIphone12unicorn() {
-        let view = setupViewWithTagsAndNotes(with: themeRepository.getTheme(with: idUnicorn) ?? .classic)
+        let view = setupViewWithTagsAndNotes(with: themeRepository.getColorSet(with: idUnicorn) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
@@ -129,47 +129,47 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithTagsOnlyOnIphone12neon() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idNeon) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idNeon) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsOnlyOnIphone12bookish() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idBookish) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idBookish) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsOnlyOnIphone12grape() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idGrape) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idGrape) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsOnlyOnIphone12christmas() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idChristmas) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idChristmas) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsOnlyOnIphone12dark() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idDark) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idDark) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsOnlyOnIphone12halloween() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idHalloween) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idHalloween) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsOnlyOnIphone12devotional() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idDevotional) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idDevotional) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithTagsOnlyOnIphone12matrix() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idCRT) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idCRT) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithTagsOnlyOnIphone12unicorn() {
-        let view = setupViewWithTagsOnly(with: themeRepository.getTheme(with: idUnicorn) ?? .classic)
+        let view = setupViewWithTagsOnly(with: themeRepository.getColorSet(with: idUnicorn) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
@@ -198,47 +198,47 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithNotesOnlyOnIphone12neon() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idNeon) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idNeon) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNotesOnlyOnIphone12bookish() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idBookish) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idBookish) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNotesOnlyOnIphone12grape() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idGrape) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idGrape) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNotesOnlyOnIphone12christmas() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idChristmas) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idChristmas) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNotesOnlyOnIphone12dark() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idDark) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idDark) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNotesOnlyOnIphone12halloween() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idHalloween) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idHalloween) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNotesOnlyOnIphone12devotional() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idDevotional) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idDevotional) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNotesOnlyOnIphone12matrix() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idCRT) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idCRT) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNotesOnlyOnIphone12unicorn() {
-        let view = setupViewWithNotesOnly(with: themeRepository.getTheme(with: idUnicorn) ?? .classic)
+        let view = setupViewWithNotesOnly(with: themeRepository.getColorSet(with: idUnicorn) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
@@ -267,47 +267,47 @@ class AllNoteViewTest: XCTestCase {
     }
     
     func testViewWithNoTagsAndNotesOnIphone12neon() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idNeon) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idNeon) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNoTagsAndNotesOnIphone12bookish() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idBookish) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idBookish) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNoTagsAndNotesOnIphone12grape() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idGrape) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idGrape) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNoTagsAndNotesOnIphone12christmas() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idChristmas) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idChristmas) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNoTagsAndNotesOnIphone12dark() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idDark) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idDark) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNoTagsAndNotesOnIphone12halloween() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idHalloween) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idHalloween) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNoTagsAndNotesOnIphone12devotional() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idDevotional) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idDevotional) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testViewWithNoTagsAndNotesOnIphone12matrix() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idCRT) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idCRT) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testViewWithNoTagsAndNotesOnIphone12unicorn() {
-        let view = setupWithNoTagsAndNotes(with: themeRepository.getTheme(with: idUnicorn) ?? .classic)
+        let view = setupWithNoTagsAndNotes(with: themeRepository.getColorSet(with: idUnicorn) ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     

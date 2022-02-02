@@ -38,7 +38,7 @@ class ThemesViewControllerTest: XCTestCase {
     func testDidSelectTheme() {
         selectTheme(at: 1)
         sut.collectionDataSource.data.forEach { theme in
-            if theme.colorSet == themeRepository.getTheme(with: "50fab20d-3934-4a4a-8274-1ad502544a06") {
+            if theme.colorSet == themeRepository.getColorSet(with: "50fab20d-3934-4a4a-8274-1ad502544a06") {
                 XCTAssertTrue(theme.isSelected)
             }
             else {
@@ -50,7 +50,7 @@ class ThemesViewControllerTest: XCTestCase {
     func testDidChangeTheme() {
         XCTAssertEqual(.classic, settings.theme)
         selectTheme(at: 4)
-        XCTAssertEqual(themeRepository.getTheme(with: "224462ed-d295-4ba7-a9bd-9b986ba751df"), settings.theme)
+        XCTAssertEqual(themeRepository.getColorSet(with: "224462ed-d295-4ba7-a9bd-9b986ba751df"), settings.theme)
     }
     
     func testDidChangePalette() {
@@ -58,7 +58,7 @@ class ThemesViewControllerTest: XCTestCase {
         XCTAssertEqual([], notificationServiceDummy.postedNotification)
         selectTheme(at: 2)
         XCTAssertEqual(.init("ThemeManager_DidChangeTheme"), notificationServiceDummy.postedNotification.first!)
-        XCTAssertEqual(themeRepository.getTheme(with: "6bcb4b2d-6afa-4a2a-b4dc-f2cca83a44c7"), notificationServiceDummy.postedObjects.first as? ColorSet)
+        XCTAssertEqual(themeRepository.getColorSet(with: "6bcb4b2d-6afa-4a2a-b4dc-f2cca83a44c7"), notificationServiceDummy.postedObjects.first as? ColorSet)
     }
     
     func selectTheme(at index: Int) {

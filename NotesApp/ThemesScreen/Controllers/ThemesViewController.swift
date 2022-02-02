@@ -54,7 +54,7 @@ class ThemesViewController: ThemableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let data = themeRepository.getAllThemes()
+        let data = themeRepository.getAllColorSets()
         collectionDataSource.setupData(data: data)
         contentView.collectionView.reloadData()
     }

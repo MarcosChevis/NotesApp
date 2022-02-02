@@ -8,6 +8,7 @@
 import UIKit
 
 class ThemeRepository: ThemeRepositoryProtocol {
+   
     private let coreDataStack: CoreDataStack
     private var standardThemes: [ColorSet]
     private var customThemes: [ColorSet]
@@ -23,7 +24,7 @@ class ThemeRepository: ThemeRepositoryProtocol {
         self.customThemes = getAllCustomThemes()
     }
     
-    func getAllThemes() -> [ColorSet] {
+    func getAllColorSets() -> [ColorSet] {
         return customThemes + standardThemes
     }
     
@@ -66,7 +67,7 @@ class ThemeRepository: ThemeRepositoryProtocol {
         coreDataStack.mainContext.rollback()
     }
     
-    func getTheme(with id: String) -> ColorSet? {
+    func getColorSet(with id: String) -> ColorSet? {
         
         //procurar no json os temas padroes
         if let theme = getThemeFromStandard(with: id) {
@@ -90,6 +91,15 @@ class ThemeRepository: ThemeRepositoryProtocol {
     private func getThemeFromCustom(with id: String) -> ColorSet? {
         return customThemes.first { colorSet in
             return colorSet.id == id
+        }
+    }
+    
+    func getTheme(with id: String) -> ThemeProtocol? {
+        guard let themes = try? coreDataStack.mainContext.fetch(Theme.fetchRequest()) else {
+            return nil
+        }
+        return themes.first {
+            $0.id?.uuidString == id
         }
     }
     

@@ -52,7 +52,7 @@ class CustomThemeBuilderViewControllerTest: XCTestCase {
         sut.didTapSave()
         
         //11 = 10 temas padroes + 1 tema criado agr
-        XCTAssertEqual(themeRepository.getAllThemes().count, 11)
+        XCTAssertEqual(themeRepository.getAllColorSets().count, 11)
         XCTAssertEqual(coordinatorDummy.didDismiss, true)
     }
     
@@ -61,7 +61,7 @@ class CustomThemeBuilderViewControllerTest: XCTestCase {
         sut.didTapCancel()
         
         //10 temas padroes
-        XCTAssertEqual(themeRepository.getAllThemes().count, 10)
+        XCTAssertEqual(themeRepository.getAllColorSets().count, 10)
         XCTAssertEqual(coordinatorDummy.didDismiss, true)
     }
 

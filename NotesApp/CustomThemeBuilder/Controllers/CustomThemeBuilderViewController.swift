@@ -16,29 +16,30 @@ class CustomThemeBuilderViewController: ThemableViewController {
     var contentView: CustomThemeBuilderView
     weak var coordinator: CustomThemeBuilderCoordinatorProtocol?
     
-    lazy var customColorSet: ThemeProtocol = {
-        
-        var theme = repository.createEmptyTheme()
-        theme.actionColor = palette.actionColor
-        theme.buttonBackground = palette.buttonBackground
-        theme.largeTitle = palette.largeTitle
-        theme.noteBackground = palette.noteBackground
-        theme.background = palette.background
-        theme.text = palette.text
-        
-        return theme
-    }()
+    var customColorSet: ThemeProtocol
     
     var willChange: Int
     
     private let repository: ThemeRepositoryProtocol
 
     init(palette: ColorSet, notificationService: NotificationService = NotificationCenter.default,
-         settings: Settings = .shared, themeRepository: ThemeRepositoryProtocol = ThemeRepository.shared) {
+         settings: Settings = .shared, themeRepository: ThemeRepositoryProtocol = ThemeRepository.shared, themeId: String? = nil) {
         
         self.contentView = .init(palette: palette)
         self.willChange = -1
         self.repository = themeRepository
+    
+        if let id = themeId, let theme = themeRepository.getTheme(with: id) {
+            customColorSet = theme
+        } else {
+            customColorSet = themeRepository.createEmptyTheme()
+            customColorSet.actionColor = palette.actionColor
+            customColorSet.buttonBackground = palette.buttonBackground
+            customColorSet.largeTitle = palette.largeTitle
+            customColorSet.noteBackground = palette.noteBackground
+            customColorSet.background = palette.background
+            customColorSet.text = palette.text
+        }
         
         super.init(palette: palette, notificationService: notificationService, settings: settings)
 
@@ -125,9 +126,4 @@ extension CustomThemeBuilderViewController: UITextFieldDelegate {
          return newLength <= 10
     }
 }
-
-#warning("editar e deletar temas")
-#warning("AllNotesExampleView")
-#warning("onboarding")
-#warning("empty state")
 

@@ -128,6 +128,7 @@ class CustomThemeBuilderView: ThemableView {
         backgroundColor = palette.background
         saveButton.tintColor = palette.actionColor
         cancelButton.tintColor = palette.actionColor
+        themeNameTextField.textColor = palette.text
         
         guard let textColor = palette.text?.withAlphaComponent(0.4) else { return }
         
