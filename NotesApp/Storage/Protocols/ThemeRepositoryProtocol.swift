@@ -20,6 +20,8 @@ protocol ThemeRepositoryProtocol {
     
     func getTheme(with id: String) -> ThemeProtocol?
     
+    func deleteTheme(with id: String) throws
+    
 }
 
 

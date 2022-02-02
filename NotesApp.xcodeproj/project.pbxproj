@@ -82,6 +82,7 @@
 		BA6B29F427A8517800951644 /* CustomThemeBuilderViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B29F327A8517800951644 /* CustomThemeBuilderViewControllerTest.swift */; };
 		BA6B29F627A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B29F527A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift */; };
 		BA6B29F827A85CD700951644 /* CustomThemeBuilderViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6B29F727A85CD700951644 /* CustomThemeBuilderViewTest.swift */; };
+		BA776A7D27AAFCCF00309AB9 /* ThemeCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA776A7C27AAFCCF00309AB9 /* ThemeCollectionViewCellDelegate.swift */; };
 		BA9720D327A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9720D227A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift */; };
 		BA9720D627A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9720D527A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift */; };
 		BA9720D827A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9720D727A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift */; };
@@ -225,6 +226,7 @@
 		BA6B29F327A8517800951644 /* CustomThemeBuilderViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderViewControllerTest.swift; sourceTree = "<group>"; };
 		BA6B29F527A8536700951644 /* CustomThemeBuilderCoordinatorDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCoordinatorDummy.swift; sourceTree = "<group>"; };
 		BA6B29F727A85CD700951644 /* CustomThemeBuilderViewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderViewTest.swift; sourceTree = "<group>"; };
+		BA776A7C27AAFCCF00309AB9 /* ThemeCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
 		BA9720D227A3A85800E084E2 /* CustomThemeBuilderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCoordinator.swift; sourceTree = "<group>"; };
 		BA9720D527A3AB8F00E084E2 /* AllNotesCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllNotesCoordinatorDelegate.swift; sourceTree = "<group>"; };
 		BA9720D727A3ABAE00E084E2 /* CustomThemeBuilderCoordinatorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemeBuilderCoordinatorDelegate.swift; sourceTree = "<group>"; };
@@ -611,6 +613,7 @@
 			isa = PBXGroup;
 			children = (
 				BA9720DA27A41CD000E084E2 /* ThemesViewProtocol.swift */,
+				BA776A7C27AAFCCF00309AB9 /* ThemeCollectionViewCellDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1033,6 +1036,7 @@
 				5BB70C8B27A0275D0012D48D /* TagBuilder.swift in Sources */,
 				5B3FF1A52799985A00828097 /* NoteViewController+DataSourceHelpers.swift in Sources */,
 				BA2D1BEF2795BB1200849955 /* SettingsTableCell.swift in Sources */,
+				BA776A7D27AAFCCF00309AB9 /* ThemeCollectionViewCellDelegate.swift in Sources */,
 				5B3FF1932799953200828097 /* AllNotesViewController+NoteSmallCellCollectionViewCellDelegate.swift in Sources */,
 				5B3FF19C279996C600828097 /* AllNotesViewController+NoteRepositoryProtocolDelegate.swift in Sources */,
 				BA578D5B278F025F000617F6 /* ColorSet.swift in Sources */,

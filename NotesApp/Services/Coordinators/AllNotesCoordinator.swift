@@ -13,6 +13,7 @@ protocol AllNotesCoordinatorProtocol: AnyObject, AlertCoordinatorProtocol, NoteS
     func navigateToSettings()
     func navigateToThemes()
     func navigateToCustomTheme()
+    func editCustomTheme(with id: String)
 }
 
 class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
@@ -66,6 +67,14 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     
     func navigateToCustomTheme() {
         let childCoordinator = CustomThemeBuilderCoordinator(navigationController: NavigationController())
+        childCoordinators.append(childCoordinator)
+        childCoordinator.start()
+        childCoordinator.delegate = self
+        navigationController.present(childCoordinator.navigationController, animated: true, completion: nil)
+    }
+    
+    func editCustomTheme(with id: String) {
+        let childCoordinator = CustomThemeBuilderCoordinator(navigationController: NavigationController(), themeId: id)
         childCoordinators.append(childCoordinator)
         childCoordinator.start()
         childCoordinator.delegate = self

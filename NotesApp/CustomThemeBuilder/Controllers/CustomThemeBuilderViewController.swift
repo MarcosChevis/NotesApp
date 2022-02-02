@@ -31,6 +31,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
     
         if let id = themeId, let theme = themeRepository.getTheme(with: id) {
             customColorSet = theme
+            contentView.themeNameTextField.text = theme.name
         } else {
             customColorSet = themeRepository.createEmptyTheme()
             customColorSet.actionColor = palette.actionColor
@@ -105,6 +106,8 @@ extension CustomThemeBuilderViewController: CustomThemeBuilderViewDelegate {
         if !(name?.isEmpty ?? true) {
             customColorSet.name = contentView.themeNameTextField.text
             repository.saveChanges()
+            settings.changeTheme(palette: ColorSet(theme: customColorSet))
+            
             coordinator?.dismiss()
         } else {
             coordinator?.presentErrorAlert(with: "Your theme must have a name")

@@ -32,7 +32,7 @@ class ThemesViewController: ThemableViewController {
         self.contentView.collectionView.delegate = self
         self.contentView.collectionView.dataSource = collectionDataSource
         self.contentView.delegate = self
-        
+        self.collectionDataSource.cellDelegate = self
         navigationItem.rightBarButtonItems = [ contentView.plusButton]
     }
     
@@ -53,10 +53,8 @@ class ThemesViewController: ThemableViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let data = themeRepository.getAllColorSets()
-        collectionDataSource.setupData(data: data)
-        contentView.collectionView.reloadData()
+                
+        setupDataSource()
     }
     
     func setupNavigationBar() {
@@ -74,11 +72,37 @@ class ThemesViewController: ThemableViewController {
         changeIcon(palette: palette)
     }
     
+    func setupDataSource() {
+        let data = themeRepository.getAllColorSets()
+        collectionDataSource.setupData(data: data)
+        contentView.collectionView.reloadData()
+    }
+
 }
 
 extension ThemesViewController: ThemesViewProtocol {
     func didTapPlus() {
         coordinator?.navigateToCustomTheme()
     }
+    
+}
+
+extension ThemesViewController: ThemeCollectionViewCellDelegate {
+    func didTapEdit(with id: String) {
+        coordinator?.editCustomTheme(with: id)
+    }
+    
+    func didTapDelete(with id: String) {
+        do {
+            try themeRepository.deleteTheme(with: id)
+            setupDataSource()
+            settings.changeTheme(palette: collectionDataSource.data[0].colorSet)
+            collectionDataSource.data[0].isSelected = true
+            contentView.collectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
+        } catch {
+            coordinator?.presentErrorAlert(with: "An error has occured")
+        }
+    }
+    
     
 }

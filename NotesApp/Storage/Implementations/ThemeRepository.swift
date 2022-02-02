@@ -103,4 +103,14 @@ class ThemeRepository: ThemeRepositoryProtocol {
         }
     }
     
+    func deleteTheme(with id: String) throws {
+        guard let theme = getTheme(with: id) as? Theme else {
+            throw NSError()
+        }
+        
+        coreDataStack.mainContext.delete(theme)
+        try coreDataStack.mainContext.save()
+        customThemes = getAllCustomThemes()
+    }
+    
 }
