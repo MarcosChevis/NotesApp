@@ -22,6 +22,8 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     let notificationService: NotificationService
     var childCoordinators: [CoordinatorProtocol]
     
+    weak var delegate: AllNotesCoordinatorDelegate?
+    
     init(navigationController: NavigationController,
          settings: Settings = .shared,
          notificationService: NotificationService = NotificationCenter.default)
@@ -48,8 +50,14 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     }
     
     private func dismiss(with id: String?) {
-        navigationController.dismiss(animated: true) { [weak notificationService] in
-            notificationService?.post(name: .didComebackFromModal, object: id)
+        navigationController.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            
+            if let id = id {
+                self.delegate?.didDismissToNote(with: id)
+            } else {
+                self.delegate?.didDismiss()
+            }
         }
     }
     

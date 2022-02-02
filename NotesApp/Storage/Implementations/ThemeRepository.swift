@@ -105,7 +105,7 @@ class ThemeRepository: ThemeRepositoryProtocol {
     
     func deleteTheme(with id: String) throws {
         guard let theme = getTheme(with: id) as? Theme else {
-            throw NSError()
+            throw NSError(domain: "Error deleting Thme", code: 1, userInfo: nil)
         }
         
         coreDataStack.mainContext.delete(theme)

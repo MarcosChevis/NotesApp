@@ -156,6 +156,3 @@ extension ThemeCollectionViewCell: UIContextMenuInteractionDelegate {
     
     
 }
-
-
-#warning("mudar o fundo da tag pra cor da nota, mudar o texto da tag pra cor do texto da nota")

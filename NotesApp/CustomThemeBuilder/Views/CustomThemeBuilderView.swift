@@ -131,10 +131,11 @@ class CustomThemeBuilderView: ThemableView {
         themeNameTextField.textColor = palette.text
         
         
-        guard let textColor = palette.text?.withAlphaComponent(1) else { return }
+        guard let textColor = palette.text?.withAlphaComponent(0.35) else { return }
         
         let attributeRange = NSRange(location: 0, length: placeholderContent.count)
         placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
         placeholder.addAttributes([NSAttributedString.Key.foregroundColor: textColor], range: attributeRange)
+        themeNameTextField.attributedPlaceholder = placeholder
     }
 }

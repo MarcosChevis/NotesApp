@@ -25,6 +25,15 @@ class AllNotesViewController: ThemableViewController {
         return dataSource
     }()
     
+    private lazy var placeholder: NSMutableAttributedString = {
+        return NSMutableAttributedString(string: "Search", attributes: placeholderAttributes(for: palette))
+    }()
+    
+    private func placeholderAttributes(for palette: ColorSet) -> [NSMutableAttributedString.Key : Any] {
+        let color = palette.text?.withAlphaComponent(0.5) ?? UIColor.black.withAlphaComponent(0.7)
+        return [NSMutableAttributedString.Key.foregroundColor: color]
+    }
+    
     init(palette: ColorSet,
          noteRepository: NotesRepositoryProtocol = NotesRepository(isAscending: false),
          tagRepository: TagRepositoryProtocol = TagRepository(),
@@ -114,13 +123,32 @@ class AllNotesViewController: ThemableViewController {
         contentView.searchController.searchResultsUpdater = self
         contentView.searchController.obscuresBackgroundDuringPresentation = false
         contentView.searchController.searchBar.placeholder = "Search"
+        contentView.searchController.searchBar.searchBarStyle = .minimal
+        contentView.searchController.searchBar.searchTextField.backgroundColor = palette.noteBackground
+        contentView.searchController.searchBar.searchTextField.attributedPlaceholder = placeholder
+        contentView.searchController.searchBar.searchTextField.leftView?.tintColor = palette.text
+        contentView.searchController.searchBar.searchTextField.rightView?.tintColor = palette.text
+        changeSearchBarTextColor()
+        
         navigationItem.searchController = contentView.searchController
         
         // garante que a search nao vai aparecer quando mudar de view mesmo que ela esteja ativada
         definesPresentationContext = true
     }
+    
+    private func changeSearchBarTextColor() {
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.foregroundColor: palette.text ?? UIColor.black]
+    }
+    
     override func setColors(palette: ColorSet) {
         super.setColors(palette: palette)
+        changeSearchBarTextColor()
+        let attributeRange = NSRange(location: 0, length: placeholder.string.count)
+        placeholder.removeAttribute(NSMutableAttributedString.Key.foregroundColor, range: attributeRange)
+        placeholder.addAttributes(placeholderAttributes(for: palette), range: attributeRange)
+        contentView.searchController.searchBar.searchTextField.attributedPlaceholder = placeholder
+        contentView.searchController.searchBar.searchTextField.leftView?.tintColor = palette.text
+        contentView.searchController.searchBar.searchTextField.rightView?.tintColor = palette.text
         contentView.collectionView.reloadData()
     }
 }

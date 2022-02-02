@@ -70,4 +70,9 @@ class ThemesViewControllerTest: XCTestCase {
         XCTAssertTrue(coordinatorDummy.didNavigateToCustomThemes)
     }
     
+    func testDidGoToEditCustomTheme() {
+        sut.didTapEdit(with: sut.collectionDataSource.data.first!.colorSet.id)
+        XCTAssertTrue(coordinatorDummy.didPresentEditCustomTheme)
+    }
+    
 }
