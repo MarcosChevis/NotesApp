@@ -29,7 +29,7 @@ class CustomThemeBuilderView: ThemableView {
         let textView = UITextField(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.font = UIFont.boldSystemFont(ofSize: 34)
-    
+        textView.attributedPlaceholder = placeholder
         return textView
     }()
     
@@ -130,7 +130,8 @@ class CustomThemeBuilderView: ThemableView {
         cancelButton.tintColor = palette.actionColor
         themeNameTextField.textColor = palette.text
         
-        guard let textColor = palette.text?.withAlphaComponent(0.4) else { return }
+        
+        guard let textColor = palette.text?.withAlphaComponent(1) else { return }
         
         let attributeRange = NSRange(location: 0, length: placeholderContent.count)
         placeholder.removeAttribute(NSAttributedString.Key.foregroundColor, range: attributeRange)
