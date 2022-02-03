@@ -50,7 +50,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         guard let colorSet = colorSet else { return }
 
         contentView.backgroundColor = colorSet.noteBackground
-        tagLabel.textColor = colorSet.actionColor
+        tagLabel.textColor = colorSet.text
         
         if isSelected {
             contentView.layer.borderColor = colorSet.actionColor?.cgColor

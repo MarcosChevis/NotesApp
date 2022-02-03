@@ -9,6 +9,8 @@ import UIKit
 @testable import NotesApp
 
 class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
+    
+    
     var didDismiss: Bool = false
     var didNavigateToSettings: Bool = false
     var didNavigateToThemes: Bool = false
@@ -17,6 +19,7 @@ class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
     var didPresentErrorAlert: Bool = false
     var didNavigateToCustomThemes: Bool = false
     var didPresentSingleAlertAction: Bool = false
+    var didPresentEditCustomTheme: Bool = false
     var sharedNote: String? = nil
     
     func dismiss() {
@@ -50,5 +53,9 @@ class AllNotesCoordinatorDummy: AllNotesCoordinatorProtocol {
     
     func navigateToCustomTheme() {
         didNavigateToCustomThemes = true
+    }
+    
+    func editCustomTheme(with id: String) {
+        didPresentEditCustomTheme = true
     }
 }

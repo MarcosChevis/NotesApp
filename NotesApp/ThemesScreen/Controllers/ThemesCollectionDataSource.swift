@@ -10,6 +10,7 @@ import UIKit
 class ThemesCollectionDataSource: NSObject, UICollectionViewDataSource {
     var data: [ThemeCollectionData] = []
     let settings: Settings
+    weak var cellDelegate: ThemeCollectionViewCellDelegate?
 
     init(settings: Settings = .shared) {
         self.settings = settings
@@ -33,7 +34,8 @@ class ThemesCollectionDataSource: NSObject, UICollectionViewDataSource {
             preconditionFailure("Cell configured improperly")
         }
         
-        cell.setupThemesViewCell(palette: data[indexPath.row].colorSet, isSelected: data[indexPath.row].isSelected)
+        cell.setupThemesViewCell(palette: data[indexPath.row].colorSet, isSelected: data[indexPath.row].isSelected, isStandard: data[indexPath.row].colorSet.isStandard)
+        cell.delegate = cellDelegate
         
         return cell
     }

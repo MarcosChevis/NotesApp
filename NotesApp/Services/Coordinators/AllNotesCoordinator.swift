@@ -13,6 +13,7 @@ protocol AllNotesCoordinatorProtocol: AnyObject, AlertCoordinatorProtocol, NoteS
     func navigateToSettings()
     func navigateToThemes()
     func navigateToCustomTheme()
+    func editCustomTheme(with id: String)
 }
 
 class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
@@ -20,6 +21,8 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     var settings: Settings
     let notificationService: NotificationService
     var childCoordinators: [CoordinatorProtocol]
+    
+    weak var delegate: AllNotesCoordinatorDelegate?
     
     init(navigationController: NavigationController,
          settings: Settings = .shared,
@@ -47,8 +50,14 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     }
     
     private func dismiss(with id: String?) {
-        navigationController.dismiss(animated: true) { [weak notificationService] in
-            notificationService?.post(name: .didComebackFromModal, object: id)
+        navigationController.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            
+            if let id = id {
+                self.delegate?.didDismissToNote(with: id)
+            } else {
+                self.delegate?.didDismiss()
+            }
         }
     }
     
@@ -66,6 +75,14 @@ class AllNotesCoordinator: CoordinatorProtocol, AllNotesCoordinatorProtocol {
     
     func navigateToCustomTheme() {
         let childCoordinator = CustomThemeBuilderCoordinator(navigationController: NavigationController())
+        childCoordinators.append(childCoordinator)
+        childCoordinator.start()
+        childCoordinator.delegate = self
+        navigationController.present(childCoordinator.navigationController, animated: true, completion: nil)
+    }
+    
+    func editCustomTheme(with id: String) {
+        let childCoordinator = CustomThemeBuilderCoordinator(navigationController: NavigationController(), themeId: id)
         childCoordinators.append(childCoordinator)
         childCoordinator.start()
         childCoordinator.delegate = self

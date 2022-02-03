@@ -9,4 +9,5 @@ import Foundation
 
 protocol AllNotesCoordinatorDelegate: AnyObject {
     func didDismiss()
+    func didDismissToNote(with id: String)
 }

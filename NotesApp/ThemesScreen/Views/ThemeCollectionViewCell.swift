@@ -10,6 +10,8 @@ import UIKit
 class ThemeCollectionViewCell: UICollectionViewCell {
     static var identifier: String = "ThemeCollectionViewCell"
     
+    var isStandard: Bool
+    weak var delegate: ThemeCollectionViewCellDelegate?
     
     lazy var title: UILabel = {
         var title = UILabel()
@@ -46,9 +48,16 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     
     var firstSelected: Bool = false
     
+    var colorSet: ColorSet?
+    
     override init(frame: CGRect) {
+        isStandard = true
+        
         super.init(frame: frame)
-                
+        
+        let interaction = UIContextMenuInteraction(delegate: self)
+        contentView.addInteraction(interaction)
+        
         setupConstraints()
     }
     
@@ -56,10 +65,14 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupThemesViewCell(palette: ColorSet, isSelected: Bool) {
+    func setupThemesViewCell(palette: ColorSet, isSelected: Bool, isStandard: Bool) {
+        
+        self.colorSet = palette
+        
+        self.isStandard = isStandard
         
         setupLayers(palette: palette)
-             
+        
         if isSelected {
             didSelect()
         } else {
@@ -77,6 +90,11 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         themeLabel.textColor = palette.text
         
         contentView.backgroundColor = palette.background
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        colorSet = nil
     }
     
     func setupLayers(palette: ColorSet) {
@@ -103,7 +121,7 @@ class ThemeCollectionViewCell: UICollectionViewCell {
             themeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
-  
+    
     func didSelect() {
         contentView.layer.borderWidth = 4
     }
@@ -111,4 +129,30 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     func didUnselect() {
         contentView.layer.borderWidth = 0
     }
+}
+
+extension ThemeCollectionViewCell: UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        
+        guard !isStandard else {
+            return nil
+        }
+        
+        let edit = UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { [weak self] action in
+            guard let delegate = self?.delegate, let colorSet = self?.colorSet else { return }
+            delegate.didTapEdit(with: colorSet.id)
+        }
+        
+        let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: [.destructive]) { [weak self] action in
+            guard let delegate = self?.delegate, let colorSet = self?.colorSet else { return }
+            delegate.didTapDelete(with: colorSet.id)
+        }
+        
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { _ in
+            UIMenu(title: "Actions", children: [edit, delete])
+        }
+    }
+    
+    
 }

@@ -206,12 +206,12 @@ class ThemeExampleView: ThemableView {
         smallTitle.textColor = colorSet.text
         textView.textColor = colorSet.text
         
-        trashButton.backgroundColor = palette.buttonBackground
-        shareButton.backgroundColor = palette.buttonBackground
+        trashButton.backgroundColor = colorSet.buttonBackground
+        shareButton.backgroundColor = colorSet.buttonBackground
 
         layer.shadowColor = colorSet.actionColor?.cgColor
         
-        smallTitle.text = palette.name.capitalized + " Theme"
+        smallTitle.text = colorSet.name?.capitalized ?? "" + " Theme"
     }
     
 }

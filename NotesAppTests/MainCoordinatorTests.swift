@@ -39,7 +39,7 @@ class MainCoordinatorTest: XCTestCase {
     
     func testRemoval() {
         sut.navigateToAllNotes()
-        notificationService.post(name: .didComebackFromModal, object: nil)
+        (sut.childCoordinators.first! as! AllNotesCoordinator).dismiss()
         XCTAssertEqual(0, sut.childCoordinators.count)
     }
     
