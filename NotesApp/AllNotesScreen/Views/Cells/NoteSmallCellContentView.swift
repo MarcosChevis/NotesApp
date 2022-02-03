@@ -53,37 +53,26 @@ class NoteSmallCellContentView: ThemableView {
     }()
     
     private lazy var deleteButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "trash"), for: .normal)
-        button.layer.cornerRadius = 8
-        button.addAction(UIAction(handler: {[weak self] _ in
+        let button = UIButton(systemImage: "trash") {[weak self] in
             guard let self = self, let viewModel = self.viewModel else { return }
             self.delegate?.didTapDelete(for: viewModel)
-        }), for: .touchUpInside)
-        
+        }
         return button
     }()
     
     private lazy var shareButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
-        button.layer.cornerRadius = 8
-        button.addAction(UIAction(handler: {[weak self] _ in
+        let button = UIButton(systemImage: "square.and.arrow.up") {[weak self] in
             guard let self = self, let viewModel = self.viewModel else { return }
             self.delegate?.didTapShare(for: viewModel)
-        }), for: .touchUpInside)
-        
+        }
         return button
     }()
     
     private lazy var editButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "square.and.pencil"), for: .normal)
-        button.layer.cornerRadius = 8
-        button.addAction(UIAction(handler: {[weak self] _ in
+        let button = UIButton(systemImage: "square.and.pencil") {[weak self] in
             guard let self = self, let viewModel = self.viewModel else { return }
             self.delegate?.didTapEdit(for: viewModel)
-        }), for: .touchUpInside)
+        }
         
         return button
     }()

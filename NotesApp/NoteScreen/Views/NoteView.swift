@@ -34,22 +34,12 @@ class NoteView: ThemableView {
         return layout
     }()
     
-    lazy var shareButton: UIBarButtonItem = {
-        let but = UIBarButtonItem(image: UIImage(systemName: "square.and.arrow.up"), style: .plain, target: self, action: #selector(didTapShare))
-        
-        return but
+    lazy var addButton: UIBarButtonItem = {
+        UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddNote))
     }()
     
-    lazy var toolbarItems: [UIBarButtonItem] = {
-        var items = [UIBarButtonItem]()
-        
-        items.append( UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapDelete)))
-        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
-        items.append( UIBarButtonItem(image: UIImage(systemName: "note.text"), style: .plain , target: self, action: #selector(didTapAllNotes)))
-        items.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil))
-        items.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddNote)))
-        
-        return items
+    lazy var allNotesButton: UIBarButtonItem = {
+        UIBarButtonItem(image: UIImage(systemName: "menucard"), style: .plain , target: self, action: #selector(didTapAllNotes))
     }()
     
     lazy var collectionView: UICollectionView = {
@@ -79,27 +69,15 @@ class NoteView: ThemableView {
     override func setColors(palette: ColorSet) {
         
         backgroundColor = palette.background
-        
-        for item in toolbarItems {
-            item.tintColor = palette.actionColor
-        }
     }
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
-    }
-    
-    @objc func didTapShare() {
-        delegate?.didShare()
-    }
-    
-    @objc func didTapDelete() {
-        delegate?.didDelete()
     }
     
     @objc func didTapAllNotes() {

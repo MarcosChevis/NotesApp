@@ -10,15 +10,15 @@ import UIKit
 class ThemeExampleView: ThemableView {
     
     lazy var shareButton: UIButton = {
-        var but = UIButton()
+        let but = UIButton(systemImage: "square.and.arrow.up") { return }
+        but.layer.cornerRadius = 5.45
         but.translatesAutoresizingMaskIntoConstraints = false
-        but.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
         
         return but
     }()
     
     lazy var bigTitle: UILabel = {
-       var label = UILabel()
+       let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Page 1"
         label.font = UIFont.boldSystemFont(ofSize: 20)
@@ -27,7 +27,7 @@ class ThemeExampleView: ThemableView {
     }()
 
     lazy var middleView: UIView = {
-        var view = UIView()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .red
         view.layer.cornerRadius = 16
@@ -41,23 +41,25 @@ class ThemeExampleView: ThemableView {
     }()
     
     lazy var trashButton: UIButton = {
-        var but = UIButton()
+        let but = UIButton(systemImage: "trash") { return }
         but.translatesAutoresizingMaskIntoConstraints = false
-        but.setImage(UIImage(systemName: "trash"), for: .normal)
+        but.layer.cornerRadius = 5.45
         
         return but
     }()
     
+    
+    
     lazy var noteButton: UIButton = {
-        var but = UIButton()
+        let but = UIButton()
         but.translatesAutoresizingMaskIntoConstraints = false
-        but.setImage(UIImage(systemName: "note.text"), for: .normal)
+        but.setImage(UIImage(systemName: "menucard"), for: .normal)
         
         return but
     }()
     
     lazy var plusButton: UIButton = {
-        var but = UIButton()
+        let but = UIButton()
         but.translatesAutoresizingMaskIntoConstraints = false
         but.setImage(UIImage(systemName: "plus"), for: .normal)
         
@@ -65,7 +67,7 @@ class ThemeExampleView: ThemableView {
     }()
     
     lazy var smallTitle: UILabel = {
-        var label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 15)
         
@@ -109,12 +111,12 @@ class ThemeExampleView: ThemableView {
     }
     
     func setupHierarchy() {
-        addSubview(shareButton)
         addSubview(bigTitle)
         addSubview(middleView)
-        addSubview(trashButton)
         addSubview(noteButton)
         addSubview(plusButton)
+        middleView.addSubview(shareButton)
+        middleView.addSubview(trashButton)
         middleView.addSubview(smallTitle)
         middleView.addSubview(textView)
         
@@ -122,35 +124,26 @@ class ThemeExampleView: ThemableView {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            shareButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
-            shareButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8)
-        ])
-        
-        NSLayoutConstraint.activate([
-            bigTitle.topAnchor.constraint(equalTo: shareButton.bottomAnchor),
-            bigTitle.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16)
-        ])
-        
-        NSLayoutConstraint.activate([
-            middleView.topAnchor.constraint(equalTo: bigTitle.bottomAnchor, constant: 4),
-            middleView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            middleView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-        ])
-        
-        NSLayoutConstraint.activate([
-            trashButton.topAnchor.constraint(equalTo: middleView.bottomAnchor, constant: 4),
-            trashButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
-            trashButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8)
-        ])
-        
-        NSLayoutConstraint.activate([
-            noteButton.topAnchor.constraint(equalTo: trashButton.topAnchor),
-            noteButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            plusButton.topAnchor.constraint(equalTo: trashButton.topAnchor),
+            plusButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             plusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            noteButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            noteButton.trailingAnchor.constraint(equalTo: plusButton.leadingAnchor, constant: -8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            bigTitle.topAnchor.constraint(equalTo: plusButton.bottomAnchor),
+            bigTitle.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            bigTitle.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            middleView.topAnchor.constraint(equalTo: bigTitle.bottomAnchor, constant: 8),
+            middleView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            middleView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            middleView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8)
         ])
         
         NSLayoutConstraint.activate([
@@ -159,10 +152,24 @@ class ThemeExampleView: ThemableView {
         ])
         
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: smallTitle.bottomAnchor, constant: 4),
+            textView.topAnchor.constraint(equalTo: smallTitle.bottomAnchor, constant: 8),
             textView.leadingAnchor.constraint(equalTo: middleView.leadingAnchor, constant: 8),
             textView.trailingAnchor.constraint(equalTo: middleView.trailingAnchor, constant: -8),
-            textView.bottomAnchor.constraint(equalTo: middleView.bottomAnchor, constant: -8)
+            textView.bottomAnchor.constraint(equalTo: trashButton.topAnchor, constant: -8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            shareButton.trailingAnchor.constraint(equalTo: middleView.trailingAnchor, constant: -8),
+            shareButton.bottomAnchor.constraint(equalTo: middleView.bottomAnchor, constant: -8),
+            shareButton.widthAnchor.constraint(equalToConstant: 30),
+            shareButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            trashButton.leadingAnchor.constraint(equalTo: middleView.leadingAnchor, constant: 8),
+            trashButton.bottomAnchor.constraint(equalTo: middleView.bottomAnchor, constant: -8),
+            trashButton.widthAnchor.constraint(equalToConstant: 30),
+            trashButton.heightAnchor.constraint(equalToConstant: 30)
         ])
 
     }
@@ -178,6 +185,9 @@ class ThemeExampleView: ThemableView {
         plusButton.tintColor = palette.actionColor
         smallTitle.textColor = palette.text
         textView.textColor = palette.text
+        
+        trashButton.backgroundColor = palette.buttonBackground
+        shareButton.backgroundColor = palette.buttonBackground
 
         layer.shadowColor = palette.actionColor?.cgColor
         
@@ -195,10 +205,13 @@ class ThemeExampleView: ThemableView {
         plusButton.tintColor = colorSet.actionColor
         smallTitle.textColor = colorSet.text
         textView.textColor = colorSet.text
+        
+        trashButton.backgroundColor = colorSet.buttonBackground
+        shareButton.backgroundColor = colorSet.buttonBackground
 
         layer.shadowColor = colorSet.actionColor?.cgColor
         
-        smallTitle.text = palette.name.capitalized + " Theme"
+        smallTitle.text = colorSet.name?.capitalized ?? "" + " Theme"
     }
     
 }

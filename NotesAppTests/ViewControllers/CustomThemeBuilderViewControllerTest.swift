@@ -40,7 +40,7 @@ class CustomThemeBuilderViewControllerTest: XCTestCase {
     func testDidChangeColor() {
         sut.contentView.collectionView.delegate?.collectionView?(sut.contentView.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
         coordinatorDummy.selectColor = .blue
-        sut.coordinator?.showColorPicker(delegate: sut)
+        sut.coordinator?.showColorPicker(delegate: sut, color: sut.customThemeBuilderColectionViewDataSource.data[0].color ?? .clear)
         
         XCTAssertEqual(sut.customThemeBuilderColectionViewDataSource.data[0].color, UIColor.blue)
         XCTAssertEqual(sut.contentView.exampleView.backgroundColor, UIColor.blue)
@@ -52,7 +52,7 @@ class CustomThemeBuilderViewControllerTest: XCTestCase {
         sut.didTapSave()
         
         //11 = 10 temas padroes + 1 tema criado agr
-        XCTAssertEqual(themeRepository.getAllThemes().count, 11)
+        XCTAssertEqual(themeRepository.getAllColorSets().count, 11)
         XCTAssertEqual(coordinatorDummy.didDismiss, true)
     }
     
@@ -61,7 +61,7 @@ class CustomThemeBuilderViewControllerTest: XCTestCase {
         sut.didTapCancel()
         
         //10 temas padroes
-        XCTAssertEqual(themeRepository.getAllThemes().count, 10)
+        XCTAssertEqual(themeRepository.getAllColorSets().count, 10)
         XCTAssertEqual(coordinatorDummy.didDismiss, true)
     }
 

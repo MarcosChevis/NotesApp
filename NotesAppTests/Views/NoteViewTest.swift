@@ -7,11 +7,10 @@
 
 import XCTest
 import SnapshotTesting
-import SwiftUI
 @testable import NotesApp
 
 class NoteViewTest: XCTestCase {
-    
+    var contentView: NoteView!
     var sut: NoteViewController!
     var repositoryDummy: NoteRepositoryDummy!
     var colorSet: ColorSet!
@@ -21,7 +20,8 @@ class NoteViewTest: XCTestCase {
         
         repositoryDummy = .init()
         themeRepository = ThemeRepository(coreDataStack: .init(.inMemory))
-        sut = .init(palette: .classic, repository: repositoryDummy)
+        contentView = .init(palette: .classic)
+        sut = .init(contentView: contentView, palette: .classic, repository: repositoryDummy)
         isRecording = false
     }
     
@@ -63,54 +63,54 @@ class NoteViewTest: XCTestCase {
     }
 
     func testLayoutWithMoreThanOneItemOnIphone12neon() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "224462ed-d295-4ba7-a9bd-9b986ba751df") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "224462ed-d295-4ba7-a9bd-9b986ba751df") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testLayoutWithMoreThanOneItemOnIphone12bookish() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "bc09ce57-6039-445f-83e4-c7165b4afc79") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "bc09ce57-6039-445f-83e4-c7165b4afc79") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testLayoutWithMoreThanOneItemOnIphone12grape() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "6bcb4b2d-6afa-4a2a-b4dc-f2cca83a44c7") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "6bcb4b2d-6afa-4a2a-b4dc-f2cca83a44c7") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testLayoutWithMoreThanOneItemOnIphone12christmas() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "a1c6b360-2b91-473c-b24e-8a95d3ed45d9") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "a1c6b360-2b91-473c-b24e-8a95d3ed45d9") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testLayoutWithMoreThanOneItemOnIphone12dark() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "50fab20d-3934-4a4a-8274-1ad502544a06") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "50fab20d-3934-4a4a-8274-1ad502544a06") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testLayoutWithMoreThanOneItemOnIphone12halloween() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "bf2ae775-8660-4e33-88d3-0676bdf47572") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "bf2ae775-8660-4e33-88d3-0676bdf47572") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testLayoutWithMoreThanOneItemOnIphone12devotional() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "0765f920-170e-4521-b077-cd496917f21b") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "0765f920-170e-4521-b077-cd496917f21b") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
 
     func testLayoutWithMoreThanOneItemOnIphone12matrix() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "f5e3ec97-1b02-46f2-b2de-0592d7fe48b5") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "f5e3ec97-1b02-46f2-b2de-0592d7fe48b5") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     func testLayoutWithMoreThanOneItemOnIphone12unicorn() {
-        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getTheme(with: "8de332a6-2120-45b8-b638-f2c86b017aa5") ?? .classic)
+        let view = setupLayoutTestWithMoreThanItem(with: themeRepository.getColorSet(with: "8de332a6-2120-45b8-b638-f2c86b017aa5") ?? .classic)
         assertSnapshot(matching: view, as: .image(on: .iPhone12))
     }
     
     
     func setupLayoutTestWithMoreThanItem(with palette: ColorSet) -> UIViewController {
         repositoryDummy.mock = [NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 01", content: "Essa é uma nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 02", content: "Essa é uma outra nota de teste, oi tudo bem com você?")), NoteCellViewModel.init(note: NoteDummy(noteID: "Nota 03", content: "Essa é uma outra outra nota de teste, oi tudo bem com você?"))]
-        sut = .init(palette: palette, repository: repositoryDummy)
+        sut = .init(contentView: NoteView(palette: palette), palette: palette, repository: repositoryDummy)
         
         let navigation = NavigationController(rootViewController: sut)
         return navigation

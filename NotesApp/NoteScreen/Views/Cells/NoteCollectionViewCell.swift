@@ -6,13 +6,16 @@
 //
 
 import UIKit
-import SwiftUI
 
 class NoteCollectionViewCell: UICollectionViewCell {
     var noteContentView: NoteCellContentView
     static var identifier: String = "Notes.NoteCollectionViewCell"
     var viewModel: NoteCellViewModel?
     private var notificationService: NotificationService?
+    
+    weak var delegate: NoteCollectionViewCellDelegate? {
+        didSet { didSetDelegate() }
+    }
     
     var palette: ColorSet?
     
@@ -21,7 +24,7 @@ class NoteCollectionViewCell: UICollectionViewCell {
         noteContentView = NoteCellContentView(palette: ColorSet.classic)
         noteContentView.translatesAutoresizingMaskIntoConstraints = false
         notificationService = nil
-
+        
         super.init(frame: frame)
         contentView.addSubview(noteContentView)
         setupConstraints()
@@ -43,6 +46,25 @@ class NoteCollectionViewCell: UICollectionViewCell {
             noteContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ]
         NSLayoutConstraint.activate(noteContentViewConstraints)
+    }
+    
+    private func didSetDelegate() {
+        guard let delegate = delegate else {
+            return
+        }
+        noteContentView.shareAction = {[weak self] in
+            guard let viewModel = self?.viewModel else {
+                return
+            }
+            delegate.didTapShareNote(viewModel)
+        }
+        
+        noteContentView.deleteAction = {[weak self] in
+            guard let viewModel = self?.viewModel else {
+                return
+            }
+            delegate.didTapDeleteNote(viewModel)
+        }
     }
     
     
@@ -92,4 +114,4 @@ extension NoteCollectionViewCell: UITextFieldDelegate {
             viewModel?.note.title = title
         }
     }
- }
+}

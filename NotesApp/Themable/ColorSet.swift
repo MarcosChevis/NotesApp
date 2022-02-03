@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 struct ColorSet: Equatable {
     
@@ -21,6 +20,8 @@ struct ColorSet: Equatable {
     let text: UIColor?
     
     let largeTitle: UIColor?
+    
+    let isStandard: Bool
     
     var statusBarStyle: UIStatusBarStyle {
         
@@ -59,8 +60,8 @@ struct ColorSet: Equatable {
         self.name = name
         self.id = id
         self.icon = icon
+        self.isStandard = true
     }
-    
     
     init(theme: ThemeProtocol) {
         actionColor = theme.actionColor
@@ -72,6 +73,7 @@ struct ColorSet: Equatable {
         name = theme.name ?? ""
         id = theme.id?.uuidString ?? ""
         self.icon = nil
+        self.isStandard = false
     }
     
     init(theme: StandardTheme) {
@@ -84,10 +86,10 @@ struct ColorSet: Equatable {
         name = theme.name
         id = theme.id
         self.icon = theme.icon
+        self.isStandard = true
     }
 
 }
-
 
 extension ColorSet {
     static var classic = ColorSet(actionColor: UIColor(hex: "#1D58D9FF"),

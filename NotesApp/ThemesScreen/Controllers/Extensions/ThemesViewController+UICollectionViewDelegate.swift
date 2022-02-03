@@ -17,7 +17,6 @@ extension ThemesViewController: UICollectionViewDelegate {
             }
         }
         collectionView.reloadData()
-        
     }
     
 }

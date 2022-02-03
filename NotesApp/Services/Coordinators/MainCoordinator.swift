@@ -25,7 +25,6 @@ class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
         self.settings = settings
         self.childCoordinators = []
         self.notificationService = notificationService
-        notificationService.addObserver(self, selector: #selector(didComeBackFromModal), name: .didComebackFromModal, object: nil)
     }
     
     deinit {
@@ -33,28 +32,18 @@ class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
     }
     
     func start() {
-        let vc = NoteViewController(palette: settings.theme, repository: NotesRepository())
+        let theme = settings.theme
+        let vc = NoteViewController(contentView: NoteView(palette: theme), palette: theme, repository: NotesRepository())
         navigationController.pushViewController(vc, animated: false)
         vc.coordinator = self
     }
     
     func navigateToAllNotes() {
         let childCoordinator = AllNotesCoordinator(navigationController: NavigationController(), settings: settings)
+        childCoordinator.delegate = self
         childCoordinator.start()
         childCoordinators.append(childCoordinator)
         navigationController.present(childCoordinator.navigationController, animated: true)
-    }
-    
-    @objc private func didComeBackFromModal(_ notification: Notification) {
-        childCoordinators.removeAll(where: {
-            ($0 as? AllNotesCoordinator) != nil
-        })
-        
-        guard
-            let id = notification.object as? String
-        else { return }
-        
-        scrollToCurrentItem(with: id)
     }
     
     private func scrollToCurrentItem(with id: String?) {
@@ -67,4 +56,19 @@ class MainCoordinator: CoordinatorProtocol, MainCoordinatorProtocol {
         }
     }
     
+}
+
+extension MainCoordinator: AllNotesCoordinatorDelegate {
+    func didDismiss() {
+        childCoordinators.removeAll(where: {
+            ($0 as? AllNotesCoordinator) != nil
+        })
+        
+        print(childCoordinators)
+    }
+    
+    func didDismissToNote(with id: String) {
+        didDismiss()
+        scrollToCurrentItem(with: id)
+    }
 }
