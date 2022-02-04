@@ -49,7 +49,7 @@ class CustomThemeBuilderViewController: ThemableViewController {
         self.contentView.themeNameTextField.delegate = self
         self.contentView.collectionView.dataSource = customThemeBuilderColectionViewDataSource
         self.contentView.collectionView.delegate = self
-        
+        contentView.addEndEditingTapGesture()
         navigationController?.navigationBar.prefersLargeTitles = false
         setupBarButtonItems()
     }
@@ -127,6 +127,10 @@ extension CustomThemeBuilderViewController: UITextFieldDelegate {
          guard let text = textField.text else { return true }
          let newLength = text.count + string.count - range.length
          return newLength <= 10
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
     }
 }
 

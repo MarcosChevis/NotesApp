@@ -88,9 +88,7 @@ class NoteViewController: ThemableViewController {
     }
     
     private func setupKeyboardDismissGesture() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        contentView.addEndEditingTapGesture()
     }
     
     private func setupInitialData() {
