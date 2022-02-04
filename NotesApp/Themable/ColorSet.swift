@@ -83,7 +83,7 @@ struct ColorSet: Equatable {
         noteBackground = UIColor.init(hex: theme.noteBackground)
         text = UIColor.init(hex: theme.text)
         largeTitle = UIColor.init(hex: theme.largeTitle)
-        name = theme.name
+        name = NSLocalizedString(theme.name, comment: "")
         id = theme.id
         self.icon = theme.icon
         self.isStandard = true
@@ -98,6 +98,6 @@ extension ColorSet {
                                   noteBackground: UIColor(hex: "#FFFFFFFF"),
                                   text: UIColor(hex: "#000000FF"),
                                   largeTitle: UIColor(hex: "#000000FF"),
-                                  name: "classic",
+                                  name: "Classic",
                                   id: "b4489fa5-6c2b-4515-9c35-be7e226cdbfa")
 }

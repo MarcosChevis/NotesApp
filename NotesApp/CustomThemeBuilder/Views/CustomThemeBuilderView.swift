@@ -11,7 +11,7 @@ class CustomThemeBuilderView: ThemableView {
     
     weak var delegate: CustomThemeBuilderViewDelegate?
     private var placeholder: NSMutableAttributedString
-    private var placeholderContent: String = "Your theme name here"
+    private var placeholderContent: String = NSLocalizedString(.themeNamePlaceholder)
     
     lazy var cancelButton: UIBarButtonItem = {
         let but = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(didTapCancel))

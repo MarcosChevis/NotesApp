@@ -110,7 +110,7 @@ extension CustomThemeBuilderViewController: CustomThemeBuilderViewDelegate {
             
             coordinator?.dismiss()
         } else {
-            coordinator?.presentErrorAlert(with: "Your theme must have a name")
+            coordinator?.presentErrorAlert(with: NSLocalizedString(.alertMustHaveAName))
         }
         
     }

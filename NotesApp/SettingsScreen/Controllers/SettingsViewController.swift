@@ -39,7 +39,7 @@ class SettingsViewController: ThemableViewController {
     }
     
     func setupNavigationBar() {
-        title = "Settings"
+        title = NSLocalizedString(.settingsTitle)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     

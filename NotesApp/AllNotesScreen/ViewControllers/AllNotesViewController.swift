@@ -26,7 +26,7 @@ class AllNotesViewController: ThemableViewController {
     }()
     
     private lazy var placeholder: NSMutableAttributedString = {
-        return NSMutableAttributedString(string: "Search", attributes: placeholderAttributes(for: palette))
+        return NSMutableAttributedString(string: NSLocalizedString(.searchPlaceholder), attributes: placeholderAttributes(for: palette))
     }()
     
     private func placeholderAttributes(for palette: ColorSet) -> [NSMutableAttributedString.Key : Any] {
@@ -87,7 +87,7 @@ class AllNotesViewController: ThemableViewController {
             snapshot.appendItems(noteItems, toSection: .text)
             
         } catch {
-            coordinator?.presentErrorAlert(with: "An error ocurred fetching your notes!")
+            coordinator?.presentErrorAlert(with: NSLocalizedString(.alertErrorFetchingNote))
         }
         
         dataSource.apply(snapshot, animatingDifferences: false)
@@ -112,7 +112,7 @@ class AllNotesViewController: ThemableViewController {
     }
     
     private func setupNavigationBar() {
-        title = "All Notes"
+        title = NSLocalizedString(.allNotesTitle)
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItems = [ contentView.settingsButton]
         navigationItem.leftBarButtonItem = contentView.closeButton
@@ -195,7 +195,7 @@ extension AllNotesViewController: UICollectionViewDelegate {
             
             updateUIForNoteFiltering(with: notes)
         } catch {
-            coordinator?.presentErrorAlert(with: "An Internal error ocurred trying to filter your notes")
+            coordinator?.presentErrorAlert(with: NSLocalizedString(.alertErrorFilterNote))
         }
     }
     

@@ -27,7 +27,7 @@ extension UIAlertController {
             action()
         }
         alert.addAction(deleteAction)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: NSLocalizedString(.cancel), style: .cancel, handler: nil))
         return alert
     }
     
@@ -50,12 +50,12 @@ extension UIAlertController.CommonAlert {
     var content: UIAlertController.AlertContent {
         switch self {
         case .onDeletingItem:
-            return .init(title: "Are you sure you want to delete it?",
-                         message: "This action cannot be undone",
-                         actionTitle: "Delete",
+            return .init(title: NSLocalizedString(.alertConfirmationToDelete),
+                         message: NSLocalizedString(.alertConfirmationToAction),
+                         actionTitle: NSLocalizedString(.delete),
                          actionStyle: .destructive)
         case .unexpectedError(let errorMessage):
-            return .init(title: "Error!",
+            return .init(title: NSLocalizedString(.error),
                          message: errorMessage,
                          actionTitle: "",
                          actionStyle: .default)
