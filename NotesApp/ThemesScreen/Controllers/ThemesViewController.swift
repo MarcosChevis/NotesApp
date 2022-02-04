@@ -103,6 +103,4 @@ extension ThemesViewController: ThemeCollectionViewCellDelegate {
             coordinator?.presentErrorAlert(with: "An error has occured")
         }
     }
-    
-    
 }

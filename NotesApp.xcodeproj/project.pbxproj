@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B00565F27959427002BBFD0 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B00565E27959427002BBFD0 /* NotificationService.swift */; };
 		5B00566127959741002BBFD0 /* NoteViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B00566027959741002BBFD0 /* NoteViewControllerTest.swift */; };
+		5B16B0A927ADB79C00A25F3E /* UIView+EndEditting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B16B0A827ADB79C00A25F3E /* UIView+EndEditting.swift */; };
 		5B2CA6D227AB1D6C00DCE012 /* ThemeRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CA6D127AB1D6C00DCE012 /* ThemeRepositoryTest.swift */; };
 		5B2CA6D427AB1D7F00DCE012 /* TagRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CA6D327AB1D7F00DCE012 /* TagRepositoryTest.swift */; };
 		5B2CA6D627AB2AA000DCE012 /* TagRepositoryDelegateDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2CA6D527AB2AA000DCE012 /* TagRepositoryDelegateDummy.swift */; };
@@ -157,6 +158,7 @@
 /* Begin PBXFileReference section */
 		5B00565E27959427002BBFD0 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		5B00566027959741002BBFD0 /* NoteViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewControllerTest.swift; sourceTree = "<group>"; };
+		5B16B0A827ADB79C00A25F3E /* UIView+EndEditting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+EndEditting.swift"; sourceTree = "<group>"; };
 		5B2CA6D127AB1D6C00DCE012 /* ThemeRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRepositoryTest.swift; sourceTree = "<group>"; };
 		5B2CA6D327AB1D7F00DCE012 /* TagRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepositoryTest.swift; sourceTree = "<group>"; };
 		5B2CA6D527AB2AA000DCE012 /* TagRepositoryDelegateDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagRepositoryDelegateDummy.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				BAEC252427A3989200C54C72 /* UIColor+isLight.swift */,
 				BAEC252A27A3A0A300C54C72 /* JSONDecoderUtilities.swift */,
 				5BE09CEC27A99EA5003ADF3B /* UIButton+StandardButton.swift */,
+				5B16B0A827ADB79C00A25F3E /* UIView+EndEditting.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1060,6 +1063,7 @@
 				BAB1E02B269DBBF8001FC3CC /* NotesModel.xcdatamodeld in Sources */,
 				BAA8DFB627A1BCCE00D3704C /* CustomThemeBuilderViewController.swift in Sources */,
 				9D31F35E2791C02D000F6B4A /* Header.swift in Sources */,
+				5B16B0A927ADB79C00A25F3E /* UIView+EndEditting.swift in Sources */,
 				9DE31E7327970AF4005B21BC /* TagCellViewModel.swift in Sources */,
 				5BE09CED27A99EA5003ADF3B /* UIButton+StandardButton.swift in Sources */,
 				BAEF61B127A2D99000C64A17 /* ThemeRepositoryProtocol.swift in Sources */,
