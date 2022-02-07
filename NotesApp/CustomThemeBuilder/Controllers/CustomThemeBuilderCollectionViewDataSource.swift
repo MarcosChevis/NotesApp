@@ -15,12 +15,12 @@ class CustomThemeBuilderCollectionViewDataSource: NSObject, UICollectionViewData
     init(colorSet: ThemeProtocol, palette: ColorSet) {
         self.palette = palette
         
-        self.data.append(CustomColorData(name: "Background", color: colorSet.background))
-        self.data.append(CustomColorData(name: "Note Background", color: colorSet.noteBackground))
-        self.data.append(CustomColorData(name: "Text", color: colorSet.text))
-        self.data.append(CustomColorData(name: "Title", color: colorSet.largeTitle))
-        self.data.append(CustomColorData(name: "Buttons Background", color: colorSet.buttonBackground))
-        self.data.append(CustomColorData(name: "Buttons", color: colorSet.actionColor))
+        self.data.append(CustomColorData(name: NSLocalizedString(.background), color: colorSet.background))
+        self.data.append(CustomColorData(name: NSLocalizedString(.noteBackground), color: colorSet.noteBackground))
+        self.data.append(CustomColorData(name: NSLocalizedString(.text), color: colorSet.text))
+        self.data.append(CustomColorData(name: NSLocalizedString(.largeTitle), color: colorSet.largeTitle))
+        self.data.append(CustomColorData(name: NSLocalizedString(.buttonBackground), color: colorSet.buttonBackground))
+        self.data.append(CustomColorData(name: NSLocalizedString(.actionColor), color: colorSet.actionColor))
         
         super.init()
     }

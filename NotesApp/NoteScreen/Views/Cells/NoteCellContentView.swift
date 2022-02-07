@@ -26,8 +26,7 @@ class NoteCellContentView: ThemableView {
     }()
     
     private var placeholder: NSMutableAttributedString
-    private var placeholderContent: String = "A Great Title..."
-    private var notePlaceholderContent: String = "An even greater note..."
+    private var placeholderContent: String = NSLocalizedString(.noteTitlePlaceholder)
     
     lazy var textView: UITextView = {
         let textView = UITextView()

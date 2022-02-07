@@ -58,7 +58,7 @@ class ThemesViewController: ThemableViewController {
     }
     
     func setupNavigationBar() {
-        title = "Themes"
+        title = NSLocalizedString(.themeTitle)
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -100,9 +100,7 @@ extension ThemesViewController: ThemeCollectionViewCellDelegate {
             collectionDataSource.data[0].isSelected = true
             contentView.collectionView.reloadItems(at: [IndexPath(row: 0, section: 0)])
         } catch {
-            coordinator?.presentErrorAlert(with: "An error has occured")
+            coordinator?.presentErrorAlert(with: NSLocalizedString(.alertError))
         }
     }
-    
-    
 }

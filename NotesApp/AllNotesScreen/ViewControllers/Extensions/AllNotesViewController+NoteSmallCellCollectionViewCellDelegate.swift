@@ -14,7 +14,7 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
             do {
                 try self.noteRepository.deleteNote(noteViewModel.note)
             } catch {
-                self.coordinator?.presentErrorAlert(with: "An error Occured deleting the item!")
+                self.coordinator?.presentErrorAlert(with: NSLocalizedString(.alertErrorDeletingNote))
             }
         })
     }
@@ -22,7 +22,7 @@ extension AllNotesViewController: NoteSmallCellCollectionViewCellDelegate {
     func didTapShare(for noteViewModel: NoteCellViewModel) {
         guard let content = noteViewModel.note.content, !content.isEmpty
         else {
-            coordinator?.presentErrorAlert(with: "Your note is empty")
+            coordinator?.presentErrorAlert(with: NSLocalizedString(.alertEmptyNote))
             return
         }
         

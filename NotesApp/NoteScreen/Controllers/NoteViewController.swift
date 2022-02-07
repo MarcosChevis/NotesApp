@@ -88,9 +88,7 @@ class NoteViewController: ThemableViewController {
     }
     
     private func setupKeyboardDismissGesture() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
+        contentView.addEndEditingTapGesture()
     }
     
     private func setupInitialData() {
@@ -155,7 +153,7 @@ class NoteViewController: ThemableViewController {
         do {
             _ = try repository.createEmptyNote()
         } catch {
-            coordinator?.presentErrorAlert(with: "An error occured trying to add an note")
+            coordinator?.presentErrorAlert(with: NSLocalizedString(.alertErrorAddingNote))
         }
     }
     
@@ -165,7 +163,7 @@ class NoteViewController: ThemableViewController {
             do {
                 try self.repository.deleteNote(note)
             } catch {
-                self.coordinator?.presentErrorAlert(with: "An error occured trying to delete an note")
+                self.coordinator?.presentErrorAlert(with: NSLocalizedString(.alertErrorDeletingNote))
             }
         }
     }
@@ -179,7 +177,7 @@ class NoteViewController: ThemableViewController {
     
     func shareNote(_ note: NoteProtocol) {
         guard let content = note.content, !content.isEmpty else {
-            coordinator?.presentErrorAlert(with: "Your note is empty")
+            coordinator?.presentErrorAlert(with: NSLocalizedString(.alertEmptyNote))
             return
         }
         
