@@ -38,7 +38,7 @@ extension AllNotesViewController {
                     header.setup(with: "Tags", color: textColor)
                     
                 } else {
-                    header.setup(with: "All Notes", color: textColor)
+                    header.setup(with: NSLocalizedString(.allNotesTitle), color: textColor)
                 }
                 
                 return header

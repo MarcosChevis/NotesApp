@@ -20,7 +20,7 @@ class ThemeExampleView: ThemableView {
     lazy var bigTitle: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Page 1"
+        label.text = String(format: NSLocalizedString(.noteTitle), 1)
         label.font = UIFont.boldSystemFont(ofSize: 20)
        
         return label
@@ -82,9 +82,9 @@ class ThemeExampleView: ThemableView {
         textView.font = UIFont.systemFont(ofSize: 12)
         
         textView.text = """
-                        You can change the theme of your Swift Notes app.
+                        \(NSLocalizedString(.examplePhrase1))
 
-                        Try them all and find your favorites!
+                        \(NSLocalizedString(.examplePhrase2))
                         """
         
         return textView
@@ -191,7 +191,7 @@ class ThemeExampleView: ThemableView {
 
         layer.shadowColor = palette.actionColor?.cgColor
         
-        smallTitle.text = palette.name.capitalized + " Theme"
+        smallTitle.text = String(format: NSLocalizedString(.themeExample), palette.name)
     }
     
     func setColorsForCustomTheme(colorSet: ThemeProtocol) {

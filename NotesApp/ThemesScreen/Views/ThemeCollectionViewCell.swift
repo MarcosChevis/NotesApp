@@ -29,23 +29,6 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         return title
     }()
     
-    lazy var themeLabel: UILabel = {
-        var theme = UILabel()
-        theme.translatesAutoresizingMaskIntoConstraints = false
-        theme.textAlignment = .center
-        theme.text = "Theme"
-        if let descriptor = UIFontDescriptor
-            .preferredFontDescriptor(withTextStyle: .title3)
-            .withSymbolicTraits(.traitBold) {
-            theme.font = UIFont(descriptor: descriptor, size: 0)
-        } else {
-            theme.font = .preferredFont(forTextStyle: .title3)
-        }
-        contentView.addSubview(theme)
-        
-        return theme
-    }()
-    
     var firstSelected: Bool = false
     
     var colorSet: ColorSet?
@@ -87,8 +70,6 @@ class ThemeCollectionViewCell: UICollectionViewCell {
         title.text = titleText
         title.textColor = palette.actionColor
         
-        themeLabel.textColor = palette.text
-        
         contentView.backgroundColor = palette.background
     }
     
@@ -112,13 +93,8 @@ class ThemeCollectionViewCell: UICollectionViewCell {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            title.bottomAnchor.constraint(equalTo: contentView.centerYAnchor),
+            title.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             title.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            themeLabel.topAnchor.constraint(equalTo: contentView.centerYAnchor),
-            themeLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
     

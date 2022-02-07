@@ -24,7 +24,7 @@ class SettingTableDataSource: NSObject, UITableViewDataSource {
             preconditionFailure("cell configurated improperly")
         }
         
-        cell.textLabel?.text = "Themes"
+        cell.textLabel?.text = NSLocalizedString(.themeTitle)
         cell.setupSettingsViewCell(palette: palette)
         cell.selectionStyle = .none
         

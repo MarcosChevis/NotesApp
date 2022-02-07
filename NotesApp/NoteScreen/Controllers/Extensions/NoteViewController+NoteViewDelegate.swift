@@ -10,7 +10,7 @@ import UIKit
 extension NoteViewController: NoteViewDelegate {
     
     func collectionViewDidMove(to indexPath: IndexPath) {
-        title = "Page \(indexPath.row+1)"
+        title = String(format: NSLocalizedString(.noteTitle), indexPath.row+1)
     }
     
     func didAllNotes() {

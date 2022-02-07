@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  NotesApp
+
+  Created by Rebecca Mello on 04/02/22.
+  
+*/
+
+"all_notes" = "Notas";
+"notes" = "Página %d";
+"settings" = "Configurações";
+"themes" = "Temas";
+"search" = "Pesquisar";
+"a_great_title" = "Um grande título";
+"your_theme_name_here" = "Nome do tema";
+"cancel" = "Cancelar";
+"save" = "Salvar";
+"actionColor" = "Botões";
+"background" = "Fundo";
+"buttonBackground" = "Fundo dos botões";
+"noteBackground" = "Fundo da nota";
+"text" = "Texto";
+"largeTitle" = "Título";
+"Classic" = "Clássico";
+"Dark" = "Escuro";
+"Grape" = "Uva";
+"Halloween" = "Halloween";
+"Neon" = "Neon";
+"Bookish" = "Livro";
+"Devotional" = "Devocional";
+"CRT" = "CRT";
+"Unicorn" = "Unicórnio";
+"Christmas" = "Natal";
+"Your_theme_must_have_a_name" = "Seu tema deve ter um nome";
+"An_error_has_occured" = "Um erro ocorreu";
+"An_error_ocurred_fetching_your_notes!" = "Ocorreu um erro ao obter as notas";
+"An_Internal_error_ocurred_trying_to_filter_your_notes" = "Um erro ocorreu ao tentar filtrar suas notas";
+"Your_note_is_empty" = "Nota vazia";
+"An_error_occured_trying_to_add_an_note" = "Ocorreu um erro ao adicionar uma nota";
+"An_error_occured_trying_to_delete_an_note" = "Ocorreu um erro ao deletar uma nota";
+"Are_you_sure_you_want_to_delete_it?" = "Tem certeza que deseja deletar?";
+"This_action_cannot_be_undone" = "Essa ação não pode ser desfeita";
+"Delete" = "Deletar";
+"Error!" = "Erro!";
+"themeExample" = "Tema %@";
+"examplePhrase1" = "Você pode mudar o tema do aplicativo Swift Notes.";
+"examplePhrase2" = "Experimente todos e encontre os seus favoritos!";
