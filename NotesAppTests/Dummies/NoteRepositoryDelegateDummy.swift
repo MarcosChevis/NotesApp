@@ -11,7 +11,7 @@ import Foundation
 class NoteRepositoryDelegateDummy: NoteRepositoryProtocolDelegate {
     var data: [NoteCellViewModel] = []
     
-    func didInsertNote(_ note: NoteCellViewModel) {
+    func didInsertNote(_ note: NoteCellViewModel, shouldScroll: Bool) {
         data.append(note)
     }
     

@@ -85,11 +85,11 @@ class NotesRepository: NSObject, NotesRepositoryProtocol {
         }
     }
     
-    func createEmptyNote() throws -> NoteProtocol {
+    func createEmptyNote(shouldScroll: Bool) throws -> NoteProtocol {
         let note = Note(context: coreDataStack.mainContext)
         note.content = ""
         note.title = ""
-        delegate?.didInsertNote(NoteCellViewModel(note: note))
+        delegate?.didInsertNote(NoteCellViewModel(note: note), shouldScroll: shouldScroll)
         return note
     }
     

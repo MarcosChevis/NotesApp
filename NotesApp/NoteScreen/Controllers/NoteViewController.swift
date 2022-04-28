@@ -20,6 +20,10 @@ class NoteViewController: ThemableViewController {
     
     private let repository: NotesRepositoryProtocol
     
+    var lastItemIndexPath: IndexPath {
+        IndexPath(item: dataSource.snapshot().numberOfItems-1, section: 0)
+    }
+    
     
     init(contentView: NoteView,
          palette: ColorSet,
@@ -107,15 +111,19 @@ class NoteViewController: ThemableViewController {
     func scrollToEmptyNote(_ animated: Bool = false) {
         repository.saveChangesWithoutEmptyNotes()
         createNote()
+        scrollToFinalNote()
+    }
+    
+    func scrollToFinalNote() {
         let count = dataSource.snapshot().numberOfItems
         scrollToNote(at: count-1)
     }
     
-    func insertNoteIntoDatasource(_ note: NoteCellViewModel) {
+    func insertNoteIntoDatasource(_ note: NoteCellViewModel, shouldScroll: Bool) {
         var snapshot = dataSource.snapshot()
         snapshot.appendItems([note], toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: true)
-        guard let indexPath = dataSource.indexPath(for: note) else { return }
+        guard let indexPath = dataSource.indexPath(for: note), shouldScroll else { return }
         contentView.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
@@ -149,9 +157,9 @@ class NoteViewController: ThemableViewController {
     
     //MARK: CRUD Operations
     
-    func createNote() {
+    func createNote(shouldScroll: Bool = true) {
         do {
-            _ = try repository.createEmptyNote()
+            _ = try repository.createEmptyNote(shouldScroll: shouldScroll)
         } catch {
             coordinator?.presentErrorAlert(with: NSLocalizedString(.alertErrorAddingNote))
         }

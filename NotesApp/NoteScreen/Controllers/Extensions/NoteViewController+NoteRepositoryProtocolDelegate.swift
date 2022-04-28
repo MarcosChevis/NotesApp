@@ -8,8 +8,8 @@
 import UIKit
 
 extension NoteViewController: NoteRepositoryProtocolDelegate {
-    func didInsertNote(_ note: NoteCellViewModel) {
-        insertNoteIntoDatasource(note)
+    func didInsertNote(_ note: NoteCellViewModel, shouldScroll: Bool) {
+        insertNoteIntoDatasource(note, shouldScroll: shouldScroll)
     }
     
     func didDeleteNote(_ note: NoteCellViewModel) {

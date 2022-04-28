@@ -68,15 +68,15 @@ class NotesRepositoryTest: XCTestCase {
     }
     
     func createNote(withMessage message: String, title: String = "title") throws {
-        var note = try sut.createEmptyNote()
+        var note = try sut.createEmptyNote(shouldScroll: true)
         note.content = message
         note.title = title
     }
     
     func testAppEnterBackground() throws {
-        _ = try sut.createEmptyNote()
-        _ = try sut.createEmptyNote()
-        _ = try sut.createEmptyNote()
+        _ = try sut.createEmptyNote(shouldScroll: true)
+        _ = try sut.createEmptyNote(shouldScroll: true)
+        _ = try sut.createEmptyNote(shouldScroll: true)
         
         XCTAssertEqual(repositoryDelegate.data.count, 3)
         let expectation = XCTestExpectation(description: "Expect Notification Call")

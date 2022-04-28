@@ -11,7 +11,7 @@ protocol NotesRepositoryProtocol: AnyObject {
     var delegate: NoteRepositoryProtocolDelegate? { get set }
     func saveChanges() throws
     func deleteNote(_ note: NoteProtocol) throws
-    func createEmptyNote() throws -> NoteProtocol
+    func createEmptyNote(shouldScroll: Bool) throws -> NoteProtocol
     func getInitialData() throws -> [NoteCellViewModel]
     func saveChangesWithoutEmptyNotes()
     func filterForTag(_ tag: TagProtocol) throws -> [NoteCellViewModel]
@@ -19,7 +19,7 @@ protocol NotesRepositoryProtocol: AnyObject {
 }
 
 protocol NoteRepositoryProtocolDelegate: AnyObject {
-    func didInsertNote(_ note: NoteCellViewModel)
+    func didInsertNote(_ note: NoteCellViewModel, shouldScroll: Bool)
     func didDeleteNote(_ note: NoteCellViewModel)
     
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 extension AllNotesViewController: NoteRepositoryProtocolDelegate {
-    func didInsertNote(_ note: NoteCellViewModel) {
+    func didInsertNote(_ note: NoteCellViewModel, shouldScroll: Bool) {
         insertItem(.note(noteViewModel: note), at: .text)
     }
     
