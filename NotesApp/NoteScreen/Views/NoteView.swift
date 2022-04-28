@@ -79,13 +79,6 @@ class NoteView: ThemableView {
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
-        
-//        let editViewToDockedKeyboardTrailing = self.keyboardLayoutGuide.trailingAnchor.constraint(equalTo: editView.trailingAnchor)
-//        editViewToDockedKeyboardTrailing.identifier = "editViewToDockedKeyboardTrailing"
-//
-//        let nearBottomConstraints = [ keyboardToImageView, editViewToDockedKeyboardTrailing ]
-//        view.keyboardLayoutGuide.setConstraints(nearBottomConstraints, activeWhenNearEdge: .bottom)
-        
     }
     
     @objc func didTapAllNotes() {
