@@ -9,17 +9,6 @@ import Foundation
 import UIKit
 
 class AllNotesView: ThemableView {
-    private lazy var collectionViewLayout: UICollectionViewCompositionalLayout = {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(300.0))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [ item ])
-        group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(8))
-        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 18, bottom: 0, trailing: 18)
-        let section = NSCollectionLayoutSection(group: group)
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }()
     
     lazy var settingsButton: UIBarButtonItem = {
         let but = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain , target: self, action: #selector(didTapSettings))
@@ -42,10 +31,16 @@ class AllNotesView: ThemableView {
         
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(NoteSmallCellCollectionViewCell.self, forCellWithReuseIdentifier: NoteSmallCellCollectionViewCell.identifier)
-        collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
-        collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier)
-        collectionView.register(Header.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: Header.identifier)
+        collectionView.register(NoteSmallCellCollectionViewCell.self,
+                                forCellWithReuseIdentifier: NoteSmallCellCollectionViewCell.identifier)
+        collectionView.register(TagCollectionViewCell.self,
+                                forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
+        collectionView.register(Header.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: Header.identifier)
+        collectionView.register(Header.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: Header.identifier)
         
         return collectionView
     }()

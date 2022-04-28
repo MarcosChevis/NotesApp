@@ -21,14 +21,16 @@ class NoteView: ThemableView {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         // funcao pra dar dismiss no teclado quando scrolla pro lado na collection
-        section.visibleItemsInvalidationHandler = ({ [weak self] (visibleItems, point, env) in
+        section.visibleItemsInvalidationHandler = { [weak self] (visibleItems, point, env) in
             guard let self = self else { return }
             self.endEditing(false)
+            
+            self.delegate?.collectionDidShowCells(of: visibleItems.map(\.indexPath))
             
             if let indexPath = self.findCurrentCellIndexPath(for: point) {
                 self.delegate?.collectionViewDidMove(to: indexPath)
             }
-        })
+        }
         
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout

@@ -55,7 +55,7 @@ class NoteViewControllerTest: XCTestCase {
     }
     
     func testDidTapShare() {
-        sut.didAdd()
+        sut.createNote()
         var note = repositoryDummy.mock.first!.note
         note.content = "Pudim é melhor que bacon"
         sut.shareNote(note)
