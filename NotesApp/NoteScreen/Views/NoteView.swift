@@ -74,10 +74,11 @@ class NoteView: ThemableView {
     func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            collectionView.bottomAnchor.constraint(equalTo: keyboardLayoutGuide.topAnchor, constant: -8),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
+        
     }
     
     @objc func didTapAllNotes() {
